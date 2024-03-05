@@ -5,6 +5,9 @@ const uint8_t NOTE_OFF = 0x8;
 const uint8_t NOTE_ON = 0x9;
 const uint8_t MIDI_CLOCK = 0xF8;
 const uint8_t PROGRAM_CHANGE = 0xC;
+const uint8_t MIDI_START = 0xFA;
+const uint8_t MIDI_STOP = 0xFC;
+const uint8_t MIDI_CONTINUE = 0xFB;
 
 HardwareSerial Serial2(PA3,PA2);
 
@@ -26,7 +29,7 @@ bool receiveMIDI(Stream &s, MIDI_message &m) {
   if (!s.available())
     return false;
   uint8_t newByte = s.read();
-  if (newByte == MIDI_CLOCK || newByte == PROGRAM_CHANGE) {  // MIDI clock or program change message
+  if (newByte == MIDI_CLOCK || newByte == PROGRAM_CHANGE || newByte == MIDI_START || newByte == MIDI_STOP || newByte == MIDI_CONTINUE) {  // MIDI clock or program change message
     m.status = newByte;
     return true;
   }
@@ -80,12 +83,18 @@ void loop() {
       Serial.print(", velocity = ");
       Serial.println(midimsg.data2);
     } else if (midimsg.status == MIDI_CLOCK) {
-      // Serial.println("Received MIDI Clock message");
+      Serial.println("Received MIDI Clock message");
     } else if (midimsg.status == PROGRAM_CHANGE) {
       Serial.print("Received MIDI Program Change message on channel ");
       Serial.print(midimsg.channel + 1);
       Serial.print(", program number = ");
       Serial.println(midimsg.data1);
+    } else if (midimsg.status == MIDI_START) {
+      Serial.println("Received MIDI Start message");
+    } else if (midimsg.status == MIDI_STOP) {
+      Serial.println("Received MIDI Stop message");
+    } else if (midimsg.status == MIDI_CONTINUE) {
+      Serial.println("Received MIDI Continue message");
     } else {
       Serial.println("Received unknown MIDI message");
     }
