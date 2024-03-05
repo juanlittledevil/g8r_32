@@ -1,43 +1,62 @@
-#include <UMIDI.h>
 #include <Arduino.h>
-
-// Define the RX and TX pins for MIDI communication
-#define RX_PIN PA3
-#define TX_PIN PA2
+#include <UMIDI.h>
 
 // Create an instance of the UMIDI class
-UMIDI midi(RX_PIN, TX_PIN);
+UMIDI midi(PA3, PA2);
+
+// Callback function for handling Note On messages
+void handleNoteOn(byte channel, byte pitch, byte velocity) {
+  Serial.print("Note On - Channel: ");
+  Serial.print(channel);
+  Serial.print(", Pitch: ");
+  Serial.print(pitch);
+  Serial.print(", Velocity: ");
+  Serial.println(velocity);
+}
+
+// Callback function for handling Note Off messages
+void handleNoteOff(byte channel, byte pitch, byte velocity) {
+  Serial.print("Note Off - Channel: ");
+  Serial.print(channel);
+  Serial.print(", Pitch: ");
+  Serial.print(pitch);
+  Serial.print(", Velocity: ");
+  Serial.println(velocity);
+}
+
+// Callback function for handling Control Change messages
+void handleControlChange(byte channel, byte controller, byte value) {
+  Serial.print("Control Change - Channel: ");
+  Serial.print(channel);
+  Serial.print(", Controller: ");
+  Serial.print(controller);
+  Serial.print(", Value: ");
+  Serial.println(value);
+}
+
+// Callback function for handling Program Change messages
+void handleProgramChange(byte channel, byte program) {
+  Serial.print("Program Change - Channel: ");
+  Serial.print(channel);
+  Serial.print(", Program: ");
+  Serial.println(program);
+}
 
 void setup() {
-  // Initialize serial communication for debugging
+  // Initialize serial communication
   Serial.begin(9600);
-  
-  // Initialize MIDI communication using the hardware serial port
-  Serial.println("Bout to call midi.bein");
+
+  // Initialize the UMIDI library
   midi.begin();
 
-  // Wait for serial port to initialize
-  delay(1000);
-  
-  // Print a message indicating setup is complete
-  Serial.println("Setup complete. Sending MIDI messages...");
+  // Set callback functions for handling MIDI messages
+  midi.setHandleNoteOn(handleNoteOn);
+  midi.setHandleNoteOff(handleNoteOff);
+  midi.setHandleControlChange(handleControlChange);
+  midi.setHandleProgramChange(handleProgramChange);
 }
 
 void loop() {
-  Serial.println("In the loop now");
-  // Send a Note On message on channel 1, note C4, velocity 100
-  // midi.sendNoteOn(1, 60, 100);
-  // delay(500); // Wait for half a second
-  
-  // // Send a Note Off message on channel 1, note C4, velocity 0
-  // midi.sendNoteOff(1, 60, 0);
-  // delay(500); // Wait for half a second
-  
-  // // Send a Control Change message on channel 1, controller 7 (volume), value 127 (maximum)
-  // midi.sendControlChange(1, 7, 127);
-  // delay(500); // Wait for half a second
-  
-  // // // Send a Program Change message on channel 1, program number 1
-  // midi.sendProgramChange(1, 1);
-  // delay(500); // Wait for half a second
+  // Check for incoming MIDI messages
+  midi.read();
 }

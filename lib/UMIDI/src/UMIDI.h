@@ -15,7 +15,6 @@ struct MIDI_message {
   uint8_t data2;
 };
 
-
 class UMIDI {
   public:
     UMIDI();
@@ -23,6 +22,12 @@ class UMIDI {
     void begin();
     void end();
     bool available();
+    void read();
+    void setHandleNoteOn(void (*function)(byte, byte, byte));
+    void setHandleNoteOff(void (*function)(byte, byte, byte));
+    void setHandleControlChange(void (*function)(byte, byte, byte));
+    void setHandleProgramChange(void (*function)(byte, byte));
+    void handleMIDIMessage(MIDI_message msg);
     void receiveMIDI(MIDI_message &msg);
     void sendNoteOn(uint8_t channel, uint8_t note, uint8_t velocity);
     void sendNoteOff(uint8_t channel, uint8_t note, uint8_t velocity);
@@ -32,6 +37,10 @@ class UMIDI {
   private:
     // Stream *serialPort;
     HardwareSerial serialPort;
+    void (*noteOnCallback)(byte, byte, byte) = nullptr;
+    void (*noteOffCallback)(byte, byte, byte) = nullptr;
+    void (*controlChangeCallback)(byte, byte, byte) = nullptr;
+    void (*programChangeCallback)(byte, byte) = nullptr;
 };
 
 #endif

@@ -18,6 +18,49 @@ bool UMIDI::available() {
   return serialPort.available();
 }
 
+void UMIDI::read() {
+  if (available()) {
+    MIDI_message msg;
+    receiveMIDI(msg);
+    handleMIDIMessage(msg);
+  }
+}
+
+void UMIDI::setHandleNoteOn(void (*function)(byte, byte, byte)) {
+  noteOnCallback = function;
+}
+
+void UMIDI::setHandleNoteOff(void (*function)(byte, byte, byte)) {
+  noteOffCallback = function;
+}
+
+void UMIDI::setHandleControlChange(void (*function)(byte, byte, byte)) {
+  controlChangeCallback = function;
+}
+
+void UMIDI::setHandleProgramChange(void (*function)(byte, byte)) {
+  programChangeCallback = function;
+}
+
+void UMIDI::handleMIDIMessage(MIDI_message msg) {
+  switch(msg.status & 0xF0) {
+    case 0x90: // Note On
+      if (noteOnCallback) noteOnCallback(msg.channel, msg.data1, msg.data2);
+      break;
+    case 0x80: // Note Off
+      if (noteOffCallback) noteOffCallback(msg.channel, msg.data1, msg.data2);
+      break;
+    case 0xB0: // Control Change
+      if (controlChangeCallback) controlChangeCallback(msg.channel, msg.data1, msg.data2);
+      break;
+    case 0xC0: // Program Change
+      if (programChangeCallback) programChangeCallback(msg.channel, msg.data1);
+      break;
+    default:
+      break;
+  }
+}
+
 void UMIDI::receiveMIDI(MIDI_message &msg) {
   static uint8_t header = 0;
   static uint8_t data1 = 0b10000000;
