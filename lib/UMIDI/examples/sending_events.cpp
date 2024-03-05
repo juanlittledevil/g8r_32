@@ -25,19 +25,19 @@ void setup() {
 
 void loop() {
   Serial.println("In the loop now");
-  // Send a Note On message on channel 1, note C4, velocity 100
-  // midi.sendNoteOn(1, 60, 100);
-  // delay(500); // Wait for half a second
+  Send a Note On message on channel 1, note C4, velocity 100
+  midi.sendNoteOn(1, 60, 100);
+  delay(500); // Wait for half a second
   
-  // // Send a Note Off message on channel 1, note C4, velocity 0
-  // midi.sendNoteOff(1, 60, 0);
-  // delay(500); // Wait for half a second
+  // Send a Note Off message on channel 1, note C4, velocity 0
+  midi.sendNoteOff(1, 60, 0);
+  delay(500); // Wait for half a second
   
-  // // Send a Control Change message on channel 1, controller 7 (volume), value 127 (maximum)
-  // midi.sendControlChange(1, 7, 127);
-  // delay(500); // Wait for half a second
+  // Send a Control Change message on channel 1, controller 7 (volume), value 127 (maximum)
+  midi.sendControlChange(1, 7, 127);
+  delay(500); // Wait for half a second
   
-  // // // Send a Program Change message on channel 1, program number 1
-  // midi.sendProgramChange(1, 1);
-  // delay(500); // Wait for half a second
+  // // Send a Program Change message on channel 1, program number 1
+  midi.sendProgramChange(1, 1);
+  delay(500); // Wait for half a second
 }
