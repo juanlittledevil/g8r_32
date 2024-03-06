@@ -13,7 +13,6 @@ void setup() {
   Serial.begin(9600);
   
   // Initialize MIDI communication using the hardware serial port
-  Serial.println("Bout to call midi.bein");
   midi.begin();
 
   // Wait for serial port to initialize
@@ -24,8 +23,7 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("In the loop now");
-  Send a Note On message on channel 1, note C4, velocity 100
+  // Send a Note On message on channel 1, note C4, velocity 100
   midi.sendNoteOn(1, 60, 100);
   delay(500); // Wait for half a second
   

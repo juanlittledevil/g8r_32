@@ -27,6 +27,10 @@ class UMIDI {
     void setHandleNoteOff(void (*function)(byte, byte, byte));
     void setHandleControlChange(void (*function)(byte, byte, byte));
     void setHandleProgramChange(void (*function)(byte, byte));
+    void setHandleClock(void (*function)());
+    void setHandleStart(void (*function)());
+    void setHandleStop(void (*function)());
+    void setHandleContinue(void (*function)());
     void handleMIDIMessage(MIDI_message msg);
     void receiveMIDI(MIDI_message &msg);
     void sendNoteOn(uint8_t channel, uint8_t note, uint8_t velocity);
@@ -35,12 +39,15 @@ class UMIDI {
     void sendProgramChange(uint8_t channel, uint8_t program);
 
   private:
-    // Stream *serialPort;
     HardwareSerial serialPort;
     void (*noteOnCallback)(byte, byte, byte) = nullptr;
     void (*noteOffCallback)(byte, byte, byte) = nullptr;
     void (*controlChangeCallback)(byte, byte, byte) = nullptr;
     void (*programChangeCallback)(byte, byte) = nullptr;
+    void (*clockCallback)() = nullptr;
+    void (*startCallback)() = nullptr;
+    void (*stopCallback)() = nullptr;
+    void (*continueCallback)() = nullptr;
 };
 
 #endif

@@ -1,8 +1,5 @@
 #include "UMIDI.h"
 
-UMIDI::UMIDI() : serialPort(USART1) {
-}
-
 UMIDI::UMIDI(uint8_t rxPin, uint8_t txPin) : serialPort(rxPin, txPin) {
 }
 
@@ -42,6 +39,22 @@ void UMIDI::setHandleProgramChange(void (*function)(byte, byte)) {
   programChangeCallback = function;
 }
 
+void UMIDI::setHandleClock(void (*function)()) {
+  clockCallback = function;
+}
+
+void UMIDI::setHandleStart(void (*function)()) {
+  startCallback = function;
+}
+
+void UMIDI::setHandleStop(void (*function)()) {
+  stopCallback = function;
+}
+
+void UMIDI::setHandleContinue(void (*function)()) {
+  continueCallback = function;
+}
+
 void UMIDI::handleMIDIMessage(MIDI_message msg) {
   switch(msg.status & 0xF0) {
     case 0x90: // Note On
@@ -56,58 +69,63 @@ void UMIDI::handleMIDIMessage(MIDI_message msg) {
     case 0xC0: // Program Change
       if (programChangeCallback) programChangeCallback(msg.channel, msg.data1);
       break;
+    case 0xF8: // MIDI Clock
+      if (clockCallback) clockCallback();
+      break;
+    case 0xFA: // Start
+      if (startCallback) startCallback();
+      break;
+    case 0xFC: // Stop
+      if (stopCallback) stopCallback();
+      break;
+    case 0xFB: // Continue
+      if (continueCallback) continueCallback();
+      break;
     default:
+      // Handle other message types
       break;
   }
 }
 
 void UMIDI::receiveMIDI(MIDI_message &msg) {
-  static uint8_t header = 0;
-  static uint8_t data1 = 0b10000000;
   if (available()) {
     uint8_t newByte = serialPort.read();
-    if (newByte & 0b10000000) {   // Header byte received
+    static uint8_t header = 0;
+    static uint8_t data1 = 0;
+    if (newByte & 0x80) {
       header = newByte;
-    } else if (header & 0b10000000) {
-      if (data1 == 0b10000000) {  // First data byte received
+    } else if (header) {
+      if (!data1) {
         data1 = newByte;
       } else {
-        msg.status = header;          // Second data byte received
+        msg.status = header;
         msg.data1 = data1;
         msg.data2 = newByte;
-        data1 = 0b10000000;
+        data1 = 0;
       }
     }
   }
 }
 
 void UMIDI::sendNoteOn(uint8_t channel, uint8_t note, uint8_t velocity) {
-  if (serialPort) {
-    serialPort.write(0x90 | (channel & 0x0F));  // Note On message
-    serialPort.write(note & 0x7F);               // Note number
-    serialPort.write(velocity & 0x7F);           // Velocity
-  }
+  serialPort.write(0x90 | (channel & 0x0F));
+  serialPort.write(note & 0x7F);
+  serialPort.write(velocity & 0x7F);
 }
 
 void UMIDI::sendNoteOff(uint8_t channel, uint8_t note, uint8_t velocity) {
-  if (serialPort) {
-    serialPort.write(0x80 | (channel & 0x0F));  // Note Off message
-    serialPort.write(note & 0x7F);               // Note number
-    serialPort.write(velocity & 0x7F);           // Velocity
-  }
+  serialPort.write(0x80 | (channel & 0x0F));
+  serialPort.write(note & 0x7F);
+  serialPort.write(velocity & 0x7F);
 }
 
 void UMIDI::sendControlChange(uint8_t channel, uint8_t controller, uint8_t value) {
-  if (serialPort) {
-    serialPort.write(0xB0 | (channel & 0x0F));  // Control Change message
-    serialPort.write(controller & 0x7F);        // Controller number
-    serialPort.write(value & 0x7F);             // Value
-  }
+  serialPort.write(0xB0 | (channel & 0x0F));
+  serialPort.write(controller & 0x7F);
+  serialPort.write(value & 0x7F);
 }
 
 void UMIDI::sendProgramChange(uint8_t channel, uint8_t program) {
-  if (serialPort) {
-    serialPort.write(0xC0 | (channel & 0x0F));  // Program Change message
-    serialPort.write(program & 0x7F);            // Program number
-  }
+  serialPort.write(0xC0 | (channel & 0x0F));
+  serialPort.write(program & 0x7F);
 }
