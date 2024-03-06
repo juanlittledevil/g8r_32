@@ -15,6 +15,15 @@ struct MIDI_message {
   uint8_t data2;
 };
 
+const uint8_t MIDI_CLOCK = 0xF8;
+const uint8_t MIDI_PLAY = 0xFA;
+const uint8_t MIDI_CONTINUE = 0xFB;
+const uint8_t MIDI_STOP = 0xFC;
+const uint8_t NOTE_ON = 0x90;
+const uint8_t NOTE_OFF = 0x80;
+const uint8_t CONTROL_CHANGE = 0xB0;
+const uint8_t PROGRAM_CHANGE = 0xC0;
+
 class UMIDI {
   public:
     UMIDI();
@@ -39,6 +48,7 @@ class UMIDI {
     void sendProgramChange(uint8_t channel, uint8_t program);
 
   private:
+    // Stream *serialPort;
     HardwareSerial serialPort;
     void (*noteOnCallback)(byte, byte, byte) = nullptr;
     void (*noteOffCallback)(byte, byte, byte) = nullptr;
@@ -48,6 +58,7 @@ class UMIDI {
     void (*startCallback)() = nullptr;
     void (*stopCallback)() = nullptr;
     void (*continueCallback)() = nullptr;
+
 };
 
 #endif

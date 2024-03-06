@@ -56,29 +56,29 @@ void UMIDI::setHandleContinue(void (*function)()) {
 }
 
 void UMIDI::handleMIDIMessage(MIDI_message msg) {
-  switch(msg.status & 0xF0) {
-    case 0x90: // Note On
+  switch(msg.status) {
+    case NOTE_ON:
       if (noteOnCallback) noteOnCallback(msg.channel, msg.data1, msg.data2);
       break;
-    case 0x80: // Note Off
+    case NOTE_OFF:
       if (noteOffCallback) noteOffCallback(msg.channel, msg.data1, msg.data2);
       break;
-    case 0xB0: // Control Change
+    case CONTROL_CHANGE:
       if (controlChangeCallback) controlChangeCallback(msg.channel, msg.data1, msg.data2);
       break;
-    case 0xC0: // Program Change
+    case PROGRAM_CHANGE:
       if (programChangeCallback) programChangeCallback(msg.channel, msg.data1);
       break;
-    case 0xF8: // MIDI Clock
+    case MIDI_CLOCK:
       if (clockCallback) clockCallback();
       break;
-    case 0xFA: // Start
+    case MIDI_PLAY:
       if (startCallback) startCallback();
       break;
-    case 0xFC: // Stop
+    case MIDI_STOP:
       if (stopCallback) stopCallback();
       break;
-    case 0xFB: // Continue
+    case MIDI_CONTINUE:
       if (continueCallback) continueCallback();
       break;
     default:
@@ -92,7 +92,9 @@ void UMIDI::receiveMIDI(MIDI_message &msg) {
     uint8_t newByte = serialPort.read();
     static uint8_t header = 0;
     static uint8_t data1 = 0;
-    if (newByte & 0x80) {
+    if (newByte == MIDI_CLOCK || newByte == MIDI_PLAY || newByte == MIDI_STOP || newByte == MIDI_CONTINUE) {
+      msg.status = newByte;
+    } else if (newByte & 0x80) {
       header = newByte;
     } else if (header) {
       if (!data1) {
@@ -106,6 +108,7 @@ void UMIDI::receiveMIDI(MIDI_message &msg) {
     }
   }
 }
+
 
 void UMIDI::sendNoteOn(uint8_t channel, uint8_t note, uint8_t velocity) {
   serialPort.write(0x90 | (channel & 0x0F));
