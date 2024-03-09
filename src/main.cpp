@@ -3,51 +3,24 @@
 #include "Gates.h"
 #include "LEDs.h"
 #include "SpdtSwitch.h"
-#include "Config.h"
+#include "Debug.h"
+#include "Encoder.h"
 
 // Uncomment the line below to enable debugging. Comment it out to disable debugging
 // each file has its own DEBUG flag for more granular control.
-// #define DEBUG 
+// #define DEBUG 1 // 0 for no debug, 1 for debug
+#ifdef DEBUG
+#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
+#endif
 
 // Define the RX and TX pins for MIDI communication
 #define RX_PIN PA3
 #define TX_PIN PA2
 #define SWITCH_PINA PB0
 #define SWITCH_PINB PB1
-
-// Create an instance of the UMIDI class
-UMIDI midi(RX_PIN, TX_PIN);
-
-// Create an instance of the SPDTSwitch class
-SPDTSwitch mySwitch(SWITCH_PINA,SWITCH_PINB);
-
-// Callback function for handling MIDI clock messages
-void handleClock() {
-  #if DEBUG
-  Serial.println("Received MIDI Clock");
-  #endif
-}
-
-// Callback function for handling MIDI start messages
-void handleStart() {
-  #if DEBUG
-  Serial.println("Received MIDI Start");
-  #endif
-}
-
-// Callback function for handling MIDI stop messages
-void handleStop() {
-  #if DEBUG
-  Serial.println("Received MIDI Stop");
-  #endif
-}
-
-// Callback function for handling MIDI continue messages
-void handleContinue() {
-  #if DEBUG
-  Serial.println("Received MIDI Continue");
-  #endif
-}
+#define ENCODER_PINA PB13
+#define ENCODER_PINB PB14
+#define ENCODER_BUTTON PB12
 
 // Define the pins for the gates
 int pins[] = {PA15, PB3, PB4, PB5}; // Example pins
@@ -59,6 +32,48 @@ int ledPins[] = {PB6, PB7, PB8, PB9}; // Placeholder pin numbers for LEDs
 int numLedPins = sizeof(ledPins) / sizeof(ledPins[0]); // Calculate the number of LED pins
 LEDs leds = LEDs(ledPins, numLedPins); // Create an instance of LEDs
 
+// Define the pins for the encoder
+int encCLKPin = ENCODER_PINA;
+int encDTPin = ENCODER_PINB;
+int encButtonPin = ENCODER_BUTTON;
+
+
+// Create an instance of the UMIDI class
+UMIDI midi(RX_PIN, TX_PIN);
+
+// Create an instance of the SPDTSwitch class
+SPDTSwitch mySwitch(SWITCH_PINA,SWITCH_PINB);
+
+// Create an instance of the Encoder class
+Encoder encoder = Encoder(encCLKPin, encDTPin, encButtonPin);
+
+// Callback function for handling MIDI clock messages
+void handleClock() {
+  #if DEBUG
+  DEBUG_PRINT("Received MIDI Clock");
+  #endif
+}
+
+// Callback function for handling MIDI start messages
+void handleStart() {
+  #if DEBUG
+  DEBUG_PRINT("Received MIDI Start");
+  #endif
+}
+
+// Callback function for handling MIDI stop messages
+void handleStop() {
+  #if DEBUG
+  DEBUG_PRINT("Received MIDI Stop");
+  #endif
+}
+
+// Callback function for handling MIDI continue messages
+void handleContinue() {
+  #if DEBUG
+  DEBUG_PRINT("Received MIDI Continue");
+  #endif
+}
 
 void setup() {
   // Initialize serial communication
@@ -78,43 +93,86 @@ void setup() {
   leds.begin(); // Initialize LED pins
   gates.begin(); // Initialize gate pins
   mySwitch.begin(); // Initialize switch pins
+  encoder.begin(); // Initialize encoder pins
 
   #if DEBUG
-  Serial.println("Finished setup() function");
+  DEBUG_PRINT("Finished setup() function");
   #endif
 }
 
 SwitchState lastState = NEUTRAL;
 
+// Enconder Handlers
+void handleLongPress() {
+  // Code to handle a long button press
+  #if DEBUG
+  DEBUG_PRINT("Button was long pressed");
+  #endif
+}
+
+void handleDoublePress() {
+  // Code to handle a double button press
+  #if DEBUG
+  DEBUG_PRINT("Button was double pressed");
+  #endif
+}
+
+void handleSinglePress() {
+  // Code to handle a single button press
+  #if DEBUG
+  DEBUG_PRINT("Button was pressed");
+  #endif
+}
+
 void loop() {
+  static unsigned long lastLedToggleTime = 0;
+  static bool ledsOn = false;
+  const unsigned long ledToggleInterval = 1000; // Toggle LEDs every 1000 ms
+
+  // Read the encoder and handle button presses
+  encoder.readButton();
+  if (encoder.isButtonLongPressed()) {
+    handleLongPress();
+  } else if (encoder.isButtonDoublePressed()) {
+    handleDoublePress();
+  } else if (encoder.readButton() == Encoder::PRESSED) {
+    handleSinglePress();
+  }
+
+  Encoder::Direction direction = encoder.readEncoder();
+  if (direction == Encoder::CW) {
+    #if DEBUG
+    DEBUG_PRINT("Encoder rotated clockwise");
+    #endif
+  } else if (direction == Encoder::CCW) {
+    #if DEBUG
+    DEBUG_PRINT("Encoder rotated counter-clockwise");
+    #endif
+  }
+
   // Check for incoming MIDI messages
-  // midi.read();
+  midi.read();
 
-    // Test LEDs and gates
-  for (int i = 0; i < numLedPins; i++) {
-    leds.setState(i, HIGH); // Turn on LED
-    gates.setState(i, HIGH); // Open gate
-    #if DEBUG
-    Serial.println("LED and gate " + String(i) + " turned on"); 
-    #endif
-  }
-  delay(1000); // Wait for 1 second
-
-  for (int i = 0; i < numLedPins; i++) {
-    leds.setState(i, LOW); // Turn off LED
-    gates.setState(i, LOW); // Close gate
-    #if DEBUG
-    Serial.println("LED and gate " + String(i) + " turned off");
-    #endif
+  // Test LEDs and gates
+  unsigned long currentMillis = millis();
+  if (currentMillis - lastLedToggleTime >= ledToggleInterval) {
+    ledsOn = !ledsOn; // Toggle LED state
+    for (int i = 0; i < numLedPins; i++) {
+      leds.setState(i, ledsOn ? HIGH : LOW); // Set LED state
+      gates.setState(i, ledsOn ? HIGH : LOW); // Set gate state
+      #if DEBUG
+      DEBUG_PRINT("LED and gate " + String(i) + (ledsOn ? " turned on" : " turned off"));
+      #endif
+    }
+    lastLedToggleTime = currentMillis;
   }
 
-  // Add test for swtich state but only print when there is a change
+  // Add test for switch state but only print when there is a change
   SwitchState state = mySwitch.read();
   if (state != lastState) {
-    Serial.println("MAIN.CPP - Switch state changed to " + String(state));
-
+    #if DEBUG
+    DEBUG_PRINT("Switch state changed to " + String(state));
+    #endif
     lastState = state;
   }
-
-  delay(1000); // Wait for 1 second
 }

@@ -1,8 +1,13 @@
 #include "Pin.h"
 #include <Arduino.h>
-#include "Config.h"
+#include "Debug.h"
 
-// #define DEBUG 
+// Uncomment the line below to enable debugging. Comment it out to disable debugging
+// each file has its own DEBUG flag for more granular control.
+// #define DEBUG 1 // 0 for no debug, 1 for debug
+#ifdef DEBUG
+#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
+#endif
 
 // Pin class
 // Constructor
@@ -35,14 +40,14 @@ void InputPin::begin() {
         pinMode(this->pin, INPUT);
     }
     #ifdef DEBUG
-    Serial.println("Pin " + String(this->pin) + " initialized");
+    DEBUG_PRINT("Pin " + String(this->pin) + " initialized");
     #endif
 }
 
 bool InputPin::getState() {
     this->state = digitalRead(this->pin);
     #ifdef DEBUG
-    Serial.println("Pin " + String(this->pin) + " read as " + String(this->state));
+    DEBUG_PRINT("Pin " + String(this->pin) + " read as " + String(this->state));
     #endif
     return this->state;
 }
@@ -55,14 +60,14 @@ AnalogInputPin::AnalogInputPin(int pin) : Pin(pin) {
 void AnalogInputPin::begin() {
         pinMode(this->pin, INPUT);
         #ifdef DEBUG
-        Serial.println("Analog input pin " + String(this->pin) + " initialized");
+        DEBUG_PRINT("Analog input pin " + String(this->pin) + " initialized");
         #endif
 }
 
 int AnalogInputPin::read() {
         int value = analogRead(this->pin);
         #ifdef DEBUG
-        Serial.println("Analog input pin " + String(this->pin) + " read as " + String(value));
+        DEBUG_PRINT("Analog input pin " + String(this->pin) + " read as " + String(value));
         #endif
         return value;
 }
@@ -76,7 +81,7 @@ OutputPin::OutputPin(int pin) : Pin(pin) {
 void OutputPin::begin() {
   pinMode(this->pin, OUTPUT);
   #ifdef DEBUG
-  Serial.println("Pin " + String(this->pin) + " initialized");
+  DEBUG_PRINT("Pin " + String(this->pin) + " initialized");
   #endif
 }
 
@@ -84,7 +89,7 @@ void OutputPin::setState(bool newState) {
   this->state = newState;
   digitalWrite(this->pin, this->state ? HIGH : LOW);
   #ifdef DEBUG
-  Serial.println("Pin " + String(this->pin) + " set to " + String(this->state));
+  DEBUG_PRINT("Pin " + String(this->pin) + " set to " + String(this->state));
   #endif
 }
 
@@ -102,7 +107,7 @@ void PWMPin::setDutyCycle(int dutyCycle) {
     this->dutyCycle = dutyCycle;
     analogWrite(this->pin, this->dutyCycle);
     #ifdef DEBUG
-    Serial.println("Pin " + String(this->pin) + " set to " + String(this->dutyCycle));
+    DEBUG_PRINT("Pin " + String(this->pin) + " set to " + String(this->dutyCycle));
     #endif
 }
 
