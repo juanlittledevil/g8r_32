@@ -54,8 +54,8 @@ class UMIDI {
     void setHandleContinue(void (*function)());
 
     // Message processing and routing.
-    void handleMIDIMessage(MIDI_message msg);
     void receiveMIDI(MIDI_message &msg);
+    void handleMIDIMessage(MIDI_message &msg);
 
     // Message send functions
     void sendNoteOn(uint8_t channel, uint8_t note, uint8_t velocity);
@@ -76,6 +76,8 @@ class UMIDI {
     void (*startCallback)() = nullptr;
     void (*stopCallback)() = nullptr;
     void (*continueCallback)() = nullptr;
+    void (*handleNoteOn)(uint8_t channel, uint8_t note, uint8_t velocity);
+    void (*handleNoteOff)(uint8_t channel, uint8_t note, uint8_t velocity);
 
 };
 

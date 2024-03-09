@@ -1,4 +1,14 @@
 #include "UMIDI.h"
+#include "Debug.h"
+// Uncomment the line below to enable debugging. Comment it out to disable debugging
+// each file has its own DEBUG flag for more granular control.
+#define DEBUG 1 // 0 for no debug, 1 for debug
+#ifdef DEBUG
+#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
+
+// Include the Arduino Serial library
+#include <Arduino.h>
+#endif
 
 // Constructor with serial port initialization
 UMIDI::UMIDI(uint8_t rxPin, uint8_t txPin) : serialPort(rxPin, txPin) {
@@ -69,8 +79,9 @@ void UMIDI::setHandleContinue(void (*function)()) {
 }
 
 // Handle incoming MIDI messages
-void UMIDI::handleMIDIMessage(MIDI_message msg) {
-  switch(msg.status) {
+void UMIDI::handleMIDIMessage(MIDI_message &msg) {
+  uint8_t messageType = msg.status & 0xF0;
+  switch(messageType) {  // Use messageType instead of msg.status
     case NOTE_ON:
       if (noteOnCallback) noteOnCallback(msg.channel, msg.data1, msg.data2);
       break;
@@ -103,22 +114,55 @@ void UMIDI::handleMIDIMessage(MIDI_message msg) {
 
 // Receive and parse incoming MIDI messages
 void UMIDI::receiveMIDI(MIDI_message &msg) {
-  if (available()) {
+  enum State {
+    WAITING_FOR_STATUS,
+    WAITING_FOR_DATA1,
+    WAITING_FOR_DATA2
+  };
+
+  static State state = WAITING_FOR_STATUS;
+  static uint8_t header = 0;
+  static uint8_t data1 = 0;
+
+  while (available()) {
     uint8_t newByte = serialPort.read();
-    static uint8_t header = 0;
-    static uint8_t data1 = 0;
-    if (newByte == MIDI_CLOCK || newByte == MIDI_PLAY || newByte == MIDI_STOP || newByte == MIDI_CONTINUE) {
-      msg.status = newByte;
-    } else if (newByte & 0x80) {
+
+    if (newByte >= 0x80 && newByte < 0xF0) {  // Status byte (not a system real-time message)
       header = newByte;
-    } else if (header) {
-      if (!data1) {
-        data1 = newByte;
-      } else {
-        msg.status = header;
-        msg.data1 = data1;
-        msg.data2 = newByte;
-        data1 = 0;
+      state = WAITING_FOR_DATA1;
+    } else if (newByte >= 0xF8) {  // System real-time message
+      msg.status = newByte;
+      // Handle system real-time message here
+      switch (newByte) {
+        case MIDI_CLOCK:
+          if (clockCallback) clockCallback();
+          break;
+        case MIDI_PLAY:
+          if (startCallback) startCallback();
+          break;
+        case MIDI_STOP:
+          if (stopCallback) stopCallback();
+          break;
+        case MIDI_CONTINUE:
+          if (continueCallback) continueCallback();
+          break;
+      }
+    } else {  // Data byte
+      switch (state) {
+        case WAITING_FOR_DATA1:
+          data1 = newByte;
+          state = WAITING_FOR_DATA2;
+          break;
+        case WAITING_FOR_DATA2:
+          msg.status = header;
+          msg.data1 = data1;
+          msg.data2 = newByte;
+          msg.channel = header & 0x0F;  // Set channel
+          msg.message_type = (header >> 4) & 0x0F;  // Set message type
+          state = WAITING_FOR_STATUS;
+          break;
+        default:
+          break;
       }
     }
   }

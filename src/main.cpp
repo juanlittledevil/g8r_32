@@ -5,6 +5,8 @@
 #include "SpdtSwitch.h"
 #include "Debug.h"
 #include "Encoder.h"
+#include "MIDIHandler.h"
+#include "EurorackClock.h"
 
 // Uncomment the line below to enable debugging. Comment it out to disable debugging
 // each file has its own DEBUG flag for more granular control.
@@ -21,6 +23,8 @@
 #define ENCODER_PINA PB13
 #define ENCODER_PINB PB14
 #define ENCODER_BUTTON PB12
+#define CLOCK_PIN PB15
+#define RESET_PIN PA8
 
 // Define the pins for the gates
 int pins[] = {PA15, PB3, PB4, PB5}; // Example pins
@@ -38,8 +42,11 @@ int encDTPin = ENCODER_PINB;
 int encButtonPin = ENCODER_BUTTON;
 
 
-// Create an instance of the UMIDI class
-UMIDI midi(RX_PIN, TX_PIN);
+// Create an instance of the EurorackClock class
+EurorackClock clock(CLOCK_PIN, RESET_PIN);
+
+// Create an instance of the MIDIHandler class
+MIDIHandler midiHandler(RX_PIN, TX_PIN, clock);
 
 // Create an instance of the SPDTSwitch class
 SPDTSwitch mySwitch(SWITCH_PINA,SWITCH_PINB);
@@ -47,46 +54,16 @@ SPDTSwitch mySwitch(SWITCH_PINA,SWITCH_PINB);
 // Create an instance of the Encoder class
 Encoder encoder = Encoder(encCLKPin, encDTPin, encButtonPin);
 
-// Callback function for handling MIDI clock messages
-void handleClock() {
-  #if DEBUG
-  DEBUG_PRINT("Received MIDI Clock");
-  #endif
-}
-
-// Callback function for handling MIDI start messages
-void handleStart() {
-  #if DEBUG
-  DEBUG_PRINT("Received MIDI Start");
-  #endif
-}
-
-// Callback function for handling MIDI stop messages
-void handleStop() {
-  #if DEBUG
-  DEBUG_PRINT("Received MIDI Stop");
-  #endif
-}
-
-// Callback function for handling MIDI continue messages
-void handleContinue() {
-  #if DEBUG
-  DEBUG_PRINT("Received MIDI Continue");
-  #endif
-}
 
 void setup() {
   // Initialize serial communication
   Serial.begin(9600);
 
-  // Initialize the UMIDI library
-  midi.begin();
+  // Initialize the MIDIHandler
+  midiHandler.begin();
 
-  // Set callback functions for handling MIDI messages
-  midi.setHandleClock(handleClock);
-  midi.setHandleStart(handleStart);
-  midi.setHandleStop(handleStop);
-  midi.setHandleContinue(handleContinue);
+  // Set the MIDIHandler to listen to all channels
+  midiHandler.setChannel(-1);
 
   delay(1000);
 
@@ -150,8 +127,8 @@ void loop() {
     #endif
   }
 
-  // Check for incoming MIDI messages
-  midi.read();
+  // Handle incoming MIDI messages
+  midiHandler.handleMidiMessage();
 
   // Test LEDs and gates
   unsigned long currentMillis = millis();
