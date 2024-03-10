@@ -26,14 +26,21 @@
 #define CLOCK_PIN PB15
 #define RESET_PIN PA8
 
+// Function to calculate the size of an array
+template<typename T, size_t N>
+constexpr size_t arraySize(T(&)[N]) {
+    return N;
+}
+
 // Define the pins for the gates
 int pins[] = {PA15, PB3, PB4, PB5}; // Example pins
-int numPins = sizeof(pins) / sizeof(pins[0]); // Calculate the number of pins
+// constexpr int numPins = sizeof(pins) / sizeof(pins[0]); // Calculate the number of pins
+constexpr int numPins = arraySize(pins);
 Gates gates = Gates(pins, numPins); // Create an instance of Gates
 
 // Define the pins for the LEDs
 int ledPins[] = {PB6, PB7, PB8, PB9}; // Placeholder pin numbers for LEDs
-int numLedPins = sizeof(ledPins) / sizeof(ledPins[0]); // Calculate the number of LED pins
+int numLedPins = arraySize(ledPins);
 LEDs leds = LEDs(ledPins, numLedPins); // Create an instance of LEDs
 
 // Define the pins for the encoder
@@ -44,7 +51,9 @@ int encButtonPin = ENCODER_BUTTON;
 // Defulat mode
 int mode = 0;
 bool inModeSelection = false;
-const byte total_modes = 3;    
+const byte total_modes = 3;
+int selectedGate = 0;
+int clockDivisions[numPins];
 
 // Create an instance of the EurorackClock class
 EurorackClock clock(CLOCK_PIN, RESET_PIN);
@@ -62,6 +71,11 @@ Encoder encoder = Encoder(encCLKPin, encDTPin, encButtonPin);
 void setup() {
     // Initialize serial communication
     Serial.begin(9600);
+
+    // Initialize the clock
+    for (int i = 0; i < numPins; i++) {
+        clockDivisions[i] = 1;
+    }
 
     // Initialize the MIDIHandler
     midiHandler.begin();
@@ -117,6 +131,76 @@ void handleSinglePress() {
     }
 }
 
+void handleModeSelection() {
+    // Handle mode selection
+    Encoder::Direction direction = encoder.readEncoder();
+    if (direction == Encoder::CW) {
+        mode = (mode + 1) % total_modes;
+        #if DEBUG
+        DEBUG_PRINT("Encoder turned clockwise " + String(mode));
+        #endif
+    } else if (direction == Encoder::CCW) {
+        mode = (mode + total_modes - 1) % total_modes;
+        #if DEBUG
+        DEBUG_PRINT("Encoder turned counter-clockwise " + String(mode));
+        #endif
+    }
+}
+
+void handleEncoderMode0() {
+    Encoder::Direction direction = encoder.readEncoder();
+    if (direction == Encoder::CW) {
+        selectedGate = (selectedGate + 1) % numPins;
+    } else if (direction == Encoder::CCW) {
+        selectedGate = (selectedGate + numPins - 1) % numPins;
+    }
+    if (encoder.readButton() == Encoder::PRESSED) {
+        // Increase the clock division for the selected gate
+        clockDivisions[selectedGate]++;
+    }
+}
+
+void handleMidiMode1() {
+    if (midiHandler.getMessageType() == MIDIHandler::NOTE_ON) {
+        int note = midiHandler.getNote();
+        int gate = note % numPins;
+        gates.turnOnGate(gate);
+        leds.setState(gate, true);
+        #if DEBUG
+        DEBUG_PRINT("Received MIDI Note On for note " + String(note) + " on gate " + String(gate));
+        #endif
+    }
+    if (midiHandler.getMessageType() == MIDIHandler::NOTE_ON) {
+        int note = midiHandler.getNote();
+        int gate = note % numPins;
+        gates.turnOffGate(gate);
+        leds.setState(gate, false);
+        #if DEBUG
+        DEBUG_PRINT("Received MIDI Note Off for note " + String(note) + " on gate " + String(gate));
+        #endif
+    }
+}
+
+void handleMidiMode2() {
+    if (midiHandler.getMessageType() == MIDIHandler::NOTE_ON) {
+        int channel = midiHandler.getChannel();
+        if (channel >= 9 && channel <= 16) {
+            int gate = (channel - 9) % numPins;
+            gates.turnOffGate(gate);
+            leds.setState(gate, true);
+        }
+    }
+
+    if (midiHandler.getMessageType() == MIDIHandler::NOTE_OFF) {
+        int channel = midiHandler.getChannel();
+        if (channel >= 9 && channel <= 16) {
+            int gate = (channel - 9) % numPins;
+            gates.turnOffGate(gate);
+            leds.setState(gate, false);
+        }
+    }
+}
+
 void loop() {
     // Read the encoder and handle button presses
     encoder.readButton();
@@ -127,23 +211,19 @@ void loop() {
     }
 
     if (inModeSelection) {
-        Encoder::Direction direction = encoder.readEncoder();
-        if (direction == Encoder::CW) {
-            mode = (mode + 1) % total_modes; // <- this rotates the mode
-            // if (mode < total_modes) { // <- this stops at the last mode
-            //     mode++;
-            // }
-            #if DEBUG
-            DEBUG_PRINT("Encoder rotated clockwise, mode incremented. Current mode: " + String(mode));
-            #endif
-        } else if (direction == Encoder::CCW) {
-            mode = (mode + total_modes - 1) % total_modes; // <- this rotates the mode
-            // if (mode > 0) { // <- this stops at the first mode
-            //     mode--;
-            // }
-            #if DEBUG
-            DEBUG_PRINT("Encoder rotated counter-clockwise, mode decremented. Current mode: " + String(mode));
-            #endif
+        handleModeSelection();
+    } else {
+        switch (mode) {
+            case 0:
+                handleEncoderMode0();
+                break;
+            case 1:
+                handleMidiMode1();
+                break;
+            case 2:
+                handleMidiMode2();
+                break;
+            // Add more cases as needed
         }
     }
 

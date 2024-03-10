@@ -10,11 +10,19 @@ public:
     void begin();
     void handleMidiMessage();
     void setChannel(int channel);
+    byte getNote();
+    byte getMessageType();
+    byte getChannel();
+    static const byte NOTE_ON = 0x90;
+    static const byte NOTE_OFF = 0x80;
 
 private:
     UMIDI midi;
     EurorackClock& clock;
     int channel = 10; 
+    byte lastNote = 0;
+    byte lastMessageType;
+    byte lastChannel;
 
     // Declare a static instance of the MIDIHandler class
     static MIDIHandler* instance; 

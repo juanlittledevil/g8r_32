@@ -4,7 +4,7 @@
 
 // Uncomment the line below to enable debugging. Comment it out to disable debugging
 // each file has its own DEBUG flag for more granular control.
-#define DEBUG 1 // 0 for no debug, 1 for debug
+// #define DEBUG 1 // 0 for no debug, 1 for debug
 #ifdef DEBUG
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
@@ -71,6 +71,9 @@ void MIDIHandler::handleNoteOn(byte channel, byte pitch, byte velocity) {
     #if DEBUG
     DEBUG_PRINT("Received MIDI Note On for note " + String(pitch) + " n channel " + String(channel) + " with velocity " + String(velocity));
     #endif
+    instance->lastNote = pitch;
+    instance->lastMessageType = NOTE_ON;
+    instance->lastChannel = channel;
 }
 
 // Static function to handle MIDI note off messages
@@ -78,4 +81,22 @@ void MIDIHandler::handleNoteOff(byte channel, byte pitch, byte velocity) {
     #if DEBUG
     DEBUG_PRINT("Received MIDI Note Off for note " + String(pitch) + " on channel " + String(channel) + " with velocity " + String(velocity));
     #endif
+    instance->lastNote = pitch;
+    instance->lastMessageType = NOTE_OFF;
+    instance->lastChannel = channel;
+}
+
+// Get the last received note
+byte MIDIHandler::getNote() {
+    return lastNote;
+}
+
+// Get the last received message type
+byte MIDIHandler::getMessageType() {
+    return lastMessageType;
+}
+
+// Get the last received channel
+byte MIDIHandler::getChannel() {
+    return lastChannel;
 }
