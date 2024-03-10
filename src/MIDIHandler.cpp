@@ -1,5 +1,4 @@
 #include "MIDIHandler.h"
-#include "EurorackClock.h"
 #include "Debug.h"
 
 // Uncomment the line below to enable debugging. Comment it out to disable debugging
@@ -16,8 +15,8 @@
 MIDIHandler* MIDIHandler::instance = nullptr;
 
 // Constructor for the MIDIHandler class
-MIDIHandler::MIDIHandler(int rxPin, int txPin, EurorackClock& clock) 
-    : midi(rxPin, txPin), clock(clock) {
+MIDIHandler::MIDIHandler(int rxPin, int txPin, EurorackClock& clock, Gates& gates, LEDs& leds)
+    : midi(rxPin, txPin), clock(clock), gates(gates), leds(leds) {
     instance = this;
 }
 
@@ -28,8 +27,8 @@ void MIDIHandler::begin() {
     midi.setHandleStart(handleStart);
     midi.setHandleStop(handleStop);
     midi.setHandleContinue(handleContinue);
-    midi.setHandleNoteOn(handleNoteOn);
-    midi.setHandleNoteOff(handleNoteOff);
+    midi.setHandleNoteOn(handleMode0NoteOn);
+    midi.setHandleNoteOff(handleMode0NoteOff);
 }
 
 // Handle incoming MIDI messages
@@ -67,36 +66,64 @@ void MIDIHandler::handleContinue() {
 }
 
 // Static function to handle MIDI note on messages
-void MIDIHandler::handleNoteOn(byte channel, byte pitch, byte velocity) {
+void MIDIHandler::handleMode0NoteOn(byte channel, byte pitch, byte velocity) {
     #if DEBUG
     DEBUG_PRINT("Received MIDI Note On for note " + String(pitch) + " n channel " + String(channel) + " with velocity " + String(velocity));
     #endif
-    instance->lastNote = pitch;
-    instance->lastMessageType = NOTE_ON;
-    instance->lastChannel = channel;
+    // don't handle notes on mode 0
 }
 
 // Static function to handle MIDI note off messages
-void MIDIHandler::handleNoteOff(byte channel, byte pitch, byte velocity) {
+void MIDIHandler::handleMode0NoteOff(byte channel, byte pitch, byte velocity) {
     #if DEBUG
     DEBUG_PRINT("Received MIDI Note Off for note " + String(pitch) + " on channel " + String(channel) + " with velocity " + String(velocity));
     #endif
-    instance->lastNote = pitch;
-    instance->lastMessageType = NOTE_OFF;
-    instance->lastChannel = channel;
+    // don't handle notes on mode 0
 }
 
-// Get the last received note
-byte MIDIHandler::getNote() {
-    return lastNote;
+// Static function to handle MIDI note on messages for mode 1
+void MIDIHandler::handleMode1NoteOn(byte channel, byte pitch, byte velocity) {
+    int note = pitch;
+    int gate = note % instance->gates.numGates;
+    instance->gates.turnOnGate(gate);
+    instance->leds.setState(gate, true);
 }
 
-// Get the last received message type
-byte MIDIHandler::getMessageType() {
-    return lastMessageType;
+// Static function to handle MIDI note off messages for mode 1
+void MIDIHandler::handleMode1NoteOff(byte channel, byte pitch, byte velocity) {
+    int note = pitch;
+    int gate = note % instance->gates.numGates;
+    instance->gates.turnOffGate(gate);
+    instance->leds.setState(gate, false);
 }
 
-// Get the last received channel
-byte MIDIHandler::getChannel() {
-    return lastChannel;
+// Static function to handle MIDI note on messages for mode 2
+void MIDIHandler::handleMode2NoteOn(byte channel, byte pitch, byte velocity) {
+    if (channel >= 9 && channel <= 16) {
+        int gate = (channel - 9) % instance->gates.numGates;
+        instance->gates.turnOnGate(gate);
+        instance->leds.setState(gate, true);
+    }
+}
+
+// Static function to handle MIDI note off messages for mode 2
+void MIDIHandler::handleMode2NoteOff(byte channel, byte pitch, byte velocity) {
+    if (channel >= 9 && channel <= 16) {
+        int gate = (channel - 9) % instance->gates.numGates;
+        instance->gates.turnOffGate(gate);
+        instance->leds.setState(gate, false);
+    }
+}
+
+void MIDIHandler::setMode(int mode) {
+    if (mode == 0) {
+        midi.setHandleNoteOn(handleMode0NoteOn);
+        midi.setHandleNoteOff(handleMode0NoteOff);
+    } else if (mode == 1) {
+        midi.setHandleNoteOn(handleMode1NoteOn);
+        midi.setHandleNoteOff(handleMode1NoteOff);
+    } else if (mode == 2) {
+        midi.setHandleNoteOn(handleMode2NoteOn);
+        midi.setHandleNoteOff(handleMode2NoteOff);
+    }
 }

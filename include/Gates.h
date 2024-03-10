@@ -7,10 +7,10 @@
 
 class Gates {
   private:
-    int numGates;
     Gate *gateArray;
 
   public:
+    int numGates;
     Gates(int pins[], int numGates);
     ~Gates(); // Destructor declaration
     void begin();

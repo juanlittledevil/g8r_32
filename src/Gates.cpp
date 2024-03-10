@@ -1,6 +1,5 @@
 // Gates.cpp
 #include "Gates.h"
-#include "Gate.h"
 #include "Debug.h"
 
 // Uncomment the line below to enable debugging. Comment it out to disable debugging

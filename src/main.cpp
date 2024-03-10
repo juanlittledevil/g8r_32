@@ -59,7 +59,7 @@ int clockDivisions[numPins];
 EurorackClock clock(CLOCK_PIN, RESET_PIN);
 
 // Create an instance of the MIDIHandler class
-MIDIHandler midiHandler(RX_PIN, TX_PIN, clock);
+MIDIHandler midiHandler(RX_PIN, TX_PIN, clock, gates, leds);
 
 // // Create an instance of the SPDTSwitch class
 // SPDTSwitch mySwitch(SWITCH_PINA,SWITCH_PINB);
@@ -160,47 +160,6 @@ void handleEncoderMode0() {
     }
 }
 
-void handleMidiMode1() {
-    if (midiHandler.getMessageType() == MIDIHandler::NOTE_ON) {
-        int note = midiHandler.getNote();
-        int gate = note % numPins;
-        gates.turnOnGate(gate);
-        leds.setState(gate, true);
-        #if DEBUG
-        DEBUG_PRINT("Received MIDI Note On for note " + String(note) + " on gate " + String(gate));
-        #endif
-    }
-    if (midiHandler.getMessageType() == MIDIHandler::NOTE_ON) {
-        int note = midiHandler.getNote();
-        int gate = note % numPins;
-        gates.turnOffGate(gate);
-        leds.setState(gate, false);
-        #if DEBUG
-        DEBUG_PRINT("Received MIDI Note Off for note " + String(note) + " on gate " + String(gate));
-        #endif
-    }
-}
-
-void handleMidiMode2() {
-    if (midiHandler.getMessageType() == MIDIHandler::NOTE_ON) {
-        int channel = midiHandler.getChannel();
-        if (channel >= 9 && channel <= 16) {
-            int gate = (channel - 9) % numPins;
-            gates.turnOffGate(gate);
-            leds.setState(gate, true);
-        }
-    }
-
-    if (midiHandler.getMessageType() == MIDIHandler::NOTE_OFF) {
-        int channel = midiHandler.getChannel();
-        if (channel >= 9 && channel <= 16) {
-            int gate = (channel - 9) % numPins;
-            gates.turnOffGate(gate);
-            leds.setState(gate, false);
-        }
-    }
-}
-
 void loop() {
     // Read the encoder and handle button presses
     encoder.readButton();
@@ -216,12 +175,13 @@ void loop() {
         switch (mode) {
             case 0:
                 handleEncoderMode0();
+                midiHandler.setMode(mode);
                 break;
             case 1:
-                handleMidiMode1();
+                midiHandler.setMode(mode);
                 break;
             case 2:
-                handleMidiMode2();
+                midiHandler.setMode(mode);
                 break;
             // Add more cases as needed
         }
