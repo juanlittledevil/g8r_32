@@ -32,12 +32,21 @@ void LEDs::begin() {
     }
 }
 
+// Method to set the state of all LEDs
+void LEDs::setAllLeds(bool state) {
+    for(int i = 0; i < numLeds; i++) {
+        this->leds[i].setState(state);
+    }
+}
+
+// Method to set the state of a specific LED
 void LEDs::setState(int index, bool state) {
     if(index >= 0 && index < numLeds) {
         this->leds[index].setState(state);
     }
 }
 
+// Method to get the state of a specific LED
 bool LEDs::getState(int index) {
     if(index >= 0 && index < numLeds) {
         return this->leds[index].getState();
@@ -45,3 +54,32 @@ bool LEDs::getState(int index) {
     return false;
 }
 
+void LEDs::blinkFast(int index) {
+    if(index >= 0 && index < numLeds) {
+        this->leds[index].startBlinking(100); // Fast blink: 100 ms
+    }
+}
+
+void LEDs::blinkSlow(int index) {
+    if(index >= 0 && index < numLeds) {
+        this->leds[index].startBlinking(1000); // Slow blink: 1000 ms
+    }
+}
+
+void LEDs::updateBlinking() {
+    for(int i = 0; i < numLeds; i++) {
+        this->leds[i].updateBlinking();
+    }
+}
+
+void LEDs::stopBlinking(int index) {
+    if(index >= 0 && index < numLeds) {
+        this->leds[index].stopBlinking(); // Fast blink: 100 ms
+    }
+}
+
+void LEDs::stopAllBlinking() {
+    for(int i = 0; i < numLeds; i++) {
+        this->leds[i].stopBlinking();
+    }
+}   

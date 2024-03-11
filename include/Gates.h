@@ -18,6 +18,7 @@ class Gates {
     bool getState(int gateIndex);
     void turnOnGate(int index);
     void turnOffGate(int index);
+    void setALLGates(bool state);
 };
 
 #endif

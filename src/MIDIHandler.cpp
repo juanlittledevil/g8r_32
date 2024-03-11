@@ -11,6 +11,8 @@
 #include <Arduino.h>
 #endif
 
+extern bool isInSelection;
+
 // Initialize the static instance of the MIDIHandler class
 MIDIHandler* MIDIHandler::instance = nullptr;
 
@@ -31,19 +33,22 @@ void MIDIHandler::begin() {
     midi.setHandleNoteOff(handleMode0NoteOff);
 }
 
+// In MIDIHandler.cpp
+byte MIDIHandler::selectedChannel = 9; // Default MIDI channel 0 - 15
+
 // Handle incoming MIDI messages
 void MIDIHandler::handleMidiMessage() {
     midi.read();
 }
 
-// Set the MIDI channel
-void MIDIHandler::setChannel(int channel) {
-    if (channel == -1) {
-        this->channel = -1;  // Listen to all channels
-    } else {
-        this->channel = channel - 1;  // Listen to a specific channel
-    }
-}
+// // Set the MIDI channel
+// void MIDIHandler::setChannel(int channel) {
+//     if (channel == -1) {
+//         this->channel = -1;  // Listen to all channels
+//     } else {
+//         this->channel = channel - 1;  // Listen to a specific channel
+//     }
+// }
 
 // Static function to handle MIDI clock messages
 void MIDIHandler::handleClock() {
@@ -85,16 +90,24 @@ void MIDIHandler::handleMode0NoteOff(byte channel, byte pitch, byte velocity) {
 void MIDIHandler::handleMode1NoteOn(byte channel, byte pitch, byte velocity) {
     int note = pitch;
     int gate = note % instance->gates.numGates;
-    instance->gates.turnOnGate(gate);
-    instance->leds.setState(gate, true);
+    if (channel == selectedChannel) {
+        instance->gates.turnOnGate(gate);
+        if (!isInSelection) {
+            instance->leds.setState(gate, true);
+        }
+    }
 }
 
 // Static function to handle MIDI note off messages for mode 1
 void MIDIHandler::handleMode1NoteOff(byte channel, byte pitch, byte velocity) {
     int note = pitch;
     int gate = note % instance->gates.numGates;
-    instance->gates.turnOffGate(gate);
-    instance->leds.setState(gate, false);
+    if (channel == selectedChannel) {
+        instance->gates.turnOffGate(gate);
+        if (!isInSelection) {
+            instance->leds.setState(gate, false);
+        }
+    }
 }
 
 // Static function to handle MIDI note on messages for mode 2
@@ -102,7 +115,9 @@ void MIDIHandler::handleMode2NoteOn(byte channel, byte pitch, byte velocity) {
     if (channel >= 9 && channel <= 16) {
         int gate = (channel - 9) % instance->gates.numGates;
         instance->gates.turnOnGate(gate);
-        instance->leds.setState(gate, true);
+        if (!isInSelection) {
+            instance->leds.setState(gate, true);
+        }
     }
 }
 
@@ -111,11 +126,15 @@ void MIDIHandler::handleMode2NoteOff(byte channel, byte pitch, byte velocity) {
     if (channel >= 9 && channel <= 16) {
         int gate = (channel - 9) % instance->gates.numGates;
         instance->gates.turnOffGate(gate);
-        instance->leds.setState(gate, false);
+        if (!isInSelection) {
+            instance->leds.setState(gate, false);
+        }
     }
 }
 
 void MIDIHandler::setMode(int mode) {
+    instance->gates.setALLGates(false);
+    instance->leds.setAllLeds(false);
     if (mode == 0) {
         midi.setHandleNoteOn(handleMode0NoteOn);
         midi.setHandleNoteOff(handleMode0NoteOff);
@@ -126,4 +145,8 @@ void MIDIHandler::setMode(int mode) {
         midi.setHandleNoteOn(handleMode2NoteOn);
         midi.setHandleNoteOff(handleMode2NoteOff);
     }
+}
+
+void MIDIHandler::setChannel(byte channel) {
+    selectedChannel = channel;
 }

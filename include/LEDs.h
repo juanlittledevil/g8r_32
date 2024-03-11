@@ -10,6 +10,12 @@ class LEDs {
         void begin();
         void setState(int index, bool state);
         bool getState(int index);
+        void setAllLeds(bool state);
+        void blinkFast(int index);
+        void blinkSlow(int index);
+        void stopBlinking(int index);
+        void stopAllBlinking();
+        void updateBlinking();
 
     private:
         LED* leds; // Pointer to an array of LED objects

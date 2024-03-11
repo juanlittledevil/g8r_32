@@ -51,7 +51,11 @@ int encButtonPin = ENCODER_BUTTON;
 // Defulat mode
 int mode = 0;
 bool inModeSelection = false;
+static int previousMode = -1; // used with blinking in mode selection
 const byte total_modes = 3;
+int selectedChannel = 9; // MIDI channels are 0-15
+bool inChannelSelection = false;
+bool isInSelection = false;
 int selectedGate = 0;
 int clockDivisions[numPins];
 
@@ -101,7 +105,7 @@ void setup() {
 void handleLongPress() {
     // Enter mode selection state on long press
     inModeSelection = true;
-
+    isInSelection = true;
     #if DEBUG
     DEBUG_PRINT("Button was long pressed, entered mode selection state");
     #endif
@@ -118,15 +122,47 @@ void handleSinglePress() {
     if (inModeSelection) {
         // Confirm mode selection on single press
         inModeSelection = false;
-
+        isInSelection = false;
+        previousMode = -1; // Reset the previous mode
         #if DEBUG
         DEBUG_PRINT("Button was pressed, mode selection confirmed");
         DEBUG_PRINT("Current mode: " + String(mode));
         #endif
     } else {
         // Code to handle a single button press when not in mode selection state
+        if (mode == 1) {
+            if (inChannelSelection) {
+                inChannelSelection = false;
+                isInSelection = false;
+                #if DEBUG
+                DEBUG_PRINT("Button was pressed, channel selection confirmed");
+                DEBUG_PRINT("Current channel: " + String(selectedChannel));
+                #endif
+            } else {
+                inChannelSelection = true;
+                isInSelection = true;
+                #if DEBUG
+                DEBUG_PRINT("Button was pressed, entered channel selection state");
+                #endif
+            }
+        }
         #if DEBUG
         DEBUG_PRINT("Button was pressed");
+        #endif
+    }
+}
+
+void handleChannelSelection() {
+    Encoder::Direction direction = encoder.readEncoder();
+    if (direction == Encoder::CW) {
+        selectedChannel = (selectedChannel + 1) % 16; // MIDI channels are 0-15
+        #if DEBUG
+        DEBUG_PRINT("Encoder turned clockwise " + String(selectedChannel));
+        #endif
+    } else if (direction == Encoder::CCW) {
+        selectedChannel = (selectedChannel + 15) % 16;
+        #if DEBUG
+        DEBUG_PRINT("Encoder turned counter-clockwise " + String(selectedChannel));
         #endif
     }
 }
@@ -145,6 +181,19 @@ void handleModeSelection() {
         DEBUG_PRINT("Encoder turned counter-clockwise " + String(mode));
         #endif
     }
+
+    // Only blink the LED if the mode has changed
+    if (mode != previousMode) {
+        for (int i = 0; i < total_modes; i++) {
+            if (i == mode) {
+                leds.blinkSlow(i); // This will only be called once when the mode changes
+            } else {
+                leds.stopBlinking(i);
+                leds.setState(i, false);
+            }
+        }
+        previousMode = mode; // Update the previous mode
+    }
 }
 
 void handleEncoderMode0() {
@@ -161,6 +210,9 @@ void handleEncoderMode0() {
 }
 
 void loop() {
+    static int previousMode = -1;
+    static int previousChannel = -1;
+
     // Read the encoder and handle button presses
     encoder.readButton();
     if (encoder.isButtonLongPressed()) {
@@ -169,19 +221,32 @@ void loop() {
         handleSinglePress();
     }
 
+    if (inChannelSelection) {
+        handleChannelSelection();
+    }
+
     if (inModeSelection) {
         handleModeSelection();
+        leds.updateBlinking();
     } else {
+        leds.stopAllBlinking();
+        if (mode != previousMode) {
+            previousMode = mode;
+            midiHandler.setMode(mode);
+        }
         switch (mode) {
             case 0:
                 handleEncoderMode0();
-                midiHandler.setMode(mode);
                 break;
             case 1:
-                midiHandler.setMode(mode);
+                if (!inChannelSelection) {
+                    if (selectedChannel != previousChannel) {
+                        previousChannel = selectedChannel;
+                        midiHandler.setChannel(selectedChannel);
+                    }
+                }
                 break;
             case 2:
-                midiHandler.setMode(mode);
                 break;
             // Add more cases as needed
         }

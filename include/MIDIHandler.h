@@ -11,7 +11,7 @@ public:
     MIDIHandler(int rxPin, int txPin, EurorackClock& clock, Gates& gates, LEDs& leds);
     void begin();
     void handleMidiMessage();
-    void setChannel(int channel);
+    void setChannel(byte channel);
     void setMode(int mode);
 
     // Declare static functions to handle MIDI messages
@@ -30,7 +30,8 @@ public:
 private:
     UMIDI midi;
     EurorackClock& clock;
-    int channel = 10; 
+    byte channel = 10; 
+    static byte selectedChannel;
     Gates& gates; // Add this line
     LEDs& leds;
 

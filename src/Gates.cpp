@@ -59,3 +59,10 @@ void Gates::turnOffGate(int index) {
     gateArray[index].setState(LOW); // Turn off the gate at the specified index
   }
 }
+
+// Method to turn on or off all gates
+void Gates::setALLGates(bool state) {
+  for (int i = 0; i < numGates; i++) { // Loop through all gates
+    gateArray[i].setState(state); // Set the state of the gate
+  }
+}
