@@ -8,10 +8,13 @@ class LED : public PWMPin {
         LED(int pin = -1); // Default pin set to -1
         ~LED(); // Destructor declaration
         void setState(bool state) override;
+        void setState(bool state, int intencity);
         bool getState() override;
         void startBlinking(unsigned long interval);
         void stopBlinking();
         void updateBlinking();
+        void updateBlinking(int intencity);
+
     private:
         unsigned long blinkStartTime;
         unsigned long blinkInterval;

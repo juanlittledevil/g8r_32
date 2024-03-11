@@ -9,6 +9,7 @@ class LEDs {
         ~LEDs(); // Destructor declaration
         void begin();
         void setState(int index, bool state);
+        void setState(int index, bool state, int intensity);
         bool getState(int index);
         void setAllLeds(bool state);
         void blinkFast(int index);
@@ -16,10 +17,11 @@ class LEDs {
         void stopBlinking(int index);
         void stopAllBlinking();
         void updateBlinking();
+        void updateBlinking(int intencity);
+        int numLeds; // Number of LEDs
 
     private:
         LED* leds; // Pointer to an array of LED objects
-        int numLeds; // Number of LEDs
 };
 
 #endif

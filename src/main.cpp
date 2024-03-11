@@ -52,6 +52,8 @@ int encButtonPin = ENCODER_BUTTON;
 int mode = 0;
 bool inModeSelection = false;
 static int previousMode = -1; // used with blinking in mode selection
+static int previousChannel = -1; // used with blinking in channel selection
+int intensity = 255; // Default intensity for LEDs
 const byte total_modes = 3;
 int selectedChannel = 9; // MIDI channels are 0-15
 bool inChannelSelection = false;
@@ -106,9 +108,7 @@ void handleLongPress() {
     // Enter mode selection state on long press
     inModeSelection = true;
     isInSelection = true;
-    #if DEBUG
-    DEBUG_PRINT("Button was long pressed, entered mode selection state");
-    #endif
+    leds.blinkSlow(mode);
 }
 
 void handleDoublePress() {
@@ -124,16 +124,13 @@ void handleSinglePress() {
         inModeSelection = false;
         isInSelection = false;
         previousMode = -1; // Reset the previous mode
-        #if DEBUG
-        DEBUG_PRINT("Button was pressed, mode selection confirmed");
-        DEBUG_PRINT("Current mode: " + String(mode));
-        #endif
     } else {
         // Code to handle a single button press when not in mode selection state
         if (mode == 1) {
             if (inChannelSelection) {
                 inChannelSelection = false;
                 isInSelection = false;
+                previousChannel = -1; // Reset the previous channel
                 #if DEBUG
                 DEBUG_PRINT("Button was pressed, channel selection confirmed");
                 DEBUG_PRINT("Current channel: " + String(selectedChannel));
@@ -141,6 +138,7 @@ void handleSinglePress() {
             } else {
                 inChannelSelection = true;
                 isInSelection = true;
+                leds.blinkSlow(selectedChannel);
                 #if DEBUG
                 DEBUG_PRINT("Button was pressed, entered channel selection state");
                 #endif
@@ -154,6 +152,10 @@ void handleSinglePress() {
 
 void handleChannelSelection() {
     Encoder::Direction direction = encoder.readEncoder();
+    int total_pages = 16 / leds.numLeds; // Calculate total pages based on number of LEDs
+    int min_intensity = 64; // Set minimum intensity to 25% (64 out of 255)
+    int intensity_step = (255 - min_intensity) / (total_pages - 1); // Calculate intensity step
+
     if (direction == Encoder::CW) {
         selectedChannel = (selectedChannel + 1) % 16; // MIDI channels are 0-15
         #if DEBUG
@@ -165,6 +167,27 @@ void handleChannelSelection() {
         DEBUG_PRINT("Encoder turned counter-clockwise " + String(selectedChannel));
         #endif
     }
+
+    // Calculate current page and LED index within the page
+    int current_page = selectedChannel / leds.numLeds;
+    int led_index = selectedChannel % leds.numLeds;
+
+    // Set intensity based on current page
+    intensity = min_intensity + intensity_step * current_page;
+
+    // Only blink the LED if the mode has changed
+    if (selectedChannel != previousChannel) {
+        for (int i = 0; i < 15; i++) {
+            if (i == selectedChannel) {
+                leds.blinkSlow(i); // This will only be called once when the mode changes
+
+            } else {
+                leds.stopBlinking(i);
+                leds.setState(i, false);
+            }
+        }
+        previousMode = mode; // Update the previous mode
+    }
 }
 
 void handleModeSelection() {
@@ -172,14 +195,8 @@ void handleModeSelection() {
     Encoder::Direction direction = encoder.readEncoder();
     if (direction == Encoder::CW) {
         mode = (mode + 1) % total_modes;
-        #if DEBUG
-        DEBUG_PRINT("Encoder turned clockwise " + String(mode));
-        #endif
     } else if (direction == Encoder::CCW) {
         mode = (mode + total_modes - 1) % total_modes;
-        #if DEBUG
-        DEBUG_PRINT("Encoder turned counter-clockwise " + String(mode));
-        #endif
     }
 
     // Only blink the LED if the mode has changed
@@ -210,9 +227,6 @@ void handleEncoderMode0() {
 }
 
 void loop() {
-    static int previousMode = -1;
-    static int previousChannel = -1;
-
     // Read the encoder and handle button presses
     encoder.readButton();
     if (encoder.isButtonLongPressed()) {
@@ -223,6 +237,7 @@ void loop() {
 
     if (inChannelSelection) {
         handleChannelSelection();
+        leds.updateBlinking();
     }
 
     if (inModeSelection) {
