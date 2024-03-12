@@ -34,7 +34,7 @@ void MIDIHandler::begin() {
 }
 
 // In MIDIHandler.cpp
-byte MIDIHandler::selectedChannel = 9; // Default MIDI channel 0 - 15
+byte MIDIHandler::confirmedChannel = 9; // Default MIDI channel 0 - 15
 
 // Handle incoming MIDI messages
 void MIDIHandler::handleMidiMessage() {
@@ -81,7 +81,7 @@ void MIDIHandler::handleMode0NoteOff(byte channel, byte pitch, byte velocity) {
 void MIDIHandler::handleMode1NoteOn(byte channel, byte pitch, byte velocity) {
     int note = pitch;
     int gate = note % instance->gates.numGates;
-    if (channel == selectedChannel) {
+    if (channel == confirmedChannel) {
         instance->gates.turnOnGate(gate);
         if (!isInSelection) {
             instance->leds.setState(gate, true);
@@ -93,7 +93,7 @@ void MIDIHandler::handleMode1NoteOn(byte channel, byte pitch, byte velocity) {
 void MIDIHandler::handleMode1NoteOff(byte channel, byte pitch, byte velocity) {
     int note = pitch;
     int gate = note % instance->gates.numGates;
-    if (channel == selectedChannel) {
+    if (channel == confirmedChannel) {
         instance->gates.turnOffGate(gate);
         if (!isInSelection) {
             instance->leds.setState(gate, false);
@@ -105,6 +105,9 @@ void MIDIHandler::handleMode1NoteOff(byte channel, byte pitch, byte velocity) {
 void MIDIHandler::handleMode2NoteOn(byte channel, byte pitch, byte velocity) {
     if (channel >= 9 && channel <= 16) {
         int gate = (channel - 9) % instance->gates.numGates;
+        #ifdef DEBUG
+        DEBUG_PRINT("Note on: channel = " + String(channel) + ", gate = " + String(gate));
+        #endif
         instance->gates.turnOnGate(gate);
         if (!isInSelection) {
             instance->leds.setState(gate, true);
@@ -116,6 +119,9 @@ void MIDIHandler::handleMode2NoteOn(byte channel, byte pitch, byte velocity) {
 void MIDIHandler::handleMode2NoteOff(byte channel, byte pitch, byte velocity) {
     if (channel >= 9 && channel <= 16) {
         int gate = (channel - 9) % instance->gates.numGates;
+        #ifdef DEBUG
+        DEBUG_PRINT("Note off: channel = " + String(channel) + ", gate = " + String(gate));
+        #endif
         instance->gates.turnOffGate(gate);
         if (!isInSelection) {
             instance->leds.setState(gate, false);
@@ -139,5 +145,5 @@ void MIDIHandler::setMode(int mode) {
 }
 
 void MIDIHandler::setChannel(byte channel) {
-    selectedChannel = channel;
+    confirmedChannel = channel;
 }

@@ -45,9 +45,11 @@ LEDs leds = LEDs(ledPins, numLedPins); // Create an instance of LEDs
 int encCLKPin = ENCODER_PINA;
 int encDTPin = ENCODER_PINB;
 int encButtonPin = ENCODER_BUTTON;
+bool doublePressHandled;
 
 // Defulat mode
 int mode = 0;
+bool selectingTempo = false;
 bool inModeSelection = false;
 static int previousMode = -1; // used with blinking in mode selection
 static int previousChannel = -1; // used with blinking in channel selection
@@ -89,6 +91,10 @@ void setup() {
     // Set the MIDIHandler to listen to all channels
     midiHandler.setChannel(-1);
 
+    // Start the clock and set the tempo
+    clock.start();
+    clock.setTempo(120, 4); // Set the tempo to 120 BPM with 4 PPQN
+
     delay(1000);
 
     leds.begin(); // Initialize LED pins
@@ -112,14 +118,32 @@ void handleLongPress() {
 }
 
 void handleDoublePress() {
-    // Code to handle a double button press
-    #if DEBUG
-    DEBUG_PRINT("Button was double pressed");
-    #endif
+    // Enter tempo selection mode on double press
+    if (!doublePressHandled) {
+        if (mode == 0) {
+            if (selectingTempo) {
+                // Exit tempo selection mode on double press
+                selectingTempo = false;
+                #if DEBUG
+                DEBUG_PRINT("Exiting tempo selection mode");
+                #endif
+            } else if (!inChannelSelection && !inModeSelection) {
+                // Enter tempo selection mode on double press
+                selectingTempo = true;
+                #if DEBUG
+                DEBUG_PRINT("Entering tempo selection mode");
+                #endif
+            }
+            doublePressHandled = true;
+        }
+    }
 }
 
 void handleSinglePress() {
-    if (inModeSelection) {
+    if (selectingTempo) {
+        // Confirm tempo selection on single press
+        // selectingTempo = false;
+    } else if (inModeSelection) {
         // Confirm mode selection on single press
         inModeSelection = false;
         isInSelection = false;
@@ -234,17 +258,40 @@ void handleEncoderMode0() {
     }
 }
 
+void handleTempoSelection() {
+    // Handle tempo selection
+    Encoder::Direction direction = encoder.readEncoder();
+    if (direction == Encoder::CW) {
+        clock.setTempo(clock.getTempo() + 1, 4);
+        #if DEBUG
+        DEBUG_PRINT("Encoder turned clockwise: " + String(clock.getTempo()) + " BPM");
+        #endif
+    } else if (direction == Encoder::CCW) {
+        clock.setTempo(clock.getTempo() - 1, 4);
+        #if DEBUG
+        DEBUG_PRINT("Encoder turned counter-clockwise: " + String(clock.getTempo()) + " BPM");
+        #endif
+    }
+}
+
 void loop() {
     // Read the encoder and handle button presses
     leds.updateBlinking();
     encoder.readButton();
     if (encoder.isButtonLongPressed()) {
         handleLongPress();
-    } else if (encoder.readButton() == Encoder::PRESSED) {
-        handleSinglePress();
+    } else if (encoder.isButtonDoublePressed()) {
+        if (!doublePressHandled) {
+            handleDoublePress();
+            doublePressHandled = true; // Set the flag to true when a double press is handled
+        }
+    } else if (encoder.readButton() == Encoder::OPEN) {
+        doublePressHandled = false; // Reset the flag when the button is released
     }
 
-    if (inChannelSelection) {
+    if (selectingTempo) {
+        handleTempoSelection();
+    } else if (inChannelSelection) {
         handleChannelSelection();
     } else if (inModeSelection) {
         handleModeSelection();
@@ -269,4 +316,7 @@ void loop() {
 
     // Handle incoming MIDI messages
     midiHandler.handleMidiMessage();
+
+    // Handle clock pulses
+    clock.tick();
 }

@@ -31,7 +31,7 @@ private:
     UMIDI midi;
     EurorackClock& clock;
     byte channel = 10; 
-    static byte selectedChannel;
+    static byte confirmedChannel;
     Gates& gates; // Add this line
     LEDs& leds;
 

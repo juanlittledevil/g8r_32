@@ -11,31 +11,49 @@
 #include <Arduino.h>
 #endif
 
+EurorackClock* EurorackClock::instance = nullptr;
+
 EurorackClock::EurorackClock(int clockPin, int resetPin) 
-    : clockPin(clockPin), resetPin(resetPin), isRunning(false) {}
+    : clockPin(clockPin), resetPin(resetPin), tempo(120),
+      lastTickTime(0), tickInterval(60000 / tempo), isRunning(false) {
+        instance = this;
+        timer = new HardwareTimer(TIM2); // Use Timer 2
+      }
+
+void EurorackClock::setTempo(int newTempo, int ppqn) {
+    tempo = newTempo;
+    tickInterval = 60000000 / (tempo * ppqn); // Calculate interval in microseconds
+    timer->setOverflow(tickInterval, MICROSEC_FORMAT);
+}
 
 void EurorackClock::start() {
-    // Start the clock
     isRunning = true;
-    #if DEBUG
-    DEBUG_PRINT("Received MIDI Start");
-    #endif
+    timer->attachInterrupt(interruptHandler);
+    timer->resume();
 }
 
 void EurorackClock::stop() {
-    // Stop the clock
     isRunning = false;
-    #if DEBUG
-    DEBUG_PRINT("Received MIDI Stop");
-    #endif
+    timer->detachInterrupt();
+    timer->pause();
+}
+
+void EurorackClock::tick() {
+    if (isRunning && micros() - lastTickTime >= tickInterval) {
+        lastTickTime = micros();
+        clock();
+    }
+}
+
+int EurorackClock::getTempo() const {
+    return tempo;
 }
 
 void EurorackClock::clock() {
     // Continue the clock
-    isRunning = true;
-    #if DEBUG
-    // DEBUG_PRINT("Received MIDI Clock");
-    #endif
+    // #if DEBUG
+    // // DEBUG_PRINT("Received MIDI Clock");
+    // #endif
 }
 
 void EurorackClock::reset() {
