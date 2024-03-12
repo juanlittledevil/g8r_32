@@ -39,16 +39,10 @@ void InputPin::begin() {
     } else {
         pinMode(this->pin, INPUT);
     }
-    #ifdef DEBUG
-    DEBUG_PRINT("Pin " + String(this->pin) + " initialized");
-    #endif
 }
 
 bool InputPin::getState() {
     this->state = digitalRead(this->pin);
-    #ifdef DEBUG
-    DEBUG_PRINT("Pin " + String(this->pin) + " read as " + String(this->state));
-    #endif
     return this->state;
 }
 
@@ -59,16 +53,10 @@ AnalogInputPin::AnalogInputPin(int pin) : Pin(pin) {
 
 void AnalogInputPin::begin() {
         pinMode(this->pin, INPUT);
-        #ifdef DEBUG
-        DEBUG_PRINT("Analog input pin " + String(this->pin) + " initialized");
-        #endif
 }
 
 int AnalogInputPin::read() {
         int value = analogRead(this->pin);
-        #ifdef DEBUG
-        DEBUG_PRINT("Analog input pin " + String(this->pin) + " read as " + String(value));
-        #endif
         return value;
 }
 
@@ -80,17 +68,11 @@ OutputPin::OutputPin(int pin) : Pin(pin) {
 
 void OutputPin::begin() {
   pinMode(this->pin, OUTPUT);
-  #ifdef DEBUG
-  DEBUG_PRINT("Pin " + String(this->pin) + " initialized");
-  #endif
 }
 
 void OutputPin::setState(bool newState) {
   this->state = newState;
   digitalWrite(this->pin, this->state ? HIGH : LOW);
-  #ifdef DEBUG
-  DEBUG_PRINT("Pin " + String(this->pin) + " set to " + String(this->state));
-  #endif
 }
 
 bool OutputPin::getState() {
@@ -101,14 +83,28 @@ bool OutputPin::getState() {
 // Constructor
 PWMPin::PWMPin(int pin) : OutputPin(pin) {
     // Initialization code here if needed
+    #ifdef ARDUINO_ARCH_STM32
+    this->timer = new HardwareTimer(TIM2);  // Use TIM2 for all pins
+    #endif
+}
+
+void PWMPin::begin() {
+    #ifdef ARDUINO_ARCH_STM32
+    pinMode(this->pin, OUTPUT);
+    if (this->timer != nullptr) {
+        this->timer->setMode(1, TIMER_OUTPUT_COMPARE_PWM1, this->pin);
+        this->timer->setOverflow(10000, MICROSEC_FORMAT);  // 10 kHz PWM
+        this->timer->setCaptureCompare(1, 0, PERCENT_COMPARE_FORMAT);  // 0% duty cycle
+        this->timer->resume();
+    }
+    #else
+    pinMode(this->pin, OUTPUT);
+    #endif
 }
 
 void PWMPin::setDutyCycle(int dutyCycle) {
     this->dutyCycle = dutyCycle;
     analogWrite(this->pin, this->dutyCycle);
-    #ifdef DEBUG
-    DEBUG_PRINT("Pin " + String(this->pin) + " set to " + String(this->dutyCycle));
-    #endif
 }
 
 int PWMPin::getDutyCycle() {

@@ -7,10 +7,10 @@
 
 class Gates {
   private:
-    int numGates;
     Gate *gateArray;
 
   public:
+    int numGates;
     Gates(int pins[], int numGates);
     ~Gates(); // Destructor declaration
     void begin();
@@ -18,6 +18,7 @@ class Gates {
     bool getState(int gateIndex);
     void turnOnGate(int index);
     void turnOffGate(int index);
+    void setALLGates(bool state);
 };
 
 #endif

@@ -1,6 +1,5 @@
 // Gates.cpp
 #include "Gates.h"
-#include "Gate.h"
 #include "Debug.h"
 
 // Uncomment the line below to enable debugging. Comment it out to disable debugging
@@ -58,5 +57,12 @@ void Gates::turnOnGate(int index) {
 void Gates::turnOffGate(int index) {
   if (index >= 0 && index < numGates) { // Check if the index is within bounds
     gateArray[index].setState(LOW); // Turn off the gate at the specified index
+  }
+}
+
+// Method to turn on or off all gates
+void Gates::setALLGates(bool state) {
+  for (int i = 0; i < numGates; i++) { // Loop through all gates
+    gateArray[i].setState(state); // Set the state of the gate
   }
 }

@@ -1,6 +1,10 @@
 #ifndef PIN_H
 #define PIN_H
 
+#ifdef ARDUINO_ARCH_STM32
+#include <HardwareTimer.h>
+#endif
+
 class Pin {
     protected:
         // put attributes shared by all subclasses here
@@ -46,11 +50,13 @@ class OutputPin : public Pin {
 class PWMPin : public OutputPin {
     public:
         PWMPin(int pin = -1); // Default pin set to -1
+        virtual void begin();
         void setDutyCycle(int dutyCycle);
         int getDutyCycle();
     
     private:
         int dutyCycle;
+        HardwareTimer* timer;
 };
 
 #endif
