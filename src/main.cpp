@@ -133,6 +133,7 @@ void handleSinglePress() {
                 confirmedChannel = selectedChannel;
                 previousChannel = -1; // Reset the previous channel
                 leds.stopAllBlinking();
+                leds.setAllLeds(false);
             } else {
                 inChannelSelection = true;
                 isInSelection = true;
@@ -145,7 +146,11 @@ void handleSinglePress() {
                 // intensity = min_intensity + intensity_step * current_page;
 
                 // leds.setIntensity(led_index, intensity);
-                leds.blinkFast(led_index);
+                if (selectedChannel < 8) {
+                    leds.blinkFast(led_index); // Blink the LED corresponding to the selected channel
+                } else {
+                    leds.blinkFast2(led_index); // Blink the LED corresponding to the selected channel
+                }   
             }
         }
     }
@@ -179,7 +184,11 @@ void handleChannelSelection() {
         for (int i = 0; i < leds.numLeds; i++) { // Loop over LEDs, not channels
             if (i == led_index) {
                 // leds.setIntensity(i, intensity);
-                leds.blinkFast(i); // Blink the LED corresponding to the selected channel
+                if (selectedChannel < 8) {
+                    leds.blinkFast(i); // Blink the LED corresponding to the selected channel
+                } else {
+                    leds.blinkFast2(i); // Blink the LED corresponding to the selected channel
+                }           
             } else {
                 leds.stopBlinking(i);
                 leds.setState(i, false);

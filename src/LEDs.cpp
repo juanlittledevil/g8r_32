@@ -74,13 +74,19 @@ bool LEDs::getState(int index) {
 
 void LEDs::blinkFast(int index) {
     if(index >= 0 && index < numLeds) {
-        this->leds[index].startBlinking(200); // Fast blink: 100 ms
+        this->leds[index].startBlinking(200); // Fast blink: 200 ms
+    }
+}
+
+void LEDs::blinkFast2(int index) {
+    if(index >= 0 && index < numLeds) {
+        this->leds[index].startBlinking(100); // Faster blink: 100 ms
     }
 }
 
 void LEDs::blinkSlow(int index) {
     if(index >= 0 && index < numLeds) {
-        this->leds[index].startBlinking(800); // Slow blink: 500 ms
+        this->leds[index].startBlinking(800); // Slow blink: 800 ms
     }
 }
 
