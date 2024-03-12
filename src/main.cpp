@@ -15,30 +15,35 @@
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 #endif
 
-// Define the RX and TX pins for MIDI communication
-#define RX_PIN PA3
-#define TX_PIN PA2
-#define ENCODER_PINA PB13
-#define ENCODER_PINB PB14
-#define ENCODER_BUTTON PB12
-#define CLOCK_PIN PB15
-#define RESET_PIN PA8
-
 // Function to calculate the size of an array
 template<typename T, size_t N>
 constexpr size_t arraySize(T(&)[N]) {
     return N;
 }
 
+// Define the RX and TX pins for MIDI communication
+#define RX_PIN PA3
+#define TX_PIN PA2
+// Define the pins for the encoder
+#define ENCODER_PINA PB13
+#define ENCODER_PINB PB14
+#define ENCODER_BUTTON PB12
+// Define the pins for the clock and reset
+#define CLOCK_PIN PB15
+#define RESET_PIN PA8
+// Define the pin for the tempo LED
+#define TEMPO_LED PA11
 // Define the pins for the gates
 int pins[] = {PA15, PB3, PB4, PB5}; // Example pins
 // constexpr int numPins = sizeof(pins) / sizeof(pins[0]); // Calculate the number of pins
 constexpr int numPins = arraySize(pins);
 Gates gates = Gates(pins, numPins); // Create an instance of Gates
-
 // Define the pins for the LEDs
 int ledPins[] = {PB6, PB7, PB8, PB9}; // Placeholder pin numbers for LEDs
 int numLedPins = arraySize(ledPins);
+
+// Create an instance of LEDs
+// Tempo LED is part of EurorackClock class to make this file cleaner.
 LEDs leds = LEDs(ledPins, numLedPins); // Create an instance of LEDs
 
 // Define the pins for the encoder
@@ -61,13 +66,18 @@ bool inChannelSelection = false;
 bool isInSelection = false;
 int selectedGate = 0;
 int clockDivisions[numPins];
+int tempoIncrement = 1;
+const int minTempo = 20;
+const int maxTempo = 340;
+bool externalTempo = false;
+unsigned long lastFlashTime = 0;
 
 int total_pages = 16 / leds.numLeds; // Calculate total pages based on number of LEDs
 int min_intensity = 64; // Set minimum intensity to 25% (64 out of 255)
 int intensity_step = (255 - min_intensity) / (total_pages - 1); // Calculate intensity step
 
 // Create an instance of the EurorackClock class
-EurorackClock clock(CLOCK_PIN, RESET_PIN);
+EurorackClock clock(CLOCK_PIN, RESET_PIN, TEMPO_LED);
 
 // Create an instance of the MIDIHandler class
 MIDIHandler midiHandler(RX_PIN, TX_PIN, clock, gates, leds);
@@ -92,6 +102,7 @@ void setup() {
     midiHandler.setChannel(-1);
 
     // Start the clock and set the tempo
+    clock.configureLed();
     clock.start();
     clock.setTempo(120, 4); // Set the tempo to 120 BPM with 4 PPQN
 
@@ -99,9 +110,8 @@ void setup() {
 
     leds.begin(); // Initialize LED pins
     gates.begin(); // Initialize gate pins
-    // mySwitch.begin(); // Initialize switch pins
     encoder.begin(); // Initialize encoder pins
-
+    
     #if DEBUG
     DEBUG_PRINT("Finished setup() function");
     #endif
@@ -261,16 +271,42 @@ void handleEncoderMode0() {
 void handleTempoSelection() {
     // Handle tempo selection
     Encoder::Direction direction = encoder.readEncoder();
+    int currentTempo = clock.getTempo();
     if (direction == Encoder::CW) {
-        clock.setTempo(clock.getTempo() + 1, 4);
-        #if DEBUG
-        DEBUG_PRINT("Encoder turned clockwise: " + String(clock.getTempo()) + " BPM");
-        #endif
+        if (externalTempo) {
+            // Exit external tempo mode and increase the tempo
+            externalTempo = false;
+            #if DEBUG
+            DEBUG_PRINT("Exited external tempo mode. Tempo is now: " + String(clock.getTempo()) + " BPM");
+            #endif
+        } else if (currentTempo + tempoIncrement <= maxTempo) {
+            clock.setTempo(currentTempo + tempoIncrement, 4);
+            #if DEBUG
+            DEBUG_PRINT("Encoder turned clockwise: " + String(clock.getTempo()) + " BPM");
+            #endif
+        }
     } else if (direction == Encoder::CCW) {
-        clock.setTempo(clock.getTempo() - 1, 4);
-        #if DEBUG
-        DEBUG_PRINT("Encoder turned counter-clockwise: " + String(clock.getTempo()) + " BPM");
-        #endif
+        if (currentTempo - tempoIncrement < minTempo) {
+            // Enter external tempo mode when the tempo reaches the minimum
+            externalTempo = true;
+            #if DEBUG
+            DEBUG_PRINT("Entered external tempo mode");
+            #endif
+        } else {
+            clock.setTempo(currentTempo - tempoIncrement, 4);
+            #if DEBUG
+            DEBUG_PRINT("Encoder turned counter-clockwise: " + String(clock.getTempo()) + " BPM");
+            #endif
+        }
+    }
+
+    if (encoder.readButton() == Encoder::PRESSED) {
+        // Toggle the tempo increment on single press
+        if (tempoIncrement == 1) {
+            tempoIncrement = 25;
+        } else {
+            tempoIncrement = 1;
+        }
     }
 }
 
@@ -318,5 +354,6 @@ void loop() {
     midiHandler.handleMidiMessage();
 
     // Handle clock pulses
+    clock.flashTempoLed();
     clock.tick();
 }

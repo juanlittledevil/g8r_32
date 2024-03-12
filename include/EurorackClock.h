@@ -2,10 +2,11 @@
 #define EURORACKCLOCK_H
 
 #include <HardwareTimer.h>
+#include "LED.h"
 
 class EurorackClock {
 public:
-    EurorackClock(int clockPin, int resetPin);
+    EurorackClock(int clockPin, int resetPin, int tempoLedPin);
     void start();
     void stop();
     static void interruptHandler() {
@@ -16,6 +17,8 @@ public:
     void tick();
     void setTempo(int newTempo, int ppqn);
     int getTempo() const; 
+    void configureLed();
+    void flashTempoLed();
 
 private:
     int tempo; // Tempo in BPM
@@ -26,6 +29,7 @@ private:
     bool isRunning;
     HardwareTimer* timer;
     static EurorackClock* instance;
+    LED tempoLed;
 };
 
 #endif // EURORACKCLOCK_H

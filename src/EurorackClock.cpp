@@ -13,12 +13,17 @@
 
 EurorackClock* EurorackClock::instance = nullptr;
 
-EurorackClock::EurorackClock(int clockPin, int resetPin) 
+EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin) 
     : clockPin(clockPin), resetPin(resetPin), tempo(120),
-      lastTickTime(0), tickInterval(60000 / tempo), isRunning(false) {
+      lastTickTime(0), tickInterval(60000 / tempo), isRunning(false),
+      tempoLed(tempoLedPin) {
         instance = this;
         timer = new HardwareTimer(TIM2); // Use Timer 2
-      }
+}
+
+void EurorackClock::configureLed() {
+    tempoLed.begin();
+}
 
 void EurorackClock::setTempo(int newTempo, int ppqn) {
     tempo = newTempo;
@@ -47,6 +52,24 @@ void EurorackClock::tick() {
 
 int EurorackClock::getTempo() const {
     return tempo;
+}
+
+void EurorackClock::flashTempoLed() {
+    unsigned long currentTime = millis();
+    int quarterNoteDuration = 60000 / this->tempo;
+    static unsigned long lastFlashTime = 0;
+    static bool isLedOn = false;
+
+    if (currentTime - lastFlashTime >= quarterNoteDuration) {
+        if (isLedOn) {
+            isLedOn = false;
+            this->tempoLed.setState(false);
+        } else {
+            this->tempoLed.setState(true);
+            isLedOn = true;
+        }
+        lastFlashTime = currentTime;
+    }
 }
 
 void EurorackClock::clock() {
