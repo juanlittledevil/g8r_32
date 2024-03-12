@@ -41,15 +41,6 @@ void MIDIHandler::handleMidiMessage() {
     midi.read();
 }
 
-// // Set the MIDI channel
-// void MIDIHandler::setChannel(int channel) {
-//     if (channel == -1) {
-//         this->channel = -1;  // Listen to all channels
-//     } else {
-//         this->channel = channel - 1;  // Listen to a specific channel
-//     }
-// }
-
 // Static function to handle MIDI clock messages
 void MIDIHandler::handleClock() {
     instance->clock.clock();

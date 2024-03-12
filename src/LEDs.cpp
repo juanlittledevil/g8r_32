@@ -3,7 +3,7 @@
 
 // Uncomment the line below to enable debugging. Comment it out to disable debugging
 // each file has its own DEBUG flag for more granular control.
-#define DEBUG 1 // 0 for no debug, 1 for debug
+// #define DEBUG 1 // 0 for no debug, 1 for debug
 #ifdef DEBUG
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
@@ -46,9 +46,21 @@ void LEDs::setState(int index, bool state) {
     }
 }
 
-void LEDs::setState(int index, bool state, int intensity) {
-    if (index >= 0 && index < numLeds) {
-        this->leds[index].setDutyCycle(intensity);
+// void LEDs::setState(int index, bool state, int intensity) {
+//     if (index >= 0 && index < numLeds) {
+//         this->leds[index].setDutyCycle(intensity);
+//     }
+// }
+
+void LEDs::setIntensity(int index, int intensity) {
+    if(index >= 0 && index < numLeds) {
+        this->leds[index].setIntensity(intensity);
+    }
+}
+
+void LEDs::setAllintensity(int intensity) {
+    for(int i = 0; i < numLeds; i++) {
+        this->leds[i].setIntensity(intensity);
     }
 }
 
@@ -62,9 +74,6 @@ bool LEDs::getState(int index) {
 
 void LEDs::blinkFast(int index) {
     if(index >= 0 && index < numLeds) {
-        #ifdef DEBUG
-        DEBUG_PRINT("LEDs::blinkFast: starting fast blink");
-        #endif
         this->leds[index].startBlinking(200); // Fast blink: 100 ms
     }
 }
@@ -80,13 +89,6 @@ void LEDs::updateBlinking() {
         this->leds[i].updateBlinking();
     }
 }
-
-void LEDs::updateBlinking(int intencity) {
-    for(int i = 0; i < numLeds; i++) {
-        this->leds[i].updateBlinking(intencity);
-    }
-}
-
 
 void LEDs::stopBlinking(int index) {
     if(index >= 0 && index < numLeds) {

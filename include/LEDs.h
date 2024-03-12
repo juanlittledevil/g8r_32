@@ -17,7 +17,9 @@ class LEDs {
         void stopBlinking(int index);
         void stopAllBlinking();
         void updateBlinking();
-        void updateBlinking(int intencity);
+        void setIntensity(int index, int intensity);
+        void setAllintensity(int intensity);
+        // void updateBlinking(int intensity);
         int numLeds; // Number of LEDs
 
     private:
