@@ -43,7 +43,7 @@ void MIDIHandler::handleMidiMessage() {
 
 // Static function to handle MIDI clock messages
 void MIDIHandler::handleClock() {
-    instance->clock.clock();
+    instance->clock.handleMidiClock();
 }
 
 // Static function to handle MIDI start messages
@@ -135,12 +135,15 @@ void MIDIHandler::setMode(int mode) {
     if (mode == 0) {
         midi.setHandleNoteOn(handleMode0NoteOn);
         midi.setHandleNoteOff(handleMode0NoteOff);
+        midi.setHandleClock(handleClock);
     } else if (mode == 1) {
         midi.setHandleNoteOn(handleMode1NoteOn);
         midi.setHandleNoteOff(handleMode1NoteOff);
+        midi.setHandleClock(nullptr);
     } else if (mode == 2) {
         midi.setHandleNoteOn(handleMode2NoteOn);
         midi.setHandleNoteOff(handleMode2NoteOff);
+        midi.setHandleClock(nullptr);
     }
 }
 

@@ -11,16 +11,17 @@ public:
     void start();
     void stop();
     static void interruptHandler() {
-        instance->clock();
+        instance->tick();
     }
-    void clock();
-    void reset();
+    // void clock();
+    // void reset();
     void tick();
     void setTempo(float newTempo, int ppqn);
     int getTempo() const; 
     void setup();
     void flashTempoLed();
     void handleExternalClock();
+    void handleMidiClock();
     void setPPQN(int ppqn);
     void setExternalTempo(bool isExternalTempo);
 

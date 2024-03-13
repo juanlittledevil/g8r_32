@@ -3,7 +3,7 @@
 
 // Uncomment the line below to enable debugging. Comment it out to disable debugging
 // each file has its own DEBUG flag for more granular control.
-#define DEBUG 1 // 0 for no debug, 1 for debug
+// #define DEBUG 1 // 0 for no debug, 1 for debug
 #ifdef DEBUG
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
@@ -138,14 +138,14 @@ void EurorackClock::tick() {
     }
 }
 
-void EurorackClock::clock() {
-    // Continue the clock
-    // #if DEBUG
-    // DEBUG_PRINT("Received Clock");
-    // #endif
+void EurorackClock::handleMidiClock() {
+    // Add the code that should be executed when a MIDI clock signal is received
+    #if DEBUG
+    DEBUG_PRINT("Received MIDI clock signal");
+    #endif
 }
 
-void EurorackClock::reset() {
-    // Reset the clock
-    lastTickTime = micros();
-}
+// void EurorackClock::reset() {
+//     // Reset the clock
+//     // lastTickTime = micros();
+// }

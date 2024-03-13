@@ -150,10 +150,7 @@ void handleDoublePress() {
 }
 
 void handleSinglePress() {
-    if (selectingTempo) {
-        // Confirm tempo selection on single press
-        // selectingTempo = false;
-    } else if (inModeSelection) {
+    if (inModeSelection) {
         // Confirm mode selection on single press
         inModeSelection = false;
         isInSelection = false;
@@ -322,6 +319,8 @@ void loop() {
             handleDoublePress();
             doublePressHandled = true; // Set the flag to true when a double press is handled
         }
+    } else if (encoder.readButton() == Encoder::PRESSED) {
+        handleSinglePress();
     } else if (encoder.readButton() == Encoder::OPEN) {
         doublePressHandled = false; // Reset the flag when the button is released
     }

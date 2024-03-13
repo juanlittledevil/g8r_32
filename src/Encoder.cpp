@@ -9,8 +9,6 @@
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 #endif
 
-#define DEBOUNCE_DELAY 20 // debounce time in milliseconds
-
 Encoder::Encoder(int clkPin, int dtPin, int buttonPin) 
     : encCLK(clkPin, true), 
       encDT(dtPin, true), 
@@ -72,6 +70,8 @@ Encoder::Direction Encoder::readEncoder() {
 Encoder::ButtonState Encoder::readButton() {
     static unsigned long lastDebounceTime = 0; // the last time the button pin was toggled
     static ButtonState lastButtonState = OPEN; // the last button state
+    static const int debounceDelay = 20; // debounce time in milliseconds
+
 
     ButtonState reading = (encButton.getState() == LOW) ? PRESSED : OPEN;
 
@@ -80,7 +80,7 @@ Encoder::ButtonState Encoder::readButton() {
         lastDebounceTime = millis();
     }
 
-    if ((millis() - lastDebounceTime) > DEBOUNCE_DELAY) {
+    if ((millis() - lastDebounceTime) > debounceDelay) {
         // If the button state has changed and the debounce period has passed, update the button state
         if (reading != buttonState) {
             buttonState = reading;
