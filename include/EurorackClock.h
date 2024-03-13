@@ -5,6 +5,12 @@
 #include "LED.h"
 #include "Pin.h"
 
+enum ClockSource {
+    INTERNAL,
+    EXTERNAL_EURORACK,
+    EXTERNAL_MIDI
+};
+
 class EurorackClock {
 public:
     EurorackClock(int clockPin, int resetPin, int tempoLedPin);
@@ -24,6 +30,7 @@ public:
     void handleMidiClock();
     void setPPQN(int ppqn);
     void setExternalTempo(bool isExternalTempo);
+    void setClockSource(ClockSource source);
 
 private:
     void flashLed();
@@ -44,6 +51,7 @@ private:
     LED tempoLed;
     InputPin externalClock;
     InputPin resetButton;
+    ClockSource clockSource;
 };
 
 #endif // EURORACKCLOCK_H

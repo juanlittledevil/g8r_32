@@ -3,7 +3,7 @@
 
 // Uncomment the line below to enable debugging. Comment it out to disable debugging
 // each file has its own DEBUG flag for more granular control.
-// #define DEBUG 1 // 0 for no debug, 1 for debug
+#define DEBUG 1 // 0 for no debug, 1 for debug
 #ifdef DEBUG
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
@@ -17,7 +17,7 @@ float EurorackClock::lastFlashTime = 0;
 EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin) 
     : clockPin(clockPin), resetPin(resetPin), tempo(120), lastTickTime(0),
       tickInterval(60000 / tempo), isRunning(false), tempoLed(tempoLedPin),
-      externalClock(clockPin), resetButton(resetPin) {
+      externalClock(clockPin), resetButton(resetPin), clockSource(INTERNAL) {
         instance = this;
         timer = new HardwareTimer(TIM2); // Use Timer 2
         this->externalTempo = 0;
@@ -120,6 +120,32 @@ void EurorackClock::handleExternalClock() {
     lastClockState = clockState;
 }
 
+void EurorackClock::handleMidiClock() {
+    // if (this->isExternalTempo && this->clockSource == EXTERNAL_MIDI) {
+    static int tickCount = 0;
+    static unsigned long lastClockTime = 0;
+
+    if (this->isExternalTempo) {
+        // Handle MIDI clock
+        unsigned long currentTime = millis();
+        lastClockTime = currentTime;
+        tickCount++;
+        if (resetButton.getState() == HIGH) {
+            timeToFlash = true;
+            tickCount = 0;
+        } else if (tickCount >= 24) {
+            timeToFlash = true;
+            tickCount = 0;
+            // Update the last external tick time
+            lastExternalTickTime = micros();
+        }
+    }
+}
+
+void EurorackClock::setClockSource(ClockSource source) {
+    this->clockSource = source;
+}
+
 void EurorackClock::setPPQN(int ppqn) {
     this->ppqn = ppqn;
 }
@@ -136,13 +162,6 @@ void EurorackClock::tick() {
             lastTickTime = micros();
         }
     }
-}
-
-void EurorackClock::handleMidiClock() {
-    // Add the code that should be executed when a MIDI clock signal is received
-    #if DEBUG
-    DEBUG_PRINT("Received MIDI clock signal");
-    #endif
 }
 
 // void EurorackClock::reset() {
