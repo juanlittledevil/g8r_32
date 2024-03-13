@@ -16,7 +16,9 @@ Encoder::Encoder(int clkPin, int dtPin, int buttonPin)
       prevStateCLK(encCLK.getState()), 
       buttonState(OPEN), 
       lastButtonPress(0), 
-      pressCount(0) 
+      pressCount(0),
+      lastTurnTime(0),
+      speed(1)
 {
     // Nothing to do here
 }
@@ -30,6 +32,8 @@ void Encoder::begin() {
 Encoder::Direction Encoder::readEncoder() {
     static int counter = 0;
     const int stepsPerDetent = 2; // Change this to match your encoder's resolution
+    const int maxInterval = 200; // ms
+    const int maxIncrement = 25; // Change this to match your desired increment
 
     int curStateCLK = encCLK.getState();
     if (curStateCLK != prevStateCLK) {
@@ -38,34 +42,26 @@ Encoder::Direction Encoder::readEncoder() {
             counter++;
             if (counter >= stepsPerDetent) {
                 counter = 0;
+                unsigned long currentTime = millis();
+                unsigned long timeDifference = currentTime - lastTurnTime;
+                lastTurnTime = currentTime;
+                speed = (timeDifference < maxInterval) ? maxIncrement : 1; // Adjust this value as needed
                 return CCW;
             }
         } else {
             counter++;
             if (counter >= stepsPerDetent) {
                 counter = 0;
+                unsigned long currentTime = millis();
+                unsigned long timeDifference = currentTime - lastTurnTime;
+                lastTurnTime = currentTime;
+                speed = (timeDifference < maxInterval) ? maxIncrement : 1; // And here
                 return CW;
             }
         }
     }
     return NONE;
 }
-
-// Encoder::ButtonState Encoder::readButton() {
-//     if (encButton.getState() == LOW && buttonState == OPEN) { // Button is pressed
-//         buttonState = PRESSED;
-//         unsigned long now = millis();
-//         if (now - lastButtonPress < DOUBLE_PRESS_INTERVAL) {
-//             pressCount++;
-//         } else {
-//             pressCount = 1;
-//         }
-//         lastButtonPress = now;
-//     } else if (encButton.getState() == HIGH && buttonState == PRESSED) { // Button is not pressed
-//         buttonState = OPEN;
-//     }
-//     return buttonState;
-// }
 
 Encoder::ButtonState Encoder::readButton() {
     static unsigned long lastDebounceTime = 0; // the last time the button pin was toggled
@@ -99,6 +95,10 @@ Encoder::ButtonState Encoder::readButton() {
 
     lastButtonState = reading;
     return buttonState;
+}
+
+int Encoder::readSpeed() {
+    return speed;
 }
 
 bool Encoder::isButtonLongPressed() {

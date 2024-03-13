@@ -268,6 +268,7 @@ void handleEncoderMode0() {
 void handleTempoSelection() {
     // Handle tempo selection
     Encoder::Direction direction = encoder.readEncoder();
+    int tempoIncrement = encoder.readSpeed();
     int currentTempo = clock.getTempo();
     if (direction == Encoder::CW) {
         if (externalTempo) {
@@ -298,14 +299,6 @@ void handleTempoSelection() {
     }
     clock.setExternalTempo(externalTempo);
 
-    if (encoder.readButton() == Encoder::PRESSED) {
-        // Toggle the tempo increment on single press
-        if (tempoIncrement == 1) {
-            tempoIncrement = 25;
-        } else {
-            tempoIncrement = 1;
-        }
-    }
 }
 
 void loop() {
