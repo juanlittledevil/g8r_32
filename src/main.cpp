@@ -298,7 +298,6 @@ void handleTempoSelection() {
         }
     }
     clock.setExternalTempo(externalTempo);
-
 }
 
 void loop() {

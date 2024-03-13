@@ -18,7 +18,7 @@ int EurorackClock::flashPulseCount = 0;
 EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin) 
     : clockPin(clockPin), resetPin(resetPin), tempo(120), lastTickTime(0),
       tickInterval(60000 / tempo), isRunning(false), tempoLed(tempoLedPin),
-      externalClock(clockPin), resetButton(resetPin), clockSource(INTERNAL) {
+      externalClock(clockPin), resetButton(resetPin) {
         instance = this;
         timer = new HardwareTimer(TIM2); // Use Timer 2
         attachInterrupt(digitalPinToInterrupt(resetPin), EurorackClock::resetInterruptHandler, RISING);
@@ -99,7 +99,7 @@ void EurorackClock::handleExternalClock() {
     static int tickCount = 0;
     int clockState = externalClock.getState();
 
-    if (clockState == HIGH && lastClockState == LOW && this->isExternalTempo) {
+    if (clockState == HIGH && lastClockState == LOW && this->isExternalTempo && (millis() - lastMidiClockTime > MIDI_CLOCK_TIMEOUT)) {
         unsigned long currentTime = millis();
         lastClockTime = currentTime;
         tickCount++;
@@ -116,7 +116,6 @@ void EurorackClock::handleExternalClock() {
 }
 
 void EurorackClock::handleMidiClock() {
-    // if (this->isExternalTempo && this->clockSource == EXTERNAL_MIDI) {
     static int tickCount = 0;
     static unsigned long lastClockTime = 0;
 
@@ -124,6 +123,7 @@ void EurorackClock::handleMidiClock() {
         // Handle MIDI clock
         unsigned long currentTime = millis();
         lastClockTime = currentTime;
+        lastMidiClockTime = currentTime;
         tickCount++;
         if (resetButton.getState() == HIGH) {
             timeToFlash = true;
@@ -135,10 +135,6 @@ void EurorackClock::handleMidiClock() {
             lastExternalTickTime = micros();
         }
     }
-}
-
-void EurorackClock::setClockSource(ClockSource source) {
-    this->clockSource = source;
 }
 
 void EurorackClock::setPPQN(int ppqn) {
