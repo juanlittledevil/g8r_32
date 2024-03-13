@@ -19,8 +19,11 @@ public:
     static void interruptHandler() {
         instance->tick();
     }
+    static void resetInterruptHandler() {
+        instance->reset();
+    }
     // void clock();
-    // void reset();
+    void reset();
     void tick();
     void setTempo(float newTempo, int ppqn);
     int getTempo() const; 
@@ -39,6 +42,7 @@ private:
     float tickInterval; // interval between ticks in milliseconds
     float lastExternalTickTime; // interval between ticks in milliseconds
     static float lastFlashTime;
+    static int flashPulseCount;
     int clockPin;
     int resetPin;
     int ppqn;

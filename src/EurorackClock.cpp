@@ -13,6 +13,7 @@
 
 EurorackClock* EurorackClock::instance = nullptr;
 float EurorackClock::lastFlashTime = 0;
+int EurorackClock::flashPulseCount = 0;
 
 EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin) 
     : clockPin(clockPin), resetPin(resetPin), tempo(120), lastTickTime(0),
@@ -20,6 +21,7 @@ EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin)
       externalClock(clockPin), resetButton(resetPin), clockSource(INTERNAL) {
         instance = this;
         timer = new HardwareTimer(TIM2); // Use Timer 2
+        attachInterrupt(digitalPinToInterrupt(resetPin), EurorackClock::resetInterruptHandler, RISING);
         this->externalTempo = 0;
 }
 
@@ -69,7 +71,6 @@ void EurorackClock::flashLed() {
 }
 
 void EurorackClock::flashTempoLed() {
-    static int pulseCount = 0;
     unsigned long currentTime = millis();
     int quarterNoteDuration;
 
@@ -79,18 +80,14 @@ void EurorackClock::flashTempoLed() {
         quarterNoteDuration = 60000 / this->tempo;
     }
 
-    // Check if the reset button has been pressed
-    if (resetButton.getState() == HIGH) {
+    if (currentTime - lastFlashTime >= quarterNoteDuration) {
         timeToFlash = true;
-        pulseCount = 0;
-    } else if (currentTime - lastFlashTime >= quarterNoteDuration) {
-        timeToFlash = true;
-        pulseCount = 0;
+        flashPulseCount = 0;
     }
 
-    pulseCount++;
-    if (pulseCount >= this->ppqn) {
-        pulseCount = 0;
+    flashPulseCount++;
+    if (flashPulseCount >= this->ppqn) {
+        flashPulseCount = 0;
     }
 
     flashLed();
@@ -106,10 +103,8 @@ void EurorackClock::handleExternalClock() {
         unsigned long currentTime = millis();
         lastClockTime = currentTime;
         tickCount++;
-        if (resetButton.getState() == HIGH) {
-            timeToFlash = true;
-            tickCount = 0;
-        } else if (tickCount >= this->ppqn) {
+
+        if (tickCount >= this->ppqn) {
             timeToFlash = true;
             tickCount = 0;
             // Update the last external tick time
@@ -164,7 +159,9 @@ void EurorackClock::tick() {
     }
 }
 
-// void EurorackClock::reset() {
-//     // Reset the clock
-//     // lastTickTime = micros();
-// }
+void EurorackClock::reset() {
+    timeToFlash = true;
+    flashPulseCount = 0;
+    // Reset the clock
+    lastTickTime = micros();
+}
