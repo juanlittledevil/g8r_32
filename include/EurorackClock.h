@@ -3,6 +3,7 @@
 
 #include <HardwareTimer.h>
 #include "LED.h"
+#include "Pin.h"
 
 class EurorackClock {
 public:
@@ -15,21 +16,33 @@ public:
     void clock();
     void reset();
     void tick();
-    void setTempo(int newTempo, int ppqn);
+    void setTempo(float newTempo, int ppqn);
     int getTempo() const; 
-    void configureLed();
+    void setup();
     void flashTempoLed();
+    void handleExternalClock();
+    void setPPQN(int ppqn);
+    void setExternalTempo(bool isExternalTempo);
 
 private:
-    int tempo; // Tempo in BPM
-    unsigned long lastTickTime; // time of the last tick in milliseconds
-    unsigned long tickInterval; // interval between ticks in milliseconds
+    void flashLed();
+    float tempo; // Tempo in BPM
+    float lastTickTime; // time of the last tick in milliseconds
+    float tickInterval; // interval between ticks in milliseconds
+    float lastExternalTickTime; // interval between ticks in milliseconds
+    static float lastFlashTime;
     int clockPin;
     int resetPin;
+    int ppqn;
     bool isRunning;
+    bool isExternalTempo;
+    bool timeToFlash;
+    float externalTempo;
     HardwareTimer* timer;
     static EurorackClock* instance;
     LED tempoLed;
+    InputPin externalClock;
+    InputPin resetButton;
 };
 
 #endif // EURORACKCLOCK_H

@@ -12,22 +12,26 @@
 #endif
 
 EurorackClock* EurorackClock::instance = nullptr;
+float EurorackClock::lastFlashTime = 0;
 
 EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin) 
-    : clockPin(clockPin), resetPin(resetPin), tempo(120),
-      lastTickTime(0), tickInterval(60000 / tempo), isRunning(false),
-      tempoLed(tempoLedPin) {
+    : clockPin(clockPin), resetPin(resetPin), tempo(120), lastTickTime(0),
+      tickInterval(60000 / tempo), isRunning(false), tempoLed(tempoLedPin),
+      externalClock(clockPin), resetButton(resetPin) {
         instance = this;
         timer = new HardwareTimer(TIM2); // Use Timer 2
+        this->externalTempo = 0;
 }
 
-void EurorackClock::configureLed() {
+void EurorackClock::setup() {
     tempoLed.begin();
+    externalClock.begin();
 }
 
-void EurorackClock::setTempo(int newTempo, int ppqn) {
+void EurorackClock::setTempo(float newTempo, int ppqn) {
     tempo = newTempo;
-    tickInterval = 60000000 / (tempo * ppqn); // Calculate interval in microseconds
+    this->ppqn = ppqn;
+    tickInterval = 60000000.0 / (tempo * ppqn); // Calculate interval in microseconds
     timer->setOverflow(tickInterval, MICROSEC_FORMAT);
 }
 
@@ -43,45 +47,105 @@ void EurorackClock::stop() {
     timer->pause();
 }
 
-void EurorackClock::tick() {
-    if (isRunning && micros() - lastTickTime >= tickInterval) {
-        lastTickTime = micros();
-        clock();
-    }
-}
-
 int EurorackClock::getTempo() const {
     return tempo;
 }
 
-void EurorackClock::flashTempoLed() {
+void EurorackClock::flashLed() {
+    static unsigned long ledOffTime = 0;
     unsigned long currentTime = millis();
-    int quarterNoteDuration = 60000 / this->tempo;
-    static unsigned long lastFlashTime = 0;
-    static bool isLedOn = false;
+    int ledOnDuration = 50; // Duration in milliseconds that the LED should stay on
 
-    if (currentTime - lastFlashTime >= quarterNoteDuration) {
-        if (isLedOn) {
-            isLedOn = false;
-            this->tempoLed.setState(false);
-        } else {
-            this->tempoLed.setState(true);
-            isLedOn = true;
-        }
+    if (timeToFlash) {
+        this->tempoLed.setState(HIGH);
         lastFlashTime = currentTime;
+        ledOffTime = currentTime + ledOnDuration;
+        timeToFlash = false;
+    }
+
+    if (currentTime >= ledOffTime) {
+        this->tempoLed.setState(LOW);
+    }
+}
+
+void EurorackClock::flashTempoLed() {
+    static int pulseCount = 0;
+    unsigned long currentTime = millis();
+    int quarterNoteDuration;
+
+    if (this->isExternalTempo) {
+        quarterNoteDuration = 60000 / this->externalTempo;
+    } else {
+        quarterNoteDuration = 60000 / this->tempo;
+    }
+
+    // Check if the reset button has been pressed
+    if (resetButton.getState() == HIGH) {
+        timeToFlash = true;
+        pulseCount = 0;
+    } else if (currentTime - lastFlashTime >= quarterNoteDuration) {
+        timeToFlash = true;
+        pulseCount = 0;
+    }
+
+    pulseCount++;
+    if (pulseCount >= this->ppqn) {
+        pulseCount = 0;
+    }
+
+    flashLed();
+}
+
+void EurorackClock::handleExternalClock() {
+    static int lastClockState = LOW;
+    static unsigned long lastClockTime = 0;
+    static int tickCount = 0;
+    int clockState = externalClock.getState();
+
+    if (clockState == HIGH && lastClockState == LOW && this->isExternalTempo) {
+        unsigned long currentTime = millis();
+        lastClockTime = currentTime;
+        tickCount++;
+        if (resetButton.getState() == HIGH) {
+            timeToFlash = true;
+            tickCount = 0;
+        } else if (tickCount >= this->ppqn) {
+            timeToFlash = true;
+            tickCount = 0;
+            // Update the last external tick time
+            lastExternalTickTime = micros();
+        }
+    }
+
+    lastClockState = clockState;
+}
+
+void EurorackClock::setPPQN(int ppqn) {
+    this->ppqn = ppqn;
+}
+
+void EurorackClock::setExternalTempo(bool isExternalTempo = false) {
+    this->isExternalTempo = isExternalTempo;
+}
+
+void EurorackClock::tick() {
+    if (isRunning && micros() - lastTickTime >= tickInterval) {
+        if (isExternalTempo) {
+            lastTickTime = lastExternalTickTime;
+        } else {
+            lastTickTime = micros();
+        }
     }
 }
 
 void EurorackClock::clock() {
     // Continue the clock
     // #if DEBUG
-    // // DEBUG_PRINT("Received MIDI Clock");
+    // DEBUG_PRINT("Received Clock");
     // #endif
 }
 
 void EurorackClock::reset() {
     // Reset the clock
-    #if DEBUG
-    DEBUG_PRINT("Received MIDI Reset");
-    #endif
+    lastTickTime = micros();
 }

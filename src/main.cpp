@@ -102,9 +102,9 @@ void setup() {
     midiHandler.setChannel(-1);
 
     // Start the clock and set the tempo
-    clock.configureLed();
+    clock.setup();
     clock.start();
-    clock.setTempo(120, 4); // Set the tempo to 120 BPM with 4 PPQN
+    clock.setTempo(120.0, 4); // Set the tempo to 120 BPM with internal 4 PPQN
 
     delay(1000);
 
@@ -299,6 +299,7 @@ void handleTempoSelection() {
             #endif
         }
     }
+    clock.setExternalTempo(externalTempo);
 
     if (encoder.readButton() == Encoder::PRESSED) {
         // Toggle the tempo increment on single press
@@ -355,5 +356,6 @@ void loop() {
 
     // Handle clock pulses
     clock.flashTempoLed();
+    clock.handleExternalClock();
     clock.tick();
 }
