@@ -20,6 +20,8 @@ class Gates {
     void turnOffGate(int index);
     void setALLGates(bool state);
     void triggerGates();
+    void resetTriggerGates();
+    void update();
 };
 
 #endif

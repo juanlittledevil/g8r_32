@@ -23,7 +23,7 @@ public:
     void setTempo(float newTempo, int ppqn);
     int getTempo() const; 
     void setup();
-    void flashTempoLed();
+    void updateFlashPulseCount();
     void handleExternalClock();
     void handleMidiClock();
     void setPPQN(int ppqn);

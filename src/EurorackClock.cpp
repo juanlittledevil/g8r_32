@@ -11,9 +11,21 @@
 #include <Arduino.h>
 #endif
 
-EurorackClock* EurorackClock::instance = nullptr;
+const int LED_ON_DURATION = 25; 
+const int MIDI_CLOCK_PULSE_COUNT = 24;
 float EurorackClock::lastFlashTime = 0;
 int EurorackClock::flashPulseCount = 0;
+
+struct ClockState {
+    unsigned long lastTickTime;
+    unsigned long tickInterval;
+    bool isRunning;
+
+    ClockState() : lastTickTime(0), tickInterval(0), isRunning(false) {}
+};
+
+// Static interrupt handler for the clock
+EurorackClock* EurorackClock::instance = nullptr;
 
 EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates& gates) 
     : clockPin(clockPin),
@@ -83,7 +95,7 @@ void EurorackClock::updateTempoLed() {
 }
 
 
-void EurorackClock::flashTempoLed() {
+void EurorackClock::updateFlashPulseCount() {
     flashPulseCount++;
     int updateCount = 0;
 
@@ -115,7 +127,7 @@ void EurorackClock::handleExternalClock() {
     if (clockState == HIGH && lastClockState == LOW && this->isExternalTempo && (millis() - lastMidiClockTime > MIDI_CLOCK_TIMEOUT)) {
         isMidiClock = false;
         gates.triggerGates();
-        flashTempoLed();
+        updateFlashPulseCount();
     }
 
     lastClockState = clockState;
@@ -130,7 +142,7 @@ void EurorackClock::handleMidiClock() {
         lastMidiClockTime = millis();
         isMidiClock = true;
         gates.triggerGates();
-        flashTempoLed();
+        updateFlashPulseCount();
     }
 }
 
@@ -152,20 +164,18 @@ void EurorackClock::tick() {
     if (!this->isExternalTempo && isRunning && micros() - lastTickTime >= tickInterval) {
         lastTickTime = micros();
         gates.triggerGates();
-        flashTempoLed();
+        updateFlashPulseCount();
     }
     updateTempoLed();
+    gates.update();
 }
 
-// void EurorackClock::reset() {
-//     gates.setALLGates(LOW);
-//     tempoLed.setState(LOW);
-//     timeToFlash = true;
-//     flashPulseCount = 0;
-//     ledOnTime = millis();
-//     flashTempoLed();
-// }
-
 void EurorackClock::reset() {
+    if (!isExternalTempo) {
+        lastTickTime = micros();
+        tick();
+    }
     resetTriggered = true;
+    gates.resetTriggerGates();
+    gates.update();
 }

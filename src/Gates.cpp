@@ -73,3 +73,17 @@ void Gates::triggerGates() {
     gateArray[i].trigger(); // Trigger the gate
   }
 }
+
+// Method to reset the trigger of all gates
+void Gates::resetTriggerGates() {
+  for (int i = 0; i < numGates; i++) { // Loop through all gates
+    gateArray[i].resetTrigger(); // Reset the trigger of the gate
+  }
+}
+
+// Method to update the state of all gates
+void Gates::update() {
+  for (int i = 0; i < numGates; i++) { // Loop through all gates
+    gateArray[i].update(); // Update the state of the gate
+  }
+}

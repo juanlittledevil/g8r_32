@@ -31,10 +31,6 @@ void Gate::setDivision(int newDivision) {
 
 // trigger the gate from clock tick.
 void Gate::trigger() {
-    static unsigned long ledOffTime = 0;
-    unsigned long currentTime = millis();
-    int ledOnDuration = 10; // Duration in milliseconds that the LED should stay on
-
     // Increment the tick count
     tickCount++;
 
@@ -42,16 +38,23 @@ void Gate::trigger() {
     if (tickCount % division == 0) {
         // Turn on the gate
         setState(HIGH);
-        ledOffTime = currentTime + ledOnDuration;
-    }
-
-    // Check if it's time to turn off the gate
-    if (currentTime >= ledOffTime) {
-        setState(LOW);
+        triggeredTime = millis();
     }
 
     // Reset the tick count if it's equal to the division
     if (tickCount == division) {
         tickCount = 0;
     }
+}
+
+void Gate::update() {
+    // Check if it's time to turn off the gate
+    if (millis() >= triggeredTime + gateOnDuration) {
+        setState(LOW);
+    }
+}
+
+void Gate::resetTrigger() {
+    setState(LOW);
+    tickCount = 0;
 }
