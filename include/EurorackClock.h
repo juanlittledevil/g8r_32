@@ -44,6 +44,8 @@ private:
     void updateFlashPulseCount();
     bool shouldTriggerClockPulse();
     void triggerClockPulse();
+    void handleResetTrigger();
+    void decideFlash();
 
     static EurorackClock* instance;
     HardwareTimer* timer;
@@ -70,6 +72,9 @@ private:
     bool timeToFlash;
     bool resetTriggered;
     float externalTempo;
+    int lastClockState = LOW;
+    unsigned long lastClockTime = 0;
+    int tickCount = 0;
 };
 
 #endif // EURORACKCLOCK_H

@@ -82,20 +82,21 @@ void EurorackClock::updateTempoLed() {
 
 void EurorackClock::updateFlashPulseCount() {
     flashPulseCount++;
-    int updateCount = 0;
+    handleResetTrigger();
+    decideFlash();
+}
 
+void EurorackClock::handleResetTrigger() {
     if (resetTriggered) {
         tempoLed.setState(LOW);
         resetTriggered = false;
         flashPulseCount = 0;
         timeToFlash = true;
     }
+}
 
-    if (isMidiClock) {
-        updateCount = 24;
-    } else {
-        updateCount = this->ppqn;
-    }
+void EurorackClock::decideFlash() {
+    int updateCount = isMidiClock ? 24 : this->ppqn;
 
     if (flashPulseCount >= updateCount) {
         timeToFlash = true;
@@ -104,8 +105,8 @@ void EurorackClock::updateFlashPulseCount() {
 }
 
 void EurorackClock::handleExternalClock() {
-    static int lastClockState = LOW;
-    static unsigned long lastClockTime = 0;
+    // static int lastClockState = LOW;
+    // static unsigned long lastClockTime = 0;
     // static int tickCount = 0;
     int clockState = externalClock.getState();
 
@@ -139,7 +140,10 @@ void EurorackClock::setExternalTempo(bool isExternalTempo = false) {
     this->isExternalTempo = isExternalTempo;
     if (!isExternalTempo) {
         isMidiClock = false;
-    }
+        // Manually reset necessary state variables
+        lastClockState = LOW;
+        lastClockTime = 0;
+        tickCount = 0;    }
 }
 
 // This method get called from the main loop.
