@@ -8,12 +8,7 @@
 #include "MIDIHandler.h"
 #include "EurorackClock.h"
 
-// Uncomment the line below to enable debugging. Comment it out to disable debugging
-// each file has its own DEBUG flag for more granular control.
-#define DEBUG 1 // 0 for no debug, 1 for debug
-#ifdef DEBUG
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
-#endif
 
 // Function to calculate the size of an array
 template<typename T, size_t N>
@@ -85,8 +80,10 @@ MIDIHandler midiHandler(RX_PIN, TX_PIN, clock, gates, leds);
 // Create an instance of the Encoder class
 Encoder encoder = Encoder(encCLKPin, encDTPin, encButtonPin);
 
-
 void setup() {
+    // Enable debugging
+    Debug::isEnabled = false;
+
     // Initialize serial communication
     Serial.begin(9600);
 

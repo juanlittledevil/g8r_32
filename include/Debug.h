@@ -6,6 +6,7 @@
 class Debug {
 public:
     static void print(const char* file, int line, const char* func, const String& message);
+    static bool isEnabled;
 };
 
 #endif 
