@@ -16,14 +16,6 @@ const int MIDI_CLOCK_PULSE_COUNT = 24;
 float EurorackClock::lastFlashTime = 0;
 int EurorackClock::flashPulseCount = 0;
 
-struct ClockState {
-    unsigned long lastTickTime;
-    unsigned long tickInterval;
-    bool isRunning;
-
-    ClockState() : lastTickTime(0), tickInterval(0), isRunning(false) {}
-};
-
 // Static interrupt handler for the clock
 EurorackClock* EurorackClock::instance = nullptr;
 
@@ -52,18 +44,18 @@ void EurorackClock::setup() {
 void EurorackClock::setTempo(float newTempo, int ppqn) {
     tempo = newTempo;
     this->ppqn = ppqn;
-    tickInterval = 60000000.0 / (tempo * ppqn); // Calculate interval in microseconds
-    timer->setOverflow(tickInterval, MICROSEC_FORMAT);
+    clockState.tickInterval = 60000000.0 / (tempo * ppqn); // Calculate interval in microseconds
+    timer->setOverflow(clockState.tickInterval, MICROSEC_FORMAT);
 }
 
 void EurorackClock::start() {
-    isRunning = true;
+    clockState.isRunning = true;
     timer->attachInterrupt(interruptHandler);
     timer->resume();
 }
 
 void EurorackClock::stop() {
-    isRunning = false;
+    clockState.isRunning = false;
     timer->detachInterrupt();
     timer->pause();
 }
@@ -161,8 +153,8 @@ void EurorackClock::setExternalTempo(bool isExternalTempo = false) {
 // It checks if the clock is running and if it's time to trigger the clock.
 void EurorackClock::tick() {
     // This if statement detects when to create a clock pulse.
-    if (!this->isExternalTempo && isRunning && micros() - lastTickTime >= tickInterval) {
-        lastTickTime = micros();
+    if (!this->isExternalTempo && clockState.isRunning && micros() - clockState.lastTickTime >= clockState.tickInterval) {
+        clockState.lastTickTime = micros();
         gates.triggerGates();
         updateFlashPulseCount();
     }
@@ -172,7 +164,7 @@ void EurorackClock::tick() {
 
 void EurorackClock::reset() {
     if (!isExternalTempo) {
-        lastTickTime = micros();
+        clockState.lastTickTime = micros();
         tick();
     }
     resetTriggered = true;

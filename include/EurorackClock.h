@@ -6,7 +6,18 @@
 #include "Pin.h"
 #include "Gates.h"
 
+struct ClockState {
+    unsigned long lastTickTime;
+    unsigned long tickInterval;
+    bool isRunning;
+
+    ClockState() : lastTickTime(0), tickInterval(0), isRunning(false) {}
+};
+
 class EurorackClock {
+
+ClockState clockState;
+
 public:
     EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates& gates);
     void start();
@@ -23,7 +34,7 @@ public:
     void setTempo(float newTempo, int ppqn);
     int getTempo() const; 
     void setup();
-    void updateFlashPulseCount();
+    void flashTempoLed();
     void handleExternalClock();
     void handleMidiClock();
     void setPPQN(int ppqn);
@@ -31,6 +42,7 @@ public:
 
 private:
     void updateTempoLed();
+    void updateFlashPulseCount();
     float tempo; // Tempo in BPM
     float lastTickTime; // time of the last tick in milliseconds
     float tickInterval; // interval between ticks in milliseconds
