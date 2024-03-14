@@ -40,12 +40,13 @@ public:
     void setExternalTempo(bool isExternalTempo);
 
 private:
-    void updateTempoLed();
+    void updateTempoLed(unsigned long currentTime);
     void updateFlashPulseCount();
     bool shouldTriggerClockPulse();
     void triggerClockPulse();
     void handleResetTrigger();
     void decideFlash();
+    void triggerTempoLed(unsigned long currentTime);
 
     static EurorackClock* instance;
     HardwareTimer* timer;

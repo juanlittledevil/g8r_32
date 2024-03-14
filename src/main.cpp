@@ -82,7 +82,7 @@ Encoder encoder = Encoder(encCLKPin, encDTPin, encButtonPin);
 
 void setup() {
     // Enable debugging
-    Debug::isEnabled = false;
+    Debug::isEnabled = true;
 
     // Initialize serial communication
     Serial.begin(9600);
@@ -109,9 +109,9 @@ void setup() {
     gates.begin(); // Initialize gate pins
     encoder.begin(); // Initialize encoder pins
     
-    #if DEBUG
-    DEBUG_PRINT("Finished setup() function");
-    #endif
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Finished setup() function");
+    }
 }
 
 // Enconder Handlers
@@ -250,9 +250,9 @@ void handleTempoSelection() {
         if (externalTempo) {
             // Exit external tempo mode and increase the tempo
             externalTempo = false;
-            #if DEBUG
-            DEBUG_PRINT("External tempo mode disabled");
-            #endif
+            if (Debug::isEnabled) {
+                DEBUG_PRINT("External tempo mode disabled");
+            }
         } else if (currentTempo + tempoIncrement <= maxTempo) {
             clock.setTempo(currentTempo + tempoIncrement, 4);
         }
@@ -260,9 +260,9 @@ void handleTempoSelection() {
         if (currentTempo - tempoIncrement < minTempo) {
             // Enter external tempo mode when the tempo reaches the minimum
             externalTempo = true;
-            #if DEBUG
-            DEBUG_PRINT("External tempo mode enabled");
-            #endif
+            if (Debug::isEnabled) {
+                DEBUG_PRINT("External tempo mode enabled");
+            }
         } else {
             clock.setTempo(currentTempo - tempoIncrement, 4);
         }

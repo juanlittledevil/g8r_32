@@ -62,28 +62,45 @@ void Gates::turnOffGate(int index) {
 
 // Method to turn on or off all gates
 void Gates::setALLGates(bool state) {
-  for (int i = 0; i < numGates; i++) { // Loop through all gates
+  for (int i = 0; i < numGates; i++) {
     gateArray[i].setState(state); // Set the state of the gate
   }
 }
 
-// Method to trigger all gates
-void Gates::triggerGates() {
-  for (int i = 0; i < numGates; i++) { // Loop through all gates
-    gateArray[i].trigger(); // Trigger the gate
+// Method to trigger a specific gate
+void Gates::trigger(int index, unsigned long currentTime) {
+  if (index >= 0 && index < numGates) { // Check if the index is within bounds
+    gateArray[index].trigger(currentTime); // Trigger the gate at the specified index
   }
 }
 
-// Method to reset the trigger of all gates
-void Gates::resetTriggerGates() {
-  for (int i = 0; i < numGates; i++) { // Loop through all gates
-    gateArray[i].resetTrigger(); // Reset the trigger of the gate
+// Method to set the division of a specific gate
+void Gates::setDivision(int index, int division) {
+  if (index >= 0 && index < numGates) { // Check if the index is within bounds
+    gateArray[index].setDivision(division); // Set the division of the gate
   }
 }
+
+// Method to get the division of a specific gate
+int Gates::getDivision(int index) {
+  if (index >= 0 && index < numGates) { // Check if the index is within bounds
+    return gateArray[index].getDivision(); // Get the division of the gate
+  }
+  return -1; // Return -1 if the index is out of bounds
+}
+
+// // Method to reset the trigger of all gates
+// void Gates::resetTriggerGates() {
+//   for (int i = 0; i < numGates; i++) {
+//     gateArray[i].resetTrigger(); // Reset the trigger of the gate
+//   }
+// }
 
 // Method to update the state of all gates
-void Gates::update() {
-  for (int i = 0; i < numGates; i++) { // Loop through all gates
-    gateArray[i].update(); // Update the state of the gate
+void Gates::update(unsigned long currentTime) {
+  for (int i = 0; i < numGates; i++) {
+    gateArray[i].update(currentTime); // Update the state of the gate
   }
 }
+
+//

@@ -4,7 +4,7 @@
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
-const int LED_ON_DURATION = 25; 
+const int LED_ON_DURATION = 10; 
 const int MIDI_CLOCK_PULSE_COUNT = 24;
 float EurorackClock::lastFlashTime = 0;
 int EurorackClock::flashPulseCount = 0;
@@ -57,31 +57,20 @@ int EurorackClock::getTempo() const {
     return tempo;
 }
 
-void EurorackClock::updateTempoLed() {
-    unsigned long currentTime = millis();
-    int ledOnDuration = 25; // Duration in milliseconds that the LED should stay on
-
-    if (timeToFlash) {
-        // If the LED is off and enough time has passed since the last flash
-        if (this->tempoLed.getState() == LOW && currentTime - ledOnTime >= ledOnDuration) {
-            // Turn the LED on
-            this->tempoLed.setState(HIGH);
-            // Update the time the LED was turned on
-            ledOnTime = currentTime;
-            timeToFlash = false;
-        }
-    }
+void EurorackClock::updateTempoLed(unsigned long currentTime) {
+    int ledOnDuration = LED_ON_DURATION; // Duration in milliseconds that the LED should stay on
 
     // If the LED is on and it's been on for the duration
-    else if (this->tempoLed.getState() == HIGH && currentTime - ledOnTime >= ledOnDuration) {
+    if (this->tempoLed.getState() == HIGH && currentTime - ledOnTime >= ledOnDuration) {
         // Turn the LED off
         this->tempoLed.setState(LOW);
     }
 }
 
-
 void EurorackClock::updateFlashPulseCount() {
-    flashPulseCount++;
+    if (!resetTriggered) {
+        flashPulseCount++;
+    }
     handleResetTrigger();
     decideFlash();
 }
@@ -105,30 +94,27 @@ void EurorackClock::decideFlash() {
 }
 
 void EurorackClock::handleExternalClock() {
-    // static int lastClockState = LOW;
-    // static unsigned long lastClockTime = 0;
-    // static int tickCount = 0;
     int clockState = externalClock.getState();
+    unsigned long currentTime = millis();
 
-    if (clockState == HIGH && lastClockState == LOW && this->isExternalTempo && (millis() - lastMidiClockTime > MIDI_CLOCK_TIMEOUT)) {
+    if (clockState == HIGH && lastClockState == LOW && this->isExternalTempo && (currentTime - lastMidiClockTime > MIDI_CLOCK_TIMEOUT)) {
         isMidiClock = false;
-        gates.triggerGates();
-        updateFlashPulseCount();
+        triggerClockPulse();
     }
 
     lastClockState = clockState;
 }
 
 void EurorackClock::handleMidiClock() {
-    static int tickCount = 0;
-    static unsigned long lastClockTime = 0;
+    unsigned long currentTime = millis();
 
     if (this->isExternalTempo) {
         // Handle MIDI clock
-        lastMidiClockTime = millis();
+        lastMidiClockTime = currentTime;
         isMidiClock = true;
-        gates.triggerGates();
-        updateFlashPulseCount();
+
+        // Trigger clock pulse
+        triggerClockPulse();
     }
 }
 
@@ -149,35 +135,67 @@ void EurorackClock::setExternalTempo(bool isExternalTempo = false) {
 // This method get called from the main loop.
 // It checks if the clock is running and if it's time to trigger the clock.
 void EurorackClock::tick() {
+    unsigned long currentTime = millis();
+    gates.update(currentTime);
     if (shouldTriggerClockPulse()) {
         triggerClockPulse();
     }
-    updateTempoLed();
-    gates.update();
+    updateTempoLed(currentTime);
 }
 
 bool EurorackClock::shouldTriggerClockPulse() {
-    return !this->isExternalTempo && clockState.isRunning && micros() - clockState.lastTickTime >= clockState.tickInterval;
+    bool shouldTrigger = !this->isExternalTempo && clockState.isRunning && micros() - clockState.lastTickTime >= clockState.tickInterval;
+    return shouldTrigger;
 }
 
+void EurorackClock::triggerTempoLed(unsigned long currentTime) {
+    // If the LED is off and enough time has passed since the last flash
+    if (this->tempoLed.getState() == LOW) {
+        // Turn the LED on
+        this->tempoLed.setState(HIGH);
+        // Update the time the LED was turned on
+        ledOnTime = currentTime;
+        timeToFlash = false;
+    }
+}
+
+// EurorackClock.cpp
 void EurorackClock::triggerClockPulse() {
     clockState.lastTickTime = micros();
-    gates.triggerGates();
+    unsigned long currentTime = millis();
     updateFlashPulseCount();
-
-    //Debugging
-    Debug::isEnabled = false;
-    if (Debug::isEnabled) {
-        DEBUG_PRINT("Clock tick");
-    }   
+    for (int i = 0; i < gates.numGates; i++) {
+        if (flashPulseCount % gates.getDivision(i) == 0) {
+            gates.trigger(i, currentTime);
+        }
+    }
+    if (isMidiClock) { // Check if a MIDI clock signal is being used
+        if (flashPulseCount % 24 == 0) { // Use the MIDI clock standard of 24 PPQN
+            triggerTempoLed(currentTime);
+            timeToFlash = true;
+        }
+    } else {
+        if (flashPulseCount % ppqn == 0) {
+            triggerTempoLed(currentTime);
+            timeToFlash = true;
+        }
+    }
 }
 
+
 void EurorackClock::reset() {
-    if (!isExternalTempo) {
+    if (isExternalTempo) {
+        resetTriggered = true;
+        handleResetTrigger();
+        unsigned long currentTime = millis();
+        // Trigger the events immediately
+        for (int i = 0; i < gates.numGates; i++) {
+            gates.trigger(i, currentTime);
+        }
+        triggerTempoLed(currentTime);
+        // Reset the timers
         clockState.lastTickTime = micros();
-        tick();
+        flashPulseCount = 0;
+        gates.update(currentTime);
     }
-    resetTriggered = true;
-    gates.resetTriggerGates();
-    gates.update();
 }
