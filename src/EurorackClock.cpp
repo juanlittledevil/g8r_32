@@ -152,14 +152,21 @@ void EurorackClock::setExternalTempo(bool isExternalTempo = false) {
 // This method get called from the main loop.
 // It checks if the clock is running and if it's time to trigger the clock.
 void EurorackClock::tick() {
-    // This if statement detects when to create a clock pulse.
-    if (!this->isExternalTempo && clockState.isRunning && micros() - clockState.lastTickTime >= clockState.tickInterval) {
-        clockState.lastTickTime = micros();
-        gates.triggerGates();
-        updateFlashPulseCount();
+    if (shouldTriggerClockPulse()) {
+        triggerClockPulse();
     }
     updateTempoLed();
     gates.update();
+}
+
+bool EurorackClock::shouldTriggerClockPulse() {
+    return !this->isExternalTempo && clockState.isRunning && micros() - clockState.lastTickTime >= clockState.tickInterval;
+}
+
+void EurorackClock::triggerClockPulse() {
+    clockState.lastTickTime = micros();
+    gates.triggerGates();
+    updateFlashPulseCount();
 }
 
 void EurorackClock::reset() {

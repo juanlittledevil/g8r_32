@@ -20,6 +20,7 @@ ClockState clockState;
 
 public:
     EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates& gates);
+    void setup();
     void start();
     void stop();
     static void interruptHandler() {
@@ -28,12 +29,10 @@ public:
     static void resetInterruptHandler() {
         instance->reset();
     }
-    // void clock();
     void reset();
     void tick();
     void setTempo(float newTempo, int ppqn);
     int getTempo() const; 
-    void setup();
     void flashTempoLed();
     void handleExternalClock();
     void handleMidiClock();
@@ -43,6 +42,16 @@ public:
 private:
     void updateTempoLed();
     void updateFlashPulseCount();
+    bool shouldTriggerClockPulse();
+    void triggerClockPulse();
+
+    static EurorackClock* instance;
+    HardwareTimer* timer;
+    LED tempoLed;
+    InputPin externalClock;
+    InputPin resetButton;
+    Gates& gates;
+
     float tempo; // Tempo in BPM
     float lastTickTime; // time of the last tick in milliseconds
     float tickInterval; // interval between ticks in milliseconds
@@ -61,12 +70,6 @@ private:
     bool timeToFlash;
     bool resetTriggered;
     float externalTempo;
-    HardwareTimer* timer;
-    static EurorackClock* instance;
-    LED tempoLed;
-    InputPin externalClock;
-    InputPin resetButton;
-    Gates& gates;
 };
 
 #endif // EURORACKCLOCK_H
