@@ -1,15 +1,9 @@
 #include "MIDIHandler.h"
 #include "Debug.h"
-
-// Uncomment the line below to enable debugging. Comment it out to disable debugging
-// each file has its own DEBUG flag for more granular control.
-// #define DEBUG 1 // 0 for no debug, 1 for debug
-#ifdef DEBUG
-#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
-
-// Include the Arduino Serial library
 #include <Arduino.h>
-#endif
+#include "ModeSelector.h"
+
+#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 extern bool isInSelection;
 
@@ -63,17 +57,17 @@ void MIDIHandler::handleContinue() {
 
 // Static function to handle MIDI note on messages
 void MIDIHandler::handleMode0NoteOn(byte channel, byte pitch, byte velocity) {
-    #if DEBUG
-    DEBUG_PRINT("Received MIDI Note On for note " + String(pitch) + " n channel " + String(channel) + " with velocity " + String(velocity));
-    #endif
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Received MIDI Note On for note " + String(pitch) + " n channel " + String(channel) + " with velocity " + String(velocity));
+    }
     // don't handle notes on mode 0
 }
 
 // Static function to handle MIDI note off messages
 void MIDIHandler::handleMode0NoteOff(byte channel, byte pitch, byte velocity) {
-    #if DEBUG
-    DEBUG_PRINT("Received MIDI Note Off for note " + String(pitch) + " on channel " + String(channel) + " with velocity " + String(velocity));
-    #endif
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Received MIDI Note Off for note " + String(pitch) + " on channel " + String(channel) + " with velocity " + String(velocity));
+    }
     // don't handle notes on mode 0
 }
 
@@ -132,15 +126,15 @@ void MIDIHandler::handleMode2NoteOff(byte channel, byte pitch, byte velocity) {
 void MIDIHandler::setMode(int mode) {
     instance->gates.setALLGates(false);
     instance->leds.setAllLeds(false);
-    if (mode == 0) {
+    if (ModeSelector::getInstance().getMode() == 0) {
         midi.setHandleNoteOn(handleMode0NoteOn);
         midi.setHandleNoteOff(handleMode0NoteOff);
         midi.setHandleClock(handleClock);
-    } else if (mode == 1) {
+    } else if (ModeSelector::getInstance().getMode() == 1) {
         midi.setHandleNoteOn(handleMode1NoteOn);
         midi.setHandleNoteOff(handleMode1NoteOff);
         midi.setHandleClock(nullptr);
-    } else if (mode == 2) {
+    } else if (ModeSelector::getInstance().getMode() == 2) {
         midi.setHandleNoteOn(handleMode2NoteOn);
         midi.setHandleNoteOff(handleMode2NoteOff);
         midi.setHandleClock(nullptr);

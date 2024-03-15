@@ -1,7 +1,7 @@
 #include <UMIDI.h>
 #include <Arduino.h>
 #include "Gates.h"
-
+#include "ModeSelector.h"
 #include "LEDs.h"
 #include "Debug.h"
 #include "Encoder.h"
@@ -45,10 +45,8 @@ LEDs leds = LEDs(ledPins, numLedPins); // Create an instance of LEDs
 int encCLKPin = ENCODER_PINA;
 int encDTPin = ENCODER_PINB;
 int encButtonPin = ENCODER_BUTTON;
-bool doublePressHandled;
 
-// Defulat mode
-int mode = 0;
+bool doublePressHandled;
 bool selectingTempo = false;
 bool inModeSelection = false;
 static int previousMode = -1; // used with blinking in mode selection
@@ -87,6 +85,9 @@ void setup() {
     // Initialize serial communication
     Serial.begin(9600);
 
+    // Set the mode to 0
+    ModeSelector::getInstance().setMode(0);
+
     // Initialize the clock
     for (int i = 0; i < numPins; i++) {
         clockDivisions[i] = 1;
@@ -119,13 +120,13 @@ void handleLongPress() {
     // Enter mode selection state on long press
     inModeSelection = true;
     isInSelection = true;
-    leds.blinkSlow(mode);
+    leds.blinkSlow(ModeSelector::getInstance().getMode());
 }
 
 void handleDoublePress() {
     // Enter tempo selection mode on double press
     if (!doublePressHandled) {
-        if (mode == 0) {
+        if (ModeSelector::getInstance().getMode() == 0) {
             if (selectingTempo) {
                 // Exit tempo selection mode on double press
                 selectingTempo = false;
@@ -146,7 +147,7 @@ void handleSinglePress() {
         previousMode = -1; // Reset the previous mode
     } else {
         // Code to handle a single button press when not in mode selection state
-        if (mode == 1) {
+        if (ModeSelector::getInstance().getMode() == 1) {
             if (inChannelSelection) {
                 inChannelSelection = false;
                 isInSelection = false;
@@ -208,23 +209,30 @@ void handleChannelSelection() {
 void handleModeSelection() {
     // Handle mode selection
     Encoder::Direction direction = encoder.readEncoder();
+    int currentMode = ModeSelector::getInstance().getMode();
     if (direction == Encoder::CW) {
-        mode = (mode + 1) % total_modes;
+        ModeSelector::getInstance().setMode((currentMode + 1) % total_modes);
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("Mode: " + String(ModeSelector::getInstance().getMode()));
+        }   
     } else if (direction == Encoder::CCW) {
-        mode = (mode + total_modes - 1) % total_modes;
+        ModeSelector::getInstance().setMode((currentMode + total_modes - 1) % total_modes);
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("Mode: " + String(ModeSelector::getInstance().getMode()));
+        }
     }
 
     // Only blink the LED if the mode has changed
-    if (mode != previousMode) {
+    if (ModeSelector::getInstance().getMode() != previousMode) {
         for (int i = 0; i < total_modes; i++) {
-            if (i == mode) {
+            if (i == ModeSelector::getInstance().getMode()) {
                 leds.blinkSlow(i); // This will only be called once when the mode changes
             } else {
                 leds.stopBlinking(i);
                 leds.setState(i, false);
             }
         }
-        previousMode = mode; // Update the previous mode
+        previousMode = ModeSelector::getInstance().getMode(); // Update the previous mode
     }
 }
 
@@ -295,11 +303,11 @@ void loop() {
         handleModeSelection();
     } else {
         leds.stopAllBlinking();
-        if (mode != previousMode) {
-            previousMode = mode;
-            midiHandler.setMode(mode);
+        if (ModeSelector::getInstance().getMode() != previousMode) {
+            previousMode = ModeSelector::getInstance().getMode();
+            midiHandler.setMode(ModeSelector::getInstance().getMode());
         }
-        switch (mode) {
+        switch (ModeSelector::getInstance().getMode()) {
             case 0:
                 handleEncoderMode0();
                 break;
@@ -316,7 +324,8 @@ void loop() {
     midiHandler.handleMidiMessage();
 
     // Handle clock pulses
-    // clock.flashTempoLed(); // should be moved to EurorackClock class instead...
-    clock.handleExternalClock();
-    clock.tick();
+    if (ModeSelector::getInstance().getMode() == 0) {
+        clock.handleExternalClock();
+        clock.tick();
+    }
 }

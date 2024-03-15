@@ -89,13 +89,6 @@ int Gates::getDivision(int index) {
   return -1; // Return -1 if the index is out of bounds
 }
 
-// // Method to reset the trigger of all gates
-// void Gates::resetTriggerGates() {
-//   for (int i = 0; i < numGates; i++) {
-//     gateArray[i].resetTrigger(); // Reset the trigger of the gate
-//   }
-// }
-
 // Method to update the state of all gates
 void Gates::update(unsigned long currentTime) {
   for (int i = 0; i < numGates; i++) {

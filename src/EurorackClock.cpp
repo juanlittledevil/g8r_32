@@ -1,6 +1,7 @@
 #include "EurorackClock.h"
 #include "Debug.h"
 #include <Arduino.h>
+#include "ModeSelector.h"
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
@@ -94,27 +95,31 @@ void EurorackClock::decideFlash() {
 }
 
 void EurorackClock::handleExternalClock() {
-    int clockState = externalClock.getState();
-    unsigned long currentTime = millis();
+    if (ModeSelector::getInstance().getMode() == 0) {
+        int clockState = externalClock.getState();
+        unsigned long currentTime = millis();
 
-    if (clockState == HIGH && lastClockState == LOW && this->isExternalTempo && (currentTime - lastMidiClockTime > MIDI_CLOCK_TIMEOUT)) {
-        isMidiClock = false;
-        triggerClockPulse();
+        if (clockState == HIGH && lastClockState == LOW && this->isExternalTempo && (currentTime - lastMidiClockTime > MIDI_CLOCK_TIMEOUT)) {
+            isMidiClock = false;
+            triggerClockPulse();
+        }
+
+        lastClockState = clockState;
     }
-
-    lastClockState = clockState;
 }
 
 void EurorackClock::handleMidiClock() {
-    unsigned long currentTime = millis();
+    if (ModeSelector::getInstance().getMode() == 0) {
+        unsigned long currentTime = millis();
 
-    if (this->isExternalTempo) {
-        // Handle MIDI clock
-        lastMidiClockTime = currentTime;
-        isMidiClock = true;
+        if (this->isExternalTempo) {
+            // Handle MIDI clock
+            lastMidiClockTime = currentTime;
+            isMidiClock = true;
 
-        // Trigger clock pulse
-        triggerClockPulse();
+            // Trigger clock pulse
+            triggerClockPulse();
+        }
     }
 }
 
@@ -145,6 +150,7 @@ void EurorackClock::tick() {
 
 bool EurorackClock::shouldTriggerClockPulse() {
     bool shouldTrigger = !this->isExternalTempo && clockState.isRunning && micros() - clockState.lastTickTime >= clockState.tickInterval;
+    shouldTrigger = shouldTrigger && ModeSelector::getInstance().getMode() == 0;
     return shouldTrigger;
 }
 

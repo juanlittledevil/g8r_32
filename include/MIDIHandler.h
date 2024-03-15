@@ -28,15 +28,14 @@ public:
 
 
 private:
+    // Declare a static instance of the MIDIHandler class
+    static MIDIHandler* instance; 
     UMIDI midi;
     EurorackClock& clock;
     byte channel = 10; 
-    static byte confirmedChannel;
     Gates& gates;
     LEDs& leds;
-
-    // Declare a static instance of the MIDIHandler class
-    static MIDIHandler* instance; 
+    static byte confirmedChannel;
 
 };
 
