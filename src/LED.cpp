@@ -53,3 +53,14 @@ void LED::updateBlinking() {
         this->setState(!getState()); // Toggle LED state
     }
 }
+
+void LED::trigger(unsigned long currentTime) {
+    setState(HIGH);
+    triggeredTime = currentTime;
+}
+
+void LED::update(unsigned long currentTime) {
+    if (getState() == HIGH && currentTime >= triggeredTime + ledOnDuration) {
+        setState(LOW);
+    }
+}

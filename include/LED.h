@@ -14,6 +14,8 @@ class LED : public OutputPin {
         void stopBlinking();
         void updateBlinking();
         void setIntensity(int intensity);
+        void trigger(unsigned long currentTime);
+        void update(unsigned long currentTime);
         // void updateBlinking(int intensity);
 
     private:
@@ -21,6 +23,8 @@ class LED : public OutputPin {
         unsigned long blinkInterval;
         int intensity = 255;
         bool isBlinking;
+        int ledOnDuration = 25; // Duration in milliseconds that the LED should stay on
+        unsigned long triggeredTime = 0;
 };
 
 #endif

@@ -14,7 +14,7 @@ int EurorackClock::flashPulseCount = 0;
 EurorackClock* EurorackClock::instance = nullptr;
 
 // Constructor
-EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates& gates) 
+EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates& gates, LEDs& leds) 
     : clockPin(clockPin),
       resetPin(resetPin),
       tempo(120),
@@ -24,7 +24,8 @@ EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates&
       tempoLed(tempoLedPin),
       externalClock(clockPin),
       resetButton(resetPin),
-      gates(gates) {
+      gates(gates),
+      leds(leds) {
         instance = this;
         timer = new HardwareTimer(TIM2); // Use Timer 2
         attachInterrupt(digitalPinToInterrupt(resetPin), EurorackClock::resetInterruptHandler, RISING);
@@ -156,6 +157,7 @@ void EurorackClock::setExternalTempo(bool isExternalTempo) {
 void EurorackClock::tick() {
     unsigned long currentTime = millis();
     gates.update(currentTime);
+    leds.update(currentTime);
     if (shouldTriggerClockPulse()) {
         triggerClockPulse();
     }
@@ -195,6 +197,7 @@ void EurorackClock::triggerGates(unsigned long currentTime) {
     for (int i = 0; i < gates.numGates; i++) {
         if (flashPulseCount % gates.getDivision(i) == 0) {
             gates.trigger(i, currentTime);
+            leds.trigger(i, currentTime);
         }
     }
 }

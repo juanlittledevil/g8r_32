@@ -5,6 +5,7 @@
 #include "LED.h"
 #include "Pin.h"
 #include "Gates.h"
+#include "LEDs.h"
 
 // Define the state of the clock
 struct ClockState {
@@ -21,7 +22,7 @@ class EurorackClock {
 
 public:
     // Constructor
-    EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates& gates);
+    EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates& gates, LEDs& leds);
 
     // Setup function to initialize the clock
     void setup();
@@ -88,6 +89,7 @@ private:
     InputPin externalClock;
     InputPin resetButton;
     Gates& gates;
+    LEDs& leds;
     float tempo;
     float lastTickTime;
     float tickInterval;

@@ -62,7 +62,7 @@ bool inChannelSelection = false;
 bool inDivisionSelection = false;
 bool isInSelection = false;
 int selectedGate = 0;
-int clockDivisions[] = {0, 1, 2, 4, 12, 24, 48};
+int clockDivisions[] = {1, 2, 4, 12, 24, 48};
 int numClockDivisions = arraySize(clockDivisions);
 int tempoIncrement = 1;
 const int minTempo = 20;
@@ -76,7 +76,7 @@ int min_intensity = 64; // Set minimum intensity to 25% (64 out of 255)
 int intensity_step = (255 - min_intensity) / (total_pages - 1); // Calculate intensity step
 
 // Create an instance of the EurorackClock class
-EurorackClock clock(CLOCK_PIN, RESET_PIN, TEMPO_LED, gates);
+EurorackClock clock(CLOCK_PIN, RESET_PIN, TEMPO_LED, gates, leds);
 
 // Create an instance of the MIDIHandler class
 MIDIHandler midiHandler(RX_PIN, TX_PIN, clock, gates, leds);
@@ -283,13 +283,14 @@ void handleEncoderMode0() {
         divisionIndex = handleEncoderDirection(divisionIndex, numClockDivisions, direction);
         int division = clockDivisions[divisionIndex];
         gates.setDivision(selectedGate, division);
+        leds.setState(selectedGate, true);
+
         DEBUG_PRINT("Selected Gate: " + String(selectedGate) + " Clock Division: " + String(division) + " Index: " + String(divisionIndex));
  
     } else {
         // Handle gate selection
         selectedGate = handleEncoderDirection(selectedGate, numPins, direction);
         // DEBUG_PRINT("Selected Gate: " + String(selectedGate));
-        leds.setAllLeds(false);
         leds.setState(selectedGate, true);
     }
 }

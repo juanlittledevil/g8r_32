@@ -20,6 +20,8 @@ class LEDs {
         void updateBlinking();
         void setIntensity(int index, int intensity);
         void setAllintensity(int intensity);
+        void update(unsigned long currentTime);
+        void trigger(int index, unsigned long currentTime);
         // void updateBlinking(int intensity);
         int numLeds; // Number of LEDs
 
