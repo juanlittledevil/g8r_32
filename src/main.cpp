@@ -62,13 +62,14 @@ bool inChannelSelection = false;
 bool inDivisionSelection = false;
 bool isInSelection = false;
 int selectedGate = 0;
-int clockDivisions[] = {1, 2, 4, 24};
+int clockDivisions[] = {0, 1, 2, 4, 12, 24, 48};
 int numClockDivisions = arraySize(clockDivisions);
 int tempoIncrement = 1;
 const int minTempo = 20;
 const int maxTempo = 340;
 bool externalTempo = false;
 unsigned long lastFlashTime = 0;
+static int divisionIndex = 4;
 
 int total_pages = 16 / leds.numLeds; // Calculate total pages based on number of LEDs
 int min_intensity = 64; // Set minimum intensity to 25% (64 out of 255)
@@ -279,9 +280,11 @@ void handleEncoderMode0() {
     Encoder::Direction direction = encoder.readEncoder();
     if (inDivisionSelection) {
         // Handle division selection
-        clockDivisions[selectedGate] = clockDivisions[handleEncoderDirection(selectedGate, numPins, direction)];
-        gates.setDivision(selectedGate, clockDivisions[selectedGate]);
-
+        divisionIndex = handleEncoderDirection(divisionIndex, numClockDivisions, direction);
+        int division = clockDivisions[divisionIndex];
+        gates.setDivision(selectedGate, division);
+        DEBUG_PRINT("Selected Gate: " + String(selectedGate) + " Clock Division: " + String(division) + " Index: " + String(divisionIndex));
+ 
     } else {
         // Handle gate selection
         selectedGate = handleEncoderDirection(selectedGate, numPins, direction);
