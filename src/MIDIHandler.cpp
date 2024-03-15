@@ -127,8 +127,8 @@ void MIDIHandler::setMode(int mode) {
     instance->gates.setALLGates(false);
     instance->leds.setAllLeds(false);
     if (ModeSelector::getInstance().getMode() == 0) {
-        midi.setHandleNoteOn(handleMode0NoteOn);
-        midi.setHandleNoteOff(handleMode0NoteOff);
+        midi.setHandleNoteOn(nullptr);
+        midi.setHandleNoteOff(nullptr);
         midi.setHandleClock(handleClock);
     } else if (ModeSelector::getInstance().getMode() == 1) {
         midi.setHandleNoteOn(handleMode1NoteOn);

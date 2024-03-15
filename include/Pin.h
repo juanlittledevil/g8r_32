@@ -5,58 +5,57 @@
 #include <HardwareTimer.h>
 #endif
 
+// Pin class
 class Pin {
-    protected:
-        // put attributes shared by all subclasses here
-        int pin;
-        bool state;
+protected:
+    int pin; // Pin number
+    bool state; // Current state of the pin
 
-    public:
-        Pin(int pin = -1); // Default pin set to -1
-        ~Pin(); // Destructor declaration
+public:
+    Pin(int pin = -1); // Constructor
+    ~Pin(); // Destructor
 };
 
+// InputPin class (inherits from Pin)
 class InputPin : public Pin {
 public:
-    // Default constructor
-    InputPin(int pin);
-
-    // Overloaded constructor
-    InputPin(int pin, bool useInternalPullup);
-
-    virtual void begin();
-    virtual bool getState();
+    InputPin(int pin); // Default constructor
+    InputPin(int pin, bool useInternalPullup); // Overloaded constructor
+    virtual void begin(); // Initialize the pin
+    virtual bool getState(); // Get the state of the pin
 
 private:
-    bool useInternalPullup;
+    bool useInternalPullup; // Flag to indicate whether to use internal pull-up resistor
 };
 
-// AnalogInputPin class
+// AnalogInputPin class (inherits from Pin)
 class AnalogInputPin : public Pin {
 public:
-    AnalogInputPin(int pin);
-    void begin();
-    int read();
+    AnalogInputPin(int pin); // Constructor
+    void begin(); // Initialize the pin
+    int read(); // Read analog value from the pin
 };
 
+// OutputPin class (inherits from Pin)
 class OutputPin : public Pin {
-    public:
-        OutputPin(int pin = -1); // Default pin set to -1
-        virtual void begin();
-        virtual void setState(bool state);
-        virtual bool getState();
+public:
+    OutputPin(int pin = -1); // Constructor
+    virtual void begin(); // Initialize the pin
+    virtual void setState(bool state); // Set the state of the pin
+    virtual bool getState(); // Get the state of the pin
 };
 
+// PWMPin class (inherits from OutputPin)
 class PWMPin : public OutputPin {
-    public:
-        PWMPin(int pin = -1); // Default pin set to -1
-        virtual void begin();
-        void setDutyCycle(int dutyCycle);
-        int getDutyCycle();
-    
-    private:
-        int dutyCycle;
-        HardwareTimer* timer;
+public:
+    PWMPin(int pin = -1); // Constructor
+    virtual void begin(); // Initialize the pin
+    void setDutyCycle(int dutyCycle); // Set the duty cycle of the pin
+    int getDutyCycle(); // Get the duty cycle of the pin
+
+private:
+    int dutyCycle; // Duty cycle of the PWM pin
+    HardwareTimer* timer; // Timer for PWM output
 };
 
-#endif
+#endif // PIN_H
