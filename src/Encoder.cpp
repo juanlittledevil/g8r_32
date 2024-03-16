@@ -66,7 +66,7 @@ Encoder::Direction Encoder::readEncoder() {
 Encoder::ButtonState Encoder::readButton() {
     static unsigned long lastDebounceTime = 0; // the last time the button pin was toggled
     static ButtonState lastButtonState = OPEN; // the last button state
-    static const int debounceDelay = 20; // debounce time in milliseconds
+    static const int debounceDelay = 40; // debounce time in milliseconds
 
 
     ButtonState reading = (encButton.getState() == LOW) ? PRESSED : OPEN;

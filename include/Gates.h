@@ -16,7 +16,6 @@ class Gates {
     void turnOnGate(int index);
     void turnOffGate(int index);
     void setALLGates(bool state);
-    // void resetTriggerGates();
     void update(unsigned long currentTime);
     void trigger(int index, unsigned long currentTime);
     void setDivision(int index, int division);

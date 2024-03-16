@@ -22,7 +22,7 @@ class LEDs {
         void setAllintensity(int intensity);
         void update(unsigned long currentTime);
         void trigger(int index, unsigned long currentTime, bool inverted=false);
-        // void updateBlinking(int intensity);
+        void resetInverted(int index);
         int numLeds; // Number of LEDs
 
     private:

@@ -53,6 +53,7 @@ int encButtonPin = ENCODER_BUTTON;
 bool doublePressHandled;
 bool selectingTempo = false;
 bool inModeSelection = false;
+bool singlePressHandled = false;
 static int previousMode = -1; // used with blinking in mode selection
 static int previousChannel = -1; // used with blinking in channel selection
 int intensity = 255; // Default intensity for LEDs
@@ -105,13 +106,13 @@ void handleTempoSelection();
 
 void setup() {
     // Enable debugging
-    Debug::isEnabled = false;
+    Debug::isEnabled = true;
 
     // Initialize serial communication
     Serial.begin(9600);
 
     // Set the mode to 0
-    ModeSelector::getInstance().setMode(0);
+    ModeSelector::getInstance().setMode(1);
 
     // Initialize the MIDIHandler
     midiHandler.begin();
@@ -139,21 +140,23 @@ void setup() {
 
 void loop() {
     // Read the encoder and handle button presses
-    leds.updateBlinking();
     encoder.readButton();
-    if (encoder.isButtonLongPressed()) {
+    if (encoder.isButtonLongPressed()) { // Check if the button is long pressed
         handleLongPress();
-    } else if (encoder.isButtonDoublePressed()) {
+    } else if (encoder.isButtonDoublePressed()) { // Check if the button is double pressed
         if (!doublePressHandled) {
             handleDoublePress();
             doublePressHandled = true; // Set the flag to true when a double press is handled
         }
-    } else if (encoder.readButton() == Encoder::PRESSED) {
+    } else if (encoder.readButton() == Encoder::PRESSED) { // Check if the button is single pressed
         handleSinglePress();
-    } else if (encoder.readButton() == Encoder::OPEN) {
+        singlePressHandled = true; // Set the flag to true when a single press is handled
+    } else if (encoder.readButton() == Encoder::OPEN) { // Check if the button is released
         doublePressHandled = false; // Reset the flag when the button is released
+        singlePressHandled = false; // Reset the flag when the button is released
     }
 
+    // Handle the selection states.
     if (selectingTempo) {
         handleTempoSelection();
     } else if (inChannelSelection) {
@@ -161,7 +164,8 @@ void loop() {
     } else if (inModeSelection) {
         handleModeSelection();
     } else {
-        leds.stopAllBlinking();
+        // Handle the mode-specific functionality
+        // leds.stopAllBlinking();
         if (ModeSelector::getInstance().getMode() != previousMode) {
             previousMode = ModeSelector::getInstance().getMode();
             midiHandler.setMode(ModeSelector::getInstance().getMode());
@@ -182,6 +186,8 @@ void loop() {
     // Handle incoming MIDI messages
     midiHandler.handleMidiMessage();
 
+    leds.updateBlinking();
+
     // Handle clock pulses
     if (ModeSelector::getInstance().getMode() == 0) {
         clock.handleExternalClock();
@@ -192,8 +198,11 @@ void loop() {
 // Enconder Handlers
 void handleLongPress() {
     // Enter mode selection state on long press
+    leds.stopAllBlinking();
+    leds.setAllLeds(false);
     inModeSelection = true;
     isInSelection = true;
+    singlePressHandled = true;
     leds.blinkSlow(ModeSelector::getInstance().getMode());
 }
 
@@ -213,38 +222,72 @@ void handleDoublePress() {
     }
 }
 
+void handleModeSelectionPress() {
+    inModeSelection = false;
+    isInSelection = false;
+    previousMode = -1; // Reset the previous mode
+}
+
+void handleDivisionSelectionPress() {
+    inDivisionSelection = !inDivisionSelection; // Toggle division selection mode
+}
+
+void handleChannelSelectionPress() {
+    if (!singlePressHandled) {
+        // Exit channel selection state on button press
+        if (inChannelSelection) {
+            confirmedChannel = selectedChannel;
+            previousChannel = -1; // Reset the previous channel
+            leds.stopAllBlinking();
+            leds.setAllLeds(false);
+
+            Debug::isEnabled = true;
+            DEBUG_PRINT("Channel: " + String(selectedChannel));
+            Debug::isEnabled = false;
+
+            inChannelSelection = false;
+            isInSelection = false;
+
+        // Enter channel selection state on button press
+        } else {
+            inChannelSelection = true;
+            isInSelection = true;
+            int led_index = selectedChannel % leds.numLeds;
+
+            // Calculate current page and LED index within the page
+            int current_page = selectedChannel / leds.numLeds;
+
+
+            // Reset the mode for the LEDs if not in mode 0
+            if (ModeSelector::getInstance().getMode() != 0) {
+                for (int i = 0; i < leds.numLeds; i++) {
+                    leds.resetInverted(i);
+                }
+            }
+
+            if (selectedChannel < 8) {
+                leds.blinkFast(led_index); // Blink the LED corresponding to the selected channel
+            } else {
+                leds.blinkFast2(led_index); // Blink the LED corresponding to the selected channel
+            }
+
+            Debug::isEnabled = true;
+            DEBUG_PRINT("Channel: " + String(selectedChannel));
+            Debug::isEnabled = false;
+        }
+        singlePressHandled = true;
+    }
+}
+
 void handleSinglePress() {
     if (inModeSelection) {
-        // Confirm mode selection on single press
-        inModeSelection = false;
-        isInSelection = false;
-        previousMode = -1; // Reset the previous mode
+        handleModeSelectionPress();
     } else {
         // Code to handle a single button press when not in mode selection state
         if (ModeSelector::getInstance().getMode() == 0) {
-            inDivisionSelection = !inDivisionSelection; // Toggle division selection mode
+            handleDivisionSelectionPress();
         } else if (ModeSelector::getInstance().getMode() == 1) {
-            if (inChannelSelection) {
-                inChannelSelection = false;
-                isInSelection = false;
-                confirmedChannel = selectedChannel;
-                previousChannel = -1; // Reset the previous channel
-                leds.stopAllBlinking();
-                leds.setAllLeds(false);
-            } else {
-                inChannelSelection = true;
-                isInSelection = true;
-                int led_index = selectedChannel % leds.numLeds;
-
-                // Calculate current page and LED index within the page
-                int current_page = selectedChannel / leds.numLeds;
-
-                if (selectedChannel < 8) {
-                    leds.blinkFast(led_index); // Blink the LED corresponding to the selected channel
-                } else {
-                    leds.blinkFast2(led_index); // Blink the LED corresponding to the selected channel
-                }   
-            }
+            handleChannelSelectionPress();
         }
     }
 }
@@ -259,20 +302,26 @@ int handleCyclingSelectionDirection(int currentValue, int maxValue, Encoder::Dir
 }
 
 void handleChannelSelection() {
+    if (inModeSelection) { return; }
+
     Encoder::Direction direction = encoder.readEncoder();
-    selectedChannel = handleCyclingSelectionDirection(selectedChannel, NUM_MIDI_CHANNELS, direction);
+    selectedChannel = handleEncoderDirection(selectedChannel, NUM_MIDI_CHANNELS, direction);
 
     // Calculate current page and LED index within the page
     int current_page = selectedChannel / leds.numLeds;
     int led_index = selectedChannel % leds.numLeds;
 
-    // Only blink the LED if the mode has changed
     if (selectedChannel != previousChannel) {
         for (int i = 0; i < leds.numLeds; i++) { // Loop over LEDs, not channels
             if (i == led_index) {
-                setLEDState(i, true, selectedChannel < NUM_LEDS);
+                // setLEDState(i, true, selectedChannel < NUM_LEDS);
+                if (selectedChannel < 8) {
+                    leds.blinkFast(led_index); // Blink the LED corresponding to the selected channel
+                } else {
+                    leds.blinkFast2(led_index); // Blink the LED corresponding to the selected channel
+                }
             } else {
-                setLEDState(i, false);
+                leds.stopBlinking(i);
             }
         }
         previousChannel = selectedChannel; // Update the previous mode
@@ -325,8 +374,13 @@ int handleModeSelectionDirection(int currentMode, int totalModes, Encoder::Direc
 }
 
 void setLEDState(int ledIndex, bool state, bool blinkFast, bool blinkSlow) {
+    // If not in channel selection mode, stop blinking the LED
+    // if (!inChannelSelection) { leds.stopBlinking(ledIndex); }
     leds.stopBlinking(ledIndex);
+
     leds.setState(ledIndex, state);
+
+    // If in channel selection mode, blink the LED
     if (blinkFast) {
         leds.blinkFast(ledIndex);
     } else if (blinkSlow) {
@@ -341,16 +395,11 @@ void handleEncoderMode0() {
         divisionIndex = handleEncoderDirection(divisionIndex, musicalIntervalsSize, direction); // Changed here
         int division = musicalIntervals[divisionIndex];
         gates.setDivision(selectedGate, division);
-        // leds.setState(selectedGate, true);
         gates.setSelectedGate(selectedGate);
-        DEBUG_PRINT("Selected Gate: " + String(selectedGate) + " Clock Division: " + String(division) + " Index: " + String(divisionIndex));
     } else {
         // Handle gate selection
-        // int previousGate = selectedGate;
         selectedGate = handleEncoderDirection(selectedGate, numPins, direction);
         gates.setSelectedGate(selectedGate);
-        // leds.setState(previousGate, false);
-        // leds.setState(selectedGate, true);
     }
 }
 

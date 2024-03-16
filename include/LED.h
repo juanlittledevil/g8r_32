@@ -7,16 +7,13 @@ class LED : public OutputPin {
     public:
         LED(int pin = -1); // Default pin set to -1
         ~LED(); // Destructor declaration
-        // void setState(bool state) override;
-        // void setState(bool state, int intensity);
-        // bool getState() override;
         void startBlinking(unsigned long interval);
         void stopBlinking();
         void updateBlinking();
         void setIntensity(int intensity);
         void trigger(unsigned long currentTime, bool inverted=false);
         void update(unsigned long currentTime);
-        // void updateBlinking(int intensity);
+        void resetIvernted();
 
     private:
         unsigned long blinkStartTime;

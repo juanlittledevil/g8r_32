@@ -57,17 +57,11 @@ void MIDIHandler::handleContinue() {
 
 // Static function to handle MIDI note on messages
 void MIDIHandler::handleMode0NoteOn(byte channel, byte pitch, byte velocity) {
-    if (Debug::isEnabled) {
-        DEBUG_PRINT("Received MIDI Note On for note " + String(pitch) + " n channel " + String(channel) + " with velocity " + String(velocity));
-    }
     // don't handle notes on mode 0
 }
 
 // Static function to handle MIDI note off messages
 void MIDIHandler::handleMode0NoteOff(byte channel, byte pitch, byte velocity) {
-    if (Debug::isEnabled) {
-        DEBUG_PRINT("Received MIDI Note Off for note " + String(pitch) + " on channel " + String(channel) + " with velocity " + String(velocity));
-    }
     // don't handle notes on mode 0
 }
 
@@ -99,9 +93,6 @@ void MIDIHandler::handleMode1NoteOff(byte channel, byte pitch, byte velocity) {
 void MIDIHandler::handleMode2NoteOn(byte channel, byte pitch, byte velocity) {
     if (channel >= 9 && channel <= 16) {
         int gate = (channel - 9) % instance->gates.numGates;
-        #ifdef DEBUG
-        DEBUG_PRINT("Note on: channel = " + String(channel) + ", gate = " + String(gate));
-        #endif
         instance->gates.turnOnGate(gate);
         if (!isInSelection) {
             instance->leds.setState(gate, true);
@@ -113,9 +104,6 @@ void MIDIHandler::handleMode2NoteOn(byte channel, byte pitch, byte velocity) {
 void MIDIHandler::handleMode2NoteOff(byte channel, byte pitch, byte velocity) {
     if (channel >= 9 && channel <= 16) {
         int gate = (channel - 9) % instance->gates.numGates;
-        #ifdef DEBUG
-        DEBUG_PRINT("Note off: channel = " + String(channel) + ", gate = " + String(gate));
-        #endif
         instance->gates.turnOffGate(gate);
         if (!isInSelection) {
             instance->leds.setState(gate, false);

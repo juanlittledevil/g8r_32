@@ -14,16 +14,6 @@ LED::~LED() {
     // Cleanup code here if needed
 }
 
-// void LED::setState(bool state) {
-//     int scaledIntensity = state ? map(this->intensity, 0, 255, 0, 255) : 0;
-//     this->setDutyCycle(scaledIntensity);
-// }
-
-// bool LED::getState() {
-//     // Return true if duty cycle is not 0, false otherwise
-//     return this->getDutyCycle() != 0 == HIGH
-// }
-
 void LED::setIntensity(int intensity) {
     this->intensity = intensity;
 }
@@ -37,6 +27,7 @@ void LED::startBlinking(unsigned long interval) {
 void LED::stopBlinking() {
     this->isBlinking = false;
     this->intensity = 255;
+    DEBUG_PRINT("LED stopped blinking!");
 }
 
 void LED::updateBlinking() {
@@ -68,4 +59,8 @@ void LED::update(unsigned long currentTime) {
             setState(HIGH);
         }
     }
+}
+
+void LED::resetIvernted() {
+    this->inverted = false;
 }

@@ -9,7 +9,6 @@ class Gate : public OutputPin {
     ~Gate(); // Destructor declaration
     void trigger(unsigned long currentTime);
     void update(unsigned long currentTime);
-    // void resetTrigger();
     void setDivision(int divition);
     int getDivision();
   
