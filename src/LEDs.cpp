@@ -109,9 +109,9 @@ void LEDs::stopAllBlinking() {
 }
 
 // Method to trigger a specific led
-void LEDs::trigger(int index, unsigned long currentTime) {
+void LEDs::trigger(int index, unsigned long currentTime, bool inverted) {
   if (index >= 0 && index < numLeds) { // Check if the index is within bounds
-    this->leds[index].trigger(currentTime); // Trigger the gate at the specified index
+    this->leds[index].trigger(currentTime, inverted); // Trigger the gate at the specified index
   }
 }
 

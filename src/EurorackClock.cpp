@@ -195,9 +195,18 @@ void EurorackClock::triggerClockPulse() {
 // Trigger the gates
 void EurorackClock::triggerGates(unsigned long currentTime) {
     for (int i = 0; i < gates.numGates; i++) {
-        if (flashPulseCount % gates.getDivision(i) == 0) {
+        gates.gateCounters[i]++;
+        int division = gates.getDivision(i);
+        if (gates.gateCounters[i] % division == 0) {
+            gates.gateCounters[i] = 0;
             gates.trigger(i, currentTime);
-            leds.trigger(i, currentTime);
+            if (i == gates.getSelectedGate()) {
+                // Trigger the LED inverted.
+                leds.trigger(i, currentTime, true);
+            } else {
+                // Trigger the LED normally.
+                leds.trigger(i, currentTime);
+            }
         }
     }
 }
@@ -226,5 +235,13 @@ void EurorackClock::reset() {
         clockState.lastTickTime = micros();
         flashPulseCount = 0;
         gates.update(currentTime);
+    } else if (!isExternalTempo && ModeSelector::getInstance().getMode() == 0) {
+        unsigned long currentTime = millis();
+        // Get the currently selected gate
+        int selectedGate = gates.getSelectedGate();
+
+        // Reset the counter for the selected gate
+        gates.gateCounters[selectedGate] = 0;
+        gates.trigger(selectedGate, currentTime);
     }
 }

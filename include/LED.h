@@ -14,7 +14,7 @@ class LED : public OutputPin {
         void stopBlinking();
         void updateBlinking();
         void setIntensity(int intensity);
-        void trigger(unsigned long currentTime);
+        void trigger(unsigned long currentTime, bool inverted=false);
         void update(unsigned long currentTime);
         // void updateBlinking(int intensity);
 
@@ -24,7 +24,9 @@ class LED : public OutputPin {
         int intensity = 255;
         bool isBlinking;
         int ledOnDuration = 25; // Duration in milliseconds that the LED should stay on
+        int invertedLedOnDuration = 40; // Duration in milliseconds that the LED should stay on
         unsigned long triggeredTime = 0;
+        bool inverted = false;
 };
 
 #endif

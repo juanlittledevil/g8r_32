@@ -4,6 +4,7 @@
 
 #include <Arduino.h>
 #include "Gate.h"
+#include "LEDs.h"
 
 class Gates {
   public:
@@ -21,9 +22,13 @@ class Gates {
     void setDivision(int index, int division);
     int getDivision(int index);
     int numGates;
+    int *gateCounters;
+    void setSelectedGate(int gate);
+    int getSelectedGate(); 
 
   private:
     Gate *gateArray;
+    int selectedGate;
 
 };
 

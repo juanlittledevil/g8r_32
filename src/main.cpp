@@ -7,6 +7,7 @@
 #include "Encoder.h"
 #include "MIDIHandler.h"
 #include "EurorackClock.h"
+#include "Constants.h"
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
@@ -71,6 +72,9 @@ bool externalTempo = false;
 unsigned long lastFlashTime = 0;
 static int divisionIndex = 4;
 
+const int musicalIntervals[] = {1, 2, 4, 8, 16, 32, 3, 6, 12, 24, 48};
+const int musicalIntervalsSize = arraySize(musicalIntervals);
+
 int total_pages = 16 / leds.numLeds; // Calculate total pages based on number of LEDs
 int min_intensity = 64; // Set minimum intensity to 25% (64 out of 255)
 int intensity_step = (255 - min_intensity) / (total_pages - 1); // Calculate intensity step
@@ -101,7 +105,7 @@ void handleTempoSelection();
 
 void setup() {
     // Enable debugging
-    Debug::isEnabled = true;
+    Debug::isEnabled = false;
 
     // Initialize serial communication
     Serial.begin(9600);
@@ -125,9 +129,63 @@ void setup() {
     leds.begin(); // Initialize LED pins
     gates.begin(); // Initialize gate pins
     encoder.begin(); // Initialize encoder pins
+
+    gates.setSelectedGate(selectedGate);
     
     if (Debug::isEnabled) {
         DEBUG_PRINT("Finished setup() function");
+    }
+}
+
+void loop() {
+    // Read the encoder and handle button presses
+    leds.updateBlinking();
+    encoder.readButton();
+    if (encoder.isButtonLongPressed()) {
+        handleLongPress();
+    } else if (encoder.isButtonDoublePressed()) {
+        if (!doublePressHandled) {
+            handleDoublePress();
+            doublePressHandled = true; // Set the flag to true when a double press is handled
+        }
+    } else if (encoder.readButton() == Encoder::PRESSED) {
+        handleSinglePress();
+    } else if (encoder.readButton() == Encoder::OPEN) {
+        doublePressHandled = false; // Reset the flag when the button is released
+    }
+
+    if (selectingTempo) {
+        handleTempoSelection();
+    } else if (inChannelSelection) {
+        handleChannelSelection();
+    } else if (inModeSelection) {
+        handleModeSelection();
+    } else {
+        leds.stopAllBlinking();
+        if (ModeSelector::getInstance().getMode() != previousMode) {
+            previousMode = ModeSelector::getInstance().getMode();
+            midiHandler.setMode(ModeSelector::getInstance().getMode());
+        }
+        switch (ModeSelector::getInstance().getMode()) {
+            case 0:
+                handleEncoderMode0();
+                break;
+            case 1:
+                midiHandler.setChannel(confirmedChannel);
+                break;
+            case 2:
+                break;
+            // Add more cases as needed
+        }
+    }
+
+    // Handle incoming MIDI messages
+    midiHandler.handleMidiMessage();
+
+    // Handle clock pulses
+    if (ModeSelector::getInstance().getMode() == 0) {
+        clock.handleExternalClock();
+        clock.tick();
     }
 }
 
@@ -280,18 +338,19 @@ void handleEncoderMode0() {
     Encoder::Direction direction = encoder.readEncoder();
     if (inDivisionSelection) {
         // Handle division selection
-        divisionIndex = handleEncoderDirection(divisionIndex, numClockDivisions, direction);
-        int division = clockDivisions[divisionIndex];
+        divisionIndex = handleEncoderDirection(divisionIndex, musicalIntervalsSize, direction); // Changed here
+        int division = musicalIntervals[divisionIndex];
         gates.setDivision(selectedGate, division);
-        leds.setState(selectedGate, true);
-
+        // leds.setState(selectedGate, true);
+        gates.setSelectedGate(selectedGate);
         DEBUG_PRINT("Selected Gate: " + String(selectedGate) + " Clock Division: " + String(division) + " Index: " + String(divisionIndex));
- 
     } else {
         // Handle gate selection
+        // int previousGate = selectedGate;
         selectedGate = handleEncoderDirection(selectedGate, numPins, direction);
-        // DEBUG_PRINT("Selected Gate: " + String(selectedGate));
-        leds.setState(selectedGate, true);
+        gates.setSelectedGate(selectedGate);
+        // leds.setState(previousGate, false);
+        // leds.setState(selectedGate, true);
     }
 }
 
@@ -322,56 +381,4 @@ void handleTempoSelection() {
         }
     }
     clock.setExternalTempo(externalTempo);
-}
-
-void loop() {
-    // Read the encoder and handle button presses
-    leds.updateBlinking();
-    encoder.readButton();
-    if (encoder.isButtonLongPressed()) {
-        handleLongPress();
-    } else if (encoder.isButtonDoublePressed()) {
-        if (!doublePressHandled) {
-            handleDoublePress();
-            doublePressHandled = true; // Set the flag to true when a double press is handled
-        }
-    } else if (encoder.readButton() == Encoder::PRESSED) {
-        handleSinglePress();
-    } else if (encoder.readButton() == Encoder::OPEN) {
-        doublePressHandled = false; // Reset the flag when the button is released
-    }
-
-    if (selectingTempo) {
-        handleTempoSelection();
-    } else if (inChannelSelection) {
-        handleChannelSelection();
-    } else if (inModeSelection) {
-        handleModeSelection();
-    } else {
-        leds.stopAllBlinking();
-        if (ModeSelector::getInstance().getMode() != previousMode) {
-            previousMode = ModeSelector::getInstance().getMode();
-            midiHandler.setMode(ModeSelector::getInstance().getMode());
-        }
-        switch (ModeSelector::getInstance().getMode()) {
-            case 0:
-                handleEncoderMode0();
-                break;
-            case 1:
-                midiHandler.setChannel(confirmedChannel);
-                break;
-            case 2:
-                break;
-            // Add more cases as needed
-        }
-    }
-
-    // Handle incoming MIDI messages
-    midiHandler.handleMidiMessage();
-
-    // Handle clock pulses
-    if (ModeSelector::getInstance().getMode() == 0) {
-        clock.handleExternalClock();
-        clock.tick();
-    }
 }

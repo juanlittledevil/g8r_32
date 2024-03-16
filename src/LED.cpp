@@ -1,16 +1,8 @@
 #include "LED.h"
 #include "Debug.h"
-
-// Uncomment the line below to enable debugging. Comment it out to disable debugging
-// each file has its own DEBUG flag for more granular control.
-// #define DEBUG 1 // 0 for no debug, 1 for debug
-#ifdef DEBUG
-#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
-
-// Include the Arduino Serial library
 #include <Arduino.h>
-#endif
 
+#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 // Constructor
 LED::LED(int pin) : OutputPin(pin) {
@@ -54,13 +46,26 @@ void LED::updateBlinking() {
     }
 }
 
-void LED::trigger(unsigned long currentTime) {
-    setState(HIGH);
+void LED::trigger(unsigned long currentTime, bool inverted) {
+    if (!inverted) {
+        setState(HIGH);
+    } else {
+        setState(LOW);
+    }
+    this->inverted = inverted;
     triggeredTime = currentTime;
 }
 
 void LED::update(unsigned long currentTime) {
-    if (getState() == HIGH && currentTime >= triggeredTime + ledOnDuration) {
-        setState(LOW);
+    // If the LED is not inverted, turn it off after ledOnDuration
+    if (!this->inverted) {
+        if (getState() == HIGH && currentTime >= triggeredTime + ledOnDuration) {
+            setState(LOW);
+        }
+    // If the LED is inverted, turn it on after invertedLedOnDuration
+    } else {
+        if (getState() == LOW && currentTime >= triggeredTime + invertedLedOnDuration) {
+            setState(HIGH);
+        }
     }
 }

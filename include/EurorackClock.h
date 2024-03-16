@@ -6,6 +6,7 @@
 #include "Pin.h"
 #include "Gates.h"
 #include "LEDs.h"
+#include "Constants.h"
 
 // Define the state of the clock
 struct ClockState {
