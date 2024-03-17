@@ -1,0 +1,3 @@
+[submodule "lib/UMIDI"]
+	path = lib/UMIDI
+	url = https://github.com/juanlittledevil/UMIDI
