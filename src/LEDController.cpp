@@ -29,3 +29,32 @@ void LedController::stopBlinking(int ledIndex) {
 void LedController::blinkFaster(int ledIndex) {
     leds.startBlinking(ledIndex, 300);
 }
+
+void LedController::resetInverted() {
+    for (int i = 0; i < leds.numLeds; i++) {
+        leds.resetInverted(i);
+    }
+}
+
+void LedController::resetInverted(int ledIndex) {
+    leds.resetInverted(ledIndex);
+}
+
+int LedController::getNumLeds() {
+    return leds.numLeds;
+}
+
+void LEDController::update() {
+    leds.updateBlinking();
+}
+
+void LEDController::clearAndResetLEDs() {
+    leds.stopAllBlinking();
+    leds.setAllLeds(false);
+    resetInverted();
+}
+
+void LEDController::clearLEDs() {
+    leds.stopAllBlinking();
+    leds.setAllLeds(false);
+}

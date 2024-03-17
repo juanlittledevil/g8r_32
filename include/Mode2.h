@@ -1,17 +1,16 @@
-#ifndef MODE0_H
-#define MODE0_H
+#ifndef MODE2_H
+#define MODE2_H
 
 #include "Mode.h"
+#include "LEDController.h"
 #include "Encoder.h"
 #include "Gates.h"
-#include "LEDController.h"
-#include "EurorackClock.h"
 #include "MIDIHandler.h"
 #include "Constants.h"
 
-class Mode0 : public Mode {
+class Mode2 : public Mode {
 public:
-    Mode0(Encoder& encoder, Gates& gates, LedController& ledController, EurorackClock& clock, MIDIHandler& midiHandler);
+    Mode2(Encoder& encoder, Gates& gates, LedController& ledController, MIDIHandler& midiHandler);
     void handleSinglePress() override;
     void handleDoublePress() override;
     void handleLongPress() override;
@@ -25,24 +24,14 @@ private:
     void handleEncoder();
     void handleButton(Encoder::ButtonState buttonState);
     void setLEDState(int ledIndex, bool state, bool blinkFast, bool blinkSlow);
-    void handleTempoSelection();
-    void handleDivisionSelectionPress();
     LedController& ledController;
     Encoder& encoder;
     Gates& gates;
-    EurorackClock& clock;
     MIDIHandler& midiHandler;
-    bool inDivisionSelection = false;
-    bool externalTempo = false;
-    int clockDivisions[] = {1, 2, 4, 12, 24, 48};
-    int numClockDivisions = arraySize(clockDivisions);
-    int tempoIncrement = 1;
-    const int minTempo = 20;
-    const int maxTempo = 340;
-    int divisionIndex = 4;
-    int selectedGate = 0;
-    bool selectingTempo = false;
     bool doublePressHandled = false;
+    bool isInSelection = false;
+    bool singlePressHandled = false;
+    int numLeds = 8;
 };
 
-#endif // MODE0_H
+#endif // MODE2_H

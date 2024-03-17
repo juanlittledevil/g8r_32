@@ -12,27 +12,37 @@ Mode0::Mode0(Encoder& encoder, Gates& gates)
         midiHandler(midiHandler) {
 }
 
+// Setup and teardown methods are meant to be called when Mode selector
+// switches modes. This is where you can put code that should only run
+// once when the mode is switched to.
 void Mode0::setup() {
-    // Stuff that gets ran once but only if the default mode is 0
     clock.start();
+    midiHandler.setMode(0);
 }
 
+void Mode0::teardown() {
+    clock.stop();
+}
+
+// The update method is meant to be called every loop iteration. This is
+// where you can put code that should run every loop iteration.
 void Mode0::update() {
+    // Handle MIDI messages
+    midiHandler.handleMidiMessage();
+
     // Handle button presses
     handleButton(encoder.readButton());
 
     // Handle selection states
     handleSelectionStates();
 
-    // Handle mode-specific functionality
-    if (!selectingTempo) {
-        handleEncoder();
-    }
-
     // Handle clock tick
+    clock.handleExternalClock();
     clock.tick();
 }
 
+// Other mode-specific methods
+// ...
 void Mode0::handleEncoder() {
     Encoder::Direction direction = encoder.readEncoder();
     if (inDivisionSelection) {
@@ -68,7 +78,7 @@ void Mode0::handleButton(Encoder::ButtonState buttonState) {
 }
 
 void Mode0::handleLongPress() {
-    modeSelector.handleLongPress();
+    // modeSelector.handleLongPress();
 }
 
 void Mode0::handleDoublePress() {
@@ -87,6 +97,7 @@ void Mode0::handleDoublePress() {
 
 void Mode0::handleSinglePress() {
     // Mode 0 specific single press handling
+    handleDivisionSelectionPress();
 }
 
 void Mode0::handlePressReleased() {
@@ -107,13 +118,9 @@ void Mode0::handleSelectionStates() {
     // Mode 0 specific selection state handling
     if (selectingTempo) {
         handleTempoSelection();
+    } else {
+        handleEncoder();
     }
-}
-
-void Mode0::tick() {
-    // Handle clock pulses
-    clock.handleExternalClock();
-    clock.tick();
 }
 
 void handleTempoSelection() {

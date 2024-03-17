@@ -1,3 +1,6 @@
+#ifndef MODE_H
+#define MODE_H
+
 class Mode {
 public:
     virtual void handleSinglePress() = 0;
@@ -6,5 +9,8 @@ public:
     virtual void handlePressReleased() = 0;
     virtual void handleSelectionStates() = 0;
     virtual void setup() = 0;
+    virtual void teardown() = 0;
     virtual void update() = 0;
 };
+
+#endif // MODE_H
