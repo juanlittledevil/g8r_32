@@ -2,12 +2,7 @@
 #include "Debug.h"
 #include <Arduino.h>
 
-// Uncomment the line below to enable debugging. Comment it out to disable debugging
-// each file has its own DEBUG flag for more granular control.
-// #define DEBUG 1 // 0 for no debug, 1 for debug
-#ifdef DEBUG
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
-#endif
 
 Encoder::Encoder(int clkPin, int dtPin, int buttonPin) 
     : encCLK(clkPin, true), 
@@ -68,7 +63,6 @@ Encoder::ButtonState Encoder::readButton() {
     static ButtonState lastButtonState = OPEN; // the last button state
     static const int debounceDelay = 40; // debounce time in milliseconds
 
-
     ButtonState reading = (encButton.getState() == LOW) ? PRESSED : OPEN;
 
     // If the button state has changed, reset the debouncing timer
@@ -107,4 +101,17 @@ bool Encoder::isButtonLongPressed() {
 
 bool Encoder::isButtonDoublePressed() {
     return pressCount >= 2;
+}
+
+int Encoder::handleEncoderDirection(int currentValue, int maxValue, Direction direction) {
+    if (direction == Encoder::CW) {
+        if (currentValue < maxValue - 1) {
+            return currentValue + 1;
+        }
+    } else if (direction == Encoder::CCW) {
+        if (currentValue > 0) {
+            return currentValue - 1;
+        }
+    }
+    return currentValue;
 }

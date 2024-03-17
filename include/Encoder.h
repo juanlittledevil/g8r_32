@@ -7,12 +7,13 @@ public:
     enum Direction { NONE, CW, CCW };
     enum ButtonState { OPEN, PRESSED };
 
+    void begin();
     Direction readEncoder();
     ButtonState readButton();
+    int handleEncoderDirection(int currentValue, int maxValue, Direction direction);
     bool isButtonLongPressed();
     bool isButtonDoublePressed();
     int readSpeed();
-    void begin();
 
 private:
     InputPin encCLK;

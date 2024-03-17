@@ -27,7 +27,7 @@ void LED::startBlinking(unsigned long interval) {
 void LED::stopBlinking() {
     this->isBlinking = false;
     this->intensity = 255;
-    DEBUG_PRINT("LED stopped blinking!");
+    // DEBUG_PRINT("LED stopped blinking!");
 }
 
 void LED::updateBlinking() {

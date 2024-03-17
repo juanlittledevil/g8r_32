@@ -12,9 +12,10 @@ class LEDs {
         void setState(int index, bool state, int intensity);
         bool getState(int index);
         void setAllLeds(bool state);
-        void blinkFast(int index);
-        void blinkFast2(int index);
-        void blinkSlow(int index);
+        // void blinkFast(int index);
+        // void blinkFast2(int index);
+        // void blinkSlow(int index);
+        void startBlinking(int index, unsigned long interval);
         void stopBlinking(int index);
         void stopAllBlinking();
         void updateBlinking();
