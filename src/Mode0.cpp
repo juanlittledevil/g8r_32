@@ -64,7 +64,7 @@ void Mode0::handleButton(Encoder::ButtonState buttonState) {
 
     if (encoder.isButtonLongPressed()) {
         this->handleLongPress();
-    } else if (encoder.isButtonDoublePressed()/*   && !doublePressHandled */) {
+    } else if (encoder.isButtonDoublePressed()) {
         this->handleDoublePress();
         doublePressHandled = true; 
     } else if (encoder.readButton() == Encoder::PRESSED && !singlePressHandled) {
@@ -107,8 +107,10 @@ void Mode0::handleSelectionStates() {
     // Mode 0 specific selection state handling
     if (selectingTempo) {
         handleTempoSelection();
+        clock.toggleLedOnDuration(true);  // if selecting tempo we want the LED to be on for 10ms
     } else {
         handleEncoder();
+        clock.toggleLedOnDuration(false); // if not selecting tempo we want the LED to be on for 50ms
     }
 }
 

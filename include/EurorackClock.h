@@ -71,6 +71,9 @@ public:
     // Set whether the clock is using external tempo
     void setExternalTempo(bool isExternalTempo);
 
+    // Toggle the led on durationfor the tempo selection
+    void toggleLedOnDuration(bool selectingTempo);
+
 private:
     // Helper functions
     void updateTempoLed(unsigned long currentTime);
@@ -99,6 +102,10 @@ private:
     static int flashPulseCount;
     unsigned long lastMidiClockTime;
     static const unsigned long MIDI_CLOCK_TIMEOUT = 1000;
+    static const int LED_ON_DURATION = 10; 
+    static const int LONG_LED_ON_DURATION = 50;
+    static const int MIDI_CLOCK_PULSE_COUNT = 24;
+    int ledOnDuration = LONG_LED_ON_DURATION; 
     unsigned long ledOnTime = 0;
     int clockPin;
     int resetPin;

@@ -27,7 +27,7 @@ void Encoder::begin() {
 Encoder::Direction Encoder::readEncoder() {
     static int counter = 0;
     const int stepsPerDetent = 2; // Change this to match your encoder's resolution
-    const int maxInterval = 200; // ms
+    const int maxInterval = 300; // ms
     const int maxIncrement = 25; // Change this to match your desired increment
 
     int curStateCLK = encCLK.getState();

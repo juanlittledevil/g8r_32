@@ -5,8 +5,9 @@
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
-const int LED_ON_DURATION = 10; 
-const int MIDI_CLOCK_PULSE_COUNT = 24;
+// const int LED_ON_DURATION = 10; 
+// const int LONG_LED_ON_DURATION = 25;
+// const int MIDI_CLOCK_PULSE_COUNT = 24;
 
 // Static variables initialization
 float EurorackClock::lastFlashTime = 0;
@@ -65,9 +66,14 @@ int EurorackClock::getTempo() const {
     return tempo;
 }
 
+// Toggle the time the led stays on for tempo selection
+void EurorackClock::toggleLedOnDuration(bool selectingTempo) {
+    ledOnDuration = !selectingTempo ? LONG_LED_ON_DURATION : LED_ON_DURATION;
+}
+
 // Update the tempo LED status
 void EurorackClock::updateTempoLed(unsigned long currentTime) {
-    int ledOnDuration = LED_ON_DURATION; // Duration in milliseconds that the LED should stay on
+    // int ledOnDuration = ledOnDuration; 
 
     // If the LED is on and it's been on for the duration
     if (this->tempoLed.getState() == HIGH && currentTime - ledOnTime >= ledOnDuration) {
