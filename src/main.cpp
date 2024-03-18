@@ -8,7 +8,7 @@
 #include "MIDIHandler.h"
 #include "EurorackClock.h"
 #include "Constants.h"
-// #include "Mode0.h"
+#include "Mode0.h"
 #include "Mode1.h"
 #include "Mode2.h"
 #include "LEDController.h"
@@ -99,7 +99,7 @@ MIDIHandler midiHandler(RX_PIN, TX_PIN, clock, gates, leds);
 // Mode Classes and ModeSelector
 ModeSelector& modeSelector = ModeSelector::getInstance();
 Mode* currentMode = nullptr;
-// Mode0 mode0(encoder, gates, ledController, clock, midiHandler);
+Mode0 mode0(encoder, gates, ledController, clock, midiHandler);
 Mode1 mode1(encoder, gates, ledController, midiHandler);
 Mode2 mode2(encoder, gates, ledController, midiHandler);
 
@@ -141,7 +141,7 @@ void setup() {
 
     // ------- Set the initial mode -------
     // IMPORTANT: Add the modes to the ModeSelector in order, so that the indices match with the mode numbers.
-    // modeSelector.addMode(nullptr);
+    modeSelector.addMode(&mode0);
     modeSelector.addMode(&mode1);
     modeSelector.addMode(&mode2);
     modeSelector.setLedController(ledController);

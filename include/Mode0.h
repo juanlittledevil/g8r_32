@@ -8,6 +8,7 @@
 #include "EurorackClock.h"
 #include "MIDIHandler.h"
 #include "Constants.h"
+#include <vector>
 
 class Mode0 : public Mode {
 public:
@@ -24,9 +25,8 @@ public:
 private:
     void handleEncoder();
     void handleButton(Encoder::ButtonState buttonState);
-    void setLEDState(int ledIndex, bool state, bool blinkFast, bool blinkSlow);
-    void handleTempoSelection();
     void handleDivisionSelectionPress();
+    void handleTempoSelection();
     LEDController& ledController;
     Encoder& encoder;
     Gates& gates;
@@ -34,8 +34,7 @@ private:
     MIDIHandler& midiHandler;
     bool inDivisionSelection = false;
     bool externalTempo = false;
-    int clockDivisions[] = {1, 2, 4, 12, 24, 48};
-    int numClockDivisions = arraySize(clockDivisions);
+    bool singlePressHandled = false;
     int tempoIncrement = 1;
     const int minTempo = 20;
     const int maxTempo = 340;
@@ -43,6 +42,8 @@ private:
     int selectedGate = 0;
     bool selectingTempo = false;
     bool doublePressHandled = false;
+    std::vector<int> clockDivisions = {1, 2, 4, 6, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192};
+    size_t numClockDivisions = clockDivisions.size();
 };
 
 #endif // MODE0_H

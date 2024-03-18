@@ -4,7 +4,7 @@
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
-Mode0::Mode0(Encoder& encoder, Gates& gates)
+Mode0::Mode0(Encoder& encoder, Gates& gates, LEDController& ledController, EurorackClock& clock, MIDIHandler& midiHandler)
     :   encoder(encoder),
         gates(gates),
         ledController(ledController),
@@ -64,7 +64,7 @@ void Mode0::handleButton(Encoder::ButtonState buttonState) {
 
     if (encoder.isButtonLongPressed()) {
         this->handleLongPress();
-    } else if (encoder.isButtonDoublePressed()  && !doublePressHandled) {
+    } else if (encoder.isButtonDoublePressed()/*   && !doublePressHandled */) {
         this->handleDoublePress();
         doublePressHandled = true; 
     } else if (encoder.readButton() == Encoder::PRESSED && !singlePressHandled) {
@@ -72,8 +72,8 @@ void Mode0::handleButton(Encoder::ButtonState buttonState) {
         singlePressHandled = true;
     } else if (encoder.readButton() == Encoder::OPEN) {
         this->handlePressReleased();
-        doublePressHandled = false;
         singlePressHandled = false; 
+        doublePressHandled = false;
     }
 }
 
@@ -91,7 +91,6 @@ void Mode0::handleDoublePress() {
             // Enter tempo selection mode on double press
             selectingTempo = true;
         }
-        doublePressHandled = true;
     }
 }
 
@@ -104,16 +103,6 @@ void Mode0::handlePressReleased() {
     // Mode 0 specific press released handling
 }
 
-void Mode0::setLEDStatse(int ledIndex, bool state, bool blinkFast, bool blinkSlow) {
-    ledController.stopBlinking(ledIndex);
-    ledController.setState(ledIndex, state);
-    if (blinkFast) {
-        ledController.blinkFast(ledIndex);
-    } else if (blinkSlow) {
-        ledController.blinkSlow(ledIndex);
-    }
-}
-
 void Mode0::handleSelectionStates() {
     // Mode 0 specific selection state handling
     if (selectingTempo) {
@@ -123,7 +112,7 @@ void Mode0::handleSelectionStates() {
     }
 }
 
-void handleTempoSelection() {
+void Mode0::handleTempoSelection() {
     // Handle tempo selection
     Encoder::Direction direction = encoder.readEncoder();
     int tempoIncrement = encoder.readSpeed();
