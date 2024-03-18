@@ -73,11 +73,15 @@ void EurorackClock::toggleLedOnDuration(bool selectingTempo) {
 
 // Update the tempo LED status
 void EurorackClock::updateTempoLed(unsigned long currentTime) {
-    // int ledOnDuration = ledOnDuration; 
-
-    // If the LED is on and it's been on for the duration
-    if (this->tempoLed.getState() == HIGH && currentTime - ledOnTime >= ledOnDuration) {
-        // Turn the LED off
+    // Only update the LED if we're in Mode0 and not in mode selection
+    if (ModeSelector::getInstance().getMode() == 0 && !ModeSelector::getInstance().isInModeSelection()) {
+        // If the LED is on and it's been on for the duration
+        if (this->tempoLed.getState() == HIGH && currentTime - ledOnTime >= ledOnDuration) {
+            // Turn the LED off
+            this->tempoLed.setState(LOW);
+        }
+    } else {
+        // If we're not in Mode0, turn the LED off
         this->tempoLed.setState(LOW);
     }
 }
@@ -200,6 +204,12 @@ void EurorackClock::triggerClockPulse() {
 
 // Trigger the gates
 void EurorackClock::triggerGates(unsigned long currentTime) {
+    // Check if mode selection is active
+    if (ModeSelector::getInstance().isInModeSelection()) {
+        // If mode selection is active, return immediately without triggering the gates and LEDs
+        return;
+    }
+
     for (int i = 0; i < gates.numGates; i++) {
         gates.gateCounters[i]++;
         int division = gates.getDivision(i);

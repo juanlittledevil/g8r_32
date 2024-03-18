@@ -23,8 +23,11 @@ MIDIHandler::MIDIHandler(int rxPin, int txPin, EurorackClock& clock, Gates& gate
 void MIDIHandler::begin() {
     midi.begin();
     midi.setHandleClock(handleClock);
-    midi.setHandleStart(handleStart);
-    midi.setHandleStop(handleStop);
+    // midi.setHandleStart(handleStart);
+    // midi.setHandleStop(handleStop);
+    // we don't yet have a handleStart or handleStop functionality on any of the modes.
+    midi.setHandleStart(nullptr);
+    midi.setHandleStop(nullptr);
     midi.setHandleContinue(handleContinue);
     midi.setHandleNoteOn(handleMode0NoteOn);
     midi.setHandleNoteOff(handleMode0NoteOff);
@@ -120,15 +123,21 @@ void MIDIHandler::setMode(int mode) {
     if (mode == 0) {
         midi.setHandleNoteOn(nullptr);
         midi.setHandleNoteOff(nullptr);
+        midi.setHandleStart(nullptr);
+        midi.setHandleStop(nullptr);
         midi.setHandleClock(handleClock);
     } else if (mode == 1) {
         midi.setHandleNoteOn(handleMode1NoteOn);
         midi.setHandleNoteOff(handleMode1NoteOff);
         midi.setHandleClock(nullptr);
+        midi.setHandleStart(nullptr);
+        midi.setHandleStop(nullptr);
     } else if (mode == 2) {
         midi.setHandleNoteOn(handleMode2NoteOn);
         midi.setHandleNoteOff(handleMode2NoteOff);
         midi.setHandleClock(nullptr);
+        midi.setHandleStart(nullptr);
+        midi.setHandleStop(nullptr);
     }
 }
 

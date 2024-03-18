@@ -18,14 +18,12 @@ Mode2::Mode2(Encoder& encoder, Gates& gates, LEDController& ledController, MIDIH
 void Mode2::setup() {
     // Initialization code here if needed
     midiHandler.setMode(2);
-    DEBUG_PRINT("Calling midiHandler.setMode(2) from Mode2::setup");
     numLeds = ledController.getNumLeds();
-
-    DEBUG_PRINT("Mode 2 setup");
 }
 
 void Mode2::teardown() {
     // Cleanup code here if needed
+    ledController.clearAndResetLEDs();
 }
 
 void Mode2::update() {

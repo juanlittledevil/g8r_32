@@ -22,6 +22,7 @@ void Mode1::setup() {
 
 void Mode1::teardown() {
     // Teardown code goes here...
+    ledController.clearAndResetLEDs();
 }
 
 // The update method is meant to be called every loop iteration. This is

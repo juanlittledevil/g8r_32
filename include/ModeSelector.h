@@ -14,13 +14,16 @@ public:
     int getMode() const;
     void setMode(int newMode);
     void handleLongPress();
+    void handleEncoderRotation();
     void handleModeSelectionPress();
     void handleButtonPress();
     void setLedController(LEDController& ledController);
     void setEncoder(Encoder& encoder);
     void setCurrentMode(Mode*& currentMode);
+    bool isInModeSelection();
     Mode* getCurrentMode();
     void addMode(Mode* mode);
+    void update();
 
 private:
     ModeSelector(); // Constructor is private
@@ -37,7 +40,9 @@ private:
     bool isInSelection;
     bool inChannelSelection;
     bool singlePressHandled;
-    int totalModes;
+    bool doublePressHandled;
+    bool longPressHandled;
+    size_t totalModes = modes.size();
     int previousMode = -1;
     int numLeds;
 };

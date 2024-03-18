@@ -1,8 +1,17 @@
 #include "ModeSelector.h"
+#include <Arduino.h>
+#include "Debug.h"
+
+#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 ModeSelector& ModeSelector::getInstance() {
     static ModeSelector instance; // Guaranteed to be destroyed, instantiated on first use.
     return instance;
+}
+
+void ModeSelector::update() {
+    handleButtonPress();
+    handleEncoderRotation();
 }
 
 int ModeSelector::getMode() const {
@@ -17,32 +26,21 @@ void ModeSelector::setMode(int newMode) {
 }
 
 void ModeSelector::handleLongPress() {
-    // Exit mode selection state on long press
+    // Toggle mode selection state
+    inModeSelection = !inModeSelection;
     if (inModeSelection) {
-        inModeSelection = false;
-        return;
+        // Enter mode selection state
+        // ...
+        ledController->clearAndResetLEDs();
+        inModeSelection = true;
+        isInSelection = true;
+        singlePressHandled = true;
+        ledController->clearAndResetLEDs();
+        ledController->setState(getMode(), true);
+    } else {
+        // Exit mode selection state
+        // ...
     }
-
-    // Enter mode selection state on long press
-    ledController->clearLEDs();
-
-    // Reset the mode for the LEDs if not in mode 0
-    if (getMode() != 0) {
-        ledController->resetInverted();
-    }
-
-    inModeSelection = true;
-    isInSelection = true;
-    inChannelSelection = false;
-    singlePressHandled = true;
-    for (int i = 0; i < totalModes; i++) {
-        if (i == getMode()) {
-            ledController->blinkSlow(i);
-        } else {
-            ledController->stopBlinking(i);
-        }
-    }
-    // leds.blinkSlow(getMode());
 }
 
 void ModeSelector::handleModeSelectionPress() {
@@ -64,20 +62,38 @@ void ModeSelector::handleButtonPress() {
 
     if (encoder->isButtonLongPressed()) { // Handle long press
         // ...
-        inModeSelection = !inModeSelection;
-
-        if (inModeSelection) {
-            // Enter mode selection state
-            // ...
-        } else {
-            // Exit mode selection state
-            // ...
+        if (!longPressHandled) {
+            handleLongPress();
+            longPressHandled = true;
         }
     } else if (encoder->readButton() == Encoder::PRESSED) { // Handle single press
         // ...
         // for now do nothing....
+        longPressHandled = false;
         if (!inModeSelection) { return; }
     }
+}
+
+void ModeSelector::handleEncoderRotation() {
+    if (!inModeSelection) {
+        return;
+    }
+
+    Encoder::Direction direction = encoder->readEncoder();
+
+    if (direction == Encoder::CW) {
+        setMode(getMode() + 1);
+    } else if (direction == Encoder::CCW) {
+        setMode(getMode() - 1);
+    }
+
+    // Light up the LED corresponding to the current mode
+    ledController->clearAndResetLEDs();
+    ledController->setState(getMode(), true);
+}
+
+bool ModeSelector::isInModeSelection() {
+    return inModeSelection;
 }
 
 void ModeSelector::setLedController(LEDController& ledController) {

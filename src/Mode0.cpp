@@ -22,6 +22,7 @@ void Mode0::setup() {
 
 void Mode0::teardown() {
     clock.stop();
+    ledController.clearAndResetLEDs();
 }
 
 // The update method is meant to be called every loop iteration. This is
