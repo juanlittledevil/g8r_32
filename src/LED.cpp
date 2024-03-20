@@ -1,16 +1,8 @@
 #include "LED.h"
 #include "Debug.h"
-
-// Uncomment the line below to enable debugging. Comment it out to disable debugging
-// each file has its own DEBUG flag for more granular control.
-// #define DEBUG 1 // 0 for no debug, 1 for debug
-#ifdef DEBUG
-#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
-
-// Include the Arduino Serial library
 #include <Arduino.h>
-#endif
 
+#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 // Constructor
 LED::LED(int pin) : OutputPin(pin) {
@@ -21,16 +13,6 @@ LED::LED(int pin) : OutputPin(pin) {
 LED::~LED() {
     // Cleanup code here if needed
 }
-
-// void LED::setState(bool state) {
-//     int scaledIntensity = state ? map(this->intensity, 0, 255, 0, 255) : 0;
-//     this->setDutyCycle(scaledIntensity);
-// }
-
-// bool LED::getState() {
-//     // Return true if duty cycle is not 0, false otherwise
-//     return this->getDutyCycle() != 0 == HIGH
-// }
 
 void LED::setIntensity(int intensity) {
     this->intensity = intensity;
@@ -45,6 +27,7 @@ void LED::startBlinking(unsigned long interval) {
 void LED::stopBlinking() {
     this->isBlinking = false;
     this->intensity = 255;
+    // DEBUG_PRINT("LED stopped blinking!");
 }
 
 void LED::updateBlinking() {
@@ -52,4 +35,32 @@ void LED::updateBlinking() {
         this->blinkStartTime = millis();
         this->setState(!getState()); // Toggle LED state
     }
+}
+
+void LED::trigger(unsigned long currentTime, bool inverted) {
+    if (!inverted) {
+        setState(HIGH);
+    } else {
+        setState(LOW);
+    }
+    this->inverted = inverted;
+    triggeredTime = currentTime;
+}
+
+void LED::update(unsigned long currentTime) {
+    // If the LED is not inverted, turn it off after ledOnDuration
+    if (!this->inverted) {
+        if (getState() == HIGH && currentTime >= triggeredTime + ledOnDuration) {
+            setState(LOW);
+        }
+    // If the LED is inverted, turn it on after invertedLedOnDuration
+    } else {
+        if (getState() == LOW && currentTime >= triggeredTime + invertedLedOnDuration) {
+            setState(HIGH);
+        }
+    }
+}
+
+void LED::resetIvernted() {
+    this->inverted = false;
 }

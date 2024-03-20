@@ -1,23 +1,37 @@
 #include "Gate.h"
 #include "Debug.h"
-
-// Uncomment the line below to enable debugging. Comment it out to disable debugging
-// each file has its own DEBUG flag for more granular control.
-// #define DEBUG 1 // 0 for no debug, 1 for debug
-#ifdef DEBUG
-#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
-
-// Include the Arduino Serial library
 #include <Arduino.h>
-#endif
+
+#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 
 // Constructor
 Gate::Gate(int pin) : OutputPin(pin) {
-  // Initialization code here if needed
+    // Initialization code
+    division = 4;
 }
 
 // Destructor
 Gate::~Gate() {
-  // Cleanup code here if needed
+    // Cleanup code here if needed
+}
+
+// Set the division for the gate
+void Gate::setDivision(int newDivision) {
+    division = newDivision;
+}
+
+void Gate::trigger(unsigned long currentTime) {
+    setState(HIGH);
+    triggeredTime = currentTime;
+}
+
+void Gate::update(unsigned long currentTime) {
+    if (getState() == HIGH && currentTime >= triggeredTime + gateOnDuration) {
+        setState(LOW);
+    }
+}
+
+int Gate::getDivision() {
+    return this->division;
 }

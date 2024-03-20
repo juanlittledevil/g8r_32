@@ -1,28 +1,19 @@
-#include <UMIDI.h>
 #include <Arduino.h>
+#include <UMIDI.h>
 #include "Gates.h"
-
+#include "ModeSelector.h"
 #include "LEDs.h"
 #include "Debug.h"
 #include "Encoder.h"
 #include "MIDIHandler.h"
 #include "EurorackClock.h"
+#include "Constants.h"
+#include "Mode0.h"
+#include "Mode1.h"
+#include "Mode2.h"
+#include "LEDController.h"
 
-// Uncomment the line below to enable debugging. Comment it out to disable debugging
-// each file has its own DEBUG flag for more granular control.
-#define DEBUG 1 // 0 for no debug, 1 for debug
-#ifdef DEBUG
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
-#endif
-
-// Define the RX and TX pins for MIDI communication
-#define RX_PIN PA3
-#define TX_PIN PA2
-#define ENCODER_PINA PB13
-#define ENCODER_PINB PB14
-#define ENCODER_BUTTON PB12
-#define CLOCK_PIN PB15
-#define RESET_PIN PA8
 
 // Function to calculate the size of an array
 template<typename T, size_t N>
@@ -30,15 +21,28 @@ constexpr size_t arraySize(T(&)[N]) {
     return N;
 }
 
+// Define the RX and TX pins for MIDI communication
+#define RX_PIN PA3
+#define TX_PIN PA2
+// Define the pins for the encoder
+#define ENCODER_PINA PB13
+#define ENCODER_PINB PB14
+#define ENCODER_BUTTON PB12
+// Define the pins for the clock and reset
+#define CLOCK_PIN PB15
+#define RESET_PIN PA8
+// Define the pin for the tempo LED
+#define TEMPO_LED PA11
 // Define the pins for the gates
 int pins[] = {PA15, PB3, PB4, PB5}; // Example pins
-// constexpr int numPins = sizeof(pins) / sizeof(pins[0]); // Calculate the number of pins
 constexpr int numPins = arraySize(pins);
 Gates gates = Gates(pins, numPins); // Create an instance of Gates
-
 // Define the pins for the LEDs
 int ledPins[] = {PB6, PB7, PB8, PB9}; // Placeholder pin numbers for LEDs
 int numLedPins = arraySize(ledPins);
+
+// Create an instance of LEDs
+// Tempo LED is part of EurorackClock class to make this file cleaner.
 LEDs leds = LEDs(ledPins, numLedPins); // Create an instance of LEDs
 
 // Define the pins for the encoder
@@ -46,227 +50,90 @@ int encCLKPin = ENCODER_PINA;
 int encDTPin = ENCODER_PINB;
 int encButtonPin = ENCODER_BUTTON;
 
-// Defulat mode
-int mode = 0;
 bool inModeSelection = false;
-static int previousMode = -1; // used with blinking in mode selection
-static int previousChannel = -1; // used with blinking in channel selection
 int intensity = 255; // Default intensity for LEDs
-const byte total_modes = 3;
-int selectedChannel = 9; // MIDI channels are 0-15
-int confirmedChannel = 9; // MIDI channels are 0-15
-bool inChannelSelection = false;
-bool isInSelection = false;
-int selectedGate = 0;
-int clockDivisions[numPins];
+bool isInSelection = false; // Used to prevent multiple presses from being handled
+unsigned long lastFlashTime = 0;
+
+const int musicalIntervals[] = {1, 2, 4, 8, 16, 32, 3, 6, 12, 24, 48};
+const int musicalIntervalsSize = arraySize(musicalIntervals);
 
 int total_pages = 16 / leds.numLeds; // Calculate total pages based on number of LEDs
 int min_intensity = 64; // Set minimum intensity to 25% (64 out of 255)
 int intensity_step = (255 - min_intensity) / (total_pages - 1); // Calculate intensity step
 
+// Create an instance of the Encoder class
+Encoder encoder = Encoder(encCLKPin, encDTPin, encButtonPin);
+
+// Create an instance of the LEDController class
+LEDController ledController(leds);
+
 // Create an instance of the EurorackClock class
-EurorackClock clock(CLOCK_PIN, RESET_PIN);
+EurorackClock clock(CLOCK_PIN, RESET_PIN, TEMPO_LED, gates, leds);
 
 // Create an instance of the MIDIHandler class
 MIDIHandler midiHandler(RX_PIN, TX_PIN, clock, gates, leds);
 
-// Create an instance of the Encoder class
-Encoder encoder = Encoder(encCLKPin, encDTPin, encButtonPin);
-
+// Mode Classes and ModeSelector
+ModeSelector& modeSelector = ModeSelector::getInstance();
+Mode* currentMode = nullptr;
+Mode0 mode0(encoder, gates, ledController, clock, midiHandler);
+Mode1 mode1(encoder, gates, ledController, midiHandler);
+Mode2 mode2(encoder, gates, ledController, midiHandler);
 
 void setup() {
+    // Enable debugging
+    Debug::isEnabled = true;
+
     // Initialize serial communication
     Serial.begin(9600);
-
-    // Initialize the clock
-    for (int i = 0; i < numPins; i++) {
-        clockDivisions[i] = 1;
-    }
-
+    Serial.println("Entered setup() function");
+    
     // Initialize the MIDIHandler
     midiHandler.begin();
 
     // Set the MIDIHandler to listen to all channels
     midiHandler.setChannel(-1);
 
+    // Start the clock and set the initial tempo
+    clock.setup();
+    clock.setTempo(120.0, 4); // Set the tempo to 120 BPM with internal 4 PPQN
+
+    // ------- Set the initial mode -------
+    // IMPORTANT: Add the modes to the ModeSelector in order, so that the indices match with the mode numbers.
+    modeSelector.addMode(&mode0);
+    modeSelector.addMode(&mode1);
+    modeSelector.addMode(&mode2);
+    modeSelector.setLedController(ledController);
+    modeSelector.setEncoder(encoder);
+    modeSelector.setMode(0);
+    currentMode = modeSelector.getCurrentMode();
+    // // Run the setup function for the default mode
+    // // NOTE: ONLY the default mode will execute this. If you have things that need to be set up for other modes,
+    // // you will need to call the setup function for those modes here.
+    currentMode->setup();
+
     delay(1000);
 
     leds.begin(); // Initialize LED pins
     gates.begin(); // Initialize gate pins
-    // mySwitch.begin(); // Initialize switch pins
     encoder.begin(); // Initialize encoder pins
 
-    #if DEBUG
-    DEBUG_PRINT("Finished setup() function");
-    #endif
-}
-
-// SwitchState lastState = NEUTRAL;
-
-// Enconder Handlers
-void handleLongPress() {
-    // Enter mode selection state on long press
-    inModeSelection = true;
-    isInSelection = true;
-    leds.blinkSlow(mode);
-}
-
-void handleDoublePress() {
-    // Code to handle a double button press
-    #if DEBUG
-    DEBUG_PRINT("Button was double pressed");
-    #endif
-}
-
-void handleSinglePress() {
-    if (inModeSelection) {
-        // Confirm mode selection on single press
-        inModeSelection = false;
-        isInSelection = false;
-        previousMode = -1; // Reset the previous mode
-    } else {
-        // Code to handle a single button press when not in mode selection state
-        if (mode == 1) {
-            if (inChannelSelection) {
-                inChannelSelection = false;
-                isInSelection = false;
-                confirmedChannel = selectedChannel;
-                previousChannel = -1; // Reset the previous channel
-                leds.stopAllBlinking();
-                leds.setAllLeds(false);
-            } else {
-                inChannelSelection = true;
-                isInSelection = true;
-                int led_index = selectedChannel % leds.numLeds;
-
-                // Calculate current page and LED index within the page
-                int current_page = selectedChannel / leds.numLeds;
-
-                // Set intensity based on current page
-                // intensity = min_intensity + intensity_step * current_page;
-
-                // leds.setIntensity(led_index, intensity);
-                if (selectedChannel < 8) {
-                    leds.blinkFast(led_index); // Blink the LED corresponding to the selected channel
-                } else {
-                    leds.blinkFast2(led_index); // Blink the LED corresponding to the selected channel
-                }   
-            }
-        }
-    }
-}
-
-void handleChannelSelection() {
-    Encoder::Direction direction = encoder.readEncoder();
-
-
-    if (direction == Encoder::CW) {
-        selectedChannel = (selectedChannel + 1) % 16; // MIDI channels are 0-15
-        #if DEBUG
-        DEBUG_PRINT("Encoder turned clockwise " + String(selectedChannel));
-        #endif
-    } else if (direction == Encoder::CCW) {
-        selectedChannel = (selectedChannel + 15) % 16;
-        #if DEBUG
-        DEBUG_PRINT("Encoder turned counter-clockwise " + String(selectedChannel));
-        #endif
-    }
-
-    // Calculate current page and LED index within the page
-    int current_page = selectedChannel / leds.numLeds;
-    int led_index = selectedChannel % leds.numLeds;
-
-    // Set intensity based on current page
-    // intensity = min_intensity + intensity_step * current_page;
-
-    // Only blink the LED if the mode has changed
-    if (selectedChannel != previousChannel) {
-        for (int i = 0; i < leds.numLeds; i++) { // Loop over LEDs, not channels
-            if (i == led_index) {
-                // leds.setIntensity(i, intensity);
-                if (selectedChannel < 8) {
-                    leds.blinkFast(i); // Blink the LED corresponding to the selected channel
-                } else {
-                    leds.blinkFast2(i); // Blink the LED corresponding to the selected channel
-                }           
-            } else {
-                leds.stopBlinking(i);
-                leds.setState(i, false);
-            }
-        }
-        previousChannel = selectedChannel; // Update the previous mode
-    }
-}
-
-void handleModeSelection() {
-    // Handle mode selection
-    Encoder::Direction direction = encoder.readEncoder();
-    if (direction == Encoder::CW) {
-        mode = (mode + 1) % total_modes;
-    } else if (direction == Encoder::CCW) {
-        mode = (mode + total_modes - 1) % total_modes;
-    }
-
-    // Only blink the LED if the mode has changed
-    if (mode != previousMode) {
-        for (int i = 0; i < total_modes; i++) {
-            if (i == mode) {
-                leds.blinkSlow(i); // This will only be called once when the mode changes
-            } else {
-                leds.stopBlinking(i);
-                leds.setState(i, false);
-            }
-        }
-        previousMode = mode; // Update the previous mode
-    }
-}
-
-void handleEncoderMode0() {
-    Encoder::Direction direction = encoder.readEncoder();
-    if (direction == Encoder::CW) {
-        selectedGate = (selectedGate + 1) % numPins;
-    } else if (direction == Encoder::CCW) {
-        selectedGate = (selectedGate + numPins - 1) % numPins;
-    }
-    if (encoder.readButton() == Encoder::PRESSED) {
-        // Increase the clock division for the selected gate
-        clockDivisions[selectedGate]++;
+    // gates.setSelectedGate(selectedGate);
+    
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Finished setup() function");
     }
 }
 
 void loop() {
-    // Read the encoder and handle button presses
-    leds.updateBlinking();
-    encoder.readButton();
-    if (encoder.isButtonLongPressed()) {
-        handleLongPress();
-    } else if (encoder.readButton() == Encoder::PRESSED) {
-        handleSinglePress();
-    }
-
-    if (inChannelSelection) {
-        handleChannelSelection();
-    } else if (inModeSelection) {
-        handleModeSelection();
+    modeSelector.update();
+    ledController.updateBlinking();
+    if (!modeSelector.isInModeSelection()) {
+        currentMode->update();
     } else {
-        leds.stopAllBlinking();
-        if (mode != previousMode) {
-            previousMode = mode;
-            midiHandler.setMode(mode);
-        }
-        switch (mode) {
-            case 0:
-                handleEncoderMode0();
-                break;
-            case 1:
-                midiHandler.setChannel(confirmedChannel);
-                break;
-            case 2:
-                break;
-            // Add more cases as needed
-        }
+        currentMode->teardown();
+        currentMode = modeSelector.getCurrentMode();
+        currentMode->setup();
     }
-
-    // Handle incoming MIDI messages
-    midiHandler.handleMidiMessage();
 }
