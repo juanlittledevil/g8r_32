@@ -5,9 +5,9 @@
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 Encoder::Encoder(int clkPin, int dtPin, int buttonPin) 
-    : encCLK(clkPin, true), 
-      encDT(dtPin, true), 
-      encButton(buttonPin, true), 
+    : encCLK(clkPin, true, false), 
+      encDT(dtPin, true, false), 
+      encButton(buttonPin, true, false), 
       prevStateCLK(encCLK.getState()), 
       buttonState(OPEN), 
       lastButtonPress(0), 

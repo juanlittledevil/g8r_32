@@ -19,20 +19,26 @@ Pin::~Pin() {
 
 // InputPin class
 // Default constructor
-InputPin::InputPin(int pin) : Pin(pin), useInternalPullup(false) {
+InputPin::InputPin(int pin) : Pin(pin), useInternalPullup(false), useInternalPulldown(false) {
     this->useInternalPullup = false;
+    this->useInternalPulldown = false;
 }
 
 // Overloaded constructor
-InputPin::InputPin(int pin, bool useInternalPullup) : Pin(pin), useInternalPullup(useInternalPullup) {
-    this->useInternalPullup = useInternalPullup;
+InputPin::InputPin(int pin, bool useInternalPullup, bool useInternalPulldown)
+:   Pin(pin),
+    useInternalPullup(useInternalPullup),
+    useInternalPulldown(useInternalPulldown) {
+        this->useInternalPullup = useInternalPullup;
+        this->useInternalPulldown = useInternalPulldown;
 }
 
 // Initialize the input pin
 void InputPin::begin() {
     if (this->useInternalPullup) {
         pinMode(this->pin, INPUT_PULLUP);
-        delay(10);
+    } else if (this->useInternalPulldown) {
+        pinMode(this->pin, INPUT_PULLDOWN);
     } else {
         pinMode(this->pin, INPUT);
     }

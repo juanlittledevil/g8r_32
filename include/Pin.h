@@ -20,12 +20,13 @@ public:
 class InputPin : public Pin {
 public:
     InputPin(int pin); // Default constructor
-    InputPin(int pin, bool useInternalPullup); // Overloaded constructor
+    InputPin(int pin, bool useInternalPullup, bool useInternalPulldown); // Overloaded constructor
     virtual void begin(); // Initialize the pin
     virtual bool getState(); // Get the state of the pin
 
 private:
     bool useInternalPullup; // Flag to indicate whether to use internal pull-up resistor
+    bool useInternalPulldown;
 };
 
 // AnalogInputPin class (inherits from Pin)
