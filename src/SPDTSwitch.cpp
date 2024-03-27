@@ -12,7 +12,7 @@
 #endif
 
 
-SPDTSwitch::SPDTSwitch(int pinA, int pinB) : pinA(InputPin(pinA, true)), pinB(InputPin(pinB, true)) {
+SPDTSwitch::SPDTSwitch(int pinA, int pinB) : pinA(InputPin(pinA, true, false)), pinB(InputPin(pinB, true, false)) {
     // Initialization code here if needed
 }
 void SPDTSwitch::begin() {

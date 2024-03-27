@@ -23,8 +23,8 @@ EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates&
       tickInterval(60000 / tempo),
       isRunning(false),
       tempoLed(tempoLedPin),
-      externalClock(clockPin),
-      resetButton(resetPin),
+      externalClock(clockPin, false, true),
+      resetButton(resetPin, false, true),
       gates(gates),
       leds(leds) {
         instance = this;
@@ -37,6 +37,7 @@ EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates&
 void EurorackClock::setup() {
     tempoLed.begin();
     externalClock.begin();
+    resetButton.begin();
 }
 
 // Set the tempo of the clock
