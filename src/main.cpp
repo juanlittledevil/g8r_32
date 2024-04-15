@@ -29,16 +29,16 @@ constexpr size_t arraySize(T(&)[N]) {
 #define ENCODER_PINB PB14
 #define ENCODER_BUTTON PB12
 // Define the pins for the clock and reset
-#define CLOCK_PIN PB15
-#define RESET_PIN PA8
+#define CLOCK_PIN PB10
+#define RESET_PIN PB11
 // Define the pin for the tempo LED
-#define TEMPO_LED PA11
+#define TEMPO_LED PA8
 // Define the pins for the gates
-int pins[] = {PA15, PB3, PB4, PB5}; // Example pins
+int pins[] = {PA15, PB3, PB4, PB5, PB6, PB7, PB8, PB9}; // Example pins
 constexpr int numPins = arraySize(pins);
 Gates gates = Gates(pins, numPins); // Create an instance of Gates
 // Define the pins for the LEDs
-int ledPins[] = {PB6, PB7, PB8, PB9}; // Placeholder pin numbers for LEDs
+int ledPins[] = {PA12, PA11, PB1, PB0, PA7, PA6, PA1, PA0}; // Placeholder pin numbers for LEDs
 int numLedPins = arraySize(ledPins);
 
 // Create an instance of LEDs
