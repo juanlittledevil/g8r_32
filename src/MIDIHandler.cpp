@@ -14,18 +14,15 @@ extern bool isInSelection;
 MIDIHandler* MIDIHandler::instance = nullptr;
 
 // Constructor for the MIDIHandler class
-MIDIHandler::MIDIHandler(int rxPin, int txPin, EurorackClock& clock, Gates& gates, LEDs& leds)
-    : midi(rxPin, txPin), clock(clock), gates(gates), leds(leds) {
+MIDIHandler::MIDIHandler(HardwareSerial& serial, EurorackClock& clock, Gates& gates, LEDs& leds)
+    : midiSerial(serial), midi(midiSerial), clock(clock), gates(gates), leds(leds) {
     instance = this;
 }
 
 // Begin the MIDIHandler
 void MIDIHandler::begin() {
-    midi.begin();
+    midi.begin(MIDI_CHANNEL_OMNI);
     midi.setHandleClock(handleClock);
-    // midi.setHandleStart(handleStart);
-    // midi.setHandleStop(handleStop);
-    // we don't yet have a handleStart or handleStop functionality on any of the modes.
     midi.setHandleStart(nullptr);
     midi.setHandleStop(nullptr);
     midi.setHandleContinue(handleContinue);
@@ -39,6 +36,7 @@ byte MIDIHandler::confirmedChannel = 9; // Default MIDI channel 0 - 15
 // Handle incoming MIDI messages
 void MIDIHandler::handleMidiMessage() {
     midi.read();
+    gates.update(millis());
 }
 
 // Static function to handle MIDI clock messages
@@ -76,7 +74,8 @@ void MIDIHandler::handleMode1NoteOn(byte channel, byte pitch, byte velocity) {
     int note = pitch;
     int gate = note % instance->gates.numGates;
     if (channel == confirmedChannel) {
-        instance->gates.turnOnGate(gate);
+        // instance->gates.turnOnGate(gate);
+        instance->gates.trigger(gate, millis());
         if (!isInSelection) {
             instance->leds.setState(gate, true);
         }
@@ -88,7 +87,7 @@ void MIDIHandler::handleMode1NoteOff(byte channel, byte pitch, byte velocity) {
     int note = pitch;
     int gate = note % instance->gates.numGates;
     if (channel == confirmedChannel) {
-        instance->gates.turnOffGate(gate);
+        // instance->gates.turnOffGate(gate);
         if (!isInSelection) {
             instance->leds.setState(gate, false);
         }
@@ -142,5 +141,5 @@ void MIDIHandler::setMode(int mode) {
 }
 
 void MIDIHandler::setChannel(byte channel) {
-    confirmedChannel = channel;
+    confirmedChannel = channel + 1;
 }

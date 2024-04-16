@@ -1,14 +1,14 @@
 #ifndef MIDIHANDLER_H
 #define MIDIHANDLER_H
 
-#include "UMIDI.h"
+#include <MIDI.h>
 #include "EurorackClock.h"
 #include "Gates.h"
 #include "LEDs.h"
 
 class MIDIHandler {
 public:
-    MIDIHandler(int rxPin, int txPin, EurorackClock& clock, Gates& gates, LEDs& leds);
+    MIDIHandler(HardwareSerial& serial, EurorackClock& clock, Gates& gates, LEDs& leds);
     void begin();
     void handleMidiMessage();
     void setChannel(byte channel);
@@ -30,7 +30,8 @@ public:
 private:
     // Declare a static instance of the MIDIHandler class
     static MIDIHandler* instance; 
-    UMIDI midi;
+    midi::SerialMIDI<HardwareSerial> midiSerial;
+    midi::MidiInterface<midi::SerialMIDI<HardwareSerial>> midi;
     EurorackClock& clock;
     byte channel = 10; 
     Gates& gates;
