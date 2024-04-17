@@ -83,7 +83,7 @@ Mode2 mode2(encoder, gates, ledController, midiHandler);
 
 void setup() {
     // Enable debugging
-    Debug::isEnabled = true;
+    Debug::isEnabled = false;
 
     // Initialize serial communication
     Serial.begin(9600);
