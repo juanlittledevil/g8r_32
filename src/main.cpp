@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <UMIDI.h>
+#include <MIDI.h>
 #include "Gates.h"
 #include "ModeSelector.h"
 #include "LEDs.h"
@@ -72,7 +72,7 @@ LEDController ledController(leds);
 EurorackClock clock(CLOCK_PIN, RESET_PIN, TEMPO_LED, gates, leds);
 
 // Create an instance of the MIDIHandler class
-MIDIHandler midiHandler(RX_PIN, TX_PIN, clock, gates, leds);
+MIDIHandler midiHandler(Serial2, clock, gates, leds);
 
 // Mode Classes and ModeSelector
 ModeSelector& modeSelector = ModeSelector::getInstance();
@@ -83,13 +83,14 @@ Mode2 mode2(encoder, gates, ledController, midiHandler);
 
 void setup() {
     // Enable debugging
-    Debug::isEnabled = true;
+    Debug::isEnabled = false;
 
     // Initialize serial communication
     Serial.begin(9600);
     Serial.println("Entered setup() function");
     
     // Initialize the MIDIHandler
+    Serial2.begin(31250);
     midiHandler.begin();
 
     // Set the MIDIHandler to listen to all channels

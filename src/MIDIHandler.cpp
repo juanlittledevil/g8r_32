@@ -14,18 +14,15 @@ extern bool isInSelection;
 MIDIHandler* MIDIHandler::instance = nullptr;
 
 // Constructor for the MIDIHandler class
-MIDIHandler::MIDIHandler(int rxPin, int txPin, EurorackClock& clock, Gates& gates, LEDs& leds)
-    : midi(rxPin, txPin), clock(clock), gates(gates), leds(leds) {
+MIDIHandler::MIDIHandler(HardwareSerial& serial, EurorackClock& clock, Gates& gates, LEDs& leds)
+    : midiSerial(serial), midi(midiSerial), clock(clock), gates(gates), leds(leds) {
     instance = this;
 }
 
 // Begin the MIDIHandler
 void MIDIHandler::begin() {
-    midi.begin();
+    midi.begin(MIDI_CHANNEL_OMNI);
     midi.setHandleClock(handleClock);
-    // midi.setHandleStart(handleStart);
-    // midi.setHandleStop(handleStop);
-    // we don't yet have a handleStart or handleStop functionality on any of the modes.
     midi.setHandleStart(nullptr);
     midi.setHandleStop(nullptr);
     midi.setHandleContinue(handleContinue);
@@ -38,7 +35,10 @@ byte MIDIHandler::confirmedChannel = 9; // Default MIDI channel 0 - 15
 
 // Handle incoming MIDI messages
 void MIDIHandler::handleMidiMessage() {
+    unsigned long currentTime = millis();
     midi.read();
+    gates.update(currentTime);
+    leds.update(currentTime);
 }
 
 // Static function to handle MIDI clock messages
@@ -73,48 +73,38 @@ void MIDIHandler::handleMode0NoteOff(byte channel, byte pitch, byte velocity) {
 
 // Static function to handle MIDI note on messages for mode 1
 void MIDIHandler::handleMode1NoteOn(byte channel, byte pitch, byte velocity) {
+    unsigned long currentTime = millis();
     int note = pitch;
-    int gate = note % instance->gates.numGates;
+    // adjust the note number so C2 is the first note
+    int gate = (note - 3) % instance->gates.numGates;
     if (channel == confirmedChannel) {
-        instance->gates.turnOnGate(gate);
+        instance->gates.trigger(gate, currentTime);
         if (!isInSelection) {
-            instance->leds.setState(gate, true);
+            instance->leds.trigger(gate, currentTime);
         }
     }
 }
 
 // Static function to handle MIDI note off messages for mode 1
 void MIDIHandler::handleMode1NoteOff(byte channel, byte pitch, byte velocity) {
-    int note = pitch;
-    int gate = note % instance->gates.numGates;
-    if (channel == confirmedChannel) {
-        instance->gates.turnOffGate(gate);
-        if (!isInSelection) {
-            instance->leds.setState(gate, false);
-        }
-    }
+    // Not used in mode1, we only use triggers...
 }
 
 // Static function to handle MIDI note on messages for mode 2
 void MIDIHandler::handleMode2NoteOn(byte channel, byte pitch, byte velocity) {
     if (channel >= 9 && channel <= 16) {
+        unsigned long currentTime = millis();
         int gate = (channel - 9) % instance->gates.numGates;
-        instance->gates.turnOnGate(gate);
+        instance->gates.trigger(gate, currentTime);
         if (!isInSelection) {
-            instance->leds.setState(gate, true);
+            instance->leds.trigger(gate, currentTime);
         }
     }
 }
 
 // Static function to handle MIDI note off messages for mode 2
 void MIDIHandler::handleMode2NoteOff(byte channel, byte pitch, byte velocity) {
-    if (channel >= 9 && channel <= 16) {
-        int gate = (channel - 9) % instance->gates.numGates;
-        instance->gates.turnOffGate(gate);
-        if (!isInSelection) {
-            instance->leds.setState(gate, false);
-        }
-    }
+    // Unused in mode 2, we only trigger notes here...
 }
 
 void MIDIHandler::setMode(int mode) {
@@ -128,13 +118,13 @@ void MIDIHandler::setMode(int mode) {
         midi.setHandleClock(handleClock);
     } else if (mode == 1) {
         midi.setHandleNoteOn(handleMode1NoteOn);
-        midi.setHandleNoteOff(handleMode1NoteOff);
+        midi.setHandleNoteOff(nullptr);
         midi.setHandleClock(nullptr);
         midi.setHandleStart(nullptr);
         midi.setHandleStop(nullptr);
     } else if (mode == 2) {
         midi.setHandleNoteOn(handleMode2NoteOn);
-        midi.setHandleNoteOff(handleMode2NoteOff);
+        midi.setHandleNoteOff(nullptr);
         midi.setHandleClock(nullptr);
         midi.setHandleStart(nullptr);
         midi.setHandleStop(nullptr);
@@ -142,5 +132,5 @@ void MIDIHandler::setMode(int mode) {
 }
 
 void MIDIHandler::setChannel(byte channel) {
-    confirmedChannel = channel;
+    confirmedChannel = channel + 1;
 }
