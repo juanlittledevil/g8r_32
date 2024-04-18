@@ -8,11 +8,16 @@
     Serial.flush(); \
 }
 
-Mode2::Mode2(Encoder& encoder, Gates& gates, LEDController& ledController, MIDIHandler& midiHandler)
+Mode2::Mode2(Encoder& encoder,
+    Gates& gates,
+    LEDController& ledController,
+    MIDIHandler& midiHandler,
+    ResetButton& resetButton)
     :   encoder(encoder),
         gates(gates),
         ledController(ledController),
-        midiHandler(midiHandler) {
+        midiHandler(midiHandler),
+        resetButton(resetButton) {
 }
 
 void Mode2::setup() {
@@ -51,3 +56,18 @@ void Mode2::handleSelectionStates() {
     // Handle selection states
 }
 
+void Mode2::handleResetSinglePress() {
+    // Handle reset single press
+}
+
+void Mode2::handleResetDoublePress() {
+    // Handle reset double press
+}
+
+void Mode2::handleResetLongPress() {
+    // Handle reset long press
+}
+
+void Mode2::handleResetPressReleased() {
+    // Handle reset press released
+}

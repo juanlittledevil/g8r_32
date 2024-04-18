@@ -12,6 +12,7 @@
 #include "Mode1.h"
 #include "Mode2.h"
 #include "LEDController.h"
+#include "ResetButton.h"
 #include <vector>
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
@@ -26,6 +27,7 @@
 // Define the pins for the clock and reset
 #define CLOCK_PIN PB10
 #define RESET_PIN PB11
+#define RESET_BUTTON_PIN PB15
 // Define the pin for the tempo LED
 #define TEMPO_LED PA8
 // Define the pins for the gates
@@ -62,6 +64,9 @@ int intensity_step = (255 - min_intensity) / (total_pages - 1); // Calculate int
 // Create an instance of the Encoder class
 Encoder encoder = Encoder(encCLKPin, encDTPin, encButtonPin);
 
+// Create an instance of the ResetButton class
+ResetButton resetButton = ResetButton(RESET_BUTTON_PIN);
+
 // Create an instance of the LEDController class
 LEDController ledController(leds);
 
@@ -74,9 +79,9 @@ MIDIHandler midiHandler(Serial2, clock, gates, leds);
 // Mode Classes and ModeSelector
 ModeSelector& modeSelector = ModeSelector::getInstance();
 Mode* currentMode = nullptr;
-Mode0 mode0(encoder, gates, ledController, clock, midiHandler);
-Mode1 mode1(encoder, gates, ledController, midiHandler);
-Mode2 mode2(encoder, gates, ledController, midiHandler);
+Mode0 mode0(encoder, gates, ledController, clock, midiHandler, resetButton);
+Mode1 mode1(encoder, gates, ledController, midiHandler, resetButton);
+Mode2 mode2(encoder, gates, ledController, midiHandler, resetButton);
 
 void setup() {
     // Enable debugging
@@ -116,6 +121,7 @@ void setup() {
     leds.begin(); // Initialize LED pins
     gates.begin(); // Initialize gate pins
     encoder.begin(); // Initialize encoder pins
+    resetButton.begin(); // Initialize reset button pin
 
     // gates.setSelectedGate(selectedGate);
     

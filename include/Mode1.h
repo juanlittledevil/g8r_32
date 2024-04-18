@@ -7,15 +7,24 @@
 #include "LEDController.h"
 #include "MIDIHandler.h"
 #include "Constants.h"
+#include "ResetButton.h"
 
 class Mode1 : public Mode {
 public:
-    Mode1(Encoder& encoder, Gates& gates, LEDController& ledController, MIDIHandler& midiHandler);
+    Mode1(Encoder& encoder,
+        Gates& gates,
+        LEDController& ledController,
+        MIDIHandler& midiHandler,
+        ResetButton& resetButton);
     void handleSinglePress() override;
     void handleDoublePress() override;
     void handleLongPress() override;
     void handlePressReleased() override;
     void handleSelectionStates() override;
+    void handleResetSinglePress() override;
+    void handleResetDoublePress() override;
+    void handleResetLongPress() override;
+    void handleResetPressReleased() override;
     void setup() override;
     void teardown() override;
     void update() override;
@@ -27,6 +36,7 @@ private:
     void handleChannelSelectionPress();
     LEDController& ledController;
     Encoder& encoder;
+    ResetButton& resetButton;
     Gates& gates;
     MIDIHandler& midiHandler;
     bool doublePressHandled = false;

@@ -20,7 +20,7 @@ public:
 class InputPin : public Pin {
 public:
     InputPin(int pin); // Default constructor
-    InputPin(int pin, bool useInternalPullup, bool useInternalPulldown); // Overloaded constructor
+    InputPin(int pin, bool internalPullup, bool internalPulldown); // Overloaded constructor
     virtual void begin(); // Initialize the pin
     virtual bool getState(); // Get the state of the pin
 

@@ -25,12 +25,12 @@ InputPin::InputPin(int pin) : Pin(pin), useInternalPullup(false), useInternalPul
 }
 
 // Overloaded constructor
-InputPin::InputPin(int pin, bool useInternalPullup, bool useInternalPulldown)
+InputPin::InputPin(int pin, bool internalPullup, bool internalPulldown)
 :   Pin(pin),
-    useInternalPullup(useInternalPullup),
-    useInternalPulldown(useInternalPulldown) {
-        this->useInternalPullup = useInternalPullup;
-        this->useInternalPulldown = useInternalPulldown;
+    useInternalPullup(internalPullup),
+    useInternalPulldown(internalPulldown) {
+        this->useInternalPullup = internalPullup;
+        this->useInternalPulldown = internalPullup;
 }
 
 // Initialize the input pin

@@ -4,12 +4,18 @@
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
-Mode0::Mode0(Encoder& encoder, Gates& gates, LEDController& ledController, EurorackClock& clock, MIDIHandler& midiHandler)
+Mode0::Mode0(Encoder& encoder,
+    Gates& gates,
+    LEDController& ledController,
+    EurorackClock& clock,
+    MIDIHandler& midiHandler,
+    ResetButton& resetButton)
     :   encoder(encoder),
         gates(gates),
         ledController(ledController),
         clock(clock),
-        midiHandler(midiHandler) {
+        midiHandler(midiHandler),
+        resetButton(resetButton) {
     setDefaultDivisionIndex();
 }
 
@@ -43,6 +49,7 @@ void Mode0::update() {
 
     // Handle button presses
     handleButton(encoder.readButton());
+    handleResetButton(resetButton.readButton());
 
     // Handle selection states
     handleSelectionStates();
@@ -86,6 +93,45 @@ void Mode0::handleButton(Encoder::ButtonState buttonState) {
         singlePressHandled = false; 
         doublePressHandled = false;
     }
+}
+
+void Mode0::handleResetButton(ResetButton::ButtonState buttonState) {
+    resetButton.readButton();
+
+    // Handle reset button presses
+    if (resetButton.isButtonLongPressed()) {
+        this->handleResetLongPress();
+    } else if (resetButton.isButtonDoublePressed()) {
+        this->handleResetDoublePress();
+        doubleResetPressHandled = true; 
+    } else if (resetButton.readButton() == ResetButton::PRESSED && !singleResetPressHandled) {
+        this->handleResetSinglePress();
+        singleResetPressHandled = true;
+    } else if (resetButton.readButton() == ResetButton::OPEN) {
+        this->handleResetPressReleased();
+        singleResetPressHandled = false; 
+        doubleResetPressHandled = false;
+    }
+}
+
+void Mode0::handleResetSinglePress() {
+    if (inDivisionSelection) {
+        // Reset the division to the default value
+        unsigned long currentTime = millis();
+        gates.trigger(selectedGate, currentTime);
+    } else {
+        // Reset the selected gate
+        clock.reset();
+    }
+}
+
+void Mode0::handleResetDoublePress() {
+}
+
+void Mode0::handleResetLongPress() {
+}
+
+void Mode0::handleResetPressReleased() {
 }
 
 void Mode0::handleLongPress() {

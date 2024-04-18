@@ -5,11 +5,16 @@
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
-Mode1::Mode1(Encoder& encoder, Gates& gates, LEDController& ledController, MIDIHandler& midiHandler)
+Mode1::Mode1(Encoder& encoder,
+    Gates& gates,
+    LEDController& ledController,
+    MIDIHandler& midiHandler,
+    ResetButton& resetButton)
     :   encoder(encoder),
         gates(gates),
         ledController(ledController),
-        midiHandler(midiHandler) {
+        midiHandler(midiHandler),
+        resetButton(resetButton) {
 }
 
 // Setup and teardown methods are meant to be called when Mode selector
@@ -137,4 +142,16 @@ void Mode1::handleSinglePress() {
 
 void Mode1::handlePressReleased() {
     // Mode 1 specific press released handling
+}
+
+void Mode1::handleResetSinglePress() {
+}
+
+void Mode1::handleResetDoublePress() {
+}
+
+void Mode1::handleResetLongPress() {
+}
+
+void Mode1::handleResetPressReleased() {
 }

@@ -5,6 +5,7 @@
 #include "LEDController.h" // Include the LEDController header
 #include "Encoder.h"
 #include "Mode.h"
+#include "ResetButton.h"
 
 //Mode Selector Singleton.
 
@@ -37,6 +38,7 @@ private:
     int inModeSelection = false;
     LEDController* ledController; // Add a pointer to LEDController
     Encoder* encoder; // Add a pointer to Encoder
+    ResetButton* resetButton;
     bool isInSelection;
     bool inChannelSelection;
     bool singlePressHandled;
