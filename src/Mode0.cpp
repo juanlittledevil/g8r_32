@@ -68,12 +68,11 @@ void Mode0::handleEncoder() {
         divisionIndex = encoder.handleEncoderDirection(divisionIndex, musicalIntervalsSize, direction);
         int division = musicalIntervals[divisionIndex];
         gates.setDivision(selectedGate, division);
-        gates.setSelectedGate(selectedGate);
     } else {
         // Handle gate selection
         selectedGate = encoder.handleEncoderDirection(selectedGate, gates.numGates , direction);
-        gates.setSelectedGate(selectedGate);
     }
+    gates.setSelectedGate(selectedGate);
 }
 
 void Mode0::handleButton(Encoder::ButtonState buttonState) {
@@ -120,14 +119,15 @@ void Mode0::handleResetSinglePress() {
     if (Debug::isEnabled) {
         DEBUG_PRINT("Reset single press");
     }
-    // if (inDivisionSelection) {
-    //     // Reset the division to the default value
-    //     unsigned long currentTime = millis();
-    //     gates.trigger(selectedGate, currentTime);
+    if (inDivisionSelection) {
+        // Reset the division to the default value
+        unsigned long currentTime = millis();
+        gates.trigger(selectedGate, currentTime);
+        gates.gateCounters[selectedGate] = 0;
     // } else {
     //     // Reset the selected gate
     //     clock.reset();
-    // }
+    }
 }
 
 void Mode0::handleResetDoublePress() {
