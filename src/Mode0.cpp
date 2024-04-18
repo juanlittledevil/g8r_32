@@ -10,6 +10,7 @@ Mode0::Mode0(Encoder& encoder, Gates& gates, LEDController& ledController, Euror
         ledController(ledController),
         clock(clock),
         midiHandler(midiHandler) {
+    setDefaultDivisionIndex();
 }
 
 // Setup and teardown methods are meant to be called when Mode selector
@@ -23,6 +24,15 @@ void Mode0::setup() {
 void Mode0::teardown() {
     clock.stop();
     ledController.clearAndResetLEDs();
+}
+
+void Mode0::setDefaultDivisionIndex() {
+    for (int i = 0; i < musicalIntervalsSize; i++) {
+        if (musicalIntervals[i] == internalPPQN) {
+            divisionIndex = i;
+            break;
+        }
+    }
 }
 
 // The update method is meant to be called every loop iteration. This is

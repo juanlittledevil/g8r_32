@@ -2,6 +2,7 @@
 #define GATE_H
 
 #include "Pin.h"
+#include "Constants.h"
 
 class Gate : public OutputPin {
   public:
@@ -15,7 +16,7 @@ class Gate : public OutputPin {
   private:
     int gateOnDuration = 10; // Duration in milliseconds that the LED should stay on
     unsigned long triggeredTime = 0;
-    int division = 4;
+    int division = internalPPQN;
 };
 
 

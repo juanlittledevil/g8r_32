@@ -2,10 +2,11 @@
 #define LEDS_H
 
 #include "LED.h"
+#include <vector>
 
 class LEDs {
     public:
-        LEDs(int* pins, int numLeds); // Constructor declaration
+        LEDs(std::vector<int> pins, int numLeds); // Constructor declaration
         ~LEDs(); // Destructor declaration
         void begin();
         void setState(int index, bool state);

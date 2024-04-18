@@ -21,6 +21,8 @@ public:
     void setup() override;
     void teardown() override;
     void update() override;
+    void setDivisionPPQN(int ppqn);
+    void setDefaultDivisionIndex();
 
 private:
     void handleEncoder();
@@ -38,12 +40,10 @@ private:
     int tempoIncrement = 1;
     const int minTempo = 20;
     const int maxTempo = 340;
-    int divisionIndex = 4;
+    int divisionIndex = 24;
     int selectedGate = 0;
     bool selectingTempo = false;
     bool doublePressHandled = false;
-    std::vector<int> clockDivisions = {1, 2, 4, 6, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192};
-    size_t numClockDivisions = clockDivisions.size();
 };
 
 #endif // MODE0_H

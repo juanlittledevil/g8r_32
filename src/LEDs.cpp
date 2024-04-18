@@ -5,7 +5,7 @@
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 // Constructor
-LEDs::LEDs(int pins[], int numLeds) {
+LEDs::LEDs(std::vector<int> pins, int numLeds) {
     this->numLeds = numLeds;
     leds = new LED[numLeds];
     for(int i = 0; i < numLeds; i++) {

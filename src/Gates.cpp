@@ -1,11 +1,12 @@
 // Gates.cpp
 #include "Gates.h"
 #include "Debug.h"
+#include <vector>
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 // Constructor
-Gates::Gates(int pins[], int numGates) {
+Gates::Gates(std::vector<int> pins, int numGates) {
     this->numGates = numGates;
     gateArray = new Gate[numGates];
     gateCounters = new int[numGates];

@@ -8,7 +8,7 @@
 // Constructor
 Gate::Gate(int pin) : OutputPin(pin) {
     // Initialization code
-    division = 4;
+    division = internalPPQN;
 }
 
 // Destructor

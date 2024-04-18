@@ -5,10 +5,11 @@
 #include <Arduino.h>
 #include "Gate.h"
 #include "LEDs.h"
+#include <vector>
 
 class Gates {
   public:
-    Gates(int pins[], int numGates);
+    Gates(std::vector<int> pins, int numGates);
     ~Gates();
     void begin();
     void setState(int gateIndex, bool state);
