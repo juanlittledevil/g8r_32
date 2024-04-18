@@ -85,7 +85,8 @@ void Mode0::handleButton(Encoder::ButtonState buttonState) {
     } else if (encoder.isButtonDoublePressed()) {
         this->handleDoublePress();
         doublePressHandled = true; 
-    } else if (encoder.readButton() == Encoder::PRESSED && !singlePressHandled) {
+    // } else if (encoder.readButton() == Encoder::PRESSED && !singlePressHandled) {
+    } else if (encoder.isButtonSinglePressed() && !singlePressHandled) {
         this->handleSinglePress();
         singlePressHandled = true;
     } else if (encoder.readButton() == Encoder::OPEN) {
@@ -104,7 +105,8 @@ void Mode0::handleResetButton(ResetButton::ButtonState buttonState) {
     } else if (resetButton.isButtonDoublePressed()) {
         this->handleResetDoublePress();
         doubleResetPressHandled = true; 
-    } else if (resetButton.readButton() == ResetButton::PRESSED && !singleResetPressHandled) {
+    } else if (resetButton.readButton() == Encoder::PRESSED && !singleResetPressHandled) {
+    // } else if (resetButton.isButtonSinglePressed() && !singleResetPressHandled) {
         this->handleResetSinglePress();
         singleResetPressHandled = true;
     } else if (resetButton.readButton() == ResetButton::OPEN) {
@@ -115,32 +117,52 @@ void Mode0::handleResetButton(ResetButton::ButtonState buttonState) {
 }
 
 void Mode0::handleResetSinglePress() {
-    if (inDivisionSelection) {
-        // Reset the division to the default value
-        unsigned long currentTime = millis();
-        gates.trigger(selectedGate, currentTime);
-    } else {
-        // Reset the selected gate
-        clock.reset();
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Reset single press");
     }
+    // if (inDivisionSelection) {
+    //     // Reset the division to the default value
+    //     unsigned long currentTime = millis();
+    //     gates.trigger(selectedGate, currentTime);
+    // } else {
+    //     // Reset the selected gate
+    //     clock.reset();
+    // }
 }
 
 void Mode0::handleResetDoublePress() {
+    // NOTE: This is not working as expected. However,
+    // before double press is handled, the single press state is returned.
+    // This means that if you want to use double press, you need to
+    // handle the single press state first. If you don't want to use
+    // single press, you'll need undo that first or apply some logic to handle it.
+    // I have tried adding a delay to the single press handling, and that works, but
+    // the delay is a problem if a single button press is needed for realtime application.
+    // So, I'm leaving this as is for now.
+    if (!doubleResetPressHandled) {
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("Reset double press");
+        }
+    }
 }
 
 void Mode0::handleResetLongPress() {
+    // 
 }
 
 void Mode0::handleResetPressReleased() {
 }
 
 void Mode0::handleLongPress() {
-    // modeSelector.handleLongPress();
+    // Long press is used by modeSelector, so don't use that here.
 }
 
 void Mode0::handleDoublePress() {
     // Enter tempo selection mode on double press
     if (!doublePressHandled) {
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("Double press");
+        }
         if (selectingTempo) {
             // Exit tempo selection mode on double press
             selectingTempo = false;
@@ -152,8 +174,16 @@ void Mode0::handleDoublePress() {
 }
 
 void Mode0::handleSinglePress() {
-    // Mode 0 specific single press handling
-    handleDivisionSelectionPress();
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Single press");
+    }
+    if (inDivisionSelection) {
+        // Update the division for the selected gate
+        int division = musicalIntervals[divisionIndex];
+        gates.setDivision(selectedGate, division);
+    }
+    // Toggle between division selection and gate selection
+    inDivisionSelection = !inDivisionSelection;
 }
 
 void Mode0::handlePressReleased() {
@@ -184,7 +214,7 @@ void Mode0::handleTempoSelection() {
                 DEBUG_PRINT("External tempo mode disabled");
             }
         } else if (currentTempo + tempoIncrement <= maxTempo) {
-            clock.setTempo(currentTempo + tempoIncrement, 4);
+            clock.setTempo(currentTempo + tempoIncrement, internalPPQN);
         }
     } else if (direction == Encoder::CCW) {
         if (currentTempo - tempoIncrement < minTempo) {
@@ -194,17 +224,17 @@ void Mode0::handleTempoSelection() {
                 DEBUG_PRINT("External tempo mode enabled");
             }
         } else {
-            clock.setTempo(currentTempo - tempoIncrement, 4);
+            clock.setTempo(currentTempo - tempoIncrement, internalPPQN);
         }
     }
     clock.setExternalTempo(externalTempo);
 }
 
-void Mode0::handleDivisionSelectionPress() {
-    // Handle division selection press
-    if (inDivisionSelection) {
-        inDivisionSelection = false;
-    } else {
-        inDivisionSelection = true;
-    }
-}
+// void Mode0::handleDivisionSelectionPress() {
+//     // Handle division selection press
+//     if (inDivisionSelection) {
+//         inDivisionSelection = false;
+//     } else {
+//         inDivisionSelection = true;
+//     }
+// }

@@ -27,7 +27,7 @@
 // Define the pins for the clock and reset
 #define CLOCK_PIN PB10
 #define RESET_PIN PB11
-#define RESET_BUTTON_PIN PB15
+#define RESET_BUTTON PB15
 // Define the pin for the tempo LED
 #define TEMPO_LED PA8
 // Define the pins for the gates
@@ -65,7 +65,7 @@ int intensity_step = (255 - min_intensity) / (total_pages - 1); // Calculate int
 Encoder encoder = Encoder(encCLKPin, encDTPin, encButtonPin);
 
 // Create an instance of the ResetButton class
-ResetButton resetButton = ResetButton(RESET_BUTTON_PIN);
+ResetButton resetButton = ResetButton(RESET_BUTTON);
 
 // Create an instance of the LEDController class
 LEDController ledController(leds);
@@ -84,15 +84,24 @@ Mode1 mode1(encoder, gates, ledController, midiHandler, resetButton);
 Mode2 mode2(encoder, gates, ledController, midiHandler, resetButton);
 
 void setup() {
+    delay(1000);
+
     // Enable debugging
-    Debug::isEnabled = false;
+    Debug::isEnabled = true;
 
     // Initialize serial communication
-    Serial.begin(9600);
-    Serial.println("Entered setup() function");
+    if (Debug::isEnabled) {
+        Serial.begin(115200);
+        DEBUG_PRINT("Entering setup() function");
+    }
+    // TODO: Unfortunately I'm dealing with a bug that prevents me from initializing the reset button
+    // from within the ResetButton class. I have to do it here instead. Opting this route as it is
+    // the least intrusive. See notes in class method for more details.
+    // resetButton.begin(); //  do not call this function as it will hang the app.
+    pinMode(RESET_BUTTON, INPUT_PULLDOWN); // This is the workaround for the bug
     
     // Initialize the MIDIHandler
-    Serial2.begin(31250);
+    // Serial2.begin(31250);
     midiHandler.begin();
 
     // Set the MIDIHandler to listen to all channels
@@ -121,7 +130,6 @@ void setup() {
     leds.begin(); // Initialize LED pins
     gates.begin(); // Initialize gate pins
     encoder.begin(); // Initialize encoder pins
-    resetButton.begin(); // Initialize reset button pin
 
     // gates.setSelectedGate(selectedGate);
     

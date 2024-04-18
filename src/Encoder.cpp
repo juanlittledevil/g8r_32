@@ -103,6 +103,14 @@ bool Encoder::isButtonDoublePressed() {
     return pressCount >= 2;
 }
 
+bool Encoder::isButtonSinglePressed() {
+    if (pressCount == 1 && millis() - lastButtonPress >= DOUBLE_PRESS_INTERVAL) {
+        pressCount = 0;
+        return true;
+    }
+    return false;
+}
+
 int Encoder::handleEncoderDirection(int currentValue, int maxValue, Direction direction) {
     if (direction == Encoder::CW) {
         if (currentValue < maxValue - 1) {

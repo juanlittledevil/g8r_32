@@ -16,6 +16,7 @@ public:
     int handleEncoderDirection(int currentValue, int maxValue, Direction direction);
     bool isButtonLongPressed();
     bool isButtonDoublePressed();
+    bool isButtonSinglePressed();
     int readSpeed();
 
 private:
