@@ -38,7 +38,6 @@ private:
     void handleEncoder();
     void handleButton(Encoder::ButtonState buttonState);
     void handleResetButton(ResetButton::ButtonState buttonState);
-    // void handleDivisionSelectionPress();
     void handleTempoSelection();
     LEDController& ledController;
     Encoder& encoder;

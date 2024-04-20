@@ -46,6 +46,7 @@ public:
 
     // Reset the clock
     void reset();
+    void reset(int selectedGate);
 
     // Main tick function
     void tick();

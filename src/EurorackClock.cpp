@@ -239,26 +239,33 @@ void EurorackClock::handleTempoLed(unsigned long currentTime) {
 
 // Reset the clock
 void EurorackClock::reset() {
-    if (isExternalTempo) {
+    // if (isExternalTempo) {
         resetTriggered = true;
         handleResetTrigger();
         unsigned long currentTime = millis();
         // Trigger the events immediately
         for (int i = 0; i < gates.numGates; i++) {
             gates.trigger(i, currentTime);
+            gates.gateCounters[i] = 0;
         }
         triggerTempoLed(currentTime);
         // Reset the timers
         clockState.lastTickTime = micros();
         flashPulseCount = 0;
         gates.update(currentTime);
-    } else if (!isExternalTempo && ModeSelector::getInstance().getMode() == 0) {
-        unsigned long currentTime = millis();
-        // Get the currently selected gate
-        int selectedGate = gates.getSelectedGate();
+    // } else if (!isExternalTempo && ModeSelector::getInstance().getMode() == 0) {
+    //     unsigned long currentTime = millis();
+    //     // Get the currently selected gate
+    //     int selectedGate = gates.getSelectedGate();
 
-        // Reset the counter for the selected gate
-        gates.gateCounters[selectedGate] = 0;
-        gates.trigger(selectedGate, currentTime);
-    }
+    //     // Reset the counter for the selected gate
+    //     gates.gateCounters[selectedGate] = 0;
+    //     gates.trigger(selectedGate, currentTime);
+    // }
+}
+
+void EurorackClock::reset(int selectedGate) {
+    unsigned long currentTime = millis();
+    gates.trigger(selectedGate, currentTime);
+    gates.gateCounters[selectedGate] = 0;
 }

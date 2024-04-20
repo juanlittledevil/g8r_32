@@ -119,30 +119,15 @@ void Mode0::handleResetSinglePress() {
     if (Debug::isEnabled) {
         DEBUG_PRINT("Reset single press");
     }
-    if (inDivisionSelection) {
-        // Reset the division to the default value
-        unsigned long currentTime = millis();
-        gates.trigger(selectedGate, currentTime);
-        gates.gateCounters[selectedGate] = 0;
-    // } else {
-    //     // Reset the selected gate
-    //     clock.reset();
-    }
+    clock.reset(selectedGate);
 }
 
 void Mode0::handleResetDoublePress() {
-    // NOTE: This is not working as expected. However,
-    // before double press is handled, the single press state is returned.
-    // This means that if you want to use double press, you need to
-    // handle the single press state first. If you don't want to use
-    // single press, you'll need undo that first or apply some logic to handle it.
-    // I have tried adding a delay to the single press handling, and that works, but
-    // the delay is a problem if a single button press is needed for realtime application.
-    // So, I'm leaving this as is for now.
     if (!doubleResetPressHandled) {
         if (Debug::isEnabled) {
             DEBUG_PRINT("Reset double press");
         }
+        clock.reset();
     }
 }
 
@@ -229,12 +214,3 @@ void Mode0::handleTempoSelection() {
     }
     clock.setExternalTempo(externalTempo);
 }
-
-// void Mode0::handleDivisionSelectionPress() {
-//     // Handle division selection press
-//     if (inDivisionSelection) {
-//         inDivisionSelection = false;
-//     } else {
-//         inDivisionSelection = true;
-//     }
-// }
