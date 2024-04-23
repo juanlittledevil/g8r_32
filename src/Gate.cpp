@@ -35,3 +35,7 @@ void Gate::update(unsigned long currentTime) {
 int Gate::getDivision() {
     return this->division;
 }
+
+void Gate::setGateOnDuration(int duration) {
+    gateOnDuration = duration;
+}

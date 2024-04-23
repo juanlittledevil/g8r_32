@@ -12,6 +12,7 @@ class Gate : public OutputPin {
     void update(unsigned long currentTime);
     void setDivision(int divition);
     int getDivision();
+    void setGateOnDuration(int duration);
   
   private:
     int gateOnDuration = 10; // Duration in milliseconds that the LED should stay on

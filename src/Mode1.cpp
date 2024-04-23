@@ -6,11 +6,13 @@
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 Mode1::Mode1(Encoder& encoder,
+    InputHandler& inputHandler,
     Gates& gates,
     LEDController& ledController,
     MIDIHandler& midiHandler,
     ResetButton& resetButton)
     :   encoder(encoder),
+        inputHandler(inputHandler),
         gates(gates),
         ledController(ledController),
         midiHandler(midiHandler),

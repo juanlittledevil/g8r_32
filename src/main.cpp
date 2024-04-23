@@ -13,6 +13,7 @@
 #include "Mode2.h"
 #include "LEDController.h"
 #include "ResetButton.h"
+#include "InputHandler.h"
 #include <vector>
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
@@ -30,6 +31,10 @@
 #define RESET_BUTTON PB15
 // Define the pin for the tempo LED
 #define TEMPO_LED PA8
+
+#define CV_A_PIN PA4
+#define CV_B_PIN PA5
+
 // Define the pins for the gates
 std::vector<int> pins = {PA15, PB3, PB4, PB5, PB6, PB7, PB8, PB9}; // Example pins
 const int numPins = pins.size();
@@ -76,12 +81,15 @@ EurorackClock clock(CLOCK_PIN, RESET_PIN, TEMPO_LED, gates, leds);
 // Create an instance of the MIDIHandler class
 MIDIHandler midiHandler(Serial2, clock, gates, leds);
 
+// Create an instance of the InputHandler class
+InputHandler inputHandler = InputHandler(CV_A_PIN, CV_B_PIN);
+
 // Mode Classes and ModeSelector
 ModeSelector& modeSelector = ModeSelector::getInstance();
 Mode* currentMode = nullptr;
-Mode0 mode0(encoder, gates, ledController, clock, midiHandler, resetButton);
-Mode1 mode1(encoder, gates, ledController, midiHandler, resetButton);
-Mode2 mode2(encoder, gates, ledController, midiHandler, resetButton);
+Mode0 mode0(encoder, inputHandler, gates, ledController, midiHandler, resetButton, clock);
+Mode1 mode1(encoder, inputHandler, gates, ledController, midiHandler, resetButton);
+Mode2 mode2(encoder, inputHandler, gates, ledController, midiHandler, resetButton);
 
 void setup() {
     delay(1000);

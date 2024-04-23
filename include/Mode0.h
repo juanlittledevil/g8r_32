@@ -9,16 +9,18 @@
 #include "MIDIHandler.h"
 #include "Constants.h"
 #include "ResetButton.h"
+#include "InputHandler.h"
 #include <vector>
 
 class Mode0 : public Mode {
 public:
     Mode0(Encoder& encoder,
+        InputHandler& inputHandler,
         Gates& gates,
         LEDController& ledController,
-        EurorackClock& clock,
         MIDIHandler& midiHandler,
-        ResetButton& resetButton);
+        ResetButton& resetButton,
+        EurorackClock& clock);
     void handleSinglePress() override;
     void handleDoublePress() override;
     void handleLongPress() override;
@@ -38,6 +40,7 @@ private:
     void handleEncoder();
     void handleButton(Encoder::ButtonState buttonState);
     void handleResetButton(ResetButton::ButtonState buttonState);
+    void handleCVInput();
     void handleTempoSelection();
     LEDController& ledController;
     Encoder& encoder;
@@ -45,6 +48,7 @@ private:
     Gates& gates;
     EurorackClock& clock;
     MIDIHandler& midiHandler;
+    InputHandler& inputHandler;
     bool inDivisionSelection = false;
     bool externalTempo = false;
     bool singlePressHandled = false;

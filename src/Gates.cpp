@@ -98,3 +98,10 @@ void Gates::setSelectedGate(int index) {
 int Gates::getSelectedGate() {
     return selectedGate;
 }
+
+// Method to set the gate on duration in ms of a specific gate
+void Gates::setGateOnDuration(int index, int duration) {
+    if (index >= 0 && index < numGates) { // Check if the index is within bounds
+        gateArray[index].setGateOnDuration(duration); // Set the gate on duration
+    }
+}

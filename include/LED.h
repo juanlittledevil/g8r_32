@@ -14,6 +14,7 @@ class LED : public OutputPin {
         void trigger(unsigned long currentTime, bool inverted=false);
         void update(unsigned long currentTime);
         void resetIvernted();
+        void setLedOnDuration(int duration);
 
     private:
         unsigned long blinkStartTime;

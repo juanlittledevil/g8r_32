@@ -5,17 +5,19 @@
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 Mode0::Mode0(Encoder& encoder,
+    InputHandler& inputHandler,
     Gates& gates,
     LEDController& ledController,
-    EurorackClock& clock,
     MIDIHandler& midiHandler,
-    ResetButton& resetButton)
+    ResetButton& resetButton,
+    EurorackClock& clock)
     :   encoder(encoder),
+        inputHandler(inputHandler),
         gates(gates),
         ledController(ledController),
-        clock(clock),
         midiHandler(midiHandler),
-        resetButton(resetButton) {
+        resetButton(resetButton),
+        clock(clock) {
     setDefaultDivisionIndex();
 }
 
@@ -50,6 +52,7 @@ void Mode0::update() {
     // Handle button presses
     handleButton(encoder.readButton());
     handleResetButton(resetButton.readButton());
+    handleCVInput();
 
     // Handle selection states
     handleSelectionStates();
@@ -57,6 +60,12 @@ void Mode0::update() {
     // Handle clock tick
     clock.handleExternalClock();
     clock.tick();
+}
+
+void Mode0::handleCVInput() {
+    // Handle CV input
+    int cvA = inputHandler.readCVA();
+    int cvB = inputHandler.readCVB();
 }
 
 // Other mode-specific methods

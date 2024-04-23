@@ -9,11 +9,13 @@
 }
 
 Mode2::Mode2(Encoder& encoder,
+    InputHandler& inputHandler,
     Gates& gates,
     LEDController& ledController,
     MIDIHandler& midiHandler,
     ResetButton& resetButton)
     :   encoder(encoder),
+        inputHandler(inputHandler),
         gates(gates),
         ledController(ledController),
         midiHandler(midiHandler),

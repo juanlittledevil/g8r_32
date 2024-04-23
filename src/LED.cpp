@@ -64,3 +64,7 @@ void LED::update(unsigned long currentTime) {
 void LED::resetIvernted() {
     this->inverted = false;
 }
+
+void LED::setLedOnDuration(int duration) {
+    this->ledOnDuration = duration;
+}

@@ -7,11 +7,13 @@
 #include "Gates.h"
 #include "MIDIHandler.h"
 #include "Constants.h"
+#include "InputHandler.h"
 #include "ResetButton.h"
 
 class Mode2 : public Mode {
 public:
     Mode2(Encoder& encoder,
+        InputHandler& inputHandler,
         Gates& gates,
         LEDController& ledController,
         MIDIHandler& midiHandler,
@@ -33,6 +35,7 @@ private:
     void handleEncoder();
     void handleButton(Encoder::ButtonState buttonState);
     LEDController& ledController;
+    InputHandler& inputHandler;
     Encoder& encoder;
     ResetButton& resetButton;
     Gates& gates;

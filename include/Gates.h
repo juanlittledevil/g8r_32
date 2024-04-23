@@ -25,6 +25,7 @@ class Gates {
     int *gateCounters;
     void setSelectedGate(int gate);
     int getSelectedGate(); 
+    void setGateOnDuration(int index, int duration);
 
   private:
     Gate *gateArray;

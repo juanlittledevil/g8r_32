@@ -8,10 +8,12 @@
 #include "MIDIHandler.h"
 #include "Constants.h"
 #include "ResetButton.h"
+#include "InputHandler.h"
 
 class Mode1 : public Mode {
 public:
     Mode1(Encoder& encoder,
+        InputHandler& inputHandler,
         Gates& gates,
         LEDController& ledController,
         MIDIHandler& midiHandler,
@@ -35,6 +37,7 @@ private:
     void handleChannelSelection();
     void handleChannelSelectionPress();
     LEDController& ledController;
+    InputHandler& inputHandler;
     Encoder& encoder;
     ResetButton& resetButton;
     Gates& gates;
