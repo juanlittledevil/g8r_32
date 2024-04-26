@@ -4,6 +4,9 @@
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
+ModeSelector::ModeSelector()
+    :   currentMode(nullMode)   {}
+
 ModeSelector& ModeSelector::getInstance() {
     static ModeSelector instance; // Guaranteed to be destroyed, instantiated on first use.
     return instance;
@@ -15,13 +18,36 @@ void ModeSelector::update() {
 }
 
 int ModeSelector::getMode() const {
-    return mode;
+    return state->mode;
 }
 
 void ModeSelector::setMode(int newMode) {
     if (newMode >= 0 && newMode < modes.size()) {
-        mode = newMode;
+        state->mode = newMode;
         currentMode = modes[newMode];
+
+        // Save the current state to EEPROM
+        saveAppState();
+    }
+}
+
+void ModeSelector::setAppState(AppState* state) {
+    this->state = state;
+}
+
+void ModeSelector::saveAppState() {
+    // Save the current state to EEPROM before changing modes
+    uint8_t* ptr = (uint8_t*)&state;
+    for (size_t i = 0; i < sizeof(AppState); i++) {
+        EEPROM.write(i, ptr[i]);
+    }
+}
+
+void ModeSelector::readAppState() {
+    // Read the current state from EEPROM
+    uint8_t* ptr = (uint8_t*)&state;
+    for (size_t i = 0; i < sizeof(AppState); i++) {
+        ptr[i] = EEPROM.read(i);
     }
 }
 
@@ -37,6 +63,9 @@ void ModeSelector::handleLongPress() {
         singlePressHandled = true;
         ledController->clearAndResetLEDs();
         ledController->setState(getMode(), true);
+
+        // Save the current state to EEPROM
+        saveAppState();
     } else {
         // Exit mode selection state
         // ...
@@ -116,7 +145,3 @@ void ModeSelector::addMode(Mode* mode) {
 Mode* ModeSelector::getCurrentMode() {
     return currentMode;
 }
-
-ModeSelector::ModeSelector()
-    :   mode(0),
-        currentMode(nullMode)   {} // Initializes mode to 0

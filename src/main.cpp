@@ -15,6 +15,7 @@
 #include "ResetButton.h"
 #include "InputHandler.h"
 #include <vector>
+#include "AppState.h"
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
@@ -84,6 +85,9 @@ MIDIHandler midiHandler(Serial2, clock, gates, leds);
 // Create an instance of the InputHandler class
 InputHandler inputHandler = InputHandler(CV_A_PIN, CV_B_PIN);
 
+// Create an instance of the AppState struct
+AppState state;
+
 // Mode Classes and ModeSelector
 ModeSelector& modeSelector = ModeSelector::getInstance();
 Mode* currentMode = nullptr;
@@ -126,7 +130,9 @@ void setup() {
     modeSelector.addMode(&mode2);
     modeSelector.setLedController(ledController);
     modeSelector.setEncoder(encoder);
-    modeSelector.setMode(0);
+    modeSelector.setAppState(&state);
+    modeSelector.readAppState();
+    modeSelector.setMode(state.mode);
     currentMode = modeSelector.getCurrentMode();
     // // Run the setup function for the default mode
     // // NOTE: ONLY the default mode will execute this. If you have things that need to be set up for other modes,
