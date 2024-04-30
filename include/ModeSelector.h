@@ -6,8 +6,6 @@
 #include "Encoder.h"
 #include "Mode.h"
 #include "ResetButton.h"
-#include <EEPROM.h>
-#include "AppState.h"
 
 //Mode Selector Singleton.
 
@@ -27,20 +25,16 @@ public:
     Mode* getCurrentMode();
     void addMode(Mode* mode);
     void update();
-    void setAppState(AppState* state);
-    void saveAppState();
-    void readAppState();
 
 private:
     ModeSelector(); // Constructor is private
     ModeSelector(ModeSelector const&); // Don't Implement
     void operator=(ModeSelector const&); // Don't implement
-    AppState* state;
 
     std::vector<Mode*> modes;
     Mode* nullMode = nullptr;
     Mode*& currentMode;
-    // int mode;
+    int mode;
     int inModeSelection = false;
     LEDController* ledController; // Add a pointer to LEDController
     Encoder* encoder; // Add a pointer to Encoder

@@ -11,7 +11,7 @@ ResetButton::ResetButton(int pin)
     // Initialization code
 }
 
-void ResetButton::begin() {
+bool ResetButton::begin() {
     // TODO: There appears to be a bug with either my object initialization or the InputPin class.
     // If we try and configure pinMode here the app hangs. But if we call it directly from the
     // main.setup() function it works fine. I suspect it has to do with order of initialization.
