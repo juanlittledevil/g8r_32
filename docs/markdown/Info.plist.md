@@ -1,4 +1,0 @@
-CFBundleName G8R CFBundleIdentifier org.doxygen.Project CFBundleVersion
-ProjectNumber DocSetFeedName Doxygen generated docs
-DocSetPublisherIdentifier org.doxygen.Publisher DocSetPublisherName
-Publisher DashDocSetFamily doxy DocSetPlatformFamily doxygen
