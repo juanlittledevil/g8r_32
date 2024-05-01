@@ -21,7 +21,7 @@ jobs:
           PWD=`pwd`
           cd doxybook2
           export CC=/usr/bin/gcc-9
-          epxort CXX=/usr/bin/g++-9
+          export CXX=/usr/bin/g++-9
           vcpkg install --triplet x64-linux $(cat vcpkg.txt)
           mkdir build
             cmake -B ./build -G "Unix Makefiles"
