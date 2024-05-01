@@ -18,12 +18,26 @@ jobs:
       - name: Install Doxybook2
         run: |
           git clone https://github.com/matusnovak/doxybook2.git
-          pwd
+          PWD=`pwd`
           cd doxybook2
+          export CC=/usr/bin/gcc-9
+          epxort CXX=/usr/bin/g++-9
+          vcpkg install --triplet x64-linux $(cat vcpkg.txt)
+          mkdir build
+            cmake -B ./build -G "Unix Makefiles"
+            -DCMAKE_INSTALL_PREFIX=./install \
+            -DCMAKE_BUILD_TYPE=MinSizeRel \
+            -DDOXYBOOK_TESTS=ON \
+            -DVCPKG_TARGET_TRIPLET=x64-linux \
+            -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake
+            .
+          cmake --build ./build --target install --config MinSizeRel
           pwd
-          # pip install .
           ls -la
-          # doxybook2 -i ../docs/xml -o ../docs/markdown
+          ./install/bin/doxybook2 -i ../docs/xml -o ../docs/markdown
+          cd $PWD
+          pwd
+          ls -la
       # - name: Commit Doc Files
       #   run: |
       #     git add docs
