@@ -1,7 +1,0 @@
-<map id="include/ModeSelector.h" name="include/ModeSelector.h">
-<area shape="rect" id="node1" title=" " alt="" coords="237,5,411,32"/>
-<area shape="rect" id="node2" href="$EurorackClock_8cpp.html" title=" " alt="" coords="5,80,171,107"/>
-<area shape="rect" id="node3" href="$main_8cpp.html" title=" " alt="" coords="195,80,301,107"/>
-<area shape="rect" id="node4" href="$MIDIHandler_8cpp.html" title=" " alt="" coords="325,80,477,107"/>
-<area shape="rect" id="node5" href="$ModeSelector_8cpp.html" title=" " alt="" coords="501,80,661,107"/>
-</map>

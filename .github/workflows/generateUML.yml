@@ -18,13 +18,11 @@ jobs:
           doxygen Doxyfile
       - name: Convert to Markdown
         run: |
-          pwd
           [[ -d docs/markdown ]] || mkdir -p docs/markdown
-          find docs/xml -type f -exec sh -c 'output_file="${1#docs/xml/}"; mkdir -p "docs/markdown/$(dirname "$output_file")"; pandoc -f xml -t markdown -o "docs/markdown/${output_file%.html}.md" "$1"' _ {} \;
+          find docs/xml -type f -exec sh -c 'output_file="${1#docs/xml/}"; mkdir -p "docs/markdown/$(dirname "$output_file")"; pandoc -f html -t markdown -o "docs/markdown/${output_file%.xml}.md" "$1"' _ {} \;
       - name: Verify
         run: |
           ls -la docs
-          ls -la docs/html
           ls -la docs/markdown
       - name: Commit Doc Files
         run: |
