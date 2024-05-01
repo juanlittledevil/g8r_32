@@ -12,18 +12,15 @@ jobs:
         run: |
           sudo apt-get install doxygen
           sudo apt install graphviz
-      - name: Cat DoxigenFile
-        run : |
-          pwd
-          ls -la
-          cat Doxyfile
       - name: Run Doxygen
         run: |
           doxygen Doxyfile
-      - name: Convert to Markdown
+      - name: Install Doxybook2
         run: |
-          pip install doxybook2
-          doxybook2 -i docs/xml -o docs/markdown
+          git clone https://github.com/matusnovak/doxybook2.git
+          cd doxybook2
+          pip install .
+          doxybook2 -i ../docs/xml -o ../docs/markdown
       - name: Commit Doc Files
         run: |
           git add docs
