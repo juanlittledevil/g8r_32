@@ -18,13 +18,16 @@ jobs:
       - name: Install Doxybook2
         run: |
           git clone https://github.com/matusnovak/doxybook2.git
+          pwd
           cd doxybook2
+          pwd
           pip install .
+          ls -la
           doxybook2 -i ../docs/xml -o ../docs/markdown
-      - name: Commit Doc Files
-        run: |
-          git add docs
-          git config --global user.name 'juanlittledevil'
-          git config --global user.email 'juanlittledevil@users.noreply.github.com'
-          git commit -m "Automated documentation"
-          git push
+      # - name: Commit Doc Files
+      #   run: |
+      #     git add docs
+      #     git config --global user.name 'juanlittledevil'
+      #     git config --global user.email 'juanlittledevil@users.noreply.github.com'
+      #     git commit -m "Automated documentation"
+      #     git push
