@@ -13,6 +13,7 @@ jobs:
           sudo apt-get install doxygen
           sudo apt install graphviz
           sudo apt-get install pandoc
+          sudo apt install texlive
       - name: Run Doxygen
         run: |
           doxygen Doxyfile
@@ -23,14 +24,22 @@ jobs:
       - name: Copy to svgs
         run: |
           [[ -d docs/svg ]] || mkdir -p docs/svg
-          mv docs/html/*.svg docs/svg
-      - name: Cleanup
+          cp docs/html/*.svg docs/svg
+      # - name: Cleanup
+      #   run: |
+      #     rm -rf docs/html
+      - name: Convert to pdf
         run: |
-          rm -rf docs/html
+          [[ -d docs/pdf ]] || mkdir -p docs/pdf
+          PWD=$(pwd)
+          cd docs/latex
+          pdflatex -output-directory=../pdf refman.tex
+          cd $PWD
       - name: Verify
         run: |
           ls -la docs
           ls -la docs/svg
+          ls -la docs/pdf
       - name: Commit Doc Files
         run: |
           git add docs
