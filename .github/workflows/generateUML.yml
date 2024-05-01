@@ -27,6 +27,9 @@ jobs:
           echo "CALL_GRAPH = YES" >> Doxyfile
           echo "CALLER_GRAPH = YES" >> Doxyfile
           ls -la
+      - name: Doxyfile
+        run: |
+          cat Doxyfile
       - name: Generate Documentation
         run: | 
           doxygen Doxyfile
