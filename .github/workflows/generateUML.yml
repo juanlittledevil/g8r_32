@@ -19,14 +19,14 @@ jobs:
       - name: Run Doxygen
         run: |
           doxygen Doxyfile
-      - name: Convert to Markdown
-        run: |
-          [[ -d docs/markdown ]] || mkdir -p docs/markdown
-            find docs/latex -type f -name "*.tex" -exec sh -c 'output_file="${1#docs/latex/}"; mkdir -p "docs/markdown/$(dirname "$output_file")"; pandoc -f latex -t markdown -o "docs/markdown/${output_file%.tex}.md" "$1"' _ {} \;
-      - name: Copy to svgs
-        run: |
-          [[ -d docs/svg ]] || mkdir -p docs/svg
-          cp docs/html/*.svg docs/svg
+      # - name: Convert to Markdown
+      #   run: |
+      #     [[ -d docs/markdown ]] || mkdir -p docs/markdown
+      #       find docs/latex -type f -name "*.tex" -exec sh -c 'output_file="${1#docs/latex/}"; mkdir -p "docs/markdown/$(dirname "$output_file")"; pandoc -f latex -t markdown -o "docs/markdown/${output_file%.tex}.md" "$1"' _ {} \;
+      # - name: Copy to svgs
+      #   run: |
+      #     [[ -d docs/svg ]] || mkdir -p docs/svg
+      #     cp docs/html/*.svg docs/svg
       - name: Convert to pdf
         run: |
           [[ -d docs/pdf ]] || mkdir -p docs/pdf
@@ -34,7 +34,7 @@ jobs:
           cd docs/latex
           pdflatex -output-directory=../pdf refman.tex
           cd $PWD
-          cp docs/pdf/refman.pdf docs/G8R.pdf
+          cp docs/pdf/*.pdf docs/G8R.pdf
       - name: Verify
         run: |
           ls -la docs
