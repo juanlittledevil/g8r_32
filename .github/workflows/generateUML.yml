@@ -22,10 +22,8 @@ jobs:
           doxygen Doxyfile
       - name: Commit Doc Files
         run: |
-          ls -ltra
-      # - name: Commit DoxigenFile
-      #   run: |
-      #     git config --global user.name 'juanlittledevil'
-      #     git config --global user.email 'juanlittledevil@users.noreply.github.com'
-      #     git commit -am 'Automated Doxygen File'
-      #     git push
+          git add docs
+          git config --global user.name 'juanlittledevil'
+          git config --global user.email 'juanlittledevil@users.noreply.github.com'
+          git commit -m "Automated documentation"
+          git push
