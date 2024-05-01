@@ -1,7 +1,0 @@
-<map id="OutputPin" name="OutputPin">
-<area shape="rect" id="node1" title=" " alt="" coords="270,160,450,296"/>
-<area shape="rect" id="node3" href="$classGate.html" title=" " alt="" coords="5,417,224,671"/>
-<area shape="rect" id="node4" href="$classLED.html" title=" " alt="" coords="249,344,471,744"/>
-<area shape="rect" id="node5" href="$classPWMPin.html" title=" " alt="" coords="495,469,678,619"/>
-<area shape="rect" id="node2" href="$classPin.html" title=" " alt="" coords="294,5,426,112"/>
-</map>
