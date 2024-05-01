@@ -30,10 +30,9 @@ jobs:
       - name: Convert to pdf
         run: |
           [[ -d docs/pdf ]] || mkdir -p docs/pdf
-          PWD=$(pwd)
           cd docs/latex
           pdflatex -output-directory=../pdf refman.tex
-          cd $PWD
+          cd ../..
           pwd
           cp docs/pdf/refman.pdf docs/G8R.pdf
       - name: Verify
