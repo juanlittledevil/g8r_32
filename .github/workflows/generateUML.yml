@@ -1,4 +1,4 @@
-name: Generate PlantUML Diagrams
+name: Generate Documentation
 on:
   push:
 
@@ -8,13 +8,10 @@ jobs:
     steps:
       - name: Checkout Source
         uses: actions/checkout@v2
-
-      # - name: Generate SVG Diagrams
-      #   uses: holowinski/plantuml-github-action@main
-      #   with:
-      #     args: -v -tsvg diagrams/*.puml
-
-      - name: Generate UML Diagrams
-        uses: mattnotmitt/doxygen-action@v1.9.5
-        with:
-          additional-packages: font-fira-code
+      - name: Hello World
+        run: echo "Hello World"
+      - name: L S
+        run: |
+          ls -la
+          pwd
+          
