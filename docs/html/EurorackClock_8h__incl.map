@@ -1,0 +1,12 @@
+<map id="include/EurorackClock.h" name="include/EurorackClock.h">
+<area shape="rect" id="node1" title=" " alt="" coords="174,5,353,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,140,107"/>
+<area shape="rect" id="node3" href="$LED_8h.xhtml" title=" " alt="" coords="243,229,302,256"/>
+<area shape="rect" id="node4" href="$Pin_8h.xhtml" title=" " alt="" coords="245,304,300,331"/>
+<area shape="rect" id="node5" href="$Gates_8h.xhtml" title=" " alt="" coords="363,80,435,107"/>
+<area shape="rect" id="node8" href="$Constants_8h.xhtml" title=" " alt="" coords="606,229,705,256"/>
+<area shape="rect" id="node10" href="$LEDs_8h.xhtml" title=" " alt="" coords="266,155,333,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="357,155,441,181"/>
+<area shape="rect" id="node7" href="$Gate_8h.xhtml" title=" " alt="" coords="465,155,531,181"/>
+<area shape="rect" id="node9" title=" " alt="" coords="537,304,600,331"/>
+</map>

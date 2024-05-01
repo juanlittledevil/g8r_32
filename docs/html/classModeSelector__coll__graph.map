@@ -1,0 +1,12 @@
+<map id="ModeSelector" name="ModeSelector">
+<area shape="rect" id="node1" title=" " alt="" coords="373,1691,604,2267"/>
+<area shape="rect" id="node2" href="$classEncoder.xhtml" title=" " alt="" coords="5,1228,236,1613"/>
+<area shape="rect" id="node3" href="$classInputPin.xhtml" title=" " alt="" coords="278,890,473,1055"/>
+<area shape="rect" id="node6" href="$classResetButton.xhtml" title=" " alt="" coords="260,1287,491,1555"/>
+<area shape="rect" id="node4" href="$classPin.xhtml" title=" " alt="" coords="360,5,492,112"/>
+<area shape="rect" id="node10" href="$classOutputPin.xhtml" title=" " alt="" coords="457,161,637,297"/>
+<area shape="rect" id="node5" href="$classMode.xhtml" title=" " alt="" coords="716,1243,971,1599"/>
+<area shape="rect" id="node7" href="$classLEDController.xhtml" title=" " alt="" coords="515,1265,692,1577"/>
+<area shape="rect" id="node8" href="$classLEDs.xhtml" title=" " alt="" coords="500,809,691,1136"/>
+<area shape="rect" id="node9" href="$classLED.xhtml" title=" " alt="" coords="464,347,687,747"/>
+</map>
