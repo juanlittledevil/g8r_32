@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.1)  1 MAY 2024 22:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.1)  1 MAY 2024 22:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -722,7 +722,7 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count320
 \l__pdf_internal_box=\box120
 )
-No file refman.aux.
+(../pdf/refman.aux)
 \openout1 = `refman.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
@@ -743,6 +743,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 149.
 LaTeX Font Info:    ... okay on input line 149.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 149.
 LaTeX Font Info:    ... okay on input line 149.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count321
@@ -814,14 +815,15 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 149.
 LaTeX Info: Redefining \pageref on input line 149.
 LaTeX Info: Redefining \nameref on input line 149.
+
+(../pdf/refman.out) (../pdf/refman.out)
 \@outlinefile=\write5
 \openout5 = `refman.out'.
 
 Package backref Info: ** backref set up for natbib ** on input line 149.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-
-No file refman.toc.
+\Etoc@tf=\read4
 Package hyperref Info: Option `pageanchor' set `false' on input line 156.
 Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 156.
 
@@ -830,7 +832,7 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 12.9599pt on input line 161.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 10.79993pt on input line 163.
-[1
+ [1
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
@@ -839,6 +841,41 @@ LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 \tf@toc=\write6
 \openout6 = `refman.toc'.
 
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 8.99994pt on input line 169.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 169
+.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 169
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 16
+9.
+
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
+)
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 6.29996pt on input line 169.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 6.29996pt on input line 169.
+ [1]
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.19995pt on input line 169.
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 16
+9.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+) [2] [3] [4] [5]
+[6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16
+
+]
 Package hyperref Info: Option `pageanchor' set `true' on input line 171.
 
 Chapter 1.
@@ -857,451 +894,132 @@ LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
 (./hierarchy.tex
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 12.9599pt on input line 1.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 6.29996pt on input line 2.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Trying to load font information for U+wasy on input line 2.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
-File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
-)
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 8.99994pt on input line 3.
-
-
-LaTeX Warning: Reference `structClockState' on page 1 undefined on input line 3
-.
-
-
-LaTeX Warning: Reference `classDebug' on page 1 undefined on input line 4.
-
-
-LaTeX Warning: Reference `classEncoder' on page 1 undefined on input line 5.
-
-
-LaTeX Warning: Reference `classEurorackClock' on page 1 undefined on input line
- 6.
-
-
-LaTeX Warning: Reference `classGates' on page 1 undefined on input line 7.
-
-
-LaTeX Warning: Reference `classInputHandler' on page 1 undefined on input line 
-8.
-
-
-LaTeX Warning: Reference `classLEDController' on page 1 undefined on input line
- 9.
-
-
-LaTeX Warning: Reference `classLEDs' on page 1 undefined on input line 10.
-
-
-LaTeX Warning: Reference `classMIDIHandler' on page 1 undefined on input line 1
-1.
-
-
-LaTeX Warning: Reference `classMode' on page 1 undefined on input line 12.
-
-
-LaTeX Warning: Reference `classMode0' on page 1 undefined on input line 14.
-
-
-LaTeX Warning: Reference `classMode1' on page 1 undefined on input line 15.
-
-
-LaTeX Warning: Reference `classMode2' on page 1 undefined on input line 16.
-
-
-LaTeX Warning: Reference `classModeSelector' on page 1 undefined on input line 
-18.
-
-
-LaTeX Warning: Reference `classPin' on page 1 undefined on input line 19.
-
-
-LaTeX Warning: Reference `classAnalogInputPin' on page 1 undefined on input lin
-e 21.
-
-
-LaTeX Warning: Reference `classInputPin' on page 1 undefined on input line 22.
-
-
-LaTeX Warning: Reference `classOutputPin' on page 1 undefined on input line 23.
-
-
-
-LaTeX Warning: Reference `classGate' on page 1 undefined on input line 25.
-
-
-LaTeX Warning: Reference `classLED' on page 1 undefined on input line 26.
-
-
-LaTeX Warning: Reference `classPWMPin' on page 1 undefined on input line 27.
-
-
-LaTeX Warning: Reference `classResetButton' on page 1 undefined on input line 3
-0.
-
-
-LaTeX Warning: Reference `classSPDTSwitch' on page 1 undefined on input line 31
-.
-
-)
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 6.29996pt on input line 176.
- [1
-
+) [1
 
 ] [2
 
 ]
 Chapter 2.
-(./annotated.tex
-
-LaTeX Warning: Reference `classAnalogInputPin' on page 3 undefined on input lin
-e 3.
-
-
-LaTeX Warning: Reference `structClockState' on page 3 undefined on input line 4
-.
-
-
-LaTeX Warning: Reference `classDebug' on page 3 undefined on input line 5.
-
-
-LaTeX Warning: Reference `classEncoder' on page 3 undefined on input line 6.
-
-
-LaTeX Warning: Reference `classEurorackClock' on page 3 undefined on input line
- 7.
-
-
-LaTeX Warning: Reference `classGate' on page 3 undefined on input line 8.
-
-
-LaTeX Warning: Reference `classGates' on page 3 undefined on input line 9.
-
-
-LaTeX Warning: Reference `classInputHandler' on page 3 undefined on input line 
-10.
-
-
-LaTeX Warning: Reference `classInputPin' on page 3 undefined on input line 11.
-
-
-LaTeX Warning: Reference `classLED' on page 3 undefined on input line 12.
-
-
-LaTeX Warning: Reference `classLEDController' on page 3 undefined on input line
- 13.
-
-
-LaTeX Warning: Reference `classLEDs' on page 3 undefined on input line 14.
-
-
-LaTeX Warning: Reference `classMIDIHandler' on page 3 undefined on input line 1
-5.
-
-
-LaTeX Warning: Reference `classMode' on page 3 undefined on input line 16.
-
-
-LaTeX Warning: Reference `classMode0' on page 3 undefined on input line 17.
-
-
-LaTeX Warning: Reference `classMode1' on page 3 undefined on input line 18.
-
-
-LaTeX Warning: Reference `classMode2' on page 3 undefined on input line 19.
-
-
-LaTeX Warning: Reference `classModeSelector' on page 3 undefined on input line 
-20.
-
-
-LaTeX Warning: Reference `classOutputPin' on page 3 undefined on input line 21.
-
-
-
-LaTeX Warning: Reference `classPin' on page 3 undefined on input line 22.
-
-
-LaTeX Warning: Reference `classPWMPin' on page 3 undefined on input line 23.
-
-
-LaTeX Warning: Reference `classResetButton' on page 3 undefined on input line 2
-4.
-
-
-LaTeX Warning: Reference `classSPDTSwitch' on page 3 undefined on input line 25
-.
-
-) [3] [4
+(./annotated.tex) [3] [4
 
 ]
 Chapter 3.
-(./files.tex
-
-LaTeX Warning: Reference `Constants_8h' on page 5 undefined on input line 3.
-
-
-LaTeX Warning: Reference `Debug_8h' on page 5 undefined on input line 4.
-
-
-LaTeX Warning: Reference `Encoder_8h' on page 5 undefined on input line 5.
-
-
-LaTeX Warning: Reference `EurorackClock_8h' on page 5 undefined on input line 6
-.
-
-
-LaTeX Warning: Reference `Gate_8h' on page 5 undefined on input line 7.
-
-
-LaTeX Warning: Reference `Gates_8h' on page 5 undefined on input line 8.
-
-
-LaTeX Warning: Reference `InputHandler_8h' on page 5 undefined on input line 9.
-
-
-
-LaTeX Warning: Reference `LED_8h' on page 5 undefined on input line 10.
-
-
-LaTeX Warning: Reference `LEDController_8h' on page 5 undefined on input line 1
-1.
-
-
-LaTeX Warning: Reference `LEDs_8h' on page 5 undefined on input line 12.
-
-
-LaTeX Warning: Reference `MIDIHandler_8h' on page 5 undefined on input line 13.
-
-
-
-LaTeX Warning: Reference `Mode_8h' on page 5 undefined on input line 14.
-
-
-LaTeX Warning: Reference `Mode0_8h' on page 5 undefined on input line 15.
-
-
-LaTeX Warning: Reference `Mode1_8h' on page 5 undefined on input line 16.
-
-
-LaTeX Warning: Reference `Mode2_8h' on page 5 undefined on input line 17.
-
-
-LaTeX Warning: Reference `ModeSelector_8h' on page 5 undefined on input line 18
-.
-
-
-LaTeX Warning: Reference `Pin_8h' on page 5 undefined on input line 19.
-
-
-LaTeX Warning: Reference `ResetButton_8h' on page 5 undefined on input line 20.
-
-
-
-LaTeX Warning: Reference `SPDTSwitch_8h' on page 5 undefined on input line 21.
-
-
-LaTeX Warning: Reference `Debug_8cpp' on page 5 undefined on input line 22.
-
-
-LaTeX Warning: Reference `Encoder_8cpp' on page 5 undefined on input line 23.
-
-
-LaTeX Warning: Reference `EurorackClock_8cpp' on page 5 undefined on input line
- 24.
-
-
-LaTeX Warning: Reference `Gate_8cpp' on page 5 undefined on input line 25.
-
-
-LaTeX Warning: Reference `Gates_8cpp' on page 5 undefined on input line 26.
-
-
-LaTeX Warning: Reference `InputHandler_8cpp' on page 5 undefined on input line 
-27.
-
-
-LaTeX Warning: Reference `LED_8cpp' on page 5 undefined on input line 28.
-
-
-LaTeX Warning: Reference `LEDController_8cpp' on page 5 undefined on input line
- 29.
-
-
-LaTeX Warning: Reference `LEDs_8cpp' on page 5 undefined on input line 30.
-
-
-LaTeX Warning: Reference `main_8cpp' on page 5 undefined on input line 31.
-
-
-LaTeX Warning: Reference `MIDIHandler_8cpp' on page 5 undefined on input line 3
-2.
-
-
-LaTeX Warning: Reference `Mode_8cpp' on page 5 undefined on input line 33.
-
-
-LaTeX Warning: Reference `Mode0_8cpp' on page 5 undefined on input line 34.
-
-
-LaTeX Warning: Reference `Mode1_8cpp' on page 5 undefined on input line 35.
-
-
-LaTeX Warning: Reference `Mode2_8cpp' on page 5 undefined on input line 36.
-
-
-LaTeX Warning: Reference `ModeSelector_8cpp' on page 5 undefined on input line 
-37.
-
-
-LaTeX Warning: Reference `Pin_8cpp' on page 5 undefined on input line 38.
-
-
-LaTeX Warning: Reference `ResetButton_8cpp' on page 5 undefined on input line 3
-9.
-
-
-LaTeX Warning: Reference `SPDTSwitch_8cpp' on page 5 undefined on input line 40
-.
-
-) [5] [6
+(./files.tex) [5] [6
 
 ]
 Chapter 4.
-(./classAnalogInputPin.tex
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 5.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-) <./classAnalogInputPin__inherit__graph.pdf
+(./classAnalogInputPin.tex <./classAnalogInputPin__inherit__graph.pdf
 
 pdfTeX warning: pdflatex (file ./classAnalogInputPin__inherit__graph.pdf): PDF 
 inclusion: multiple pdfs with page group included in a single page
 >
-<classAnalogInputPin__inherit__graph.pdf, id=168, 220.825pt x 277.035pt>
+<classAnalogInputPin__inherit__graph.pdf, id=3297, 220.825pt x 277.035pt>
 File: classAnalogInputPin__inherit__graph.pdf Graphic file (type pdf)
 <use classAnalogInputPin__inherit__graph.pdf>
 Package pdftex.def Info: classAnalogInputPin__inherit__graph.pdf  used on input
- line 14.
+ line 13.
 (pdftex.def)             Requested size: 220.0pt x 276.01132pt.
  <./classAnalogInputPin__coll__graph.pdf
 
 pdfTeX warning: pdflatex (file ./classAnalogInputPin__coll__graph.pdf): PDF inc
 lusion: multiple pdfs with page group included in a single page
 >
-<classAnalogInputPin__coll__graph.pdf, id=176, 220.825pt x 277.035pt>
+<classAnalogInputPin__coll__graph.pdf, id=3306, 220.825pt x 277.035pt>
 File: classAnalogInputPin__coll__graph.pdf Graphic file (type pdf)
 <use classAnalogInputPin__coll__graph.pdf>
 Package pdftex.def Info: classAnalogInputPin__coll__graph.pdf  used on input li
-ne 24.
+ne 22.
 (pdftex.def)             Requested size: 220.0pt x 276.01132pt.
  [7]
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 27.
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 3
-0.
+(Font)              scaled to size 10.79993pt on input line 25.
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 2
+8.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 30.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.19995pt on input line 44.
+(Font)              scaled to size 8.99994pt on input line 28.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 44.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 42.
  [8])
 (./structClockState.tex <./structClockState__coll__graph.pdf>
-<structClockState__coll__graph.pdf, id=217, 242.9075pt x 160.6pt>
+<structClockState__coll__graph.pdf, id=3341, 242.9075pt x 160.6pt>
 File: structClockState__coll__graph.pdf Graphic file (type pdf)
 <use structClockState__coll__graph.pdf>
 Package pdftex.def Info: structClockState__coll__graph.pdf  used on input line 
-14.
+13.
 (pdftex.def)             Requested size: 242.0pt x 159.9992pt.
  [9])
 (./classDebug.tex <./classDebug__coll__graph.pdf>
-<classDebug__coll__graph.pdf, id=246, 214.8025pt x 171.64125pt>
+<classDebug__coll__graph.pdf, id=3366, 214.8025pt x 171.64125pt>
 File: classDebug__coll__graph.pdf Graphic file (type pdf)
 <use classDebug__coll__graph.pdf>
-Package pdftex.def Info: classDebug__coll__graph.pdf  used on input line 14.
+Package pdftex.def Info: classDebug__coll__graph.pdf  used on input line 13.
 (pdftex.def)             Requested size: 214.0pt x 171.00175pt.
  [10]) (./classEncoder.tex <./classEncoder__coll__graph.pdf>
-<classEncoder__coll__graph.pdf, id=277, 253.94875pt x 681.54625pt>
+<classEncoder__coll__graph.pdf, id=3391, 253.94875pt x 681.54625pt>
 File: classEncoder__coll__graph.pdf Graphic file (type pdf)
 <use classEncoder__coll__graph.pdf>
-Package pdftex.def Info: classEncoder__coll__graph.pdf  used on input line 14.
+Package pdftex.def Info: classEncoder__coll__graph.pdf  used on input line 13.
 (pdftex.def)             Requested size: 204.94562pt x 550.0pt.
  [11] [12]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 4.1 on input line 96.
+(longtable)                in table 4.1 on input line 95.
 
 [13]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 4.2 on input line 116.
+(longtable)                in table 4.2 on input line 115.
 
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 124.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 123.
 [14] [15]) (./classEurorackClock.tex [16] <./classEurorackClock__coll__graph.pd
 f
 
 pdfTeX warning: pdflatex (file ./classEurorackClock__coll__graph.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
 >
-<classEurorackClock__coll__graph.pdf, id=431, 720.6925pt x 1900.09875pt>
+<classEurorackClock__coll__graph.pdf, id=3514, 720.6925pt x 1900.09875pt>
 File: classEurorackClock__coll__graph.pdf Graphic file (type pdf)
 <use classEurorackClock__coll__graph.pdf>
 Package pdftex.def Info: classEurorackClock__coll__graph.pdf  used on input lin
-e 14.
+e 13.
 (pdftex.def)             Requested size: 208.61058pt x 550.0pt.
  [17] [18] [19] [20]
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 7.19995pt on input line 213.
+(Font)              scaled to size 7.19995pt on input line 212.
  [21] [22] [23] [24] [25] [26] [27]) (./classGate.tex <./classGate__inherit__gr
 aph.pdf
 
 pdfTeX warning: pdflatex (file ./classGate__inherit__graph.pdf): PDF inclusion:
  multiple pdfs with page group included in a single page
 >
-<classGate__inherit__graph.pdf, id=710, 244.915pt x 525.965pt>
+<classGate__inherit__graph.pdf, id=3732, 244.915pt x 525.965pt>
 File: classGate__inherit__graph.pdf Graphic file (type pdf)
 <use classGate__inherit__graph.pdf>
-Package pdftex.def Info: classGate__inherit__graph.pdf  used on input line 14.
+Package pdftex.def Info: classGate__inherit__graph.pdf  used on input line 13.
 (pdftex.def)             Requested size: 244.0pt x 524.01347pt.
  [28] <./classGate__coll__graph.pdf
 
 pdfTeX warning: pdflatex (file ./classGate__coll__graph.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
 >
-<classGate__coll__graph.pdf, id=726, 244.915pt x 525.965pt>
+<classGate__coll__graph.pdf, id=3744, 244.915pt x 525.965pt>
 File: classGate__coll__graph.pdf Graphic file (type pdf)
 <use classGate__coll__graph.pdf>
-Package pdftex.def Info: classGate__coll__graph.pdf  used on input line 24.
+Package pdftex.def Info: classGate__coll__graph.pdf  used on input line 22.
 (pdftex.def)             Requested size: 244.0pt x 524.01347pt.
  [29] [30] [31]) (./classGates.tex <./classGates__coll__graph.pdf
 
 pdfTeX warning: pdflatex (file ./classGates__coll__graph.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
 >
-<classGates__coll__graph.pdf, id=788, 245.91875pt x 931.48pt>
+<classGates__coll__graph.pdf, id=3799, 245.91875pt x 931.48pt>
 File: classGates__coll__graph.pdf Graphic file (type pdf)
 <use classGates__coll__graph.pdf>
-Package pdftex.def Info: classGates__coll__graph.pdf  used on input line 14.
+Package pdftex.def Info: classGates__coll__graph.pdf  used on input line 13.
 (pdftex.def)             Requested size: 145.21088pt x 550.0pt.
  [32] [33] [34] [35] [36]) (./classInputHandler.tex <./classInputHandler__coll_
 _graph.pdf
@@ -1309,18 +1027,18 @@ _graph.pdf
 pdfTeX warning: pdflatex (file ./classInputHandler__coll__graph.pdf): PDF inclu
 sion: multiple pdfs with page group included in a single page
 >
-<classInputHandler__coll__graph.pdf, id=901, 226.8475pt x 438.63875pt>
+<classInputHandler__coll__graph.pdf, id=3886, 226.8475pt x 438.63875pt>
 File: classInputHandler__coll__graph.pdf Graphic file (type pdf)
 <use classInputHandler__coll__graph.pdf>
 Package pdftex.def Info: classInputHandler__coll__graph.pdf  used on input line
- 14.
+ 13.
 (pdftex.def)             Requested size: 226.0pt x 437.00455pt.
  [37] [38]) (./classInputPin.tex <./classInputPin__inherit__graph.pdf>
-<classInputPin__inherit__graph.pdf, id=945, 226.8475pt x 321.2pt>
+<classInputPin__inherit__graph.pdf, id=3925, 226.8475pt x 321.2pt>
 File: classInputPin__inherit__graph.pdf Graphic file (type pdf)
 <use classInputPin__inherit__graph.pdf>
 Package pdftex.def Info: classInputPin__inherit__graph.pdf  used on input line 
-14.
+13.
 (pdftex.def)             Requested size: 226.0pt x 320.00334pt.
 
 [39] <./classInputPin__coll__graph.pdf
@@ -1328,27 +1046,27 @@ Package pdftex.def Info: classInputPin__inherit__graph.pdf  used on input line
 pdfTeX warning: pdflatex (file ./classInputPin__coll__graph.pdf): PDF inclusion
 : multiple pdfs with page group included in a single page
 >
-<classInputPin__coll__graph.pdf, id=965, 226.8475pt x 321.2pt>
+<classInputPin__coll__graph.pdf, id=3938, 226.8475pt x 321.2pt>
 File: classInputPin__coll__graph.pdf Graphic file (type pdf)
 <use classInputPin__coll__graph.pdf>
-Package pdftex.def Info: classInputPin__coll__graph.pdf  used on input line 24.
+Package pdftex.def Info: classInputPin__coll__graph.pdf  used on input line 22.
 
 (pdftex.def)             Requested size: 226.0pt x 320.00334pt.
  [40] [41]) (./classLED.tex <./classLED__inherit__graph.pdf>
-<classLED__inherit__graph.pdf, id=1009, 247.92625pt x 636.3775pt>
+<classLED__inherit__graph.pdf, id=3977, 247.92625pt x 636.3775pt>
 File: classLED__inherit__graph.pdf Graphic file (type pdf)
 <use classLED__inherit__graph.pdf>
-Package pdftex.def Info: classLED__inherit__graph.pdf  used on input line 14.
+Package pdftex.def Info: classLED__inherit__graph.pdf  used on input line 13.
 (pdftex.def)             Requested size: 214.27167pt x 550.0pt.
  [42] <./classLED__coll__graph.pdf
 
 pdfTeX warning: pdflatex (file ./classLED__coll__graph.pdf): PDF inclusion: mul
 tiple pdfs with page group included in a single page
 >
-<classLED__coll__graph.pdf, id=1028, 247.92625pt x 636.3775pt>
+<classLED__coll__graph.pdf, id=3989, 247.92625pt x 636.3775pt>
 File: classLED__coll__graph.pdf Graphic file (type pdf)
 <use classLED__coll__graph.pdf>
-Package pdftex.def Info: classLED__coll__graph.pdf  used on input line 24.
+Package pdftex.def Info: classLED__coll__graph.pdf  used on input line 22.
 (pdftex.def)             Requested size: 214.27167pt x 550.0pt.
  [43] [44] [45] [46]) (./classLEDController.tex <./classLEDController__coll__gr
 aph.pdf
@@ -1356,21 +1074,21 @@ aph.pdf
 pdfTeX warning: pdflatex (file ./classLEDController__coll__graph.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
 >
-<classLEDController__coll__graph.pdf, id=1114, 247.92625pt x 1213.53375pt>
+<classLEDController__coll__graph.pdf, id=4063, 247.92625pt x 1213.53375pt>
 File: classLEDController__coll__graph.pdf Graphic file (type pdf)
 <use classLEDController__coll__graph.pdf>
 Package pdftex.def Info: classLEDController__coll__graph.pdf  used on input lin
-e 14.
+e 13.
 (pdftex.def)             Requested size: 112.36778pt x 550.0pt.
  [47] [48] [49] [50] [51]) (./classLEDs.tex <./classLEDs__coll__graph.pdf
 
 pdfTeX warning: pdflatex (file ./classLEDs__coll__graph.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
 >
-<classLEDs__coll__graph.pdf, id=1220, 247.92625pt x 931.48pt>
+<classLEDs__coll__graph.pdf, id=4147, 247.92625pt x 931.48pt>
 File: classLEDs__coll__graph.pdf Graphic file (type pdf)
 <use classLEDs__coll__graph.pdf>
-Package pdftex.def Info: classLEDs__coll__graph.pdf  used on input line 14.
+Package pdftex.def Info: classLEDs__coll__graph.pdf  used on input line 13.
 (pdftex.def)             Requested size: 146.39627pt x 550.0pt.
  [52] [53] [54] [55] [56] [57]) (./classMIDIHandler.tex <./classMIDIHandler__co
 ll__graph.pdf
@@ -1378,11 +1096,11 @@ ll__graph.pdf
 pdfTeX warning: pdflatex (file ./classMIDIHandler__coll__graph.pdf): PDF inclus
 ion: multiple pdfs with page group included in a single page
 >
-<classMIDIHandler__coll__graph.pdf, id=1333, 798.985pt x 2391.93625pt>
+<classMIDIHandler__coll__graph.pdf, id=4232, 798.985pt x 2391.93625pt>
 File: classMIDIHandler__coll__graph.pdf Graphic file (type pdf)
 <use classMIDIHandler__coll__graph.pdf>
 Package pdftex.def Info: classMIDIHandler__coll__graph.pdf  used on input line 
-14.
+13.
 (pdftex.def)             Requested size: 183.71391pt x 550.0pt.
  [58] [59] [60] [61] [62]) (./classMode.tex [63] <./classMode__inherit__graph.p
 df
@@ -1390,30 +1108,30 @@ df
 pdfTeX warning: pdflatex (file ./classMode__inherit__graph.pdf): PDF inclusion:
  multiple pdfs with page group included in a single page
 >
-<classMode__inherit__graph.pdf, id=1480, 790.955pt x 961.5925pt>
+<classMode__inherit__graph.pdf, id=4351, 790.955pt x 961.5925pt>
 File: classMode__inherit__graph.pdf Graphic file (type pdf)
 <use classMode__inherit__graph.pdf>
-Package pdftex.def Info: classMode__inherit__graph.pdf  used on input line 14.
+Package pdftex.def Info: classMode__inherit__graph.pdf  used on input line 13.
 (pdftex.def)             Requested size: 350.0pt x 425.50833pt.
  <./classMode__coll__graph.pdf
 
 pdfTeX warning: pdflatex (file ./classMode__coll__graph.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
 >
-<classMode__coll__graph.pdf, id=1495, 272.01625pt x 348.30125pt>
+<classMode__coll__graph.pdf, id=4366, 272.01625pt x 348.30125pt>
 File: classMode__coll__graph.pdf Graphic file (type pdf)
 <use classMode__coll__graph.pdf>
-Package pdftex.def Info: classMode__coll__graph.pdf  used on input line 24.
+Package pdftex.def Info: classMode__coll__graph.pdf  used on input line 22.
 (pdftex.def)             Requested size: 271.0pt x 347.01956pt.
  [64] [65] [66]) (./classMode0.tex <./classMode0__inherit__graph.pdf
 
 pdfTeX warning: pdflatex (file ./classMode0__inherit__graph.pdf): PDF inclusion
 : multiple pdfs with page group included in a single page
 >
-<classMode0__inherit__graph.pdf, id=1611, 305.14pt x 961.5925pt>
+<classMode0__inherit__graph.pdf, id=4471, 305.14pt x 961.5925pt>
 File: classMode0__inherit__graph.pdf Graphic file (type pdf)
 <use classMode0__inherit__graph.pdf>
-Package pdftex.def Info: classMode0__inherit__graph.pdf  used on input line 14.
+Package pdftex.def Info: classMode0__inherit__graph.pdf  used on input line 13.
 
 (pdftex.def)             Requested size: 174.53223pt x 550.0pt.
  [67] <./classMode0__coll__graph.pdf
@@ -1421,10 +1139,10 @@ Package pdftex.def Info: classMode0__inherit__graph.pdf  used on input line 14.
 pdfTeX warning: pdflatex (file ./classMode0__coll__graph.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
 >
-<classMode0__coll__graph.pdf, id=1647, 1196.47pt x 3306.3525pt>
+<classMode0__coll__graph.pdf, id=4502, 1196.47pt x 3306.3525pt>
 File: classMode0__coll__graph.pdf Graphic file (type pdf)
 <use classMode0__coll__graph.pdf>
-Package pdftex.def Info: classMode0__coll__graph.pdf  used on input line 24.
+Package pdftex.def Info: classMode0__coll__graph.pdf  used on input line 22.
 (pdftex.def)             Requested size: 199.01561pt x 550.0pt.
  [68] [69] [70] [71] [72] [73] [74] [75]) (./classMode1.tex <./classMode1__inhe
 rit__graph.pdf
@@ -1432,10 +1150,10 @@ rit__graph.pdf
 pdfTeX warning: pdflatex (file ./classMode1__inherit__graph.pdf): PDF inclusion
 : multiple pdfs with page group included in a single page
 >
-<classMode1__inherit__graph.pdf, id=1862, 305.14pt x 950.55125pt>
+<classMode1__inherit__graph.pdf, id=4679, 305.14pt x 950.55125pt>
 File: classMode1__inherit__graph.pdf Graphic file (type pdf)
 <use classMode1__inherit__graph.pdf>
-Package pdftex.def Info: classMode1__inherit__graph.pdf  used on input line 14.
+Package pdftex.def Info: classMode1__inherit__graph.pdf  used on input line 13.
 
 (pdftex.def)             Requested size: 176.56226pt x 550.0pt.
  [76] <./classMode1__coll__graph.pdf
@@ -1443,10 +1161,10 @@ Package pdftex.def Info: classMode1__inherit__graph.pdf  used on input line 14.
 pdfTeX warning: pdflatex (file ./classMode1__coll__graph.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
 >
-<classMode1__coll__graph.pdf, id=1886, 1104.125pt x 3218.0225pt>
+<classMode1__coll__graph.pdf, id=4698, 1104.125pt x 3218.0225pt>
 File: classMode1__coll__graph.pdf Graphic file (type pdf)
 <use classMode1__coll__graph.pdf>
-Package pdftex.def Info: classMode1__coll__graph.pdf  used on input line 24.
+Package pdftex.def Info: classMode1__coll__graph.pdf  used on input line 22.
 (pdftex.def)             Requested size: 188.69276pt x 550.0pt.
  [77] [78] [79] [80] [81] [82] [83]) (./classMode2.tex <./classMode2__inherit__
 graph.pdf
@@ -1454,10 +1172,10 @@ graph.pdf
 pdfTeX warning: pdflatex (file ./classMode2__inherit__graph.pdf): PDF inclusion
 : multiple pdfs with page group included in a single page
 >
-<classMode2__inherit__graph.pdf, id=2069, 305.14pt x 851.18pt>
+<classMode2__inherit__graph.pdf, id=4849, 305.14pt x 851.18pt>
 File: classMode2__inherit__graph.pdf Graphic file (type pdf)
 <use classMode2__inherit__graph.pdf>
-Package pdftex.def Info: classMode2__inherit__graph.pdf  used on input line 14.
+Package pdftex.def Info: classMode2__inherit__graph.pdf  used on input line 13.
 
 (pdftex.def)             Requested size: 197.17928pt x 550.0pt.
  [84] <./classMode2__coll__graph.pdf
@@ -1465,10 +1183,10 @@ Package pdftex.def Info: classMode2__inherit__graph.pdf  used on input line 14.
 pdfTeX warning: pdflatex (file ./classMode2__coll__graph.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
 >
-<classMode2__coll__graph.pdf, id=2086, 1104.125pt x 3118.65125pt>
+<classMode2__coll__graph.pdf, id=4861, 1104.125pt x 3118.65125pt>
 File: classMode2__coll__graph.pdf Graphic file (type pdf)
 <use classMode2__coll__graph.pdf>
-Package pdftex.def Info: classMode2__coll__graph.pdf  used on input line 24.
+Package pdftex.def Info: classMode2__coll__graph.pdf  used on input line 22.
 (pdftex.def)             Requested size: 194.70735pt x 550.0pt.
  [85] [86] [87] [88] [89] [90]) (./classModeSelector.tex <./classModeSelector__
 coll__graph.pdf
@@ -1476,11 +1194,11 @@ coll__graph.pdf
 pdfTeX warning: pdflatex (file ./classModeSelector__coll__graph.pdf): PDF inclu
 sion: multiple pdfs with page group included in a single page
 >
-<classModeSelector__coll__graph.pdf, id=2243, 807.015pt x 1782.66pt>
+<classModeSelector__coll__graph.pdf, id=4994, 807.015pt x 1782.66pt>
 File: classModeSelector__coll__graph.pdf Graphic file (type pdf)
 <use classModeSelector__coll__graph.pdf>
 Package pdftex.def Info: classModeSelector__coll__graph.pdf  used on input line
- 14.
+ 13.
 (pdftex.def)             Requested size: 248.98991pt x 550.0pt.
  [91] [92] [93] [94] [95] [96] [97]) (./classOutputPin.tex <./classOutputPin__i
 nherit__graph.pdf
@@ -1488,44 +1206,44 @@ nherit__graph.pdf
 pdfTeX warning: pdflatex (file ./classOutputPin__inherit__graph.pdf): PDF inclu
 sion: multiple pdfs with page group included in a single page
 >
-<classOutputPin__inherit__graph.pdf, id=2434, 587.19376pt x 636.3775pt>
+<classOutputPin__inherit__graph.pdf, id=5147, 587.19376pt x 636.3775pt>
 File: classOutputPin__inherit__graph.pdf Graphic file (type pdf)
 <use classOutputPin__inherit__graph.pdf>
 Package pdftex.def Info: classOutputPin__inherit__graph.pdf  used on input line
- 14.
+ 13.
 (pdftex.def)             Requested size: 350.0pt x 379.31447pt.
  [98] <./classOutputPin__coll__graph.pdf
 
 pdfTeX warning: pdflatex (file ./classOutputPin__coll__graph.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
 >
-<classOutputPin__coll__graph.pdf, id=2450, 215.80624pt x 299.1175pt>
+<classOutputPin__coll__graph.pdf, id=5159, 215.80624pt x 299.1175pt>
 File: classOutputPin__coll__graph.pdf Graphic file (type pdf)
 <use classOutputPin__coll__graph.pdf>
-Package pdftex.def Info: classOutputPin__coll__graph.pdf  used on input line 24
+Package pdftex.def Info: classOutputPin__coll__graph.pdf  used on input line 22
 .
 (pdftex.def)             Requested size: 215.0pt x 298.00766pt.
  [99] [100]) (./classPin.tex <./classPin__inherit__graph.pdf>
-<classPin__inherit__graph.pdf, id=2489, 711.65875pt x 658.46pt>
+<classPin__inherit__graph.pdf, id=5195, 711.65875pt x 658.46pt>
 File: classPin__inherit__graph.pdf Graphic file (type pdf)
 <use classPin__inherit__graph.pdf>
-Package pdftex.def Info: classPin__inherit__graph.pdf  used on input line 14.
+Package pdftex.def Info: classPin__inherit__graph.pdf  used on input line 13.
 (pdftex.def)             Requested size: 350.0pt x 323.8338pt.
  <./classPin__coll__graph.pdf
 
 pdfTeX warning: pdflatex (file ./classPin__coll__graph.pdf): PDF inclusion: mul
 tiple pdfs with page group included in a single page
 >
-<classPin__coll__graph.pdf, id=2497, 179.67125pt x 160.6pt>
+<classPin__coll__graph.pdf, id=5203, 179.67125pt x 160.6pt>
 File: classPin__coll__graph.pdf Graphic file (type pdf)
 <use classPin__coll__graph.pdf>
-Package pdftex.def Info: classPin__coll__graph.pdf  used on input line 24.
+Package pdftex.def Info: classPin__coll__graph.pdf  used on input line 22.
 (pdftex.def)             Requested size: 179.0pt x 160.01146pt.
  [101] [102]) (./classPWMPin.tex <./classPWMPin__inherit__graph.pdf>
-<classPWMPin__inherit__graph.pdf, id=2538, 217.81375pt x 448.67625pt>
+<classPWMPin__inherit__graph.pdf, id=5236, 217.81375pt x 448.67625pt>
 File: classPWMPin__inherit__graph.pdf Graphic file (type pdf)
 <use classPWMPin__inherit__graph.pdf>
-Package pdftex.def Info: classPWMPin__inherit__graph.pdf  used on input line 14
+Package pdftex.def Info: classPWMPin__inherit__graph.pdf  used on input line 13
 .
 (pdftex.def)             Requested size: 217.0pt x 446.99782pt.
  [103] <./classPWMPin__coll__graph.pdf
@@ -1533,34 +1251,34 @@ Package pdftex.def Info: classPWMPin__inherit__graph.pdf  used on input line 14
 pdfTeX warning: pdflatex (file ./classPWMPin__coll__graph.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
 >
-<classPWMPin__coll__graph.pdf, id=2554, 217.81375pt x 448.67625pt>
+<classPWMPin__coll__graph.pdf, id=5249, 217.81375pt x 448.67625pt>
 File: classPWMPin__coll__graph.pdf Graphic file (type pdf)
 <use classPWMPin__coll__graph.pdf>
-Package pdftex.def Info: classPWMPin__coll__graph.pdf  used on input line 24.
+Package pdftex.def Info: classPWMPin__coll__graph.pdf  used on input line 22.
 (pdftex.def)             Requested size: 217.0pt x 446.99782pt.
  [104] [105]) (./classResetButton.tex <./classResetButton__coll__graph.pdf>
-<classResetButton__coll__graph.pdf, id=2592, 253.94875pt x 571.13374pt>
+<classResetButton__coll__graph.pdf, id=5287, 253.94875pt x 571.13374pt>
 File: classResetButton__coll__graph.pdf Graphic file (type pdf)
 <use classResetButton__coll__graph.pdf>
 Package pdftex.def Info: classResetButton__coll__graph.pdf  used on input line 
-14.
+13.
 (pdftex.def)             Requested size: 244.55138pt x 550.0pt.
 
 [106] [107] [108]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 4.3 on input line 77.
+(longtable)                in table 4.3 on input line 76.
 
 [109] [110]) (./classSPDTSwitch.tex <./classSPDTSwitch__coll__graph.pdf
 
 pdfTeX warning: pdflatex (file ./classSPDTSwitch__coll__graph.pdf): PDF inclusi
 on: multiple pdfs with page group included in a single page
 >
-<classSPDTSwitch__coll__graph.pdf, id=2694, 226.8475pt x 471.7625pt>
+<classSPDTSwitch__coll__graph.pdf, id=5366, 226.8475pt x 471.7625pt>
 File: classSPDTSwitch__coll__graph.pdf Graphic file (type pdf)
 <use classSPDTSwitch__coll__graph.pdf>
 Package pdftex.def Info: classSPDTSwitch__coll__graph.pdf  used on input line 1
-4.
+3.
 (pdftex.def)             Requested size: 226.0pt x 470.0049pt.
  [111] [112]) [113] [114
 
@@ -1571,68 +1289,68 @@ Chapter 5.
 pdfTeX warning: pdflatex (file ./Constants_8h__incl.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
 >
-<Constants_8h__incl.pdf, id=2758, 193.72375pt x 156.585pt>
+<Constants_8h__incl.pdf, id=5415, 193.72375pt x 156.585pt>
 File: Constants_8h__incl.pdf Graphic file (type pdf)
 <use Constants_8h__incl.pdf>
-Package pdftex.def Info: Constants_8h__incl.pdf  used on input line 9.
+Package pdftex.def Info: Constants_8h__incl.pdf  used on input line 8.
 (pdftex.def)             Requested size: 193.0pt x 156.00162pt.
  <./Constants_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./Constants_8h__dep__incl.pdf): PDF inclusion: m
 ultiple pdfs with page group included in a single page
 >
-<Constants_8h__dep__incl.pdf, id=2766, 1025.8325pt x 437.635pt>
+<Constants_8h__dep__incl.pdf, id=5424, 1025.8325pt x 437.635pt>
 File: Constants_8h__dep__incl.pdf Graphic file (type pdf)
 <use Constants_8h__dep__incl.pdf>
-Package pdftex.def Info: Constants_8h__dep__incl.pdf  used on input line 17.
+Package pdftex.def Info: Constants_8h__dep__incl.pdf  used on input line 15.
 (pdftex.def)             Requested size: 350.0pt x 149.31479pt.
  [115]) (./Debug_8h.tex <./Debug_8h__incl.pdf>
-<Debug_8h__incl.pdf, id=2787, 175.65625pt x 156.585pt>
+<Debug_8h__incl.pdf, id=5443, 175.65625pt x 156.585pt>
 File: Debug_8h__incl.pdf Graphic file (type pdf)
 <use Debug_8h__incl.pdf>
-Package pdftex.def Info: Debug_8h__incl.pdf  used on input line 9.
+Package pdftex.def Info: Debug_8h__incl.pdf  used on input line 8.
 (pdftex.def)             Requested size: 175.0pt x 156.01117pt.
  <./Debug_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./Debug_8h__dep__incl.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
 >
-<Debug_8h__dep__incl.pdf, id=2795, 1565.85pt x 269.005pt>
+<Debug_8h__dep__incl.pdf, id=5451, 1565.85pt x 269.005pt>
 File: Debug_8h__dep__incl.pdf Graphic file (type pdf)
 <use Debug_8h__dep__incl.pdf>
-Package pdftex.def Info: Debug_8h__dep__incl.pdf  used on input line 17.
+Package pdftex.def Info: Debug_8h__dep__incl.pdf  used on input line 15.
 (pdftex.def)             Requested size: 350.0pt x 60.12535pt.
  [116]) (./Encoder_8h.tex <./Encoder_8h__incl.pdf>
-<Encoder_8h__incl.pdf, id=2819, 182.6825pt x 156.585pt>
+<Encoder_8h__incl.pdf, id=5470, 182.6825pt x 156.585pt>
 File: Encoder_8h__incl.pdf Graphic file (type pdf)
 <use Encoder_8h__incl.pdf>
-Package pdftex.def Info: Encoder_8h__incl.pdf  used on input line 9.
+Package pdftex.def Info: Encoder_8h__incl.pdf  used on input line 8.
 (pdftex.def)             Requested size: 182.0pt x 156.0064pt.
  <./Encoder_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./Encoder_8h__dep__incl.pdf): PDF inclusion: mul
 tiple pdfs with page group included in a single page
 >
-<Encoder_8h__dep__incl.pdf, id=2827, 983.675pt x 212.795pt>
+<Encoder_8h__dep__incl.pdf, id=5478, 983.675pt x 212.795pt>
 File: Encoder_8h__dep__incl.pdf Graphic file (type pdf)
 <use Encoder_8h__dep__incl.pdf>
-Package pdftex.def Info: Encoder_8h__dep__incl.pdf  used on input line 17.
+Package pdftex.def Info: Encoder_8h__dep__incl.pdf  used on input line 15.
 (pdftex.def)             Requested size: 350.0pt x 75.71321pt.
 ) (./EurorackClock_8h.tex <./EurorackClock_8h__incl.pdf
 
 pdfTeX warning: pdflatex (file ./EurorackClock_8h__incl.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
 >
-<EurorackClock_8h__incl.pdf, id=2836, 607.26875pt x 325.215pt>
+<EurorackClock_8h__incl.pdf, id=5487, 607.26875pt x 325.215pt>
 File: EurorackClock_8h__incl.pdf Graphic file (type pdf)
 <use EurorackClock_8h__incl.pdf>
-Package pdftex.def Info: EurorackClock_8h__incl.pdf  used on input line 14.
+Package pdftex.def Info: EurorackClock_8h__incl.pdf  used on input line 13.
 (pdftex.def)             Requested size: 350.0pt x 187.43881pt.
  [117] <./EurorackClock_8h__dep__incl.pdf>
-<EurorackClock_8h__dep__incl.pdf, id=2855, 619.31375pt x 269.005pt>
+<EurorackClock_8h__dep__incl.pdf, id=5504, 619.31375pt x 269.005pt>
 File: EurorackClock_8h__dep__incl.pdf Graphic file (type pdf)
 <use EurorackClock_8h__dep__incl.pdf>
-Package pdftex.def Info: EurorackClock_8h__dep__incl.pdf  used on input line 22
+Package pdftex.def Info: EurorackClock_8h__dep__incl.pdf  used on input line 20
 .
 (pdftex.def)             Requested size: 350.0pt x 152.03325pt.
 ) (./Gate_8h.tex <./Gate_8h__incl.pdf
@@ -1640,48 +1358,48 @@ Package pdftex.def Info: EurorackClock_8h__dep__incl.pdf  used on input line 22
 pdfTeX warning: pdflatex (file ./Gate_8h__incl.pdf): PDF inclusion: multiple pd
 fs with page group included in a single page
 >
-<Gate_8h__incl.pdf, id=2865, 214.8025pt x 212.795pt>
+<Gate_8h__incl.pdf, id=5514, 214.8025pt x 212.795pt>
 File: Gate_8h__incl.pdf Graphic file (type pdf)
 <use Gate_8h__incl.pdf>
-Package pdftex.def Info: Gate_8h__incl.pdf  used on input line 10.
+Package pdftex.def Info: Gate_8h__incl.pdf  used on input line 9.
 (pdftex.def)             Requested size: 214.0pt x 212.0022pt.
  [118] <./Gate_8h__dep__incl.pdf>
-<Gate_8h__dep__incl.pdf, id=2882, 833.1125pt x 381.425pt>
+<Gate_8h__dep__incl.pdf, id=5530, 833.1125pt x 381.425pt>
 File: Gate_8h__dep__incl.pdf Graphic file (type pdf)
 <use Gate_8h__dep__incl.pdf>
-Package pdftex.def Info: Gate_8h__dep__incl.pdf  used on input line 18.
+Package pdftex.def Info: Gate_8h__dep__incl.pdf  used on input line 16.
 (pdftex.def)             Requested size: 350.0pt x 160.24396pt.
 ) (./Gates_8h.tex <./Gates_8h__incl.pdf
 
 pdfTeX warning: pdflatex (file ./Gates_8h__incl.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
 >
-<Gates_8h__incl.pdf, id=2891, 386.44376pt x 269.005pt>
+<Gates_8h__incl.pdf, id=5540, 386.44376pt x 269.005pt>
 File: Gates_8h__incl.pdf Graphic file (type pdf)
 <use Gates_8h__incl.pdf>
-Package pdftex.def Info: Gates_8h__incl.pdf  used on input line 12.
+Package pdftex.def Info: Gates_8h__incl.pdf  used on input line 11.
 (pdftex.def)             Requested size: 350.0pt x 243.6374pt.
  [119] <./Gates_8h__dep__incl.pdf>
-<Gates_8h__dep__incl.pdf, id=2910, 833.1125pt x 325.215pt>
+<Gates_8h__dep__incl.pdf, id=5556, 833.1125pt x 325.215pt>
 File: Gates_8h__dep__incl.pdf Graphic file (type pdf)
 <use Gates_8h__dep__incl.pdf>
-Package pdftex.def Info: Gates_8h__dep__incl.pdf  used on input line 20.
+Package pdftex.def Info: Gates_8h__dep__incl.pdf  used on input line 18.
 (pdftex.def)             Requested size: 350.0pt x 136.62906pt.
 ) (./InputHandler_8h.tex <./InputHandler_8h__incl.pdf
 
 pdfTeX warning: pdflatex (file ./InputHandler_8h__incl.pdf): PDF inclusion: mul
 tiple pdfs with page group included in a single page
 >
-<InputHandler_8h__incl.pdf, id=2919, 206.7725pt x 156.585pt>
+<InputHandler_8h__incl.pdf, id=5565, 206.7725pt x 156.585pt>
 File: InputHandler_8h__incl.pdf Graphic file (type pdf)
 <use InputHandler_8h__incl.pdf>
-Package pdftex.def Info: InputHandler_8h__incl.pdf  used on input line 9.
+Package pdftex.def Info: InputHandler_8h__incl.pdf  used on input line 8.
 (pdftex.def)             Requested size: 206.0pt x 156.004pt.
  [120] <./InputHandler_8h__dep__incl.pdf>
-<InputHandler_8h__dep__incl.pdf, id=2936, 592.2125pt x 212.795pt>
+<InputHandler_8h__dep__incl.pdf, id=5581, 592.2125pt x 212.795pt>
 File: InputHandler_8h__dep__incl.pdf Graphic file (type pdf)
 <use InputHandler_8h__dep__incl.pdf>
-Package pdftex.def Info: InputHandler_8h__dep__incl.pdf  used on input line 17.
+Package pdftex.def Info: InputHandler_8h__dep__incl.pdf  used on input line 15.
 
 (pdftex.def)             Requested size: 350.0pt x 125.76549pt.
 ) (./LED_8h.tex <./LED_8h__incl.pdf
@@ -1689,261 +1407,261 @@ Package pdftex.def Info: InputHandler_8h__dep__incl.pdf  used on input line 17.
 pdfTeX warning: pdflatex (file ./LED_8h__incl.pdf): PDF inclusion: multiple pdf
 s with page group included in a single page
 >
-<LED_8h__incl.pdf, id=2945, 163.61125pt x 156.585pt>
+<LED_8h__incl.pdf, id=5590, 163.61125pt x 156.585pt>
 File: LED_8h__incl.pdf Graphic file (type pdf)
 <use LED_8h__incl.pdf>
-Package pdftex.def Info: LED_8h__incl.pdf  used on input line 9.
+Package pdftex.def Info: LED_8h__incl.pdf  used on input line 8.
 (pdftex.def)             Requested size: 163.0pt x 155.99922pt.
  <./LED_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./LED_8h__dep__incl.pdf): PDF inclusion: multipl
 e pdfs with page group included in a single page
 >
-<LED_8h__dep__incl.pdf, id=2953, 1054.94125pt x 437.635pt>
+<LED_8h__dep__incl.pdf, id=5598, 1054.94125pt x 437.635pt>
 File: LED_8h__dep__incl.pdf Graphic file (type pdf)
 <use LED_8h__dep__incl.pdf>
-Package pdftex.def Info: LED_8h__dep__incl.pdf  used on input line 17.
+Package pdftex.def Info: LED_8h__dep__incl.pdf  used on input line 15.
 (pdftex.def)             Requested size: 350.0pt x 145.19461pt.
  [121]) (./LEDController_8h.tex <./LEDController_8h__incl.pdf>
-<LEDController_8h__incl.pdf, id=2972, 210.7875pt x 269.005pt>
+<LEDController_8h__incl.pdf, id=5617, 210.7875pt x 269.005pt>
 File: LEDController_8h__incl.pdf Graphic file (type pdf)
 <use LEDController_8h__incl.pdf>
-Package pdftex.def Info: LEDController_8h__incl.pdf  used on input line 9.
+Package pdftex.def Info: LEDController_8h__incl.pdf  used on input line 8.
 (pdftex.def)             Requested size: 210.0pt x 268.00688pt.
  <./LEDController_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./LEDController_8h__dep__incl.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
 >
-<LEDController_8h__dep__incl.pdf, id=2980, 1011.78pt x 212.795pt>
+<LEDController_8h__dep__incl.pdf, id=5625, 1011.78pt x 212.795pt>
 File: LEDController_8h__dep__incl.pdf Graphic file (type pdf)
 <use LEDController_8h__dep__incl.pdf>
-Package pdftex.def Info: LEDController_8h__dep__incl.pdf  used on input line 17
+Package pdftex.def Info: LEDController_8h__dep__incl.pdf  used on input line 15
 .
 (pdftex.def)             Requested size: 350.0pt x 73.61241pt.
  [122]) (./LEDs_8h.tex <./LEDs_8h__incl.pdf>
-<LEDs_8h__incl.pdf, id=2998, 190.7125pt x 212.795pt>
+<LEDs_8h__incl.pdf, id=5642, 190.7125pt x 212.795pt>
 File: LEDs_8h__incl.pdf Graphic file (type pdf)
 <use LEDs_8h__incl.pdf>
-Package pdftex.def Info: LEDs_8h__incl.pdf  used on input line 10.
+Package pdftex.def Info: LEDs_8h__incl.pdf  used on input line 9.
 (pdftex.def)             Requested size: 190.0pt x 212.00868pt.
  <./LEDs_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./LEDs_8h__dep__incl.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
 >
-<LEDs_8h__dep__incl.pdf, id=3006, 1104.125pt x 381.425pt>
+<LEDs_8h__dep__incl.pdf, id=5650, 1104.125pt x 381.425pt>
 File: LEDs_8h__dep__incl.pdf Graphic file (type pdf)
 <use LEDs_8h__dep__incl.pdf>
-Package pdftex.def Info: LEDs_8h__dep__incl.pdf  used on input line 18.
+Package pdftex.def Info: LEDs_8h__dep__incl.pdf  used on input line 16.
 (pdftex.def)             Requested size: 350.0pt x 120.91193pt.
 ) (./MIDIHandler_8h.tex <./MIDIHandler_8h__incl.pdf
 
 pdfTeX warning: pdflatex (file ./MIDIHandler_8h__incl.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
 >
-<MIDIHandler_8h__incl.pdf, id=3015, 470.75874pt x 381.425pt>
+<MIDIHandler_8h__incl.pdf, id=5659, 470.75874pt x 381.425pt>
 File: MIDIHandler_8h__incl.pdf Graphic file (type pdf)
 <use MIDIHandler_8h__incl.pdf>
-Package pdftex.def Info: MIDIHandler_8h__incl.pdf  used on input line 12.
+Package pdftex.def Info: MIDIHandler_8h__incl.pdf  used on input line 11.
 (pdftex.def)             Requested size: 350.0pt x 283.58287pt.
  [123] <./MIDIHandler_8h__dep__incl.pdf>
-<MIDIHandler_8h__dep__incl.pdf, id=3034, 600.2425pt x 212.795pt>
+<MIDIHandler_8h__dep__incl.pdf, id=5677, 600.2425pt x 212.795pt>
 File: MIDIHandler_8h__dep__incl.pdf Graphic file (type pdf)
 <use MIDIHandler_8h__dep__incl.pdf>
-Package pdftex.def Info: MIDIHandler_8h__dep__incl.pdf  used on input line 20.
+Package pdftex.def Info: MIDIHandler_8h__dep__incl.pdf  used on input line 18.
 (pdftex.def)             Requested size: 350.0pt x 124.08356pt.
 ) (./Mode_8h.tex <./Mode_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./Mode_8h__dep__incl.pdf): PDF inclusion: multip
 le pdfs with page group included in a single page
 >
-<Mode_8h__dep__incl.pdf, id=3043, 890.32625pt x 212.795pt>
+<Mode_8h__dep__incl.pdf, id=5686, 890.32625pt x 212.795pt>
 File: Mode_8h__dep__incl.pdf Graphic file (type pdf)
 <use Mode_8h__dep__incl.pdf>
-Package pdftex.def Info: Mode_8h__dep__incl.pdf  used on input line 8.
+Package pdftex.def Info: Mode_8h__dep__incl.pdf  used on input line 7.
 (pdftex.def)             Requested size: 350.0pt x 83.65208pt.
  [124]) (./Mode0_8h.tex <./Mode0_8h__incl.pdf>
-<Mode0_8h__incl.pdf, id=3062, 889.3225pt x 437.635pt>
+<Mode0_8h__incl.pdf, id=5704, 889.3225pt x 437.635pt>
 File: Mode0_8h__incl.pdf Graphic file (type pdf)
 <use Mode0_8h__incl.pdf>
-Package pdftex.def Info: Mode0_8h__incl.pdf  used on input line 18.
+Package pdftex.def Info: Mode0_8h__incl.pdf  used on input line 17.
 (pdftex.def)             Requested size: 350.0pt x 172.23288pt.
  <./Mode0_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./Mode0_8h__dep__incl.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
 >
-<Mode0_8h__dep__incl.pdf, id=3070, 264.99pt x 156.585pt>
+<Mode0_8h__dep__incl.pdf, id=5712, 264.99pt x 156.585pt>
 File: Mode0_8h__dep__incl.pdf Graphic file (type pdf)
 <use Mode0_8h__dep__incl.pdf>
-Package pdftex.def Info: Mode0_8h__dep__incl.pdf  used on input line 26.
+Package pdftex.def Info: Mode0_8h__dep__incl.pdf  used on input line 24.
 (pdftex.def)             Requested size: 264.0pt x 156.01117pt.
  [125]) (./Mode1_8h.tex <./Mode1_8h__incl.pdf>
-<Mode1_8h__incl.pdf, id=3090, 851.18pt x 437.635pt>
+<Mode1_8h__incl.pdf, id=5729, 851.18pt x 437.635pt>
 File: Mode1_8h__incl.pdf Graphic file (type pdf)
 <use Mode1_8h__incl.pdf>
-Package pdftex.def Info: Mode1_8h__incl.pdf  used on input line 16.
+Package pdftex.def Info: Mode1_8h__incl.pdf  used on input line 15.
 (pdftex.def)             Requested size: 350.0pt x 179.95238pt.
  <./Mode1_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./Mode1_8h__dep__incl.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
 >
-<Mode1_8h__dep__incl.pdf, id=3098, 264.99pt x 156.585pt>
+<Mode1_8h__dep__incl.pdf, id=5737, 264.99pt x 156.585pt>
 File: Mode1_8h__dep__incl.pdf Graphic file (type pdf)
 <use Mode1_8h__dep__incl.pdf>
-Package pdftex.def Info: Mode1_8h__dep__incl.pdf  used on input line 24.
+Package pdftex.def Info: Mode1_8h__dep__incl.pdf  used on input line 22.
 (pdftex.def)             Requested size: 264.0pt x 156.01117pt.
  [126]) (./Mode2_8h.tex <./Mode2_8h__incl.pdf>
-<Mode2_8h__incl.pdf, id=3116, 911.405pt x 437.635pt>
+<Mode2_8h__incl.pdf, id=5754, 911.405pt x 437.635pt>
 File: Mode2_8h__incl.pdf Graphic file (type pdf)
 <use Mode2_8h__incl.pdf>
-Package pdftex.def Info: Mode2_8h__incl.pdf  used on input line 16.
+Package pdftex.def Info: Mode2_8h__incl.pdf  used on input line 15.
 (pdftex.def)             Requested size: 350.0pt x 168.06595pt.
  <./Mode2_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./Mode2_8h__dep__incl.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
 >
-<Mode2_8h__dep__incl.pdf, id=3124, 264.99pt x 156.585pt>
+<Mode2_8h__dep__incl.pdf, id=5762, 264.99pt x 156.585pt>
 File: Mode2_8h__dep__incl.pdf Graphic file (type pdf)
 <use Mode2_8h__dep__incl.pdf>
-Package pdftex.def Info: Mode2_8h__dep__incl.pdf  used on input line 24.
+Package pdftex.def Info: Mode2_8h__dep__incl.pdf  used on input line 22.
 (pdftex.def)             Requested size: 264.0pt x 156.01117pt.
  [127]) (./ModeSelector_8h.tex <./ModeSelector_8h__incl.pdf>
-<ModeSelector_8h__incl.pdf, id=3142, 610.28pt x 325.215pt>
+<ModeSelector_8h__incl.pdf, id=5780, 610.28pt x 325.215pt>
 File: ModeSelector_8h__incl.pdf Graphic file (type pdf)
 <use ModeSelector_8h__incl.pdf>
-Package pdftex.def Info: ModeSelector_8h__incl.pdf  used on input line 13.
+Package pdftex.def Info: ModeSelector_8h__incl.pdf  used on input line 12.
 (pdftex.def)             Requested size: 350.0pt x 186.52078pt.
  <./ModeSelector_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./ModeSelector_8h__dep__incl.pdf): PDF inclusion
 : multiple pdfs with page group included in a single page
 >
-<ModeSelector_8h__dep__incl.pdf, id=3150, 574.145pt x 156.585pt>
+<ModeSelector_8h__dep__incl.pdf, id=5788, 574.145pt x 156.585pt>
 File: ModeSelector_8h__dep__incl.pdf Graphic file (type pdf)
 <use ModeSelector_8h__dep__incl.pdf>
-Package pdftex.def Info: ModeSelector_8h__dep__incl.pdf  used on input line 21.
+Package pdftex.def Info: ModeSelector_8h__dep__incl.pdf  used on input line 19.
 
 (pdftex.def)             Requested size: 350.0pt x 95.45697pt.
  [128]) (./Pin_8h.tex <./Pin_8h__dep__incl.pdf>
-<Pin_8h__dep__incl.pdf, id=3169, 1446.40375pt x 493.845pt>
+<Pin_8h__dep__incl.pdf, id=5806, 1446.40375pt x 493.845pt>
 File: Pin_8h__dep__incl.pdf Graphic file (type pdf)
 <use Pin_8h__dep__incl.pdf>
-Package pdftex.def Info: Pin_8h__dep__incl.pdf  used on input line 8.
+Package pdftex.def Info: Pin_8h__dep__incl.pdf  used on input line 7.
 (pdftex.def)             Requested size: 350.0pt x 119.49728pt.
 ) (./ResetButton_8h.tex <./ResetButton_8h__incl.pdf
 
 pdfTeX warning: pdflatex (file ./ResetButton_8h__incl.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
 >
-<ResetButton_8h__incl.pdf, id=3182, 329.23pt x 212.795pt>
+<ResetButton_8h__incl.pdf, id=5819, 329.23pt x 212.795pt>
 File: ResetButton_8h__incl.pdf Graphic file (type pdf)
 <use ResetButton_8h__incl.pdf>
-Package pdftex.def Info: ResetButton_8h__incl.pdf  used on input line 12.
+Package pdftex.def Info: ResetButton_8h__incl.pdf  used on input line 11.
 (pdftex.def)             Requested size: 328.0pt x 212.00543pt.
  [129] <./ResetButton_8h__dep__incl.pdf>
-<ResetButton_8h__dep__incl.pdf, id=3201, 890.32625pt x 212.795pt>
+<ResetButton_8h__dep__incl.pdf, id=5836, 890.32625pt x 212.795pt>
 File: ResetButton_8h__dep__incl.pdf Graphic file (type pdf)
 <use ResetButton_8h__dep__incl.pdf>
-Package pdftex.def Info: ResetButton_8h__dep__incl.pdf  used on input line 20.
+Package pdftex.def Info: ResetButton_8h__dep__incl.pdf  used on input line 18.
 (pdftex.def)             Requested size: 350.0pt x 83.65208pt.
 ) (./SPDTSwitch_8h.tex <./SPDTSwitch_8h__incl.pdf
 
 pdfTeX warning: pdflatex (file ./SPDTSwitch_8h__incl.pdf): PDF inclusion: multi
 ple pdfs with page group included in a single page
 >
-<SPDTSwitch_8h__incl.pdf, id=3210, 202.7575pt x 156.585pt>
+<SPDTSwitch_8h__incl.pdf, id=5845, 202.7575pt x 156.585pt>
 File: SPDTSwitch_8h__incl.pdf Graphic file (type pdf)
 <use SPDTSwitch_8h__incl.pdf>
-Package pdftex.def Info: SPDTSwitch_8h__incl.pdf  used on input line 9.
+Package pdftex.def Info: SPDTSwitch_8h__incl.pdf  used on input line 8.
 (pdftex.def)             Requested size: 202.0pt x 156.004pt.
  <./SPDTSwitch_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./SPDTSwitch_8h__dep__incl.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
 >
-<SPDTSwitch_8h__dep__incl.pdf, id=3218, 202.7575pt x 156.585pt>
+<SPDTSwitch_8h__dep__incl.pdf, id=5853, 202.7575pt x 156.585pt>
 File: SPDTSwitch_8h__dep__incl.pdf Graphic file (type pdf)
 <use SPDTSwitch_8h__dep__incl.pdf>
-Package pdftex.def Info: SPDTSwitch_8h__dep__incl.pdf  used on input line 17.
+Package pdftex.def Info: SPDTSwitch_8h__dep__incl.pdf  used on input line 15.
 (pdftex.def)             Requested size: 202.0pt x 156.004pt.
  [130]
 
 Package longtable Warning: Column widths have changed
-(longtable)                in table 5.1 on input line 55.
+(longtable)                in table 5.1 on input line 53.
 
 ) (./Debug_8cpp.tex <./Debug_8cpp__incl.pdf>
-<Debug_8cpp__incl.pdf, id=3242, 180.675pt x 212.795pt>
+<Debug_8cpp__incl.pdf, id=5876, 180.675pt x 212.795pt>
 File: Debug_8cpp__incl.pdf Graphic file (type pdf)
 <use Debug_8cpp__incl.pdf>
-Package pdftex.def Info: Debug_8cpp__incl.pdf  used on input line 10.
+Package pdftex.def Info: Debug_8cpp__incl.pdf  used on input line 9.
 (pdftex.def)             Requested size: 180.0pt x 212.0022pt.
 ) (./Encoder_8cpp.tex [131] <./Encoder_8cpp__incl.pdf>
-<Encoder_8cpp__incl.pdf, id=3266, 251.94125pt x 212.795pt>
+<Encoder_8cpp__incl.pdf, id=5896, 251.94125pt x 212.795pt>
 File: Encoder_8cpp__incl.pdf Graphic file (type pdf)
 <use Encoder_8cpp__incl.pdf>
-Package pdftex.def Info: Encoder_8cpp__incl.pdf  used on input line 11.
+Package pdftex.def Info: Encoder_8cpp__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 251.0pt x 212.0022pt.
 ) (./EurorackClock_8cpp.tex [132] <./EurorackClock_8cpp__incl.pdf>
-<EurorackClock_8cpp__incl.pdf, id=3288, 776.9025pt x 381.425pt>
+<EurorackClock_8cpp__incl.pdf, id=5917, 776.9025pt x 381.425pt>
 File: EurorackClock_8cpp__incl.pdf Graphic file (type pdf)
 <use EurorackClock_8cpp__incl.pdf>
-Package pdftex.def Info: EurorackClock_8cpp__incl.pdf  used on input line 12.
+Package pdftex.def Info: EurorackClock_8cpp__incl.pdf  used on input line 11.
 (pdftex.def)             Requested size: 350.0pt x 171.83754pt.
 ) (./Gate_8cpp.tex <./Gate_8cpp__incl.pdf
 
 pdfTeX warning: pdflatex (file ./Gate_8cpp__incl.pdf): PDF inclusion: multiple 
 pdfs with page group included in a single page
 >
-<Gate_8cpp__incl.pdf, id=3299, 316.18124pt x 269.005pt>
+<Gate_8cpp__incl.pdf, id=5928, 316.18124pt x 269.005pt>
 File: Gate_8cpp__incl.pdf Graphic file (type pdf)
 <use Gate_8cpp__incl.pdf>
-Package pdftex.def Info: Gate_8cpp__incl.pdf  used on input line 11.
+Package pdftex.def Info: Gate_8cpp__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 315.0pt x 268.0192pt.
  [133]) (./Gates_8cpp.tex <./Gates_8cpp__incl.pdf>
-<Gates_8cpp__incl.pdf, id=3323, 335.2525pt x 325.215pt>
+<Gates_8cpp__incl.pdf, id=5948, 335.2525pt x 325.215pt>
 File: Gates_8cpp__incl.pdf Graphic file (type pdf)
 <use Gates_8cpp__incl.pdf>
-Package pdftex.def Info: Gates_8cpp__incl.pdf  used on input line 11.
+Package pdftex.def Info: Gates_8cpp__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 334.0pt x 323.99841pt.
  [134])
 (./InputHandler_8cpp.tex <./InputHandler_8cpp__incl.pdf>
-<InputHandler_8cpp__incl.pdf, id=3345, 276.03125pt x 212.795pt>
+<InputHandler_8cpp__incl.pdf, id=5967, 276.03125pt x 212.795pt>
 File: InputHandler_8cpp__incl.pdf Graphic file (type pdf)
 <use InputHandler_8cpp__incl.pdf>
-Package pdftex.def Info: InputHandler_8cpp__incl.pdf  used on input line 11.
+Package pdftex.def Info: InputHandler_8cpp__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 275.0pt x 212.02167pt.
  [135]) (./LED_8cpp.tex <./LED_8cpp__incl.pdf>
-<LED_8cpp__incl.pdf, id=3367, 232.87pt x 212.795pt>
+<LED_8cpp__incl.pdf, id=5986, 232.87pt x 212.795pt>
 File: LED_8cpp__incl.pdf Graphic file (type pdf)
 <use LED_8cpp__incl.pdf>
-Package pdftex.def Info: LED_8cpp__incl.pdf  used on input line 11.
+Package pdftex.def Info: LED_8cpp__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 232.0pt x 212.00868pt.
  [136]) (./LEDController_8cpp.tex <./LEDController_8cpp__incl.pdf>
-<LEDController_8cpp__incl.pdf, id=3390, 200.75pt x 325.215pt>
+<LEDController_8cpp__incl.pdf, id=6005, 200.75pt x 325.215pt>
 File: LEDController_8cpp__incl.pdf Graphic file (type pdf)
 <use LEDController_8cpp__incl.pdf>
-Package pdftex.def Info: LEDController_8cpp__incl.pdf  used on input line 9.
+Package pdftex.def Info: LEDController_8cpp__incl.pdf  used on input line 8.
 (pdftex.def)             Requested size: 200.0pt x 324.02322pt.
 ) (./LEDs_8cpp.tex [137] <./LEDs_8cpp__incl.pdf>
-<LEDs_8cpp__incl.pdf, id=3410, 300.12125pt x 269.005pt>
+<LEDs_8cpp__incl.pdf, id=6022, 300.12125pt x 269.005pt>
 File: LEDs_8cpp__incl.pdf Graphic file (type pdf)
 <use LEDs_8cpp__incl.pdf>
-Package pdftex.def Info: LEDs_8cpp__incl.pdf  used on input line 11.
+Package pdftex.def Info: LEDs_8cpp__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 299.0pt x 268.0233pt.
  [138])
 (./main_8cpp.tex <./main_8cpp__incl.pdf>
-<main_8cpp__incl.pdf, id=3429, 1391.1975pt x 493.845pt>
+<main_8cpp__incl.pdf, id=6039, 1391.1975pt x 493.845pt>
 File: main_8cpp__incl.pdf Graphic file (type pdf)
 <use main_8cpp__incl.pdf>
-Package pdftex.def Info: main_8cpp__incl.pdf  used on input line 25.
+Package pdftex.def Info: main_8cpp__incl.pdf  used on input line 24.
 (pdftex.def)             Requested size: 350.0pt x 124.23709pt.
  [139] [140] [141] [142] [143] [144]
 [145]
-Underfull \hbox (badness 10000) in paragraph at lines 360--361
+Underfull \hbox (badness 10000) in paragraph at lines 359--360
 \T1/pcr/m/n/8 std[]::vector$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 int$\OML/cmm/m/it/8
  >$ \T1/pcr/m/n/8 musical[]Intervals = {1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 6
 4, 72, 96, 128,
@@ -1954,58 +1672,58 @@ Underfull \hbox (badness 10000) in paragraph at lines 360--361
 pdfTeX warning: pdflatex (file ./MIDIHandler_8cpp__incl.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
 >
-<MIDIHandler_8cpp__incl.pdf, id=3764, 846.16125pt x 437.635pt>
+<MIDIHandler_8cpp__incl.pdf, id=6333, 846.16125pt x 437.635pt>
 File: MIDIHandler_8cpp__incl.pdf Graphic file (type pdf)
 <use MIDIHandler_8cpp__incl.pdf>
-Package pdftex.def Info: MIDIHandler_8cpp__incl.pdf  used on input line 12.
+Package pdftex.def Info: MIDIHandler_8cpp__incl.pdf  used on input line 11.
 (pdftex.def)             Requested size: 350.0pt x 181.01413pt.
  [147]) (./Mode_8cpp.tex) (./Mode0_8cpp.tex <./Mode0_8cpp__incl.pdf
 
 pdfTeX warning: pdflatex (file ./Mode0_8cpp__incl.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
 >
-<Mode0_8cpp__incl.pdf, id=3788, 851.18pt x 493.845pt>
+<Mode0_8cpp__incl.pdf, id=6349, 851.18pt x 493.845pt>
 File: Mode0_8cpp__incl.pdf Graphic file (type pdf)
 <use Mode0_8cpp__incl.pdf>
-Package pdftex.def Info: Mode0_8cpp__incl.pdf  used on input line 11.
+Package pdftex.def Info: Mode0_8cpp__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 350.0pt x 203.06552pt.
  [148]) (./Mode1_8cpp.tex <./Mode1_8cpp__incl.pdf>
-<Mode1_8cpp__incl.pdf, id=3814, 889.3225pt x 493.845pt>
+<Mode1_8cpp__incl.pdf, id=6371, 889.3225pt x 493.845pt>
 File: Mode1_8cpp__incl.pdf Graphic file (type pdf)
 <use Mode1_8cpp__incl.pdf>
-Package pdftex.def Info: Mode1_8cpp__incl.pdf  used on input line 11.
+Package pdftex.def Info: Mode1_8cpp__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 350.0pt x 194.35452pt.
  [149]) (./Mode2_8cpp.tex <./Mode2_8cpp__incl.pdf>
-<Mode2_8cpp__incl.pdf, id=3840, 899.36pt x 493.845pt>
+<Mode2_8cpp__incl.pdf, id=6391, 899.36pt x 493.845pt>
 File: Mode2_8cpp__incl.pdf Graphic file (type pdf)
 <use Mode2_8cpp__incl.pdf>
-Package pdftex.def Info: Mode2_8cpp__incl.pdf  used on input line 11.
+Package pdftex.def Info: Mode2_8cpp__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 350.0pt x 192.18431pt.
  [150]) (./ModeSelector_8cpp.tex <./ModeSelector_8cpp__incl.pdf>
-<ModeSelector_8cpp__incl.pdf, id=3863, 578.16pt x 381.425pt>
+<ModeSelector_8cpp__incl.pdf, id=6410, 578.16pt x 381.425pt>
 File: ModeSelector_8cpp__incl.pdf Graphic file (type pdf)
 <use ModeSelector_8cpp__incl.pdf>
-Package pdftex.def Info: ModeSelector_8cpp__incl.pdf  used on input line 11.
+Package pdftex.def Info: ModeSelector_8cpp__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 350.0pt x 230.8996pt.
  [151]) (./Pin_8cpp.tex <./Pin_8cpp__incl.pdf>
-<Pin_8cpp__incl.pdf, id=3885, 235.88126pt x 212.795pt>
+<Pin_8cpp__incl.pdf, id=6430, 235.88126pt x 212.795pt>
 File: Pin_8cpp__incl.pdf Graphic file (type pdf)
 <use Pin_8cpp__incl.pdf>
-Package pdftex.def Info: Pin_8cpp__incl.pdf  used on input line 11.
+Package pdftex.def Info: Pin_8cpp__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 235.0pt x 212.0022pt.
  [152])
 (./ResetButton_8cpp.tex <./ResetButton_8cpp__incl.pdf>
-<ResetButton_8cpp__incl.pdf, id=3907, 329.23pt x 269.005pt>
+<ResetButton_8cpp__incl.pdf, id=6449, 329.23pt x 269.005pt>
 File: ResetButton_8cpp__incl.pdf Graphic file (type pdf)
 <use ResetButton_8cpp__incl.pdf>
-Package pdftex.def Info: ResetButton_8cpp__incl.pdf  used on input line 9.
+Package pdftex.def Info: ResetButton_8cpp__incl.pdf  used on input line 8.
 (pdftex.def)             Requested size: 328.0pt x 268.00688pt.
 ) (./SPDTSwitch_8cpp.tex
 [153] <./SPDTSwitch_8cpp__incl.pdf>
-<SPDTSwitch_8cpp__incl.pdf, id=3925, 281.05pt x 212.795pt>
+<SPDTSwitch_8cpp__incl.pdf, id=6465, 281.05pt x 212.795pt>
 File: SPDTSwitch_8cpp__incl.pdf Graphic file (type pdf)
 <use SPDTSwitch_8cpp__incl.pdf>
-Package pdftex.def Info: SPDTSwitch_8cpp__incl.pdf  used on input line 11.
+Package pdftex.def Info: SPDTSwitch_8cpp__incl.pdf  used on input line 10.
 (pdftex.def)             Requested size: 280.0pt x 212.01193pt.
 ) [154]
 No file refman.ind.
@@ -2013,29 +1731,18 @@ No file refman.ind.
 Package longtable Warning: Table widths have changed. Rerun LaTeX.
 
 (../pdf/refman.aux)
+Package rerunfilecheck Info: File `refman.out' has not changed.
+(rerunfilecheck)             Checksum: 4A8554EA6DA051A5AA73F4EB430ACCC9;121249.
 
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `refman.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `refman.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  4A8554EA6DA051A5AA73F4EB430ACCC9;121249.
  ) 
 Here is how much of TeX's memory you used:
- 20194 strings out of 480247
- 365766 string characters out of 5896152
- 589090 words of memory out of 5000000
- 36237 multiletter control sequences out of 15000+600000
+ 20797 strings out of 480247
+ 379014 string characters out of 5896152
+ 744468 words of memory out of 5000000
+ 36834 multiletter control sequences out of 15000+600000
  519558 words of font info for 94 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,16n,117p,1340b,626s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 99i,16n,117p,1340b,663s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/
@@ -2047,10 +1754,10 @@ b></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on ../pdf/refman.pdf (156 pages, 1150669 bytes).
+Output written on ../pdf/refman.pdf (172 pages, 1224560 bytes).
 PDF statistics:
- 4295 PDF objects out of 4296 (max. 8388607)
- 3762 compressed objects within 38 object streams
+ 6840 PDF objects out of 7423 (max. 8388607)
+ 6266 compressed objects within 63 object streams
  1461 named destinations out of 1728 (max. 500000)
- 441 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 5209 words of extra memory for PDF output out of 10000 (max. 10000000)
 
