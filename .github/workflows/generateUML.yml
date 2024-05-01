@@ -16,14 +16,21 @@ jobs:
       - name: Run Doxygen
         run: |
           doxygen Doxyfile
-      - name: Convert to Markdown
+      # - name: Convert to Markdown
+      #   run: |
+      #     [[ -d docs/markdown ]] || mkdir -p docs/markdown
+      #     find docs/html -type f -name "*.html" -exec sh -c 'output_file="${1#docs/html/}"; mkdir -p "docs/markdown/$(dirname "$output_file")"; pandoc -f html -t markdown -o "docs/markdown/${output_file%.html}.md" "$1"' _ {} \;
+      - name: Copy to svgs
         run: |
-          [[ -d docs/markdown ]] || mkdir -p docs/markdown
-          find docs/html -type f -name "*.html" -exec sh -c 'output_file="${1#docs/html/}"; mkdir -p "docs/markdown/$(dirname "$output_file")"; pandoc -f html -t markdown -o "docs/markdown/${output_file%.html}.md" "$1"' _ {} \;
+          [[ -d docs/svg ]] || mkdir -p docs/svg
+          mv docs/html/*.svg docs/svg
+      - name: Cleanup
+        run: |
+          rm -rf docs/html
       - name: Verify
         run: |
           ls -la docs
-          ls -la docs/markdown
+          ls -la docs/svg
       - name: Commit Doc Files
         run: |
           git add docs
