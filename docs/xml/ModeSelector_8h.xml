@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="ModeSelector_8h" kind="file" language="C++">
+    <compoundname>ModeSelector.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes refid="LEDController_8h" local="yes">LEDController.h</includes>
+    <includes refid="Encoder_8h" local="yes">Encoder.h</includes>
+    <includes refid="Mode_8h" local="yes">Mode.h</includes>
+    <includes refid="ResetButton_8h" local="yes">ResetButton.h</includes>
+    <includedby refid="EurorackClock_8cpp" local="yes">src/EurorackClock.cpp</includedby>
+    <includedby refid="main_8cpp" local="yes">src/main.cpp</includedby>
+    <includedby refid="MIDIHandler_8cpp" local="yes">src/MIDIHandler.cpp</includedby>
+    <includedby refid="ModeSelector_8cpp" local="yes">src/ModeSelector.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/ModeSelector.h</label>
+        <link refid="ModeSelector_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Mode.h</label>
+        <link refid="Mode_8h"/>
+      </node>
+      <node id="3">
+        <label>LEDController.h</label>
+        <link refid="LEDController_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>LED.h</label>
+        <link refid="LED_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Encoder.h</label>
+        <link refid="Encoder_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Debug.h</label>
+        <link refid="Debug_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Pin.h</label>
+        <link refid="Pin_8h"/>
+      </node>
+      <node id="2">
+        <label>vector</label>
+      </node>
+      <node id="9">
+        <label>ResetButton.h</label>
+        <link refid="ResetButton_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>LEDs.h</label>
+        <link refid="LEDs_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Arduino.h</label>
+      </node>
+      <node id="12">
+        <label>Constants.h</label>
+        <link refid="Constants_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>src/ModeSelector.cpp</label>
+        <link refid="ModeSelector_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/ModeSelector.h</label>
+        <link refid="ModeSelector_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/MIDIHandler.cpp</label>
+        <link refid="MIDIHandler_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/EurorackClock.cpp</label>
+        <link refid="EurorackClock_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classModeSelector" prot="public">ModeSelector</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>MODE_SELECTOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODE_SELECTOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="LEDController_8h" kindref="compound">LEDController.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>Include<sp/>the<sp/>LEDController<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Encoder_8h" kindref="compound">Encoder.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Mode_8h" kindref="compound">Mode.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ResetButton_8h" kindref="compound">ResetButton.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//Mode<sp/>Selector<sp/>Singleton.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classModeSelector" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classModeSelector" kindref="compound">ModeSelector</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classModeSelector" kindref="compound">ModeSelector</ref>&amp;<sp/><ref refid="classModeSelector_1a2312f6a56156ab4557baebe6f2d050ea" kindref="member">getInstance</ref>();</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1a4df062db5ff1caaae1e2d7fc44915bff" kindref="member">getMode</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1a3951bcc3ea04b712d94850920b7b6031" kindref="member">setMode</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>newMode);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1ac85d39879a6059172ca90e57341e3371" kindref="member">handleLongPress</ref>();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1aad5e1a078338a35232888ec31d6cc5ee" kindref="member">handleEncoderRotation</ref>();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1a50329d06bde51f77027d6ce9e2444bc1" kindref="member">handleModeSelectionPress</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1a56ce569a1e97e2a0b382d032fabf8dda" kindref="member">handleButtonPress</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1addf7f39b68e55c83b693da4911bd5fa6" kindref="member">setLedController</ref>(<ref refid="classLEDController" kindref="compound">LEDController</ref>&amp;<sp/><ref refid="classModeSelector_1a2f8c7699b4534f802f75ba51393ba4d2" kindref="member">ledController</ref>);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1a5b291f549e155bc4f47c35746d966221" kindref="member">setEncoder</ref>(<ref refid="classEncoder" kindref="compound">Encoder</ref>&amp;<sp/><ref refid="classModeSelector_1ab65d65f54eab8ec5335df2206273f0d8" kindref="member">encoder</ref>);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1a0232058d131a73a98781552b12a3b696" kindref="member">setCurrentMode</ref>(<ref refid="classMode" kindref="compound">Mode</ref>*&amp;<sp/><ref refid="classModeSelector_1adb7ab19bba250819ca90a26c8281bf71" kindref="member">currentMode</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1a6da6a3354fe3d5afd3f241324359de03" kindref="member">isInModeSelection</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode" kindref="compound">Mode</ref>*<sp/><ref refid="classModeSelector_1a5a599c64ffef54ba1dade4fedff23d7a" kindref="member">getCurrentMode</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1ab3680d5757a1efade5128dad7c7c0ab6" kindref="member">addMode</ref>(<ref refid="classMode" kindref="compound">Mode</ref>*<sp/><ref refid="classModeSelector_1aaab9cca1953b1f4797a55ded09638c95" kindref="member">mode</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1ac94481813de71f0680ab6c005c0b8e12" kindref="member">update</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classModeSelector_1af0db492b33c751ccaafa23d9b3880fbc" kindref="member">ModeSelector</ref>();<sp/></highlight><highlight class="comment">//<sp/>Constructor<sp/>is<sp/>private</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classModeSelector_1a5c89c05801d37b7763369afe0940c7e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classModeSelector_1a5c89c05801d37b7763369afe0940c7e9" kindref="member">ModeSelector</ref>(<ref refid="classModeSelector" kindref="compound">ModeSelector</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;);<sp/></highlight><highlight class="comment">//<sp/>Don&apos;t<sp/>Implement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classModeSelector_1a7e4c75c64115ff1628b1338df8d36639" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1a7e4c75c64115ff1628b1338df8d36639" kindref="member">operator=</ref>(<ref refid="classModeSelector" kindref="compound">ModeSelector</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">&amp;);<sp/></highlight><highlight class="comment">//<sp/>Don&apos;t<sp/>implement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classModeSelector_1a4d26cfed61b6573ecaae521b85997b8c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Mode*&gt;<sp/><ref refid="classModeSelector_1a4d26cfed61b6573ecaae521b85997b8c" kindref="member">modes</ref>;</highlight></codeline>
+<codeline lineno="35" refid="classModeSelector_1a28fad2b854f3a9d724c3661d87a94c0e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode" kindref="compound">Mode</ref>*<sp/><ref refid="classModeSelector_1a28fad2b854f3a9d724c3661d87a94c0e" kindref="member">nullMode</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36" refid="classModeSelector_1adb7ab19bba250819ca90a26c8281bf71" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode" kindref="compound">Mode</ref>*&amp;<sp/><ref refid="classModeSelector_1adb7ab19bba250819ca90a26c8281bf71" kindref="member">currentMode</ref>;</highlight></codeline>
+<codeline lineno="37" refid="classModeSelector_1aaab9cca1953b1f4797a55ded09638c95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1aaab9cca1953b1f4797a55ded09638c95" kindref="member">mode</ref>;</highlight></codeline>
+<codeline lineno="38" refid="classModeSelector_1ab3ca420fe69c659b5f92b6ae799e5c89" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1ab3ca420fe69c659b5f92b6ae799e5c89" kindref="member">inModeSelection</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39" refid="classModeSelector_1a2f8c7699b4534f802f75ba51393ba4d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLEDController" kindref="compound">LEDController</ref>*<sp/><ref refid="classModeSelector_1a2f8c7699b4534f802f75ba51393ba4d2" kindref="member">ledController</ref>;<sp/></highlight><highlight class="comment">//<sp/>Add<sp/>a<sp/>pointer<sp/>to<sp/>LEDController</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classModeSelector_1ab65d65f54eab8ec5335df2206273f0d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEncoder" kindref="compound">Encoder</ref>*<sp/><ref refid="classModeSelector_1ab65d65f54eab8ec5335df2206273f0d8" kindref="member">encoder</ref>;<sp/></highlight><highlight class="comment">//<sp/>Add<sp/>a<sp/>pointer<sp/>to<sp/>Encoder</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classModeSelector_1a6b43ab161008add913652ccea49951e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classResetButton" kindref="compound">ResetButton</ref>*<sp/><ref refid="classModeSelector_1a6b43ab161008add913652ccea49951e1" kindref="member">resetButton</ref>;</highlight></codeline>
+<codeline lineno="42" refid="classModeSelector_1a4dc6fb472a2757e88dde6f35137c08e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1a4dc6fb472a2757e88dde6f35137c08e4" kindref="member">isInSelection</ref>;</highlight></codeline>
+<codeline lineno="43" refid="classModeSelector_1af98d3659251c8bed66b9335cc5c7f9c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1af98d3659251c8bed66b9335cc5c7f9c9" kindref="member">inChannelSelection</ref>;</highlight></codeline>
+<codeline lineno="44" refid="classModeSelector_1aa101ddd545060ae8f98e58f986f86637" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1aa101ddd545060ae8f98e58f986f86637" kindref="member">singlePressHandled</ref>;</highlight></codeline>
+<codeline lineno="45" refid="classModeSelector_1ae886bbd080f44f047682429748c28045" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1ae886bbd080f44f047682429748c28045" kindref="member">doublePressHandled</ref>;</highlight></codeline>
+<codeline lineno="46" refid="classModeSelector_1ade89353075816ece4e257ded8e888d88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1ade89353075816ece4e257ded8e888d88" kindref="member">longPressHandled</ref>;</highlight></codeline>
+<codeline lineno="47" refid="classModeSelector_1aa34005332133e2b5e10a4b904aa3c23e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1aa34005332133e2b5e10a4b904aa3c23e" kindref="member">totalModes</ref><sp/>=<sp/><ref refid="classModeSelector_1a4d26cfed61b6573ecaae521b85997b8c" kindref="member">modes</ref>.size();</highlight></codeline>
+<codeline lineno="48" refid="classModeSelector_1a69c5b741591b66abbf46e64aa295a8f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1a69c5b741591b66abbf46e64aa295a8f8" kindref="member">previousMode</ref><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="49" refid="classModeSelector_1a9657b40d4e60d82c6e4ac5a2a605c47e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classModeSelector_1a9657b40d4e60d82c6e4ac5a2a605c47e" kindref="member">numLeds</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>MODE_SELECTOR_H</highlight></codeline>
+    </programlisting>
+    <location file="include/ModeSelector.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>src</compoundname>
+    <innerfile refid="Debug_8cpp">Debug.cpp</innerfile>
+    <innerfile refid="Encoder_8cpp">Encoder.cpp</innerfile>
+    <innerfile refid="EurorackClock_8cpp">EurorackClock.cpp</innerfile>
+    <innerfile refid="Gate_8cpp">Gate.cpp</innerfile>
+    <innerfile refid="Gates_8cpp">Gates.cpp</innerfile>
+    <innerfile refid="InputHandler_8cpp">InputHandler.cpp</innerfile>
+    <innerfile refid="LED_8cpp">LED.cpp</innerfile>
+    <innerfile refid="LEDController_8cpp">LEDController.cpp</innerfile>
+    <innerfile refid="LEDs_8cpp">LEDs.cpp</innerfile>
+    <innerfile refid="main_8cpp">main.cpp</innerfile>
+    <innerfile refid="MIDIHandler_8cpp">MIDIHandler.cpp</innerfile>
+    <innerfile refid="Mode_8cpp">Mode.cpp</innerfile>
+    <innerfile refid="Mode0_8cpp">Mode0.cpp</innerfile>
+    <innerfile refid="Mode1_8cpp">Mode1.cpp</innerfile>
+    <innerfile refid="Mode2_8cpp">Mode2.cpp</innerfile>
+    <innerfile refid="ModeSelector_8cpp">ModeSelector.cpp</innerfile>
+    <innerfile refid="Pin_8cpp">Pin.cpp</innerfile>
+    <innerfile refid="ResetButton_8cpp">ResetButton.cpp</innerfile>
+    <innerfile refid="SPDTSwitch_8cpp">SPDTSwitch.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/"/>
+  </compounddef>
+</doxygen>

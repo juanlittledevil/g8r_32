@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classGate" kind="class" language="C++" prot="public">
+    <compoundname>Gate</compoundname>
+    <basecompoundref refid="classOutputPin" prot="public" virt="non-virtual">OutputPin</basecompoundref>
+    <includes refid="Gate_8h" local="no">Gate.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classGate_1a35f127ccfcc6721cd0fcae3de805815f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Gate::gateOnDuration</definition>
+        <argsstring></argsstring>
+        <name>gateOnDuration</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gate.h" line="18" column="9" bodyfile="include/Gate.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGate_1a16fe5ae275203f6fc24bf34f08033f0f" prot="private" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long Gate::triggeredTime</definition>
+        <argsstring></argsstring>
+        <name>triggeredTime</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gate.h" line="19" column="19" bodyfile="include/Gate.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGate_1a650b1da6da13180bae01219b862ec725" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Gate::division</definition>
+        <argsstring></argsstring>
+        <name>division</name>
+        <initializer>= <ref refid="Constants_8h_1adf636984b70d690edd0c4a32836392e0" kindref="member">internalPPQN</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gate.h" line="20" column="9" bodyfile="include/Gate.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classGate_1a9f0a3e04c61f6924c2d2d5bbdfaa8ead" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Gate::Gate</definition>
+        <argsstring>(int pin=-1)</argsstring>
+        <name>Gate</name>
+        <param>
+          <type>int</type>
+          <declname>pin</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gate.h" line="9" column="5" bodyfile="src/Gate.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classGate_1aa04556acb1cdc5715e38ced8f28c6b27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Gate::~Gate</definition>
+        <argsstring>()</argsstring>
+        <name>~Gate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gate.h" line="10" column="5" bodyfile="src/Gate.cpp" bodystart="15" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classGate_1a6277eacc42d5f84de2a59ea4e062b5bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gate::trigger</definition>
+        <argsstring>(unsigned long currentTime)</argsstring>
+        <name>trigger</name>
+        <param>
+          <type>unsigned long</type>
+          <declname>currentTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gate.h" line="11" column="10" bodyfile="src/Gate.cpp" bodystart="24" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classGate_1a420659855b83dd5dcd94b9eda11f5824" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gate::update</definition>
+        <argsstring>(unsigned long currentTime)</argsstring>
+        <name>update</name>
+        <param>
+          <type>unsigned long</type>
+          <declname>currentTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gate.h" line="12" column="10" bodyfile="src/Gate.cpp" bodystart="29" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classGate_1a49ac696e28beeb2d158778c5588f872e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gate::setDivision</definition>
+        <argsstring>(int divition)</argsstring>
+        <name>setDivision</name>
+        <param>
+          <type>int</type>
+          <declname>divition</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gate.h" line="13" column="10" bodyfile="src/Gate.cpp" bodystart="20" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classGate_1ab99412ef6a005235669a0acc34bc9c9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Gate::getDivision</definition>
+        <argsstring>()</argsstring>
+        <name>getDivision</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gate.h" line="14" column="9" bodyfile="src/Gate.cpp" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classGate_1a17f0a9f5f2d7e19367c70d6afd965fa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gate::setGateOnDuration</definition>
+        <argsstring>(int duration)</argsstring>
+        <name>setGateOnDuration</name>
+        <param>
+          <type>int</type>
+          <declname>duration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gate.h" line="15" column="10" bodyfile="src/Gate.cpp" bodystart="39" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>OutputPin</label>
+        <link refid="classOutputPin"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Pin</label>
+        <link refid="classPin"/>
+      </node>
+      <node id="1">
+        <label>Gate</label>
+        <link refid="classGate"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>OutputPin</label>
+        <link refid="classOutputPin"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Pin</label>
+        <link refid="classPin"/>
+      </node>
+      <node id="1">
+        <label>Gate</label>
+        <link refid="classGate"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/Gate.h" line="7" column="1" bodyfile="include/Gate.h" bodystart="7" bodyend="21"/>
+    <listofallmembers>
+      <member refid="classOutputPin_1a26ba6201d8c71d85eec4696558eea0f4" prot="public" virt="virtual"><scope>Gate</scope><name>begin</name></member>
+      <member refid="classGate_1a650b1da6da13180bae01219b862ec725" prot="private" virt="non-virtual"><scope>Gate</scope><name>division</name></member>
+      <member refid="classGate_1a9f0a3e04c61f6924c2d2d5bbdfaa8ead" prot="public" virt="non-virtual"><scope>Gate</scope><name>Gate</name></member>
+      <member refid="classGate_1a35f127ccfcc6721cd0fcae3de805815f" prot="private" virt="non-virtual"><scope>Gate</scope><name>gateOnDuration</name></member>
+      <member refid="classGate_1ab99412ef6a005235669a0acc34bc9c9b" prot="public" virt="non-virtual"><scope>Gate</scope><name>getDivision</name></member>
+      <member refid="classOutputPin_1a925d7942850c2a7f17f0152a64db5e34" prot="public" virt="virtual"><scope>Gate</scope><name>getState</name></member>
+      <member refid="classOutputPin_1a55e1bf208cb8e2f71664a83de0a78c0b" prot="public" virt="non-virtual"><scope>Gate</scope><name>OutputPin</name></member>
+      <member refid="classPin_1a6e2beb63097c3debb9b1db1f425beb5f" prot="public" virt="non-virtual"><scope>Gate</scope><name>Pin</name></member>
+      <member refid="classPin_1acf35726490e8ccea7fdeeeb57144bf6d" prot="protected" virt="non-virtual"><scope>Gate</scope><name>pin</name></member>
+      <member refid="classGate_1a49ac696e28beeb2d158778c5588f872e" prot="public" virt="non-virtual"><scope>Gate</scope><name>setDivision</name></member>
+      <member refid="classGate_1a17f0a9f5f2d7e19367c70d6afd965fa1" prot="public" virt="non-virtual"><scope>Gate</scope><name>setGateOnDuration</name></member>
+      <member refid="classOutputPin_1aad0ad1b49fdbab03f702c7fe62dc7903" prot="public" virt="virtual"><scope>Gate</scope><name>setState</name></member>
+      <member refid="classPin_1af51a2c85baa1c0387bd5691a808ef1cf" prot="protected" virt="non-virtual"><scope>Gate</scope><name>state</name></member>
+      <member refid="classGate_1a6277eacc42d5f84de2a59ea4e062b5bf" prot="public" virt="non-virtual"><scope>Gate</scope><name>trigger</name></member>
+      <member refid="classGate_1a16fe5ae275203f6fc24bf34f08033f0f" prot="private" virt="non-virtual"><scope>Gate</scope><name>triggeredTime</name></member>
+      <member refid="classGate_1a420659855b83dd5dcd94b9eda11f5824" prot="public" virt="non-virtual"><scope>Gate</scope><name>update</name></member>
+      <member refid="classGate_1aa04556acb1cdc5715e38ced8f28c6b27" prot="public" virt="non-virtual"><scope>Gate</scope><name>~Gate</name></member>
+      <member refid="classPin_1a462c14c45d3d653731dde638aa6e7bb7" prot="public" virt="non-virtual"><scope>Gate</scope><name>~Pin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

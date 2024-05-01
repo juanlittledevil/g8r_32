@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="LED_8cpp" kind="file" language="C++">
+    <compoundname>LED.cpp</compoundname>
+    <includes refid="LED_8h" local="yes">LED.h</includes>
+    <includes refid="Debug_8h" local="yes">Debug.h</includes>
+    <includes local="no">Arduino.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>LED.h</label>
+        <link refid="LED_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Debug.h</label>
+        <link refid="Debug_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Pin.h</label>
+        <link refid="Pin_8h"/>
+      </node>
+      <node id="5">
+        <label>Arduino.h</label>
+      </node>
+      <node id="1">
+        <label>src/LED.cpp</label>
+        <link refid="LED_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="LED_8cpp_1a24fac9ff5bcc1384e1f99ec350941c9a" prot="public" static="no">
+        <name>DEBUG_PRINT</name>
+        <param><defname>message</defname></param>
+        <initializer><ref refid="classDebug_1aec89c31d051cd6de448ccf9a8f29a83d" kindref="member">Debug::print</ref>(__FILE__, __LINE__, __func__, String(message))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/LED.cpp" line="5" column="9" bodyfile="src/LED.cpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="LED_8h" kindref="compound">LED.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Debug_8h" kindref="compound">Debug.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEBUG_PRINT(message)<sp/>Debug::print(__FILE__,<sp/>__LINE__,<sp/>__func__,<sp/>String(message))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><ref refid="classLED_1a2f9846058d6c93165846802571e877bf" kindref="member">LED::LED</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pin)<sp/>:<sp/><ref refid="classOutputPin" kindref="compound">OutputPin</ref>(pin)<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialization<sp/>code<sp/>here<sp/>if<sp/>needed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Destructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><ref refid="classLED_1a5cb49cf2696615d43952baf8ade06767" kindref="member">LED::~LED</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cleanup<sp/>code<sp/>here<sp/>if<sp/>needed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLED_1a5ccc3bc84dd08271c2b92e7dc395b042" kindref="member">LED::setIntensity</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a299ec0c42ccc5a2d79d1739428ac3210" kindref="member">intensity</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;intensity<sp/>=<sp/><ref refid="classLED_1a7b29be937c90a166ab379928a89b12a1" kindref="member">intensity</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLED_1ab8b4d4f8a242125e8bb8f333fea3e1b5" kindref="member">LED::startBlinking</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>interval)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classLED_1a41f91d188d162ac0856939f6368b6aeb" kindref="member">blinkStartTime</ref><sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classLED_1a6f49207335f293f84ee5fd163fc0538f" kindref="member">blinkInterval</ref><sp/>=<sp/>interval;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classLED_1ac72ababe221f50a3c02f72051068f1dd" kindref="member">isBlinking</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLED_1ab604feac943fb6f98970f08bc5e2cd98" kindref="member">LED::stopBlinking</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classLED_1ac72ababe221f50a3c02f72051068f1dd" kindref="member">isBlinking</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classLED_1a7b29be937c90a166ab379928a89b12a1" kindref="member">intensity</ref><sp/>=<sp/>255;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>DEBUG_PRINT(&quot;LED<sp/>stopped<sp/>blinking!&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLED_1a0515347480de786c503951522ed0fae8" kindref="member">LED::updateBlinking</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(this-&gt;<ref refid="classLED_1ac72ababe221f50a3c02f72051068f1dd" kindref="member">isBlinking</ref><sp/>&amp;&amp;<sp/>millis()<sp/>-<sp/>this-&gt;<ref refid="classLED_1a41f91d188d162ac0856939f6368b6aeb" kindref="member">blinkStartTime</ref><sp/>&gt;=<sp/>this-&gt;<ref refid="classLED_1a6f49207335f293f84ee5fd163fc0538f" kindref="member">blinkInterval</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classLED_1a41f91d188d162ac0856939f6368b6aeb" kindref="member">blinkStartTime</ref><sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classOutputPin_1aad0ad1b49fdbab03f702c7fe62dc7903" kindref="member">setState</ref>(!<ref refid="classOutputPin_1a925d7942850c2a7f17f0152a64db5e34" kindref="member">getState</ref>());<sp/></highlight><highlight class="comment">//<sp/>Toggle<sp/>LED<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLED_1afe1cd286a90bdf388757f840b62963b0" kindref="member">LED::trigger</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>currentTime,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>inverted)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classLED_1a5371388f81b03dc045091c2492f92b00" kindref="member">inverted</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOutputPin_1aad0ad1b49fdbab03f702c7fe62dc7903" kindref="member">setState</ref>(HIGH);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOutputPin_1aad0ad1b49fdbab03f702c7fe62dc7903" kindref="member">setState</ref>(LOW);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;inverted<sp/>=<sp/><ref refid="classLED_1a5371388f81b03dc045091c2492f92b00" kindref="member">inverted</ref>;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLED_1a39dd1bd3424f8daa2a72f53bde7c9c62" kindref="member">triggeredTime</ref><sp/>=<sp/>currentTime;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLED_1a26deb537b1cbc1f38d0fce57650875f5" kindref="member">LED::update</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>currentTime)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>LED<sp/>is<sp/>not<sp/>inverted,<sp/>turn<sp/>it<sp/>off<sp/>after<sp/>ledOnDuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!this-&gt;inverted)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classOutputPin_1a925d7942850c2a7f17f0152a64db5e34" kindref="member">getState</ref>()<sp/>==<sp/>HIGH<sp/>&amp;&amp;<sp/>currentTime<sp/>&gt;=<sp/><ref refid="classLED_1a39dd1bd3424f8daa2a72f53bde7c9c62" kindref="member">triggeredTime</ref><sp/>+<sp/><ref refid="classLED_1a26f304de8f30355e99917090877dee78" kindref="member">ledOnDuration</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOutputPin_1aad0ad1b49fdbab03f702c7fe62dc7903" kindref="member">setState</ref>(LOW);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>LED<sp/>is<sp/>inverted,<sp/>turn<sp/>it<sp/>on<sp/>after<sp/>invertedLedOnDuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classOutputPin_1a925d7942850c2a7f17f0152a64db5e34" kindref="member">getState</ref>()<sp/>==<sp/>LOW<sp/>&amp;&amp;<sp/>currentTime<sp/>&gt;=<sp/><ref refid="classLED_1a39dd1bd3424f8daa2a72f53bde7c9c62" kindref="member">triggeredTime</ref><sp/>+<sp/><ref refid="classLED_1aa649a9045bd22e6d4a21bbbf161eff8e" kindref="member">invertedLedOnDuration</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOutputPin_1aad0ad1b49fdbab03f702c7fe62dc7903" kindref="member">setState</ref>(HIGH);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLED_1a973ce3608ed1449bd6521dd026b300aa" kindref="member">LED::resetIvernted</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;inverted<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLED_1a447a6142872354a57402efe1b766526c" kindref="member">LED::setLedOnDuration</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>duration)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classLED_1a26f304de8f30355e99917090877dee78" kindref="member">ledOnDuration</ref><sp/>=<sp/>duration;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/LED.cpp"/>
+  </compounddef>
+</doxygen>
