@@ -1,0 +1,128 @@
+\hypertarget{classGate}{}\doxysection{Gate Class Reference}
+\label{classGate}\index{Gate@{Gate}}
+
+
+{\ttfamily \#include $<$Gate.\+h$>$}
+
+
+
+Inheritance diagram for Gate\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classGate__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Gate\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classGate__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGate_a9f0a3e04c61f6924c2d2d5bbdfaa8ead}{Gate}} (int \mbox{\hyperlink{classPin_acf35726490e8ccea7fdeeeb57144bf6d}{pin}}=-\/1)
+\item 
+\mbox{\hyperlink{classGate_aa04556acb1cdc5715e38ced8f28c6b27}{$\sim$\+Gate}} ()
+\item 
+void \mbox{\hyperlink{classGate_a6277eacc42d5f84de2a59ea4e062b5bf}{trigger}} (unsigned long current\+Time)
+\item 
+void \mbox{\hyperlink{classGate_a420659855b83dd5dcd94b9eda11f5824}{update}} (unsigned long current\+Time)
+\item 
+void \mbox{\hyperlink{classGate_a49ac696e28beeb2d158778c5588f872e}{set\+Division}} (int divition)
+\item 
+int \mbox{\hyperlink{classGate_ab99412ef6a005235669a0acc34bc9c9b}{get\+Division}} ()
+\item 
+void \mbox{\hyperlink{classGate_a17f0a9f5f2d7e19367c70d6afd965fa1}{set\+Gate\+On\+Duration}} (int duration)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classGate_a35f127ccfcc6721cd0fcae3de805815f}{gate\+On\+Duration}} = 10
+\item 
+unsigned long \mbox{\hyperlink{classGate_a16fe5ae275203f6fc24bf34f08033f0f}{triggered\+Time}} = 0
+\item 
+int \mbox{\hyperlink{classGate_a650b1da6da13180bae01219b862ec725}{division}} = \mbox{\hyperlink{Constants_8h_adf636984b70d690edd0c4a32836392e0}{internal\+PPQN}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGate_a9f0a3e04c61f6924c2d2d5bbdfaa8ead}\label{classGate_a9f0a3e04c61f6924c2d2d5bbdfaa8ead}} 
+\index{Gate@{Gate}!Gate@{Gate}}
+\index{Gate@{Gate}!Gate@{Gate}}
+\doxysubsubsection{\texorpdfstring{Gate()}{Gate()}}
+{\footnotesize\ttfamily Gate\+::\+Gate (\begin{DoxyParamCaption}\item[{int}]{pin = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGate_aa04556acb1cdc5715e38ced8f28c6b27}\label{classGate_aa04556acb1cdc5715e38ced8f28c6b27}} 
+\index{Gate@{Gate}!````~Gate@{$\sim$Gate}}
+\index{````~Gate@{$\sim$Gate}!Gate@{Gate}}
+\doxysubsubsection{\texorpdfstring{$\sim$Gate()}{~Gate()}}
+{\footnotesize\ttfamily Gate\+::$\sim$\+Gate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGate_ab99412ef6a005235669a0acc34bc9c9b}\label{classGate_ab99412ef6a005235669a0acc34bc9c9b}} 
+\index{Gate@{Gate}!getDivision@{getDivision}}
+\index{getDivision@{getDivision}!Gate@{Gate}}
+\doxysubsubsection{\texorpdfstring{getDivision()}{getDivision()}}
+{\footnotesize\ttfamily int Gate\+::get\+Division (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGate_a49ac696e28beeb2d158778c5588f872e}\label{classGate_a49ac696e28beeb2d158778c5588f872e}} 
+\index{Gate@{Gate}!setDivision@{setDivision}}
+\index{setDivision@{setDivision}!Gate@{Gate}}
+\doxysubsubsection{\texorpdfstring{setDivision()}{setDivision()}}
+{\footnotesize\ttfamily void Gate\+::set\+Division (\begin{DoxyParamCaption}\item[{int}]{divition }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGate_a17f0a9f5f2d7e19367c70d6afd965fa1}\label{classGate_a17f0a9f5f2d7e19367c70d6afd965fa1}} 
+\index{Gate@{Gate}!setGateOnDuration@{setGateOnDuration}}
+\index{setGateOnDuration@{setGateOnDuration}!Gate@{Gate}}
+\doxysubsubsection{\texorpdfstring{setGateOnDuration()}{setGateOnDuration()}}
+{\footnotesize\ttfamily void Gate\+::set\+Gate\+On\+Duration (\begin{DoxyParamCaption}\item[{int}]{duration }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGate_a6277eacc42d5f84de2a59ea4e062b5bf}\label{classGate_a6277eacc42d5f84de2a59ea4e062b5bf}} 
+\index{Gate@{Gate}!trigger@{trigger}}
+\index{trigger@{trigger}!Gate@{Gate}}
+\doxysubsubsection{\texorpdfstring{trigger()}{trigger()}}
+{\footnotesize\ttfamily void Gate\+::trigger (\begin{DoxyParamCaption}\item[{unsigned long}]{current\+Time }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGate_a420659855b83dd5dcd94b9eda11f5824}\label{classGate_a420659855b83dd5dcd94b9eda11f5824}} 
+\index{Gate@{Gate}!update@{update}}
+\index{update@{update}!Gate@{Gate}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Gate\+::update (\begin{DoxyParamCaption}\item[{unsigned long}]{current\+Time }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classGate_a650b1da6da13180bae01219b862ec725}\label{classGate_a650b1da6da13180bae01219b862ec725}} 
+\index{Gate@{Gate}!division@{division}}
+\index{division@{division}!Gate@{Gate}}
+\doxysubsubsection{\texorpdfstring{division}{division}}
+{\footnotesize\ttfamily int Gate\+::division = \mbox{\hyperlink{Constants_8h_adf636984b70d690edd0c4a32836392e0}{internal\+PPQN}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classGate_a35f127ccfcc6721cd0fcae3de805815f}\label{classGate_a35f127ccfcc6721cd0fcae3de805815f}} 
+\index{Gate@{Gate}!gateOnDuration@{gateOnDuration}}
+\index{gateOnDuration@{gateOnDuration}!Gate@{Gate}}
+\doxysubsubsection{\texorpdfstring{gateOnDuration}{gateOnDuration}}
+{\footnotesize\ttfamily int Gate\+::gate\+On\+Duration = 10\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classGate_a16fe5ae275203f6fc24bf34f08033f0f}\label{classGate_a16fe5ae275203f6fc24bf34f08033f0f}} 
+\index{Gate@{Gate}!triggeredTime@{triggeredTime}}
+\index{triggeredTime@{triggeredTime}!Gate@{Gate}}
+\doxysubsubsection{\texorpdfstring{triggeredTime}{triggeredTime}}
+{\footnotesize\ttfamily unsigned long Gate\+::triggered\+Time = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Gate_8h}{Gate.\+h}}\item 
+src/\mbox{\hyperlink{Gate_8cpp}{Gate.\+cpp}}\end{DoxyCompactItemize}

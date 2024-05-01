@@ -1,0 +1,397 @@
+\hypertarget{main_8cpp}{}\doxysection{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$MIDI.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Gates.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Mode\+Selector.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}LEDs.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Debug.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Encoder.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}MIDIHandler.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Eurorack\+Clock.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Constants.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Mode0.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Mode1.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Mode2.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}LEDController.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Reset\+Button.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Input\+Handler.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a24fac9ff5bcc1384e1f99ec350941c9a}{DEBUG\+\_\+\+PRINT}}(message)~\mbox{\hyperlink{classDebug_aec89c31d051cd6de448ccf9a8f29a83d}{Debug\+::print}}(\+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, String(message))
+\item 
+\#define \mbox{\hyperlink{main_8cpp_aa7089c01538b339ae745173c117f95b9}{RX\+\_\+\+PIN}}~PA3
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a3bb17f5daa2b1eaef58c8aa2d989e27e}{TX\+\_\+\+PIN}}~PA2
+\item 
+\#define \mbox{\hyperlink{main_8cpp_abe826c409a8a833bfa7532171db34cf0}{ENCODER\+\_\+\+PINA}}~PB13
+\item 
+\#define \mbox{\hyperlink{main_8cpp_abb0ab32273368ab840bf7c43f5309ca5}{ENCODER\+\_\+\+PINB}}~PB14
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a13d83485198c96bfc9ab7e0bd91bbc3a}{ENCODER\+\_\+\+BUTTON}}~PB12
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a23b348310475af5d6544794f1a167ee8}{CLOCK\+\_\+\+PIN}}~PB10
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a08bca59db4b190eaaea4d47b7562869c}{RESET\+\_\+\+PIN}}~PB11
+\item 
+\#define \mbox{\hyperlink{main_8cpp_ae80f4e50d6756064b8880735a5644881}{RESET\+\_\+\+BUTTON}}~PB15
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a47ca58cb74e74a56ae5eaf454df47409}{TEMPO\+\_\+\+LED}}~PA8
+\item 
+\#define \mbox{\hyperlink{main_8cpp_a1f63b7e11fd7cdaa5cb5104155d5ddad}{CV\+\_\+\+A\+\_\+\+PIN}}~PA4
+\item 
+\#define \mbox{\hyperlink{main_8cpp_aa3104e4ee339881c3a36c9ac65b819a4}{CV\+\_\+\+B\+\_\+\+PIN}}~PA5
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+void \mbox{\hyperlink{main_8cpp_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{main_8cpp_a782432745fd904139737a67cfe18cc45}{pins}} = \{PA15, PB3, PB4, PB5, PB6, PB7, PB8, PB9\}
+\item 
+const int \mbox{\hyperlink{main_8cpp_a7e0ec12422847c7eae2e7fe6c5972a48}{num\+Pins}} = pins.\+size()
+\item 
+\mbox{\hyperlink{classGates}{Gates}} \mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}} = \mbox{\hyperlink{classGates}{Gates}}(\mbox{\hyperlink{main_8cpp_a782432745fd904139737a67cfe18cc45}{pins}}, \mbox{\hyperlink{main_8cpp_a7e0ec12422847c7eae2e7fe6c5972a48}{num\+Pins}})
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{main_8cpp_ab274bd88fcca137c72235967915b9f58}{led\+Pins}} = \{PA12, PA11, PB1, PB0, PA7, PA6, PA1, PA0\}
+\item 
+int \mbox{\hyperlink{main_8cpp_a42946fc499bc5d1b6da4a7d38a91b347}{num\+Led\+Pins}} = led\+Pins.\+size()
+\item 
+\mbox{\hyperlink{classLEDs}{LEDs}} \mbox{\hyperlink{main_8cpp_acff5fe5d7a28e483a9ab2f183bb4dc25}{leds}} = \mbox{\hyperlink{classLEDs}{LEDs}}(\mbox{\hyperlink{main_8cpp_ab274bd88fcca137c72235967915b9f58}{led\+Pins}}, \mbox{\hyperlink{main_8cpp_a42946fc499bc5d1b6da4a7d38a91b347}{num\+Led\+Pins}})
+\item 
+int \mbox{\hyperlink{main_8cpp_a163c71453f25c788b655dd83689eaea0}{enc\+CLKPin}} = \mbox{\hyperlink{main_8cpp_abe826c409a8a833bfa7532171db34cf0}{ENCODER\+\_\+\+PINA}}
+\item 
+int \mbox{\hyperlink{main_8cpp_a808ab567ec354ba030c82614669258bb}{enc\+DTPin}} = \mbox{\hyperlink{main_8cpp_abb0ab32273368ab840bf7c43f5309ca5}{ENCODER\+\_\+\+PINB}}
+\item 
+int \mbox{\hyperlink{main_8cpp_a5238625c5c9a4b1ed2f485c3696bef20}{enc\+Button\+Pin}} = \mbox{\hyperlink{main_8cpp_a13d83485198c96bfc9ab7e0bd91bbc3a}{ENCODER\+\_\+\+BUTTON}}
+\item 
+bool \mbox{\hyperlink{main_8cpp_a530c93b1821f0134b60d27d445a4a4e3}{in\+Mode\+Selection}} = false
+\item 
+int \mbox{\hyperlink{main_8cpp_a299ec0c42ccc5a2d79d1739428ac3210}{intensity}} = 255
+\item 
+bool \mbox{\hyperlink{main_8cpp_ae8ce8df8470642a28044a27add2964e4}{is\+In\+Selection}} = false
+\item 
+unsigned long \mbox{\hyperlink{main_8cpp_a6a23ed29bcba26182457398cf3ba0dc4}{last\+Flash\+Time}} = 0
+\item 
+unsigned char \mbox{\hyperlink{main_8cpp_adf636984b70d690edd0c4a32836392e0}{internal\+PPQN}} = 24
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{main_8cpp_a385d88ba7be4d1867aa11aefaba64f1a}{musical\+Intervals}} = \{1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 64, 72, 96, 128, 144, 192, 288, 384, 576, 768, 1152, 1536\}
+\item 
+const int \mbox{\hyperlink{main_8cpp_a4b2982d5837258bd50d39acde6f57b80}{musical\+Intervals\+Size}} = musical\+Intervals.\+size()
+\item 
+int \mbox{\hyperlink{main_8cpp_a3359c659dd3104507b620365d1b1d715}{total\+\_\+pages}} = 16 / leds.\+num\+Leds
+\item 
+int \mbox{\hyperlink{main_8cpp_ae26c09cc76954053454ea55a4147b005}{min\+\_\+intensity}} = 64
+\item 
+int \mbox{\hyperlink{main_8cpp_a95711a53744764804ef9b98c59664764}{intensity\+\_\+step}} = (255 -\/ \mbox{\hyperlink{main_8cpp_ae26c09cc76954053454ea55a4147b005}{min\+\_\+intensity}}) / (\mbox{\hyperlink{main_8cpp_a3359c659dd3104507b620365d1b1d715}{total\+\_\+pages}} -\/ 1)
+\item 
+\mbox{\hyperlink{classEncoder}{Encoder}} \mbox{\hyperlink{main_8cpp_a133a3017d675be921d0d7586eec7bb7c}{encoder}} = \mbox{\hyperlink{classEncoder}{Encoder}}(\mbox{\hyperlink{main_8cpp_a163c71453f25c788b655dd83689eaea0}{enc\+CLKPin}}, \mbox{\hyperlink{main_8cpp_a808ab567ec354ba030c82614669258bb}{enc\+DTPin}}, \mbox{\hyperlink{main_8cpp_a5238625c5c9a4b1ed2f485c3696bef20}{enc\+Button\+Pin}})
+\item 
+\mbox{\hyperlink{classResetButton}{Reset\+Button}} \mbox{\hyperlink{main_8cpp_a191753692ee909460b91f43cfd141fa7}{reset\+Button}} = \mbox{\hyperlink{classResetButton}{Reset\+Button}}(\mbox{\hyperlink{main_8cpp_ae80f4e50d6756064b8880735a5644881}{RESET\+\_\+\+BUTTON}})
+\item 
+\mbox{\hyperlink{classLEDController}{LEDController}} \mbox{\hyperlink{main_8cpp_af8afe1fb511986724cafc628d457ee07}{led\+Controller}} (\mbox{\hyperlink{main_8cpp_acff5fe5d7a28e483a9ab2f183bb4dc25}{leds}})
+\item 
+\mbox{\hyperlink{classEurorackClock}{Eurorack\+Clock}} \mbox{\hyperlink{main_8cpp_a3486ebc2916c9a757b036be4e303c573}{clock}} (\mbox{\hyperlink{main_8cpp_a23b348310475af5d6544794f1a167ee8}{CLOCK\+\_\+\+PIN}}, \mbox{\hyperlink{main_8cpp_a08bca59db4b190eaaea4d47b7562869c}{RESET\+\_\+\+PIN}}, \mbox{\hyperlink{main_8cpp_a47ca58cb74e74a56ae5eaf454df47409}{TEMPO\+\_\+\+LED}}, \mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}, \mbox{\hyperlink{main_8cpp_acff5fe5d7a28e483a9ab2f183bb4dc25}{leds}})
+\item 
+\mbox{\hyperlink{classMIDIHandler}{MIDIHandler}} \mbox{\hyperlink{main_8cpp_af1ad199a35c31bace3d533077689e6df}{midi\+Handler}} (Serial2, \mbox{\hyperlink{main_8cpp_a3486ebc2916c9a757b036be4e303c573}{clock}}, \mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}, \mbox{\hyperlink{main_8cpp_acff5fe5d7a28e483a9ab2f183bb4dc25}{leds}})
+\item 
+\mbox{\hyperlink{classInputHandler}{Input\+Handler}} \mbox{\hyperlink{main_8cpp_ae8f5410196ad7877ecf0fea76491fb22}{input\+Handler}} = \mbox{\hyperlink{classInputHandler}{Input\+Handler}}(\mbox{\hyperlink{main_8cpp_a1f63b7e11fd7cdaa5cb5104155d5ddad}{CV\+\_\+\+A\+\_\+\+PIN}}, \mbox{\hyperlink{main_8cpp_aa3104e4ee339881c3a36c9ac65b819a4}{CV\+\_\+\+B\+\_\+\+PIN}})
+\item 
+\mbox{\hyperlink{classModeSelector}{Mode\+Selector}} \& \mbox{\hyperlink{main_8cpp_a42f72ce52094b0a028afddf862ddaa4d}{mode\+Selector}} = \mbox{\hyperlink{classModeSelector_a2312f6a56156ab4557baebe6f2d050ea}{Mode\+Selector\+::get\+Instance}}()
+\item 
+\mbox{\hyperlink{classMode}{Mode}} $\ast$ \mbox{\hyperlink{main_8cpp_a7a725ed0b89db4bf8461039a479bc143}{current\+Mode}} = nullptr
+\item 
+\mbox{\hyperlink{classMode0}{Mode0}} \mbox{\hyperlink{main_8cpp_ab97762dda44bd590fbe8c97580106a9e}{mode0}} (\mbox{\hyperlink{main_8cpp_a133a3017d675be921d0d7586eec7bb7c}{encoder}}, \mbox{\hyperlink{main_8cpp_ae8f5410196ad7877ecf0fea76491fb22}{input\+Handler}}, \mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}, \mbox{\hyperlink{main_8cpp_af8afe1fb511986724cafc628d457ee07}{led\+Controller}}, \mbox{\hyperlink{main_8cpp_af1ad199a35c31bace3d533077689e6df}{midi\+Handler}}, \mbox{\hyperlink{main_8cpp_a191753692ee909460b91f43cfd141fa7}{reset\+Button}}, \mbox{\hyperlink{main_8cpp_a3486ebc2916c9a757b036be4e303c573}{clock}})
+\item 
+\mbox{\hyperlink{classMode1}{Mode1}} \mbox{\hyperlink{main_8cpp_ac453df32cb30f2f9509c37f37eb30b77}{mode1}} (\mbox{\hyperlink{main_8cpp_a133a3017d675be921d0d7586eec7bb7c}{encoder}}, \mbox{\hyperlink{main_8cpp_ae8f5410196ad7877ecf0fea76491fb22}{input\+Handler}}, \mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}, \mbox{\hyperlink{main_8cpp_af8afe1fb511986724cafc628d457ee07}{led\+Controller}}, \mbox{\hyperlink{main_8cpp_af1ad199a35c31bace3d533077689e6df}{midi\+Handler}}, \mbox{\hyperlink{main_8cpp_a191753692ee909460b91f43cfd141fa7}{reset\+Button}})
+\item 
+\mbox{\hyperlink{classMode2}{Mode2}} \mbox{\hyperlink{main_8cpp_aca8126f10bd0d0aac519977996b805f9}{mode2}} (\mbox{\hyperlink{main_8cpp_a133a3017d675be921d0d7586eec7bb7c}{encoder}}, \mbox{\hyperlink{main_8cpp_ae8f5410196ad7877ecf0fea76491fb22}{input\+Handler}}, \mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}, \mbox{\hyperlink{main_8cpp_af8afe1fb511986724cafc628d457ee07}{led\+Controller}}, \mbox{\hyperlink{main_8cpp_af1ad199a35c31bace3d533077689e6df}{midi\+Handler}}, \mbox{\hyperlink{main_8cpp_a191753692ee909460b91f43cfd141fa7}{reset\+Button}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8cpp_a23b348310475af5d6544794f1a167ee8}\label{main_8cpp_a23b348310475af5d6544794f1a167ee8}} 
+\index{main.cpp@{main.cpp}!CLOCK\_PIN@{CLOCK\_PIN}}
+\index{CLOCK\_PIN@{CLOCK\_PIN}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{CLOCK\_PIN}{CLOCK\_PIN}}
+{\footnotesize\ttfamily \#define CLOCK\+\_\+\+PIN~PB10}
+
+\mbox{\Hypertarget{main_8cpp_a1f63b7e11fd7cdaa5cb5104155d5ddad}\label{main_8cpp_a1f63b7e11fd7cdaa5cb5104155d5ddad}} 
+\index{main.cpp@{main.cpp}!CV\_A\_PIN@{CV\_A\_PIN}}
+\index{CV\_A\_PIN@{CV\_A\_PIN}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{CV\_A\_PIN}{CV\_A\_PIN}}
+{\footnotesize\ttfamily \#define CV\+\_\+\+A\+\_\+\+PIN~PA4}
+
+\mbox{\Hypertarget{main_8cpp_aa3104e4ee339881c3a36c9ac65b819a4}\label{main_8cpp_aa3104e4ee339881c3a36c9ac65b819a4}} 
+\index{main.cpp@{main.cpp}!CV\_B\_PIN@{CV\_B\_PIN}}
+\index{CV\_B\_PIN@{CV\_B\_PIN}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{CV\_B\_PIN}{CV\_B\_PIN}}
+{\footnotesize\ttfamily \#define CV\+\_\+\+B\+\_\+\+PIN~PA5}
+
+\mbox{\Hypertarget{main_8cpp_a24fac9ff5bcc1384e1f99ec350941c9a}\label{main_8cpp_a24fac9ff5bcc1384e1f99ec350941c9a}} 
+\index{main.cpp@{main.cpp}!DEBUG\_PRINT@{DEBUG\_PRINT}}
+\index{DEBUG\_PRINT@{DEBUG\_PRINT}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_PRINT}{DEBUG\_PRINT}}
+{\footnotesize\ttfamily \#define DEBUG\+\_\+\+PRINT(\begin{DoxyParamCaption}\item[{}]{message }\end{DoxyParamCaption})~\mbox{\hyperlink{classDebug_aec89c31d051cd6de448ccf9a8f29a83d}{Debug\+::print}}(\+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, String(message))}
+
+\mbox{\Hypertarget{main_8cpp_a13d83485198c96bfc9ab7e0bd91bbc3a}\label{main_8cpp_a13d83485198c96bfc9ab7e0bd91bbc3a}} 
+\index{main.cpp@{main.cpp}!ENCODER\_BUTTON@{ENCODER\_BUTTON}}
+\index{ENCODER\_BUTTON@{ENCODER\_BUTTON}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{ENCODER\_BUTTON}{ENCODER\_BUTTON}}
+{\footnotesize\ttfamily \#define ENCODER\+\_\+\+BUTTON~PB12}
+
+\mbox{\Hypertarget{main_8cpp_abe826c409a8a833bfa7532171db34cf0}\label{main_8cpp_abe826c409a8a833bfa7532171db34cf0}} 
+\index{main.cpp@{main.cpp}!ENCODER\_PINA@{ENCODER\_PINA}}
+\index{ENCODER\_PINA@{ENCODER\_PINA}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{ENCODER\_PINA}{ENCODER\_PINA}}
+{\footnotesize\ttfamily \#define ENCODER\+\_\+\+PINA~PB13}
+
+\mbox{\Hypertarget{main_8cpp_abb0ab32273368ab840bf7c43f5309ca5}\label{main_8cpp_abb0ab32273368ab840bf7c43f5309ca5}} 
+\index{main.cpp@{main.cpp}!ENCODER\_PINB@{ENCODER\_PINB}}
+\index{ENCODER\_PINB@{ENCODER\_PINB}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{ENCODER\_PINB}{ENCODER\_PINB}}
+{\footnotesize\ttfamily \#define ENCODER\+\_\+\+PINB~PB14}
+
+\mbox{\Hypertarget{main_8cpp_ae80f4e50d6756064b8880735a5644881}\label{main_8cpp_ae80f4e50d6756064b8880735a5644881}} 
+\index{main.cpp@{main.cpp}!RESET\_BUTTON@{RESET\_BUTTON}}
+\index{RESET\_BUTTON@{RESET\_BUTTON}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{RESET\_BUTTON}{RESET\_BUTTON}}
+{\footnotesize\ttfamily \#define RESET\+\_\+\+BUTTON~PB15}
+
+\mbox{\Hypertarget{main_8cpp_a08bca59db4b190eaaea4d47b7562869c}\label{main_8cpp_a08bca59db4b190eaaea4d47b7562869c}} 
+\index{main.cpp@{main.cpp}!RESET\_PIN@{RESET\_PIN}}
+\index{RESET\_PIN@{RESET\_PIN}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{RESET\_PIN}{RESET\_PIN}}
+{\footnotesize\ttfamily \#define RESET\+\_\+\+PIN~PB11}
+
+\mbox{\Hypertarget{main_8cpp_aa7089c01538b339ae745173c117f95b9}\label{main_8cpp_aa7089c01538b339ae745173c117f95b9}} 
+\index{main.cpp@{main.cpp}!RX\_PIN@{RX\_PIN}}
+\index{RX\_PIN@{RX\_PIN}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{RX\_PIN}{RX\_PIN}}
+{\footnotesize\ttfamily \#define RX\+\_\+\+PIN~PA3}
+
+\mbox{\Hypertarget{main_8cpp_a47ca58cb74e74a56ae5eaf454df47409}\label{main_8cpp_a47ca58cb74e74a56ae5eaf454df47409}} 
+\index{main.cpp@{main.cpp}!TEMPO\_LED@{TEMPO\_LED}}
+\index{TEMPO\_LED@{TEMPO\_LED}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{TEMPO\_LED}{TEMPO\_LED}}
+{\footnotesize\ttfamily \#define TEMPO\+\_\+\+LED~PA8}
+
+\mbox{\Hypertarget{main_8cpp_a3bb17f5daa2b1eaef58c8aa2d989e27e}\label{main_8cpp_a3bb17f5daa2b1eaef58c8aa2d989e27e}} 
+\index{main.cpp@{main.cpp}!TX\_PIN@{TX\_PIN}}
+\index{TX\_PIN@{TX\_PIN}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{TX\_PIN}{TX\_PIN}}
+{\footnotesize\ttfamily \#define TX\+\_\+\+PIN~PA2}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_afe461d27b9c48d5921c00d521181f12f}\label{main_8cpp_afe461d27b9c48d5921c00d521181f12f}} 
+\index{main.cpp@{main.cpp}!loop@{loop}}
+\index{loop@{loop}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}\label{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{main.cpp@{main.cpp}!setup@{setup}}
+\index{setup@{setup}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8cpp_a3486ebc2916c9a757b036be4e303c573}\label{main_8cpp_a3486ebc2916c9a757b036be4e303c573}} 
+\index{main.cpp@{main.cpp}!clock@{clock}}
+\index{clock@{clock}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{clock}{clock}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEurorackClock}{Eurorack\+Clock}} clock(\mbox{\hyperlink{main_8cpp_a23b348310475af5d6544794f1a167ee8}{CLOCK\+\_\+\+PIN}}, \mbox{\hyperlink{main_8cpp_a08bca59db4b190eaaea4d47b7562869c}{RESET\+\_\+\+PIN}}, \mbox{\hyperlink{main_8cpp_a47ca58cb74e74a56ae5eaf454df47409}{TEMPO\+\_\+\+LED}}, \mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}, \mbox{\hyperlink{main_8cpp_acff5fe5d7a28e483a9ab2f183bb4dc25}{leds}}) (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{main_8cpp_a23b348310475af5d6544794f1a167ee8}{CLOCK\+\_\+\+PIN}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_a08bca59db4b190eaaea4d47b7562869c}{RESET\+\_\+\+PIN}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_a47ca58cb74e74a56ae5eaf454df47409}{TEMPO\+\_\+\+LED}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_acff5fe5d7a28e483a9ab2f183bb4dc25}{leds}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8cpp_a7a725ed0b89db4bf8461039a479bc143}\label{main_8cpp_a7a725ed0b89db4bf8461039a479bc143}} 
+\index{main.cpp@{main.cpp}!currentMode@{currentMode}}
+\index{currentMode@{currentMode}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{currentMode}{currentMode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMode}{Mode}}$\ast$ current\+Mode = nullptr}
+
+\mbox{\Hypertarget{main_8cpp_a5238625c5c9a4b1ed2f485c3696bef20}\label{main_8cpp_a5238625c5c9a4b1ed2f485c3696bef20}} 
+\index{main.cpp@{main.cpp}!encButtonPin@{encButtonPin}}
+\index{encButtonPin@{encButtonPin}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{encButtonPin}{encButtonPin}}
+{\footnotesize\ttfamily int enc\+Button\+Pin = \mbox{\hyperlink{main_8cpp_a13d83485198c96bfc9ab7e0bd91bbc3a}{ENCODER\+\_\+\+BUTTON}}}
+
+\mbox{\Hypertarget{main_8cpp_a163c71453f25c788b655dd83689eaea0}\label{main_8cpp_a163c71453f25c788b655dd83689eaea0}} 
+\index{main.cpp@{main.cpp}!encCLKPin@{encCLKPin}}
+\index{encCLKPin@{encCLKPin}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{encCLKPin}{encCLKPin}}
+{\footnotesize\ttfamily int enc\+CLKPin = \mbox{\hyperlink{main_8cpp_abe826c409a8a833bfa7532171db34cf0}{ENCODER\+\_\+\+PINA}}}
+
+\mbox{\Hypertarget{main_8cpp_a808ab567ec354ba030c82614669258bb}\label{main_8cpp_a808ab567ec354ba030c82614669258bb}} 
+\index{main.cpp@{main.cpp}!encDTPin@{encDTPin}}
+\index{encDTPin@{encDTPin}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{encDTPin}{encDTPin}}
+{\footnotesize\ttfamily int enc\+DTPin = \mbox{\hyperlink{main_8cpp_abb0ab32273368ab840bf7c43f5309ca5}{ENCODER\+\_\+\+PINB}}}
+
+\mbox{\Hypertarget{main_8cpp_a133a3017d675be921d0d7586eec7bb7c}\label{main_8cpp_a133a3017d675be921d0d7586eec7bb7c}} 
+\index{main.cpp@{main.cpp}!encoder@{encoder}}
+\index{encoder@{encoder}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{encoder}{encoder}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEncoder}{Encoder}} encoder = \mbox{\hyperlink{classEncoder}{Encoder}}(\mbox{\hyperlink{main_8cpp_a163c71453f25c788b655dd83689eaea0}{enc\+CLKPin}}, \mbox{\hyperlink{main_8cpp_a808ab567ec354ba030c82614669258bb}{enc\+DTPin}}, \mbox{\hyperlink{main_8cpp_a5238625c5c9a4b1ed2f485c3696bef20}{enc\+Button\+Pin}})}
+
+\mbox{\Hypertarget{main_8cpp_aafa551f375cee7e3faaf9390080592a7}\label{main_8cpp_aafa551f375cee7e3faaf9390080592a7}} 
+\index{main.cpp@{main.cpp}!gates@{gates}}
+\index{gates@{gates}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{gates}{gates}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGates}{Gates}} gates = \mbox{\hyperlink{classGates}{Gates}}(\mbox{\hyperlink{main_8cpp_a782432745fd904139737a67cfe18cc45}{pins}}, \mbox{\hyperlink{main_8cpp_a7e0ec12422847c7eae2e7fe6c5972a48}{num\+Pins}})}
+
+\mbox{\Hypertarget{main_8cpp_a530c93b1821f0134b60d27d445a4a4e3}\label{main_8cpp_a530c93b1821f0134b60d27d445a4a4e3}} 
+\index{main.cpp@{main.cpp}!inModeSelection@{inModeSelection}}
+\index{inModeSelection@{inModeSelection}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{inModeSelection}{inModeSelection}}
+{\footnotesize\ttfamily bool in\+Mode\+Selection = false}
+
+\mbox{\Hypertarget{main_8cpp_ae8f5410196ad7877ecf0fea76491fb22}\label{main_8cpp_ae8f5410196ad7877ecf0fea76491fb22}} 
+\index{main.cpp@{main.cpp}!inputHandler@{inputHandler}}
+\index{inputHandler@{inputHandler}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{inputHandler}{inputHandler}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classInputHandler}{Input\+Handler}} input\+Handler = \mbox{\hyperlink{classInputHandler}{Input\+Handler}}(\mbox{\hyperlink{main_8cpp_a1f63b7e11fd7cdaa5cb5104155d5ddad}{CV\+\_\+\+A\+\_\+\+PIN}}, \mbox{\hyperlink{main_8cpp_aa3104e4ee339881c3a36c9ac65b819a4}{CV\+\_\+\+B\+\_\+\+PIN}})}
+
+\mbox{\Hypertarget{main_8cpp_a299ec0c42ccc5a2d79d1739428ac3210}\label{main_8cpp_a299ec0c42ccc5a2d79d1739428ac3210}} 
+\index{main.cpp@{main.cpp}!intensity@{intensity}}
+\index{intensity@{intensity}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{intensity}{intensity}}
+{\footnotesize\ttfamily int intensity = 255}
+
+\mbox{\Hypertarget{main_8cpp_a95711a53744764804ef9b98c59664764}\label{main_8cpp_a95711a53744764804ef9b98c59664764}} 
+\index{main.cpp@{main.cpp}!intensity\_step@{intensity\_step}}
+\index{intensity\_step@{intensity\_step}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{intensity\_step}{intensity\_step}}
+{\footnotesize\ttfamily int intensity\+\_\+step = (255 -\/ \mbox{\hyperlink{main_8cpp_ae26c09cc76954053454ea55a4147b005}{min\+\_\+intensity}}) / (\mbox{\hyperlink{main_8cpp_a3359c659dd3104507b620365d1b1d715}{total\+\_\+pages}} -\/ 1)}
+
+\mbox{\Hypertarget{main_8cpp_adf636984b70d690edd0c4a32836392e0}\label{main_8cpp_adf636984b70d690edd0c4a32836392e0}} 
+\index{main.cpp@{main.cpp}!internalPPQN@{internalPPQN}}
+\index{internalPPQN@{internalPPQN}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{internalPPQN}{internalPPQN}}
+{\footnotesize\ttfamily unsigned char internal\+PPQN = 24}
+
+\mbox{\Hypertarget{main_8cpp_ae8ce8df8470642a28044a27add2964e4}\label{main_8cpp_ae8ce8df8470642a28044a27add2964e4}} 
+\index{main.cpp@{main.cpp}!isInSelection@{isInSelection}}
+\index{isInSelection@{isInSelection}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{isInSelection}{isInSelection}}
+{\footnotesize\ttfamily bool is\+In\+Selection = false}
+
+\mbox{\Hypertarget{main_8cpp_a6a23ed29bcba26182457398cf3ba0dc4}\label{main_8cpp_a6a23ed29bcba26182457398cf3ba0dc4}} 
+\index{main.cpp@{main.cpp}!lastFlashTime@{lastFlashTime}}
+\index{lastFlashTime@{lastFlashTime}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{lastFlashTime}{lastFlashTime}}
+{\footnotesize\ttfamily unsigned long last\+Flash\+Time = 0}
+
+\mbox{\Hypertarget{main_8cpp_af8afe1fb511986724cafc628d457ee07}\label{main_8cpp_af8afe1fb511986724cafc628d457ee07}} 
+\index{main.cpp@{main.cpp}!ledController@{ledController}}
+\index{ledController@{ledController}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{ledController}{ledController}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLEDController}{LEDController}} led\+Controller(\mbox{\hyperlink{main_8cpp_acff5fe5d7a28e483a9ab2f183bb4dc25}{leds}}) (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{main_8cpp_acff5fe5d7a28e483a9ab2f183bb4dc25}{leds}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8cpp_ab274bd88fcca137c72235967915b9f58}\label{main_8cpp_ab274bd88fcca137c72235967915b9f58}} 
+\index{main.cpp@{main.cpp}!ledPins@{ledPins}}
+\index{ledPins@{ledPins}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{ledPins}{ledPins}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ led\+Pins = \{PA12, PA11, PB1, PB0, PA7, PA6, PA1, PA0\}}
+
+\mbox{\Hypertarget{main_8cpp_acff5fe5d7a28e483a9ab2f183bb4dc25}\label{main_8cpp_acff5fe5d7a28e483a9ab2f183bb4dc25}} 
+\index{main.cpp@{main.cpp}!leds@{leds}}
+\index{leds@{leds}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{leds}{leds}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLEDs}{LEDs}} leds = \mbox{\hyperlink{classLEDs}{LEDs}}(\mbox{\hyperlink{main_8cpp_ab274bd88fcca137c72235967915b9f58}{led\+Pins}}, \mbox{\hyperlink{main_8cpp_a42946fc499bc5d1b6da4a7d38a91b347}{num\+Led\+Pins}})}
+
+\mbox{\Hypertarget{main_8cpp_af1ad199a35c31bace3d533077689e6df}\label{main_8cpp_af1ad199a35c31bace3d533077689e6df}} 
+\index{main.cpp@{main.cpp}!midiHandler@{midiHandler}}
+\index{midiHandler@{midiHandler}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{midiHandler}{midiHandler}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMIDIHandler}{MIDIHandler}} midi\+Handler(Serial2, \mbox{\hyperlink{main_8cpp_a3486ebc2916c9a757b036be4e303c573}{clock}}, \mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}, \mbox{\hyperlink{main_8cpp_acff5fe5d7a28e483a9ab2f183bb4dc25}{leds}}) (\begin{DoxyParamCaption}\item[{Serial2}]{,  }\item[{\mbox{\hyperlink{main_8cpp_a3486ebc2916c9a757b036be4e303c573}{clock}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_acff5fe5d7a28e483a9ab2f183bb4dc25}{leds}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8cpp_ae26c09cc76954053454ea55a4147b005}\label{main_8cpp_ae26c09cc76954053454ea55a4147b005}} 
+\index{main.cpp@{main.cpp}!min\_intensity@{min\_intensity}}
+\index{min\_intensity@{min\_intensity}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{min\_intensity}{min\_intensity}}
+{\footnotesize\ttfamily int min\+\_\+intensity = 64}
+
+\mbox{\Hypertarget{main_8cpp_ab97762dda44bd590fbe8c97580106a9e}\label{main_8cpp_ab97762dda44bd590fbe8c97580106a9e}} 
+\index{main.cpp@{main.cpp}!mode0@{mode0}}
+\index{mode0@{mode0}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{mode0}{mode0}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMode0}{Mode0}} mode0(\mbox{\hyperlink{main_8cpp_a133a3017d675be921d0d7586eec7bb7c}{encoder}}, \mbox{\hyperlink{main_8cpp_ae8f5410196ad7877ecf0fea76491fb22}{input\+Handler}}, \mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}, \mbox{\hyperlink{main_8cpp_af8afe1fb511986724cafc628d457ee07}{led\+Controller}}, \mbox{\hyperlink{main_8cpp_af1ad199a35c31bace3d533077689e6df}{midi\+Handler}}, \mbox{\hyperlink{main_8cpp_a191753692ee909460b91f43cfd141fa7}{reset\+Button}}, \mbox{\hyperlink{main_8cpp_a3486ebc2916c9a757b036be4e303c573}{clock}}) (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{main_8cpp_a133a3017d675be921d0d7586eec7bb7c}{encoder}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_ae8f5410196ad7877ecf0fea76491fb22}{input\+Handler}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_af8afe1fb511986724cafc628d457ee07}{led\+Controller}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_af1ad199a35c31bace3d533077689e6df}{midi\+Handler}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_a191753692ee909460b91f43cfd141fa7}{reset\+Button}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_a3486ebc2916c9a757b036be4e303c573}{clock}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8cpp_ac453df32cb30f2f9509c37f37eb30b77}\label{main_8cpp_ac453df32cb30f2f9509c37f37eb30b77}} 
+\index{main.cpp@{main.cpp}!mode1@{mode1}}
+\index{mode1@{mode1}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{mode1}{mode1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMode1}{Mode1}} mode1(\mbox{\hyperlink{main_8cpp_a133a3017d675be921d0d7586eec7bb7c}{encoder}}, \mbox{\hyperlink{main_8cpp_ae8f5410196ad7877ecf0fea76491fb22}{input\+Handler}}, \mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}, \mbox{\hyperlink{main_8cpp_af8afe1fb511986724cafc628d457ee07}{led\+Controller}}, \mbox{\hyperlink{main_8cpp_af1ad199a35c31bace3d533077689e6df}{midi\+Handler}}, \mbox{\hyperlink{main_8cpp_a191753692ee909460b91f43cfd141fa7}{reset\+Button}}) (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{main_8cpp_a133a3017d675be921d0d7586eec7bb7c}{encoder}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_ae8f5410196ad7877ecf0fea76491fb22}{input\+Handler}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_af8afe1fb511986724cafc628d457ee07}{led\+Controller}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_af1ad199a35c31bace3d533077689e6df}{midi\+Handler}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_a191753692ee909460b91f43cfd141fa7}{reset\+Button}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8cpp_aca8126f10bd0d0aac519977996b805f9}\label{main_8cpp_aca8126f10bd0d0aac519977996b805f9}} 
+\index{main.cpp@{main.cpp}!mode2@{mode2}}
+\index{mode2@{mode2}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{mode2}{mode2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMode2}{Mode2}} mode2(\mbox{\hyperlink{main_8cpp_a133a3017d675be921d0d7586eec7bb7c}{encoder}}, \mbox{\hyperlink{main_8cpp_ae8f5410196ad7877ecf0fea76491fb22}{input\+Handler}}, \mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}, \mbox{\hyperlink{main_8cpp_af8afe1fb511986724cafc628d457ee07}{led\+Controller}}, \mbox{\hyperlink{main_8cpp_af1ad199a35c31bace3d533077689e6df}{midi\+Handler}}, \mbox{\hyperlink{main_8cpp_a191753692ee909460b91f43cfd141fa7}{reset\+Button}}) (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{main_8cpp_a133a3017d675be921d0d7586eec7bb7c}{encoder}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_ae8f5410196ad7877ecf0fea76491fb22}{input\+Handler}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_aafa551f375cee7e3faaf9390080592a7}{gates}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_af8afe1fb511986724cafc628d457ee07}{led\+Controller}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_af1ad199a35c31bace3d533077689e6df}{midi\+Handler}}}]{,  }\item[{\mbox{\hyperlink{main_8cpp_a191753692ee909460b91f43cfd141fa7}{reset\+Button}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8cpp_a42f72ce52094b0a028afddf862ddaa4d}\label{main_8cpp_a42f72ce52094b0a028afddf862ddaa4d}} 
+\index{main.cpp@{main.cpp}!modeSelector@{modeSelector}}
+\index{modeSelector@{modeSelector}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{modeSelector}{modeSelector}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classModeSelector}{Mode\+Selector}}\& mode\+Selector = \mbox{\hyperlink{classModeSelector_a2312f6a56156ab4557baebe6f2d050ea}{Mode\+Selector\+::get\+Instance}}()}
+
+\mbox{\Hypertarget{main_8cpp_a385d88ba7be4d1867aa11aefaba64f1a}\label{main_8cpp_a385d88ba7be4d1867aa11aefaba64f1a}} 
+\index{main.cpp@{main.cpp}!musicalIntervals@{musicalIntervals}}
+\index{musicalIntervals@{musicalIntervals}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{musicalIntervals}{musicalIntervals}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ musical\+Intervals = \{1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 64, 72, 96, 128, 144, 192, 288, 384, 576, 768, 1152, 1536\}}
+
+\mbox{\Hypertarget{main_8cpp_a4b2982d5837258bd50d39acde6f57b80}\label{main_8cpp_a4b2982d5837258bd50d39acde6f57b80}} 
+\index{main.cpp@{main.cpp}!musicalIntervalsSize@{musicalIntervalsSize}}
+\index{musicalIntervalsSize@{musicalIntervalsSize}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{musicalIntervalsSize}{musicalIntervalsSize}}
+{\footnotesize\ttfamily const int musical\+Intervals\+Size = musical\+Intervals.\+size()}
+
+\mbox{\Hypertarget{main_8cpp_a42946fc499bc5d1b6da4a7d38a91b347}\label{main_8cpp_a42946fc499bc5d1b6da4a7d38a91b347}} 
+\index{main.cpp@{main.cpp}!numLedPins@{numLedPins}}
+\index{numLedPins@{numLedPins}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{numLedPins}{numLedPins}}
+{\footnotesize\ttfamily int num\+Led\+Pins = led\+Pins.\+size()}
+
+\mbox{\Hypertarget{main_8cpp_a7e0ec12422847c7eae2e7fe6c5972a48}\label{main_8cpp_a7e0ec12422847c7eae2e7fe6c5972a48}} 
+\index{main.cpp@{main.cpp}!numPins@{numPins}}
+\index{numPins@{numPins}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{numPins}{numPins}}
+{\footnotesize\ttfamily const int num\+Pins = pins.\+size()}
+
+\mbox{\Hypertarget{main_8cpp_a782432745fd904139737a67cfe18cc45}\label{main_8cpp_a782432745fd904139737a67cfe18cc45}} 
+\index{main.cpp@{main.cpp}!pins@{pins}}
+\index{pins@{pins}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{pins}{pins}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ pins = \{PA15, PB3, PB4, PB5, PB6, PB7, PB8, PB9\}}
+
+\mbox{\Hypertarget{main_8cpp_a191753692ee909460b91f43cfd141fa7}\label{main_8cpp_a191753692ee909460b91f43cfd141fa7}} 
+\index{main.cpp@{main.cpp}!resetButton@{resetButton}}
+\index{resetButton@{resetButton}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{resetButton}{resetButton}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classResetButton}{Reset\+Button}} reset\+Button = \mbox{\hyperlink{classResetButton}{Reset\+Button}}(\mbox{\hyperlink{main_8cpp_ae80f4e50d6756064b8880735a5644881}{RESET\+\_\+\+BUTTON}})}
+
+\mbox{\Hypertarget{main_8cpp_a3359c659dd3104507b620365d1b1d715}\label{main_8cpp_a3359c659dd3104507b620365d1b1d715}} 
+\index{main.cpp@{main.cpp}!total\_pages@{total\_pages}}
+\index{total\_pages@{total\_pages}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{total\_pages}{total\_pages}}
+{\footnotesize\ttfamily int total\+\_\+pages = 16 / leds.\+num\+Leds}
+
