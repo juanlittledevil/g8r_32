@@ -13,20 +13,20 @@ jobs:
           sudo apt-get update
           sudo apt-get install doxygen
           sudo apt install graphviz
-          # sudo apt-get install pandoc
+          sudo apt-get install pandoc
           sudo apt install texlive
           sudo apt install texlive-latex-extra
       - name: Run Doxygen
         run: |
           doxygen Doxyfile
-      # - name: Convert to Markdown
-      #   run: |
-      #     [[ -d docs/markdown ]] || mkdir -p docs/markdown
-      #       find docs/latex -type f -name "*.tex" -exec sh -c 'output_file="${1#docs/latex/}"; mkdir -p "docs/markdown/$(dirname "$output_file")"; pandoc -f latex -t markdown -o "docs/markdown/${output_file%.tex}.md" "$1"' _ {} \;
-      # - name: Copy to svgs
-      #   run: |
-      #     [[ -d docs/svg ]] || mkdir -p docs/svg
-      #     cp docs/html/*.svg docs/svg
+      - name: Convert to Markdown
+        run: |
+          [[ -d docs/markdown ]] || mkdir -p docs/markdown
+            find docs/latex -type f -name "*.tex" -exec sh -c 'output_file="${1#docs/latex/}"; mkdir -p "docs/markdown/$(dirname "$output_file")"; pandoc -f latex -t markdown -o "docs/markdown/${output_file%.tex}.md" "$1"' _ {} \;
+      - name: Copy to svgs
+        run: |
+          [[ -d docs/svg ]] || mkdir -p docs/svg
+          cp docs/html/*.svg docs/svg
       - name: Convert to pdf
         run: |
           [[ -d docs/pdf ]] || mkdir -p docs/pdf
@@ -34,18 +34,17 @@ jobs:
           cd docs/latex
           pdflatex -output-directory=../pdf refman.tex
           cd $PWD
-          cp docs/pdf/*.pdf docs/G8R.pdf
       - name: Verify
         run: |
           ls -la docs
           ls -la docs/pdf
-      - name: Cleanup
-        run: |
-          [[ -d docs/html ]] && rm -rf docs/html
-          [[ -d docs/xml ]] && rm -rf docs/xml
-          [[ -d docs/latex ]] && rm -rf docs/latex
-          [[ -d docs/pdf ]] && rm -rf docs/pdf
-          [[ -d docs/markdown ]] && rm -rf docs/markdown
+      # - name: Cleanup
+      #   run: |
+      #     [[ -d docs/html ]] && rm -rf docs/html
+      #     [[ -d docs/xml ]] && rm -rf docs/xml
+      #     [[ -d docs/latex ]] && rm -rf docs/latex
+      #     [[ -d docs/pdf ]] && rm -rf docs/pdf
+      #     [[ -d docs/markdown ]] && rm -rf docs/markdown
       - name: Commit Doc Files
         run: |
           git add docs
