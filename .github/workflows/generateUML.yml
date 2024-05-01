@@ -34,6 +34,7 @@ jobs:
           cd docs/latex
           pdflatex -output-directory=../pdf refman.tex
           cd $PWD
+          pwd
           cp docs/pdf/refman.pdf docs/G8R.pdf
       - name: Verify
         run: |
