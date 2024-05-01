@@ -8,36 +8,21 @@ jobs:
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
-      - name: Install Doxygen
+      - name: Install the tools
         run: |
           sudo apt-get install doxygen
           sudo apt install graphviz
+          sudo apt-get install pandoc
       - name: Run Doxygen
         run: |
           doxygen Doxyfile
-      - name: Install Doxybook2
+      - name: Convert to Markdown
         run: |
-          git clone https://github.com/matusnovak/doxybook2.git
-          PWD=`pwd`
-          cd doxybook2
-          export CC=/usr/bin/gcc-9
-          export CXX=/usr/bin/g++-9
-          vcpkg install --triplet x64-linux $(cat vcpkg.txt)
-          mkdir build
-            cmake -B ./build -G "Unix Makefiles"
-            -DCMAKE_INSTALL_PREFIX=./install \
-            -DCMAKE_BUILD_TYPE=MinSizeRel \
-            -DDOXYBOOK_TESTS=ON \
-            -DVCPKG_TARGET_TRIPLET=x64-linux \
-            -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake
-            .
-          cmake --build ./build --target install --config MinSizeRel
-          pwd
-          ls -la
-          ./install/bin/doxybook2 -i ../docs/xml -o ../docs/markdown
-          cd $PWD
-          pwd
-          ls -la
+          [[ -d docs/markdown ]] || mkdir -p docs/markdown
+          find docs/html -type f -name "*.html" -exec sh -c 'pandoc -f html -t markdown -o "docs/markdown/${1%.html}.md" "$1"' _ {} \;
+      - name: Verify
+        run: |
+          ls -la docs/markdown
       # - name: Commit Doc Files
       #   run: |
       #     git add docs
