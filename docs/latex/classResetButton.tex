@@ -1,0 +1,170 @@
+\hypertarget{classResetButton}{}\doxysection{Reset\+Button Class Reference}
+\label{classResetButton}\index{ResetButton@{ResetButton}}
+
+
+{\ttfamily \#include $<$Reset\+Button.\+h$>$}
+
+
+
+Collaboration diagram for Reset\+Button\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classResetButton__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classResetButton_a57b758360f53e09cd135b0fbc18edabd}{Button\+State}} \{ \mbox{\hyperlink{classResetButton_a57b758360f53e09cd135b0fbc18edabdac0ca9e12a1b0bcf75eac9c5f00d286ef}{OPEN}}
+, \mbox{\hyperlink{classResetButton_a57b758360f53e09cd135b0fbc18edabdafcc70c9de441b04db47581d7d962e12e}{PRESSED}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classResetButton_a802e419c619c9b60f2adf223b821a00f}{Reset\+Button}} (int \mbox{\hyperlink{classResetButton_a7291efc6e33f2939aac77d4e474fbc59}{pin}})
+\item 
+bool \mbox{\hyperlink{classResetButton_aa851afdc17e33c8cd16a5b326058d599}{begin}} ()
+\item 
+\mbox{\hyperlink{classResetButton_a57b758360f53e09cd135b0fbc18edabd}{Button\+State}} \mbox{\hyperlink{classResetButton_aee7d2cd933ae28ffa43187582c979a43}{read\+Button}} ()
+\item 
+bool \mbox{\hyperlink{classResetButton_a9965e4c38cf275972b825808414188eb}{is\+Button\+Long\+Pressed}} ()
+\item 
+bool \mbox{\hyperlink{classResetButton_addc8f5996ea2d13c1c3f2bb858ced414}{is\+Button\+Double\+Pressed}} ()
+\item 
+bool \mbox{\hyperlink{classResetButton_a48dd4aadb9e7e86022181bc46db0a6a3}{is\+Button\+Single\+Pressed}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classResetButton_a7291efc6e33f2939aac77d4e474fbc59}{pin}}
+\item 
+\mbox{\hyperlink{classInputPin}{Input\+Pin}} \mbox{\hyperlink{classResetButton_a4aaefe379da6d90cd5499b564a1ea94c}{reset\+Button}}
+\item 
+\mbox{\hyperlink{classResetButton_a57b758360f53e09cd135b0fbc18edabd}{Button\+State}} \mbox{\hyperlink{classResetButton_a1e30ec8fd5c460df296362a5bb08b1e3}{button\+State}}
+\item 
+unsigned long \mbox{\hyperlink{classResetButton_a7bcd854358d590978530fd978aa4b629}{last\+Button\+Press}}
+\item 
+int \mbox{\hyperlink{classResetButton_a50a64667edd243f01e6b9ebc1fc5bde8}{press\+Count}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const unsigned long \mbox{\hyperlink{classResetButton_ae1ab0b150ca6a11414c1b947da2e9987}{DOUBLE\+\_\+\+PRESS\+\_\+\+INTERVAL}} = 500
+\item 
+static const unsigned long \mbox{\hyperlink{classResetButton_a49dd99765dba753371b0b5a475802580}{LONG\+\_\+\+PRESS\+\_\+\+INTERVAL}} = 1000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classResetButton_a57b758360f53e09cd135b0fbc18edabd}\label{classResetButton_a57b758360f53e09cd135b0fbc18edabd}} 
+\index{ResetButton@{ResetButton}!ButtonState@{ButtonState}}
+\index{ButtonState@{ButtonState}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{ButtonState}{ButtonState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classResetButton_a57b758360f53e09cd135b0fbc18edabd}{Reset\+Button\+::\+Button\+State}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPEN@{OPEN}!ResetButton@{ResetButton}}\index{ResetButton@{ResetButton}!OPEN@{OPEN}}}\mbox{\Hypertarget{classResetButton_a57b758360f53e09cd135b0fbc18edabdac0ca9e12a1b0bcf75eac9c5f00d286ef}\label{classResetButton_a57b758360f53e09cd135b0fbc18edabdac0ca9e12a1b0bcf75eac9c5f00d286ef}} 
+OPEN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PRESSED@{PRESSED}!ResetButton@{ResetButton}}\index{ResetButton@{ResetButton}!PRESSED@{PRESSED}}}\mbox{\Hypertarget{classResetButton_a57b758360f53e09cd135b0fbc18edabdafcc70c9de441b04db47581d7d962e12e}\label{classResetButton_a57b758360f53e09cd135b0fbc18edabdafcc70c9de441b04db47581d7d962e12e}} 
+PRESSED&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classResetButton_a802e419c619c9b60f2adf223b821a00f}\label{classResetButton_a802e419c619c9b60f2adf223b821a00f}} 
+\index{ResetButton@{ResetButton}!ResetButton@{ResetButton}}
+\index{ResetButton@{ResetButton}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{ResetButton()}{ResetButton()}}
+{\footnotesize\ttfamily Reset\+Button\+::\+Reset\+Button (\begin{DoxyParamCaption}\item[{int}]{pin }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classResetButton_aa851afdc17e33c8cd16a5b326058d599}\label{classResetButton_aa851afdc17e33c8cd16a5b326058d599}} 
+\index{ResetButton@{ResetButton}!begin@{begin}}
+\index{begin@{begin}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily bool Reset\+Button\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classResetButton_addc8f5996ea2d13c1c3f2bb858ced414}\label{classResetButton_addc8f5996ea2d13c1c3f2bb858ced414}} 
+\index{ResetButton@{ResetButton}!isButtonDoublePressed@{isButtonDoublePressed}}
+\index{isButtonDoublePressed@{isButtonDoublePressed}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{isButtonDoublePressed()}{isButtonDoublePressed()}}
+{\footnotesize\ttfamily bool Reset\+Button\+::is\+Button\+Double\+Pressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classResetButton_a9965e4c38cf275972b825808414188eb}\label{classResetButton_a9965e4c38cf275972b825808414188eb}} 
+\index{ResetButton@{ResetButton}!isButtonLongPressed@{isButtonLongPressed}}
+\index{isButtonLongPressed@{isButtonLongPressed}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{isButtonLongPressed()}{isButtonLongPressed()}}
+{\footnotesize\ttfamily bool Reset\+Button\+::is\+Button\+Long\+Pressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classResetButton_a48dd4aadb9e7e86022181bc46db0a6a3}\label{classResetButton_a48dd4aadb9e7e86022181bc46db0a6a3}} 
+\index{ResetButton@{ResetButton}!isButtonSinglePressed@{isButtonSinglePressed}}
+\index{isButtonSinglePressed@{isButtonSinglePressed}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{isButtonSinglePressed()}{isButtonSinglePressed()}}
+{\footnotesize\ttfamily bool Reset\+Button\+::is\+Button\+Single\+Pressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classResetButton_aee7d2cd933ae28ffa43187582c979a43}\label{classResetButton_aee7d2cd933ae28ffa43187582c979a43}} 
+\index{ResetButton@{ResetButton}!readButton@{readButton}}
+\index{readButton@{readButton}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{readButton()}{readButton()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classResetButton_a57b758360f53e09cd135b0fbc18edabd}{Reset\+Button\+::\+Button\+State}} Reset\+Button\+::read\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classResetButton_a1e30ec8fd5c460df296362a5bb08b1e3}\label{classResetButton_a1e30ec8fd5c460df296362a5bb08b1e3}} 
+\index{ResetButton@{ResetButton}!buttonState@{buttonState}}
+\index{buttonState@{buttonState}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{buttonState}{buttonState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classResetButton_a57b758360f53e09cd135b0fbc18edabd}{Button\+State}} Reset\+Button\+::button\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classResetButton_ae1ab0b150ca6a11414c1b947da2e9987}\label{classResetButton_ae1ab0b150ca6a11414c1b947da2e9987}} 
+\index{ResetButton@{ResetButton}!DOUBLE\_PRESS\_INTERVAL@{DOUBLE\_PRESS\_INTERVAL}}
+\index{DOUBLE\_PRESS\_INTERVAL@{DOUBLE\_PRESS\_INTERVAL}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{DOUBLE\_PRESS\_INTERVAL}{DOUBLE\_PRESS\_INTERVAL}}
+{\footnotesize\ttfamily const unsigned long Reset\+Button\+::\+DOUBLE\+\_\+\+PRESS\+\_\+\+INTERVAL = 500\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classResetButton_a7bcd854358d590978530fd978aa4b629}\label{classResetButton_a7bcd854358d590978530fd978aa4b629}} 
+\index{ResetButton@{ResetButton}!lastButtonPress@{lastButtonPress}}
+\index{lastButtonPress@{lastButtonPress}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{lastButtonPress}{lastButtonPress}}
+{\footnotesize\ttfamily unsigned long Reset\+Button\+::last\+Button\+Press\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classResetButton_a49dd99765dba753371b0b5a475802580}\label{classResetButton_a49dd99765dba753371b0b5a475802580}} 
+\index{ResetButton@{ResetButton}!LONG\_PRESS\_INTERVAL@{LONG\_PRESS\_INTERVAL}}
+\index{LONG\_PRESS\_INTERVAL@{LONG\_PRESS\_INTERVAL}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{LONG\_PRESS\_INTERVAL}{LONG\_PRESS\_INTERVAL}}
+{\footnotesize\ttfamily const unsigned long Reset\+Button\+::\+LONG\+\_\+\+PRESS\+\_\+\+INTERVAL = 1000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classResetButton_a7291efc6e33f2939aac77d4e474fbc59}\label{classResetButton_a7291efc6e33f2939aac77d4e474fbc59}} 
+\index{ResetButton@{ResetButton}!pin@{pin}}
+\index{pin@{pin}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{pin}{pin}}
+{\footnotesize\ttfamily int Reset\+Button\+::pin\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classResetButton_a50a64667edd243f01e6b9ebc1fc5bde8}\label{classResetButton_a50a64667edd243f01e6b9ebc1fc5bde8}} 
+\index{ResetButton@{ResetButton}!pressCount@{pressCount}}
+\index{pressCount@{pressCount}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{pressCount}{pressCount}}
+{\footnotesize\ttfamily int Reset\+Button\+::press\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classResetButton_a4aaefe379da6d90cd5499b564a1ea94c}\label{classResetButton_a4aaefe379da6d90cd5499b564a1ea94c}} 
+\index{ResetButton@{ResetButton}!resetButton@{resetButton}}
+\index{resetButton@{resetButton}!ResetButton@{ResetButton}}
+\doxysubsubsection{\texorpdfstring{resetButton}{resetButton}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classInputPin}{Input\+Pin}} Reset\+Button\+::reset\+Button\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{ResetButton_8h}{Reset\+Button.\+h}}\item 
+src/\mbox{\hyperlink{ResetButton_8cpp}{Reset\+Button.\+cpp}}\end{DoxyCompactItemize}

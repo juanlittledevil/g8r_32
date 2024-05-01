@@ -1,0 +1,181 @@
+\hypertarget{classLEDController}{}\doxysection{LEDController Class Reference}
+\label{classLEDController}\index{LEDController@{LEDController}}
+
+
+{\ttfamily \#include $<$LEDController.\+h$>$}
+
+
+
+Collaboration diagram for LEDController\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classLEDController__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLEDController_a745e22f2bff89379f1ba931ef3e87af9}{LEDController}} (\mbox{\hyperlink{classLEDs}{LEDs}} \&\mbox{\hyperlink{classLEDController_a843d7baf6e1d25b971058000c6d14285}{leds}})
+\item 
+void \mbox{\hyperlink{classLEDController_a7fa2395ec4f58ad835915e427463bec0}{turn\+All\+On}} ()
+\item 
+void \mbox{\hyperlink{classLEDController_a40b2381a7df13d29cf4f4e654155e7af}{turn\+All\+Off}} ()
+\item 
+void \mbox{\hyperlink{classLEDController_ab2446eb215b833358b8c5a8a8049b879}{blink\+Slow}} (int led\+Index)
+\item 
+void \mbox{\hyperlink{classLEDController_a5d08bfa962c8df40e6943de346518bc1}{blink\+Fast}} (int led\+Index)
+\item 
+void \mbox{\hyperlink{classLEDController_aef59bb9c869f433976d40c268bd7f277}{blink\+Faster}} (int led\+Index)
+\item 
+void \mbox{\hyperlink{classLEDController_a947daa5c9148f080cb7485613ac5cc60}{stop\+Blinking}} (int led\+Index)
+\item 
+void \mbox{\hyperlink{classLEDController_a8e6acb784fdab8b7545d1e602ecc6ea2}{stop\+All\+Blinking}} ()
+\item 
+void \mbox{\hyperlink{classLEDController_ad5d9dce7bda36149d503cad8c6160fa2}{reset\+Inverted}} ()
+\item 
+void \mbox{\hyperlink{classLEDController_a916e5ced402d4092d8c42d3f2f4b56f6}{reset\+Inverted}} (int led\+Index)
+\item 
+int \mbox{\hyperlink{classLEDController_acd5157d96af56837fd665fd222aba918}{get\+Num\+Leds}} ()
+\item 
+void \mbox{\hyperlink{classLEDController_a34f412383b75a8f5d9e5e369ee7345cf}{update}} ()
+\item 
+void \mbox{\hyperlink{classLEDController_aca84215ce851c4abdbfbe9340a2b2ffc}{clear\+And\+Reset\+LEDs}} ()
+\item 
+void \mbox{\hyperlink{classLEDController_a15ddcd060673c9d39c647fc4f374dcbd}{clear\+LEDs}} ()
+\item 
+void \mbox{\hyperlink{classLEDController_affdef62d0508d20124fe590ea6634af6}{update\+Blinking}} ()
+\item 
+void \mbox{\hyperlink{classLEDController_ab23aa7c21c0b0d98871b13b97ab17520}{set\+State}} (int led\+Index, bool state)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLEDs}{LEDs}} \& \mbox{\hyperlink{classLEDController_a843d7baf6e1d25b971058000c6d14285}{leds}}
+\item 
+int \mbox{\hyperlink{classLEDController_ae33cda0ea999854e4855d7964ec59763}{num\+Leds}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLEDController_a745e22f2bff89379f1ba931ef3e87af9}\label{classLEDController_a745e22f2bff89379f1ba931ef3e87af9}} 
+\index{LEDController@{LEDController}!LEDController@{LEDController}}
+\index{LEDController@{LEDController}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{LEDController()}{LEDController()}}
+{\footnotesize\ttfamily LEDController\+::\+LEDController (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLEDs}{LEDs}} \&}]{leds }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLEDController_a5d08bfa962c8df40e6943de346518bc1}\label{classLEDController_a5d08bfa962c8df40e6943de346518bc1}} 
+\index{LEDController@{LEDController}!blinkFast@{blinkFast}}
+\index{blinkFast@{blinkFast}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{blinkFast()}{blinkFast()}}
+{\footnotesize\ttfamily void LEDController\+::blink\+Fast (\begin{DoxyParamCaption}\item[{int}]{led\+Index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_aef59bb9c869f433976d40c268bd7f277}\label{classLEDController_aef59bb9c869f433976d40c268bd7f277}} 
+\index{LEDController@{LEDController}!blinkFaster@{blinkFaster}}
+\index{blinkFaster@{blinkFaster}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{blinkFaster()}{blinkFaster()}}
+{\footnotesize\ttfamily void LEDController\+::blink\+Faster (\begin{DoxyParamCaption}\item[{int}]{led\+Index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_ab2446eb215b833358b8c5a8a8049b879}\label{classLEDController_ab2446eb215b833358b8c5a8a8049b879}} 
+\index{LEDController@{LEDController}!blinkSlow@{blinkSlow}}
+\index{blinkSlow@{blinkSlow}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{blinkSlow()}{blinkSlow()}}
+{\footnotesize\ttfamily void LEDController\+::blink\+Slow (\begin{DoxyParamCaption}\item[{int}]{led\+Index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_aca84215ce851c4abdbfbe9340a2b2ffc}\label{classLEDController_aca84215ce851c4abdbfbe9340a2b2ffc}} 
+\index{LEDController@{LEDController}!clearAndResetLEDs@{clearAndResetLEDs}}
+\index{clearAndResetLEDs@{clearAndResetLEDs}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{clearAndResetLEDs()}{clearAndResetLEDs()}}
+{\footnotesize\ttfamily void LEDController\+::clear\+And\+Reset\+LEDs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_a15ddcd060673c9d39c647fc4f374dcbd}\label{classLEDController_a15ddcd060673c9d39c647fc4f374dcbd}} 
+\index{LEDController@{LEDController}!clearLEDs@{clearLEDs}}
+\index{clearLEDs@{clearLEDs}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{clearLEDs()}{clearLEDs()}}
+{\footnotesize\ttfamily void LEDController\+::clear\+LEDs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_acd5157d96af56837fd665fd222aba918}\label{classLEDController_acd5157d96af56837fd665fd222aba918}} 
+\index{LEDController@{LEDController}!getNumLeds@{getNumLeds}}
+\index{getNumLeds@{getNumLeds}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{getNumLeds()}{getNumLeds()}}
+{\footnotesize\ttfamily int LEDController\+::get\+Num\+Leds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_ad5d9dce7bda36149d503cad8c6160fa2}\label{classLEDController_ad5d9dce7bda36149d503cad8c6160fa2}} 
+\index{LEDController@{LEDController}!resetInverted@{resetInverted}}
+\index{resetInverted@{resetInverted}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{resetInverted()}{resetInverted()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void LEDController\+::reset\+Inverted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_a916e5ced402d4092d8c42d3f2f4b56f6}\label{classLEDController_a916e5ced402d4092d8c42d3f2f4b56f6}} 
+\index{LEDController@{LEDController}!resetInverted@{resetInverted}}
+\index{resetInverted@{resetInverted}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{resetInverted()}{resetInverted()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void LEDController\+::reset\+Inverted (\begin{DoxyParamCaption}\item[{int}]{led\+Index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_ab23aa7c21c0b0d98871b13b97ab17520}\label{classLEDController_ab23aa7c21c0b0d98871b13b97ab17520}} 
+\index{LEDController@{LEDController}!setState@{setState}}
+\index{setState@{setState}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}}
+{\footnotesize\ttfamily void LEDController\+::set\+State (\begin{DoxyParamCaption}\item[{int}]{led\+Index,  }\item[{bool}]{state }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_a8e6acb784fdab8b7545d1e602ecc6ea2}\label{classLEDController_a8e6acb784fdab8b7545d1e602ecc6ea2}} 
+\index{LEDController@{LEDController}!stopAllBlinking@{stopAllBlinking}}
+\index{stopAllBlinking@{stopAllBlinking}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{stopAllBlinking()}{stopAllBlinking()}}
+{\footnotesize\ttfamily void LEDController\+::stop\+All\+Blinking (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_a947daa5c9148f080cb7485613ac5cc60}\label{classLEDController_a947daa5c9148f080cb7485613ac5cc60}} 
+\index{LEDController@{LEDController}!stopBlinking@{stopBlinking}}
+\index{stopBlinking@{stopBlinking}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{stopBlinking()}{stopBlinking()}}
+{\footnotesize\ttfamily void LEDController\+::stop\+Blinking (\begin{DoxyParamCaption}\item[{int}]{led\+Index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_a40b2381a7df13d29cf4f4e654155e7af}\label{classLEDController_a40b2381a7df13d29cf4f4e654155e7af}} 
+\index{LEDController@{LEDController}!turnAllOff@{turnAllOff}}
+\index{turnAllOff@{turnAllOff}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{turnAllOff()}{turnAllOff()}}
+{\footnotesize\ttfamily void LEDController\+::turn\+All\+Off (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_a7fa2395ec4f58ad835915e427463bec0}\label{classLEDController_a7fa2395ec4f58ad835915e427463bec0}} 
+\index{LEDController@{LEDController}!turnAllOn@{turnAllOn}}
+\index{turnAllOn@{turnAllOn}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{turnAllOn()}{turnAllOn()}}
+{\footnotesize\ttfamily void LEDController\+::turn\+All\+On (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_a34f412383b75a8f5d9e5e369ee7345cf}\label{classLEDController_a34f412383b75a8f5d9e5e369ee7345cf}} 
+\index{LEDController@{LEDController}!update@{update}}
+\index{update@{update}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void LEDController\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDController_affdef62d0508d20124fe590ea6634af6}\label{classLEDController_affdef62d0508d20124fe590ea6634af6}} 
+\index{LEDController@{LEDController}!updateBlinking@{updateBlinking}}
+\index{updateBlinking@{updateBlinking}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{updateBlinking()}{updateBlinking()}}
+{\footnotesize\ttfamily void LEDController\+::update\+Blinking (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLEDController_a843d7baf6e1d25b971058000c6d14285}\label{classLEDController_a843d7baf6e1d25b971058000c6d14285}} 
+\index{LEDController@{LEDController}!leds@{leds}}
+\index{leds@{leds}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{leds}{leds}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLEDs}{LEDs}}\& LEDController\+::leds\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classLEDController_ae33cda0ea999854e4855d7964ec59763}\label{classLEDController_ae33cda0ea999854e4855d7964ec59763}} 
+\index{LEDController@{LEDController}!numLeds@{numLeds}}
+\index{numLeds@{numLeds}!LEDController@{LEDController}}
+\doxysubsubsection{\texorpdfstring{numLeds}{numLeds}}
+{\footnotesize\ttfamily int LEDController\+::num\+Leds\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{LEDController_8h}{LEDController.\+h}}\item 
+src/\mbox{\hyperlink{LEDController_8cpp}{LEDController.\+cpp}}\end{DoxyCompactItemize}

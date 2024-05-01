@@ -1,0 +1,2056 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.1)  1 MAY 2024 22:43
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**refman.tex
+(./refman.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-01-21>
+(/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@chapter=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Rollback for package 'array' requested -> date 2016-10-06.
+         Best approximation is the release introduced on 2016-10-06.
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array-2016-10-06.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
+\col@sep=\dimen139
+\extrarowheight=\dimen140
+\NC@list=\toks16
+\extratabsurround=\skip49
+\backup@length=\skip50
+))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fixltx2e.sty
+Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
+Applying: [2015/01/01] Old fixltx2e package on input line 46.
+
+
+Package fixltx2e Warning: fixltx2e is not required with releases after 2015
+(fixltx2e)                All fixes are now in the LaTeX kernel.
+(fixltx2e)                See the latexrelease package for details.
+
+Already applied: [0000/00/00] Old fixltx2e package on input line 53.
+) (./doxygen.sty
+Package: doxygen 
+ (/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty
+Package: alltt 2021/01/29 v2.0g defines alltt environment
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count194
+\calc@Bcount=\count195
+\calc@Adimen=\dimen141
+\calc@Bdimen=\dimen142
+\calc@Askip=\skip51
+\calc@Bskip=\skip52
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count196
+\calc@Cskip=\skip53
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count197
+\float@exts=\toks17
+\float@box=\box50
+\@float@everytoks=\toks18
+\@floatcapt=\box51
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks19
+\verbatim@line=\toks20
+\verbatim@in@stream=\read2
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+)
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+\everycr=\toks21
+\minrowclearance=\skip54
+)
+\rownum=\count198
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+)
+(./longtable_doxygen.sty
+Package: longtable_doxygen 2014/10/28 v4.11 Multi-page Table package (DPC) - fr
+ozen version for doxygen
+\LTleft=\skip55
+\LTright=\skip56
+\LTpre=\skip57
+\LTpost=\skip58
+\LTchunksize=\count199
+\LTcapwidth=\dimen143
+\LT@head=\box52
+\LT@firsthead=\box53
+\LT@foot=\box54
+\LT@lastfoot=\box55
+\LT@cols=\count266
+\LT@rows=\count267
+\c@LT@tables=\count268
+\c@LT@chunks=\count269
+\LT@p@ftn=\toks22
+) (./tabu_doxygen.sty
+Package: tabu_doxygen 2011/02/26 v2.8 - flexible LaTeX tabulars (FC), frozen ve
+rsion for doxygen
+
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box56
+\sift@deathcycles=\count270
+\@vwid@loff=\dimen144
+\@vwid@roff=\dimen145
+)
+\c@taburow=\count271
+\tabu@nbcols=\count272
+\tabu@cnt=\count273
+\tabu@Xcol=\count274
+\tabu@alloc=\count275
+\tabu@nested=\count276
+\tabu@target=\dimen146
+\tabu@spreadtarget=\dimen147
+\tabu@naturalX=\dimen148
+\tabucolX=\dimen149
+\tabu@Xsum=\dimen150
+\extrarowdepth=\dimen151
+\abovetabulinesep=\dimen152
+\belowtabulinesep=\dimen153
+\tabustrutrule=\dimen154
+\tabu@thebody=\toks23
+\tabu@footnotes=\toks24
+\tabu@box=\box57
+\tabu@arstrutbox=\box58
+\tabu@hleads=\box59
+\tabu@vleads=\box60
+\tabu@cellskip=\skip59
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2021/12/21 4.1b verbatim text (tvz,hv)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks25
+)
+\FV@CodeLineNo=\count277
+\FV@InFile=\read3
+\FV@TabBox=\box61
+\c@FancyVerbLine=\count278
+\FV@StepNumber=\count279
+\FV@OutFile=\write3
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+\TX@col@width=\dimen155
+\TX@old@table=\dimen156
+\TX@old@col=\dimen157
+\TX@target=\dimen158
+\TX@delta=\dimen159
+\TX@cols=\count280
+\TX@ftn=\toks26
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2021/10/28 v1.9b multicolumn formatting (FMi)
+\c@tracingmulticols=\count281
+\mult@box=\box62
+\multicol@leftmargin=\dimen160
+\c@unbalance=\count282
+\c@collectmore=\count283
+\doublecol@number=\count284
+\multicoltolerance=\count285
+\multicolpretolerance=\count286
+\full@width=\dimen161
+\page@free=\dimen162
+\premulticols=\dimen163
+\postmulticols=\dimen164
+\multicolsep=\skip60
+\multicolbaselineskip=\skip61
+\partial@page=\box63
+\last@line=\box64
+\maxbalancingoverflow=\dimen165
+\mult@rightbox=\box65
+\mult@grightbox=\box66
+\mult@firstbox=\box67
+\mult@gfirstbox=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\@tempa=\box98
+\@tempa=\box99
+\@tempa=\box100
+\@tempa=\box101
+\@tempa=\box102
+\@tempa=\box103
+\@tempa=\box104
+\c@minrows=\count287
+\c@columnbadness=\count288
+\c@finalcolumnbadness=\count289
+\last@try=\dimen166
+\multicolovershoot=\dimen167
+\multicolundershoot=\dimen168
+\mult@nat@firstbox=\box105
+\colbreak@box=\box106
+\mc@col@check@num=\count290
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip62
+\multirow@cntb=\count291
+\multirow@dima=\skip63
+\bigstrutjot=\dimen169
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hanging/hanging.sty
+Package: hanging 2009/09/02 v1.2b hanging paragraphs and punctuation
+\h@ngcommawd=\skip64
+\h@ngfstopwd=\skip65
+\h@ngquotewd=\skip66
+\h@ngdquotewd=\skip67
+\h@ngquerywd=\skip68
+\h@ngexclwd=\skip69
+\h@ngcolonwd=\skip70
+\h@ngscolonwd=\skip71
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2020/08/19 v1.3 Adjusting TeX boxes (trim, clip, ...)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks27
+\XKV@tempa@toks=\toks28
+)
+\XKV@depth=\count292
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+)
+\Gin@req@height=\dimen170
+\Gin@req@width=\dimen171
+)
+(/usr/share/texlive/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box107
+)
+\tc@llx=\dimen172
+\tc@lly=\dimen173
+\tc@urx=\dimen174
+\tc@ury=\dimen175
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+(/usr/share/texlive/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen176
+\adjbox@Height=\dimen177
+\adjbox@Depth=\dimen178
+\adjbox@Totalheight=\dimen179
+\adjbox@pwidth=\dimen180
+\adjbox@pheight=\dimen181
+\adjbox@pdepth=\dimen182
+\adjbox@ptotalheight=\dimen183
+
+(/usr/share/texlive/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count293
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks29
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/stackengine/stackengine.sty
+Package: stackengine 2021/07/22 v4.11\ Stacking text and objects in convenient 
+ways
+
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count294
+)
+(/usr/share/texlive/texmf-dist/tex/generic/listofitems/listofitems.sty
+(/usr/share/texlive/texmf-dist/tex/generic/listofitems/listofitems.tex
+\loi_cnt_foreach_nest=\count295
+\loi_nestcnt=\count296
+)
+Package: listofitems 2019/08/21 v1.63 Grab items in lists using user-specified 
+sep char (CT)
+)
+\c@@stackindex=\count297
+\@boxshift=\skip72
+\stack@tmplength=\skip73
+\temp@stkl=\skip74
+\@stackedboxwidth=\skip75
+\@addedbox=\box108
+\@anchorbox=\box109
+\@insetbox=\box110
+\se@backgroundbox=\box111
+\stackedbox=\box112
+\@centerbox=\box113
+\c@ROWcellindex@=\count298
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box114
+\UL@hyphenbox=\box115
+\UL@skip=\skip76
+\UL@hook=\toks30
+\UL@height=\dimen184
+\UL@pe=\count299
+\UL@pixel=\dimen185
+\ULC@box=\box116
+Package: ulem 2019/11/18
+\ULdepth=\dimen186
+)
+\xrefbox=\box117
+\xreflength=\skip77
+\CodeWidthChar=\skip78
+\CodeHeightChar=\skip79
+\DoxyCodeWidth=\skip80
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks31
+\inpenc@posthook=\toks32
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/wasysym.sty
+Package: wasysym 2020/01/19 v2.4 Wasy-2 symbol support package
+\symwasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
+(Font)                  U/wasy/m/n --> U/wasy/b/n on input line 93.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty
+Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
+)
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/courier.sty
+Package: courier 2020/03/25 PSNFSS-v9.3 (WaS) 
+)
+(/usr/share/texlive/texmf-dist/tex/latex/sectsty/sectsty.sty
+Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
+les
+
+
+LaTeX Warning: Command \underbar  has changed.
+               Check if current package is valid.
+
+
+LaTeX Warning: Command \underline  has changed.
+               Check if current package is valid.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count300
+\Gm@cntv=\count301
+\c@Gm@tempcnt=\count302
+\Gm@bindingoffset=\dimen187
+\Gm@wd@mp=\dimen188
+\Gm@odd@mp=\dimen189
+\Gm@even@mp=\dimen190
+\Gm@layoutwidth=\dimen191
+\Gm@layoutheight=\dimen192
+\Gm@layouthoffset=\dimen193
+\Gm@layoutvoffset=\dimen194
+\Gm@dimlist=\toks33
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2021/01/28 v4.0.1 Extensive control of page headers and foote
+rs
+\f@nch@headwidth=\skip81
+\f@nch@O@elh=\skip82
+\f@nch@O@erh=\skip83
+\f@nch@O@olh=\skip84
+\f@nch@O@orh=\skip85
+\f@nch@O@elf=\skip86
+\f@nch@O@erf=\skip87
+\f@nch@O@olf=\skip88
+\f@nch@O@orf=\skip89
+)
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip90
+\bibsep=\skip91
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count303
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip92
+\cftbeforetoctitleskip=\skip93
+\cftaftertoctitleskip=\skip94
+\cftbeforepartskip=\skip95
+\cftpartnumwidth=\skip96
+\cftpartindent=\skip97
+\cftbeforechapskip=\skip98
+\cftchapindent=\skip99
+\cftchapnumwidth=\skip100
+\cftbeforesecskip=\skip101
+\cftsecindent=\skip102
+\cftsecnumwidth=\skip103
+\cftbeforesubsecskip=\skip104
+\cftsubsecindent=\skip105
+\cftsubsecnumwidth=\skip106
+\cftbeforesubsubsecskip=\skip107
+\cftsubsubsecindent=\skip108
+\cftsubsubsecnumwidth=\skip109
+\cftbeforeparaskip=\skip110
+\cftparaindent=\skip111
+\cftparanumwidth=\skip112
+\cftbeforesubparaskip=\skip113
+\cftsubparaindent=\skip114
+\cftsubparanumwidth=\skip115
+\cftbeforeloftitleskip=\skip116
+\cftafterloftitleskip=\skip117
+\cftbeforefigskip=\skip118
+\cftfigindent=\skip119
+\cftfignumwidth=\skip120
+\c@lofdepth=\count304
+\c@lotdepth=\count305
+\cftbeforelottitleskip=\skip121
+\cftafterlottitleskip=\skip122
+\cftbeforetabskip=\skip123
+\cfttabindent=\skip124
+\cfttabnumwidth=\skip125
+)
+\@indexfile=\write4
+\openout4 = `refman.idx'.
+
+
+Writing index file refman.idx
+(/usr/share/texlive/texmf-dist/tex/latex/newunicodechar/newunicodechar.sty
+Package: newunicodechar 2018/04/08 v1.2 Defining Unicode characters
+)
+
+Package newunicodechar Warning: Redefining Unicode character on input line 115.
+
+
+
+Package newunicodechar Warning: Redefining Unicode character on input line 116.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2021-06-07 v7.00m Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+)
+\@linkdim=\dimen195
+\Hy@linkcounter=\count306
+\Hy@pagecounter=\count307
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2021-06-07 v7.00m Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
+File: hyperref-langpatches.def 2021-06-07 v7.00m Hyperref: patches for babel la
+nguages
+)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count308
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4192.
+Package hyperref Info: Link nesting OFF on input line 4197.
+Package hyperref Info: Hyper index ON on input line 4200.
+Package hyperref Info: Plain pages OFF on input line 4207.
+Package hyperref Info: Backreferencing ON on input line 4210.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4445.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/backref.sty
+Package: backref 2021/02/04 v1.41 Bibliographical back referencing
+
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+))
+\c@Hy@tempcnt=\count309
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4804.
+\XeTeXLinkMargin=\dimen196
+
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+)
+\Fld@menulength=\count310
+\Field@Width=\dimen197
+\Fld@charsize=\dimen198
+Package hyperref Info: Hyper figures OFF on input line 6076.
+Package hyperref Info: Link nesting OFF on input line 6081.
+Package hyperref Info: Hyper index ON on input line 6084.
+Package hyperref Info: backreferencing ON on input line 6089.
+Package hyperref Info: Link coloring OFF on input line 6096.
+Package hyperref Info: Link coloring with OCG OFF on input line 6101.
+Package hyperref Info: PDF/A mode OFF on input line 6106.
+LaTeX Info: Redefining \ref on input line 6146.
+LaTeX Info: Redefining \pageref on input line 6150.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count311
+\c@Item=\count312
+\c@Hfootnote=\count313
+
+
+LaTeX Warning: Command \LT@p@ftntext  has changed.
+               Check if current package is valid.
+
+)
+Package hyperref Info: Driver: hpdftex.
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2021-06-07 v7.00m Hyperref driver for pdfTeX
+\Fld@listcount=\count314
+\c@bookmark@seq@number=\count315
+\Hy@SectionHShift=\skip126
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 134.
+Package hyperref Info: Option `unicode' set `true' on input line 134.
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen199
+\captionmargin@=\dimen256
+\captionwidth=\dimen257
+\caption@tempdima=\dimen258
+\caption@indent=\dimen259
+\caption@parindent=\dimen260
+\caption@hangindent=\dimen261
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count316
+\c@continuedfloat=\count317
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: longtable package is loaded.
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2020/05/30 v1.4b longtable captions (AR)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/etoc/etoc.sty
+Package: etoc 2021/09/23 v1.09e Completely customisable TOCs (JFB)
+\Etoc@toctoks=\toks34
+\c@etoc@tocid=\count318
+\c@etoc@tocdepth=\count319
+\etoc@framed@titlebox=\box118
+\etoc@framed@contentsbox=\box119
+)
+LaTeX Font Info:    Trying to load font information for T1+phv on input line 14
+9.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
+)
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 8.99994pt on input line 149.
+
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count320
+\l__pdf_internal_box=\box120
+)
+No file refman.aux.
+\openout1 = `refman.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count321
+\scratchdimen=\dimen262
+\scratchbox=\box121
+\nofMPsegments=\count322
+\nofMParguments=\count323
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count324
+\MPscratchDim=\dimen263
+\MPnumerator=\count325
+\makeMPintoPDFobject=\count326
+\everyMPtoPDFconversion=\toks36
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(71.13188pt, 455.24411pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 702.78308pt, 71.13188pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-31.2056pt
+* \headheight=12.0pt
+* \headsep=18.06749pt
+* \topskip=10.0pt
+* \footskip=25.29494pt
+* \marginparwidth=125.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring ON on input line 149.
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count327
+)
+LaTeX Info: Redefining \ref on input line 149.
+LaTeX Info: Redefining \pageref on input line 149.
+LaTeX Info: Redefining \nameref on input line 149.
+\@outlinefile=\write5
+\openout5 = `refman.out'.
+
+Package backref Info: ** backref set up for natbib ** on input line 149.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+
+No file refman.toc.
+Package hyperref Info: Option `pageanchor' set `false' on input line 156.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 156.
+
+Package hyperref Info: Option `unicode' set `true' on input line 156.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 12.9599pt on input line 161.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 10.79993pt on input line 163.
+[1
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+
+]
+\tf@toc=\write6
+\openout6 = `refman.toc'.
+
+Package hyperref Info: Option `pageanchor' set `true' on input line 171.
+
+Chapter 1.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 18.66588pt on input line 174.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 18.66588pt on input line 174.
+LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
+(Font)              scaled to size 18.66588pt on input line 174.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 22.39185pt on input line 174.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 22.39185pt on input line 174.
+LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
+(Font)              scaled to size 22.39185pt on input line 174.
+(./hierarchy.tex
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 12.9599pt on input line 1.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 6.29996pt on input line 2.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 2.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 2.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 2.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
+)
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 8.99994pt on input line 3.
+
+
+LaTeX Warning: Reference `structClockState' on page 1 undefined on input line 3
+.
+
+
+LaTeX Warning: Reference `classDebug' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Reference `classEncoder' on page 1 undefined on input line 5.
+
+
+LaTeX Warning: Reference `classEurorackClock' on page 1 undefined on input line
+ 6.
+
+
+LaTeX Warning: Reference `classGates' on page 1 undefined on input line 7.
+
+
+LaTeX Warning: Reference `classInputHandler' on page 1 undefined on input line 
+8.
+
+
+LaTeX Warning: Reference `classLEDController' on page 1 undefined on input line
+ 9.
+
+
+LaTeX Warning: Reference `classLEDs' on page 1 undefined on input line 10.
+
+
+LaTeX Warning: Reference `classMIDIHandler' on page 1 undefined on input line 1
+1.
+
+
+LaTeX Warning: Reference `classMode' on page 1 undefined on input line 12.
+
+
+LaTeX Warning: Reference `classMode0' on page 1 undefined on input line 14.
+
+
+LaTeX Warning: Reference `classMode1' on page 1 undefined on input line 15.
+
+
+LaTeX Warning: Reference `classMode2' on page 1 undefined on input line 16.
+
+
+LaTeX Warning: Reference `classModeSelector' on page 1 undefined on input line 
+18.
+
+
+LaTeX Warning: Reference `classPin' on page 1 undefined on input line 19.
+
+
+LaTeX Warning: Reference `classAnalogInputPin' on page 1 undefined on input lin
+e 21.
+
+
+LaTeX Warning: Reference `classInputPin' on page 1 undefined on input line 22.
+
+
+LaTeX Warning: Reference `classOutputPin' on page 1 undefined on input line 23.
+
+
+
+LaTeX Warning: Reference `classGate' on page 1 undefined on input line 25.
+
+
+LaTeX Warning: Reference `classLED' on page 1 undefined on input line 26.
+
+
+LaTeX Warning: Reference `classPWMPin' on page 1 undefined on input line 27.
+
+
+LaTeX Warning: Reference `classResetButton' on page 1 undefined on input line 3
+0.
+
+
+LaTeX Warning: Reference `classSPDTSwitch' on page 1 undefined on input line 31
+.
+
+)
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 6.29996pt on input line 176.
+ [1
+
+
+] [2
+
+]
+Chapter 2.
+(./annotated.tex
+
+LaTeX Warning: Reference `classAnalogInputPin' on page 3 undefined on input lin
+e 3.
+
+
+LaTeX Warning: Reference `structClockState' on page 3 undefined on input line 4
+.
+
+
+LaTeX Warning: Reference `classDebug' on page 3 undefined on input line 5.
+
+
+LaTeX Warning: Reference `classEncoder' on page 3 undefined on input line 6.
+
+
+LaTeX Warning: Reference `classEurorackClock' on page 3 undefined on input line
+ 7.
+
+
+LaTeX Warning: Reference `classGate' on page 3 undefined on input line 8.
+
+
+LaTeX Warning: Reference `classGates' on page 3 undefined on input line 9.
+
+
+LaTeX Warning: Reference `classInputHandler' on page 3 undefined on input line 
+10.
+
+
+LaTeX Warning: Reference `classInputPin' on page 3 undefined on input line 11.
+
+
+LaTeX Warning: Reference `classLED' on page 3 undefined on input line 12.
+
+
+LaTeX Warning: Reference `classLEDController' on page 3 undefined on input line
+ 13.
+
+
+LaTeX Warning: Reference `classLEDs' on page 3 undefined on input line 14.
+
+
+LaTeX Warning: Reference `classMIDIHandler' on page 3 undefined on input line 1
+5.
+
+
+LaTeX Warning: Reference `classMode' on page 3 undefined on input line 16.
+
+
+LaTeX Warning: Reference `classMode0' on page 3 undefined on input line 17.
+
+
+LaTeX Warning: Reference `classMode1' on page 3 undefined on input line 18.
+
+
+LaTeX Warning: Reference `classMode2' on page 3 undefined on input line 19.
+
+
+LaTeX Warning: Reference `classModeSelector' on page 3 undefined on input line 
+20.
+
+
+LaTeX Warning: Reference `classOutputPin' on page 3 undefined on input line 21.
+
+
+
+LaTeX Warning: Reference `classPin' on page 3 undefined on input line 22.
+
+
+LaTeX Warning: Reference `classPWMPin' on page 3 undefined on input line 23.
+
+
+LaTeX Warning: Reference `classResetButton' on page 3 undefined on input line 2
+4.
+
+
+LaTeX Warning: Reference `classSPDTSwitch' on page 3 undefined on input line 25
+.
+
+) [3] [4
+
+]
+Chapter 3.
+(./files.tex
+
+LaTeX Warning: Reference `Constants_8h' on page 5 undefined on input line 3.
+
+
+LaTeX Warning: Reference `Debug_8h' on page 5 undefined on input line 4.
+
+
+LaTeX Warning: Reference `Encoder_8h' on page 5 undefined on input line 5.
+
+
+LaTeX Warning: Reference `EurorackClock_8h' on page 5 undefined on input line 6
+.
+
+
+LaTeX Warning: Reference `Gate_8h' on page 5 undefined on input line 7.
+
+
+LaTeX Warning: Reference `Gates_8h' on page 5 undefined on input line 8.
+
+
+LaTeX Warning: Reference `InputHandler_8h' on page 5 undefined on input line 9.
+
+
+
+LaTeX Warning: Reference `LED_8h' on page 5 undefined on input line 10.
+
+
+LaTeX Warning: Reference `LEDController_8h' on page 5 undefined on input line 1
+1.
+
+
+LaTeX Warning: Reference `LEDs_8h' on page 5 undefined on input line 12.
+
+
+LaTeX Warning: Reference `MIDIHandler_8h' on page 5 undefined on input line 13.
+
+
+
+LaTeX Warning: Reference `Mode_8h' on page 5 undefined on input line 14.
+
+
+LaTeX Warning: Reference `Mode0_8h' on page 5 undefined on input line 15.
+
+
+LaTeX Warning: Reference `Mode1_8h' on page 5 undefined on input line 16.
+
+
+LaTeX Warning: Reference `Mode2_8h' on page 5 undefined on input line 17.
+
+
+LaTeX Warning: Reference `ModeSelector_8h' on page 5 undefined on input line 18
+.
+
+
+LaTeX Warning: Reference `Pin_8h' on page 5 undefined on input line 19.
+
+
+LaTeX Warning: Reference `ResetButton_8h' on page 5 undefined on input line 20.
+
+
+
+LaTeX Warning: Reference `SPDTSwitch_8h' on page 5 undefined on input line 21.
+
+
+LaTeX Warning: Reference `Debug_8cpp' on page 5 undefined on input line 22.
+
+
+LaTeX Warning: Reference `Encoder_8cpp' on page 5 undefined on input line 23.
+
+
+LaTeX Warning: Reference `EurorackClock_8cpp' on page 5 undefined on input line
+ 24.
+
+
+LaTeX Warning: Reference `Gate_8cpp' on page 5 undefined on input line 25.
+
+
+LaTeX Warning: Reference `Gates_8cpp' on page 5 undefined on input line 26.
+
+
+LaTeX Warning: Reference `InputHandler_8cpp' on page 5 undefined on input line 
+27.
+
+
+LaTeX Warning: Reference `LED_8cpp' on page 5 undefined on input line 28.
+
+
+LaTeX Warning: Reference `LEDController_8cpp' on page 5 undefined on input line
+ 29.
+
+
+LaTeX Warning: Reference `LEDs_8cpp' on page 5 undefined on input line 30.
+
+
+LaTeX Warning: Reference `main_8cpp' on page 5 undefined on input line 31.
+
+
+LaTeX Warning: Reference `MIDIHandler_8cpp' on page 5 undefined on input line 3
+2.
+
+
+LaTeX Warning: Reference `Mode_8cpp' on page 5 undefined on input line 33.
+
+
+LaTeX Warning: Reference `Mode0_8cpp' on page 5 undefined on input line 34.
+
+
+LaTeX Warning: Reference `Mode1_8cpp' on page 5 undefined on input line 35.
+
+
+LaTeX Warning: Reference `Mode2_8cpp' on page 5 undefined on input line 36.
+
+
+LaTeX Warning: Reference `ModeSelector_8cpp' on page 5 undefined on input line 
+37.
+
+
+LaTeX Warning: Reference `Pin_8cpp' on page 5 undefined on input line 38.
+
+
+LaTeX Warning: Reference `ResetButton_8cpp' on page 5 undefined on input line 3
+9.
+
+
+LaTeX Warning: Reference `SPDTSwitch_8cpp' on page 5 undefined on input line 40
+.
+
+) [5] [6
+
+]
+Chapter 4.
+(./classAnalogInputPin.tex
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 5.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+) <./classAnalogInputPin__inherit__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classAnalogInputPin__inherit__graph.pdf): PDF 
+inclusion: multiple pdfs with page group included in a single page
+>
+<classAnalogInputPin__inherit__graph.pdf, id=168, 220.825pt x 277.035pt>
+File: classAnalogInputPin__inherit__graph.pdf Graphic file (type pdf)
+<use classAnalogInputPin__inherit__graph.pdf>
+Package pdftex.def Info: classAnalogInputPin__inherit__graph.pdf  used on input
+ line 14.
+(pdftex.def)             Requested size: 220.0pt x 276.01132pt.
+ <./classAnalogInputPin__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classAnalogInputPin__coll__graph.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
+>
+<classAnalogInputPin__coll__graph.pdf, id=176, 220.825pt x 277.035pt>
+File: classAnalogInputPin__coll__graph.pdf Graphic file (type pdf)
+<use classAnalogInputPin__coll__graph.pdf>
+Package pdftex.def Info: classAnalogInputPin__coll__graph.pdf  used on input li
+ne 24.
+(pdftex.def)             Requested size: 220.0pt x 276.01132pt.
+ [7]
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 10.79993pt on input line 27.
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 3
+0.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1phv.fd
+File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
+)
+LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
+(Font)              scaled to size 8.99994pt on input line 30.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.19995pt on input line 44.
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 44.
+ [8])
+(./structClockState.tex <./structClockState__coll__graph.pdf>
+<structClockState__coll__graph.pdf, id=217, 242.9075pt x 160.6pt>
+File: structClockState__coll__graph.pdf Graphic file (type pdf)
+<use structClockState__coll__graph.pdf>
+Package pdftex.def Info: structClockState__coll__graph.pdf  used on input line 
+14.
+(pdftex.def)             Requested size: 242.0pt x 159.9992pt.
+ [9])
+(./classDebug.tex <./classDebug__coll__graph.pdf>
+<classDebug__coll__graph.pdf, id=246, 214.8025pt x 171.64125pt>
+File: classDebug__coll__graph.pdf Graphic file (type pdf)
+<use classDebug__coll__graph.pdf>
+Package pdftex.def Info: classDebug__coll__graph.pdf  used on input line 14.
+(pdftex.def)             Requested size: 214.0pt x 171.00175pt.
+ [10]) (./classEncoder.tex <./classEncoder__coll__graph.pdf>
+<classEncoder__coll__graph.pdf, id=277, 253.94875pt x 681.54625pt>
+File: classEncoder__coll__graph.pdf Graphic file (type pdf)
+<use classEncoder__coll__graph.pdf>
+Package pdftex.def Info: classEncoder__coll__graph.pdf  used on input line 14.
+(pdftex.def)             Requested size: 204.94562pt x 550.0pt.
+ [11] [12]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 4.1 on input line 96.
+
+[13]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 4.2 on input line 116.
+
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <7> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 124.
+[14] [15]) (./classEurorackClock.tex [16] <./classEurorackClock__coll__graph.pd
+f
+
+pdfTeX warning: pdflatex (file ./classEurorackClock__coll__graph.pdf): PDF incl
+usion: multiple pdfs with page group included in a single page
+>
+<classEurorackClock__coll__graph.pdf, id=431, 720.6925pt x 1900.09875pt>
+File: classEurorackClock__coll__graph.pdf Graphic file (type pdf)
+<use classEurorackClock__coll__graph.pdf>
+Package pdftex.def Info: classEurorackClock__coll__graph.pdf  used on input lin
+e 14.
+(pdftex.def)             Requested size: 208.61058pt x 550.0pt.
+ [17] [18] [19] [20]
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 7.19995pt on input line 213.
+ [21] [22] [23] [24] [25] [26] [27]) (./classGate.tex <./classGate__inherit__gr
+aph.pdf
+
+pdfTeX warning: pdflatex (file ./classGate__inherit__graph.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
+>
+<classGate__inherit__graph.pdf, id=710, 244.915pt x 525.965pt>
+File: classGate__inherit__graph.pdf Graphic file (type pdf)
+<use classGate__inherit__graph.pdf>
+Package pdftex.def Info: classGate__inherit__graph.pdf  used on input line 14.
+(pdftex.def)             Requested size: 244.0pt x 524.01347pt.
+ [28] <./classGate__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classGate__coll__graph.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+>
+<classGate__coll__graph.pdf, id=726, 244.915pt x 525.965pt>
+File: classGate__coll__graph.pdf Graphic file (type pdf)
+<use classGate__coll__graph.pdf>
+Package pdftex.def Info: classGate__coll__graph.pdf  used on input line 24.
+(pdftex.def)             Requested size: 244.0pt x 524.01347pt.
+ [29] [30] [31]) (./classGates.tex <./classGates__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classGates__coll__graph.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+>
+<classGates__coll__graph.pdf, id=788, 245.91875pt x 931.48pt>
+File: classGates__coll__graph.pdf Graphic file (type pdf)
+<use classGates__coll__graph.pdf>
+Package pdftex.def Info: classGates__coll__graph.pdf  used on input line 14.
+(pdftex.def)             Requested size: 145.21088pt x 550.0pt.
+ [32] [33] [34] [35] [36]) (./classInputHandler.tex <./classInputHandler__coll_
+_graph.pdf
+
+pdfTeX warning: pdflatex (file ./classInputHandler__coll__graph.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+>
+<classInputHandler__coll__graph.pdf, id=901, 226.8475pt x 438.63875pt>
+File: classInputHandler__coll__graph.pdf Graphic file (type pdf)
+<use classInputHandler__coll__graph.pdf>
+Package pdftex.def Info: classInputHandler__coll__graph.pdf  used on input line
+ 14.
+(pdftex.def)             Requested size: 226.0pt x 437.00455pt.
+ [37] [38]) (./classInputPin.tex <./classInputPin__inherit__graph.pdf>
+<classInputPin__inherit__graph.pdf, id=945, 226.8475pt x 321.2pt>
+File: classInputPin__inherit__graph.pdf Graphic file (type pdf)
+<use classInputPin__inherit__graph.pdf>
+Package pdftex.def Info: classInputPin__inherit__graph.pdf  used on input line 
+14.
+(pdftex.def)             Requested size: 226.0pt x 320.00334pt.
+
+[39] <./classInputPin__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classInputPin__coll__graph.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>
+<classInputPin__coll__graph.pdf, id=965, 226.8475pt x 321.2pt>
+File: classInputPin__coll__graph.pdf Graphic file (type pdf)
+<use classInputPin__coll__graph.pdf>
+Package pdftex.def Info: classInputPin__coll__graph.pdf  used on input line 24.
+
+(pdftex.def)             Requested size: 226.0pt x 320.00334pt.
+ [40] [41]) (./classLED.tex <./classLED__inherit__graph.pdf>
+<classLED__inherit__graph.pdf, id=1009, 247.92625pt x 636.3775pt>
+File: classLED__inherit__graph.pdf Graphic file (type pdf)
+<use classLED__inherit__graph.pdf>
+Package pdftex.def Info: classLED__inherit__graph.pdf  used on input line 14.
+(pdftex.def)             Requested size: 214.27167pt x 550.0pt.
+ [42] <./classLED__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classLED__coll__graph.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>
+<classLED__coll__graph.pdf, id=1028, 247.92625pt x 636.3775pt>
+File: classLED__coll__graph.pdf Graphic file (type pdf)
+<use classLED__coll__graph.pdf>
+Package pdftex.def Info: classLED__coll__graph.pdf  used on input line 24.
+(pdftex.def)             Requested size: 214.27167pt x 550.0pt.
+ [43] [44] [45] [46]) (./classLEDController.tex <./classLEDController__coll__gr
+aph.pdf
+
+pdfTeX warning: pdflatex (file ./classLEDController__coll__graph.pdf): PDF incl
+usion: multiple pdfs with page group included in a single page
+>
+<classLEDController__coll__graph.pdf, id=1114, 247.92625pt x 1213.53375pt>
+File: classLEDController__coll__graph.pdf Graphic file (type pdf)
+<use classLEDController__coll__graph.pdf>
+Package pdftex.def Info: classLEDController__coll__graph.pdf  used on input lin
+e 14.
+(pdftex.def)             Requested size: 112.36778pt x 550.0pt.
+ [47] [48] [49] [50] [51]) (./classLEDs.tex <./classLEDs__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classLEDs__coll__graph.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+>
+<classLEDs__coll__graph.pdf, id=1220, 247.92625pt x 931.48pt>
+File: classLEDs__coll__graph.pdf Graphic file (type pdf)
+<use classLEDs__coll__graph.pdf>
+Package pdftex.def Info: classLEDs__coll__graph.pdf  used on input line 14.
+(pdftex.def)             Requested size: 146.39627pt x 550.0pt.
+ [52] [53] [54] [55] [56] [57]) (./classMIDIHandler.tex <./classMIDIHandler__co
+ll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classMIDIHandler__coll__graph.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+>
+<classMIDIHandler__coll__graph.pdf, id=1333, 798.985pt x 2391.93625pt>
+File: classMIDIHandler__coll__graph.pdf Graphic file (type pdf)
+<use classMIDIHandler__coll__graph.pdf>
+Package pdftex.def Info: classMIDIHandler__coll__graph.pdf  used on input line 
+14.
+(pdftex.def)             Requested size: 183.71391pt x 550.0pt.
+ [58] [59] [60] [61] [62]) (./classMode.tex [63] <./classMode__inherit__graph.p
+df
+
+pdfTeX warning: pdflatex (file ./classMode__inherit__graph.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
+>
+<classMode__inherit__graph.pdf, id=1480, 790.955pt x 961.5925pt>
+File: classMode__inherit__graph.pdf Graphic file (type pdf)
+<use classMode__inherit__graph.pdf>
+Package pdftex.def Info: classMode__inherit__graph.pdf  used on input line 14.
+(pdftex.def)             Requested size: 350.0pt x 425.50833pt.
+ <./classMode__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classMode__coll__graph.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+>
+<classMode__coll__graph.pdf, id=1495, 272.01625pt x 348.30125pt>
+File: classMode__coll__graph.pdf Graphic file (type pdf)
+<use classMode__coll__graph.pdf>
+Package pdftex.def Info: classMode__coll__graph.pdf  used on input line 24.
+(pdftex.def)             Requested size: 271.0pt x 347.01956pt.
+ [64] [65] [66]) (./classMode0.tex <./classMode0__inherit__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classMode0__inherit__graph.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>
+<classMode0__inherit__graph.pdf, id=1611, 305.14pt x 961.5925pt>
+File: classMode0__inherit__graph.pdf Graphic file (type pdf)
+<use classMode0__inherit__graph.pdf>
+Package pdftex.def Info: classMode0__inherit__graph.pdf  used on input line 14.
+
+(pdftex.def)             Requested size: 174.53223pt x 550.0pt.
+ [67] <./classMode0__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classMode0__coll__graph.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+>
+<classMode0__coll__graph.pdf, id=1647, 1196.47pt x 3306.3525pt>
+File: classMode0__coll__graph.pdf Graphic file (type pdf)
+<use classMode0__coll__graph.pdf>
+Package pdftex.def Info: classMode0__coll__graph.pdf  used on input line 24.
+(pdftex.def)             Requested size: 199.01561pt x 550.0pt.
+ [68] [69] [70] [71] [72] [73] [74] [75]) (./classMode1.tex <./classMode1__inhe
+rit__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classMode1__inherit__graph.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>
+<classMode1__inherit__graph.pdf, id=1862, 305.14pt x 950.55125pt>
+File: classMode1__inherit__graph.pdf Graphic file (type pdf)
+<use classMode1__inherit__graph.pdf>
+Package pdftex.def Info: classMode1__inherit__graph.pdf  used on input line 14.
+
+(pdftex.def)             Requested size: 176.56226pt x 550.0pt.
+ [76] <./classMode1__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classMode1__coll__graph.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+>
+<classMode1__coll__graph.pdf, id=1886, 1104.125pt x 3218.0225pt>
+File: classMode1__coll__graph.pdf Graphic file (type pdf)
+<use classMode1__coll__graph.pdf>
+Package pdftex.def Info: classMode1__coll__graph.pdf  used on input line 24.
+(pdftex.def)             Requested size: 188.69276pt x 550.0pt.
+ [77] [78] [79] [80] [81] [82] [83]) (./classMode2.tex <./classMode2__inherit__
+graph.pdf
+
+pdfTeX warning: pdflatex (file ./classMode2__inherit__graph.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>
+<classMode2__inherit__graph.pdf, id=2069, 305.14pt x 851.18pt>
+File: classMode2__inherit__graph.pdf Graphic file (type pdf)
+<use classMode2__inherit__graph.pdf>
+Package pdftex.def Info: classMode2__inherit__graph.pdf  used on input line 14.
+
+(pdftex.def)             Requested size: 197.17928pt x 550.0pt.
+ [84] <./classMode2__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classMode2__coll__graph.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+>
+<classMode2__coll__graph.pdf, id=2086, 1104.125pt x 3118.65125pt>
+File: classMode2__coll__graph.pdf Graphic file (type pdf)
+<use classMode2__coll__graph.pdf>
+Package pdftex.def Info: classMode2__coll__graph.pdf  used on input line 24.
+(pdftex.def)             Requested size: 194.70735pt x 550.0pt.
+ [85] [86] [87] [88] [89] [90]) (./classModeSelector.tex <./classModeSelector__
+coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classModeSelector__coll__graph.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+>
+<classModeSelector__coll__graph.pdf, id=2243, 807.015pt x 1782.66pt>
+File: classModeSelector__coll__graph.pdf Graphic file (type pdf)
+<use classModeSelector__coll__graph.pdf>
+Package pdftex.def Info: classModeSelector__coll__graph.pdf  used on input line
+ 14.
+(pdftex.def)             Requested size: 248.98991pt x 550.0pt.
+ [91] [92] [93] [94] [95] [96] [97]) (./classOutputPin.tex <./classOutputPin__i
+nherit__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classOutputPin__inherit__graph.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+>
+<classOutputPin__inherit__graph.pdf, id=2434, 587.19376pt x 636.3775pt>
+File: classOutputPin__inherit__graph.pdf Graphic file (type pdf)
+<use classOutputPin__inherit__graph.pdf>
+Package pdftex.def Info: classOutputPin__inherit__graph.pdf  used on input line
+ 14.
+(pdftex.def)             Requested size: 350.0pt x 379.31447pt.
+ [98] <./classOutputPin__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classOutputPin__coll__graph.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+>
+<classOutputPin__coll__graph.pdf, id=2450, 215.80624pt x 299.1175pt>
+File: classOutputPin__coll__graph.pdf Graphic file (type pdf)
+<use classOutputPin__coll__graph.pdf>
+Package pdftex.def Info: classOutputPin__coll__graph.pdf  used on input line 24
+.
+(pdftex.def)             Requested size: 215.0pt x 298.00766pt.
+ [99] [100]) (./classPin.tex <./classPin__inherit__graph.pdf>
+<classPin__inherit__graph.pdf, id=2489, 711.65875pt x 658.46pt>
+File: classPin__inherit__graph.pdf Graphic file (type pdf)
+<use classPin__inherit__graph.pdf>
+Package pdftex.def Info: classPin__inherit__graph.pdf  used on input line 14.
+(pdftex.def)             Requested size: 350.0pt x 323.8338pt.
+ <./classPin__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classPin__coll__graph.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>
+<classPin__coll__graph.pdf, id=2497, 179.67125pt x 160.6pt>
+File: classPin__coll__graph.pdf Graphic file (type pdf)
+<use classPin__coll__graph.pdf>
+Package pdftex.def Info: classPin__coll__graph.pdf  used on input line 24.
+(pdftex.def)             Requested size: 179.0pt x 160.01146pt.
+ [101] [102]) (./classPWMPin.tex <./classPWMPin__inherit__graph.pdf>
+<classPWMPin__inherit__graph.pdf, id=2538, 217.81375pt x 448.67625pt>
+File: classPWMPin__inherit__graph.pdf Graphic file (type pdf)
+<use classPWMPin__inherit__graph.pdf>
+Package pdftex.def Info: classPWMPin__inherit__graph.pdf  used on input line 14
+.
+(pdftex.def)             Requested size: 217.0pt x 446.99782pt.
+ [103] <./classPWMPin__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classPWMPin__coll__graph.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+>
+<classPWMPin__coll__graph.pdf, id=2554, 217.81375pt x 448.67625pt>
+File: classPWMPin__coll__graph.pdf Graphic file (type pdf)
+<use classPWMPin__coll__graph.pdf>
+Package pdftex.def Info: classPWMPin__coll__graph.pdf  used on input line 24.
+(pdftex.def)             Requested size: 217.0pt x 446.99782pt.
+ [104] [105]) (./classResetButton.tex <./classResetButton__coll__graph.pdf>
+<classResetButton__coll__graph.pdf, id=2592, 253.94875pt x 571.13374pt>
+File: classResetButton__coll__graph.pdf Graphic file (type pdf)
+<use classResetButton__coll__graph.pdf>
+Package pdftex.def Info: classResetButton__coll__graph.pdf  used on input line 
+14.
+(pdftex.def)             Requested size: 244.55138pt x 550.0pt.
+
+[106] [107] [108]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 4.3 on input line 77.
+
+[109] [110]) (./classSPDTSwitch.tex <./classSPDTSwitch__coll__graph.pdf
+
+pdfTeX warning: pdflatex (file ./classSPDTSwitch__coll__graph.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+>
+<classSPDTSwitch__coll__graph.pdf, id=2694, 226.8475pt x 471.7625pt>
+File: classSPDTSwitch__coll__graph.pdf Graphic file (type pdf)
+<use classSPDTSwitch__coll__graph.pdf>
+Package pdftex.def Info: classSPDTSwitch__coll__graph.pdf  used on input line 1
+4.
+(pdftex.def)             Requested size: 226.0pt x 470.0049pt.
+ [111] [112]) [113] [114
+
+]
+Chapter 5.
+(./Constants_8h.tex <./Constants_8h__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Constants_8h__incl.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
+>
+<Constants_8h__incl.pdf, id=2758, 193.72375pt x 156.585pt>
+File: Constants_8h__incl.pdf Graphic file (type pdf)
+<use Constants_8h__incl.pdf>
+Package pdftex.def Info: Constants_8h__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 193.0pt x 156.00162pt.
+ <./Constants_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Constants_8h__dep__incl.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+>
+<Constants_8h__dep__incl.pdf, id=2766, 1025.8325pt x 437.635pt>
+File: Constants_8h__dep__incl.pdf Graphic file (type pdf)
+<use Constants_8h__dep__incl.pdf>
+Package pdftex.def Info: Constants_8h__dep__incl.pdf  used on input line 17.
+(pdftex.def)             Requested size: 350.0pt x 149.31479pt.
+ [115]) (./Debug_8h.tex <./Debug_8h__incl.pdf>
+<Debug_8h__incl.pdf, id=2787, 175.65625pt x 156.585pt>
+File: Debug_8h__incl.pdf Graphic file (type pdf)
+<use Debug_8h__incl.pdf>
+Package pdftex.def Info: Debug_8h__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 175.0pt x 156.01117pt.
+ <./Debug_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Debug_8h__dep__incl.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
+>
+<Debug_8h__dep__incl.pdf, id=2795, 1565.85pt x 269.005pt>
+File: Debug_8h__dep__incl.pdf Graphic file (type pdf)
+<use Debug_8h__dep__incl.pdf>
+Package pdftex.def Info: Debug_8h__dep__incl.pdf  used on input line 17.
+(pdftex.def)             Requested size: 350.0pt x 60.12535pt.
+ [116]) (./Encoder_8h.tex <./Encoder_8h__incl.pdf>
+<Encoder_8h__incl.pdf, id=2819, 182.6825pt x 156.585pt>
+File: Encoder_8h__incl.pdf Graphic file (type pdf)
+<use Encoder_8h__incl.pdf>
+Package pdftex.def Info: Encoder_8h__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 182.0pt x 156.0064pt.
+ <./Encoder_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Encoder_8h__dep__incl.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>
+<Encoder_8h__dep__incl.pdf, id=2827, 983.675pt x 212.795pt>
+File: Encoder_8h__dep__incl.pdf Graphic file (type pdf)
+<use Encoder_8h__dep__incl.pdf>
+Package pdftex.def Info: Encoder_8h__dep__incl.pdf  used on input line 17.
+(pdftex.def)             Requested size: 350.0pt x 75.71321pt.
+) (./EurorackClock_8h.tex <./EurorackClock_8h__incl.pdf
+
+pdfTeX warning: pdflatex (file ./EurorackClock_8h__incl.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+>
+<EurorackClock_8h__incl.pdf, id=2836, 607.26875pt x 325.215pt>
+File: EurorackClock_8h__incl.pdf Graphic file (type pdf)
+<use EurorackClock_8h__incl.pdf>
+Package pdftex.def Info: EurorackClock_8h__incl.pdf  used on input line 14.
+(pdftex.def)             Requested size: 350.0pt x 187.43881pt.
+ [117] <./EurorackClock_8h__dep__incl.pdf>
+<EurorackClock_8h__dep__incl.pdf, id=2855, 619.31375pt x 269.005pt>
+File: EurorackClock_8h__dep__incl.pdf Graphic file (type pdf)
+<use EurorackClock_8h__dep__incl.pdf>
+Package pdftex.def Info: EurorackClock_8h__dep__incl.pdf  used on input line 22
+.
+(pdftex.def)             Requested size: 350.0pt x 152.03325pt.
+) (./Gate_8h.tex <./Gate_8h__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Gate_8h__incl.pdf): PDF inclusion: multiple pd
+fs with page group included in a single page
+>
+<Gate_8h__incl.pdf, id=2865, 214.8025pt x 212.795pt>
+File: Gate_8h__incl.pdf Graphic file (type pdf)
+<use Gate_8h__incl.pdf>
+Package pdftex.def Info: Gate_8h__incl.pdf  used on input line 10.
+(pdftex.def)             Requested size: 214.0pt x 212.0022pt.
+ [118] <./Gate_8h__dep__incl.pdf>
+<Gate_8h__dep__incl.pdf, id=2882, 833.1125pt x 381.425pt>
+File: Gate_8h__dep__incl.pdf Graphic file (type pdf)
+<use Gate_8h__dep__incl.pdf>
+Package pdftex.def Info: Gate_8h__dep__incl.pdf  used on input line 18.
+(pdftex.def)             Requested size: 350.0pt x 160.24396pt.
+) (./Gates_8h.tex <./Gates_8h__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Gates_8h__incl.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
+>
+<Gates_8h__incl.pdf, id=2891, 386.44376pt x 269.005pt>
+File: Gates_8h__incl.pdf Graphic file (type pdf)
+<use Gates_8h__incl.pdf>
+Package pdftex.def Info: Gates_8h__incl.pdf  used on input line 12.
+(pdftex.def)             Requested size: 350.0pt x 243.6374pt.
+ [119] <./Gates_8h__dep__incl.pdf>
+<Gates_8h__dep__incl.pdf, id=2910, 833.1125pt x 325.215pt>
+File: Gates_8h__dep__incl.pdf Graphic file (type pdf)
+<use Gates_8h__dep__incl.pdf>
+Package pdftex.def Info: Gates_8h__dep__incl.pdf  used on input line 20.
+(pdftex.def)             Requested size: 350.0pt x 136.62906pt.
+) (./InputHandler_8h.tex <./InputHandler_8h__incl.pdf
+
+pdfTeX warning: pdflatex (file ./InputHandler_8h__incl.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>
+<InputHandler_8h__incl.pdf, id=2919, 206.7725pt x 156.585pt>
+File: InputHandler_8h__incl.pdf Graphic file (type pdf)
+<use InputHandler_8h__incl.pdf>
+Package pdftex.def Info: InputHandler_8h__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 206.0pt x 156.004pt.
+ [120] <./InputHandler_8h__dep__incl.pdf>
+<InputHandler_8h__dep__incl.pdf, id=2936, 592.2125pt x 212.795pt>
+File: InputHandler_8h__dep__incl.pdf Graphic file (type pdf)
+<use InputHandler_8h__dep__incl.pdf>
+Package pdftex.def Info: InputHandler_8h__dep__incl.pdf  used on input line 17.
+
+(pdftex.def)             Requested size: 350.0pt x 125.76549pt.
+) (./LED_8h.tex <./LED_8h__incl.pdf
+
+pdfTeX warning: pdflatex (file ./LED_8h__incl.pdf): PDF inclusion: multiple pdf
+s with page group included in a single page
+>
+<LED_8h__incl.pdf, id=2945, 163.61125pt x 156.585pt>
+File: LED_8h__incl.pdf Graphic file (type pdf)
+<use LED_8h__incl.pdf>
+Package pdftex.def Info: LED_8h__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 163.0pt x 155.99922pt.
+ <./LED_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./LED_8h__dep__incl.pdf): PDF inclusion: multipl
+e pdfs with page group included in a single page
+>
+<LED_8h__dep__incl.pdf, id=2953, 1054.94125pt x 437.635pt>
+File: LED_8h__dep__incl.pdf Graphic file (type pdf)
+<use LED_8h__dep__incl.pdf>
+Package pdftex.def Info: LED_8h__dep__incl.pdf  used on input line 17.
+(pdftex.def)             Requested size: 350.0pt x 145.19461pt.
+ [121]) (./LEDController_8h.tex <./LEDController_8h__incl.pdf>
+<LEDController_8h__incl.pdf, id=2972, 210.7875pt x 269.005pt>
+File: LEDController_8h__incl.pdf Graphic file (type pdf)
+<use LEDController_8h__incl.pdf>
+Package pdftex.def Info: LEDController_8h__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 210.0pt x 268.00688pt.
+ <./LEDController_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./LEDController_8h__dep__incl.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+>
+<LEDController_8h__dep__incl.pdf, id=2980, 1011.78pt x 212.795pt>
+File: LEDController_8h__dep__incl.pdf Graphic file (type pdf)
+<use LEDController_8h__dep__incl.pdf>
+Package pdftex.def Info: LEDController_8h__dep__incl.pdf  used on input line 17
+.
+(pdftex.def)             Requested size: 350.0pt x 73.61241pt.
+ [122]) (./LEDs_8h.tex <./LEDs_8h__incl.pdf>
+<LEDs_8h__incl.pdf, id=2998, 190.7125pt x 212.795pt>
+File: LEDs_8h__incl.pdf Graphic file (type pdf)
+<use LEDs_8h__incl.pdf>
+Package pdftex.def Info: LEDs_8h__incl.pdf  used on input line 10.
+(pdftex.def)             Requested size: 190.0pt x 212.00868pt.
+ <./LEDs_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./LEDs_8h__dep__incl.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
+>
+<LEDs_8h__dep__incl.pdf, id=3006, 1104.125pt x 381.425pt>
+File: LEDs_8h__dep__incl.pdf Graphic file (type pdf)
+<use LEDs_8h__dep__incl.pdf>
+Package pdftex.def Info: LEDs_8h__dep__incl.pdf  used on input line 18.
+(pdftex.def)             Requested size: 350.0pt x 120.91193pt.
+) (./MIDIHandler_8h.tex <./MIDIHandler_8h__incl.pdf
+
+pdfTeX warning: pdflatex (file ./MIDIHandler_8h__incl.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
+>
+<MIDIHandler_8h__incl.pdf, id=3015, 470.75874pt x 381.425pt>
+File: MIDIHandler_8h__incl.pdf Graphic file (type pdf)
+<use MIDIHandler_8h__incl.pdf>
+Package pdftex.def Info: MIDIHandler_8h__incl.pdf  used on input line 12.
+(pdftex.def)             Requested size: 350.0pt x 283.58287pt.
+ [123] <./MIDIHandler_8h__dep__incl.pdf>
+<MIDIHandler_8h__dep__incl.pdf, id=3034, 600.2425pt x 212.795pt>
+File: MIDIHandler_8h__dep__incl.pdf Graphic file (type pdf)
+<use MIDIHandler_8h__dep__incl.pdf>
+Package pdftex.def Info: MIDIHandler_8h__dep__incl.pdf  used on input line 20.
+(pdftex.def)             Requested size: 350.0pt x 124.08356pt.
+) (./Mode_8h.tex <./Mode_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Mode_8h__dep__incl.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
+>
+<Mode_8h__dep__incl.pdf, id=3043, 890.32625pt x 212.795pt>
+File: Mode_8h__dep__incl.pdf Graphic file (type pdf)
+<use Mode_8h__dep__incl.pdf>
+Package pdftex.def Info: Mode_8h__dep__incl.pdf  used on input line 8.
+(pdftex.def)             Requested size: 350.0pt x 83.65208pt.
+ [124]) (./Mode0_8h.tex <./Mode0_8h__incl.pdf>
+<Mode0_8h__incl.pdf, id=3062, 889.3225pt x 437.635pt>
+File: Mode0_8h__incl.pdf Graphic file (type pdf)
+<use Mode0_8h__incl.pdf>
+Package pdftex.def Info: Mode0_8h__incl.pdf  used on input line 18.
+(pdftex.def)             Requested size: 350.0pt x 172.23288pt.
+ <./Mode0_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Mode0_8h__dep__incl.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
+>
+<Mode0_8h__dep__incl.pdf, id=3070, 264.99pt x 156.585pt>
+File: Mode0_8h__dep__incl.pdf Graphic file (type pdf)
+<use Mode0_8h__dep__incl.pdf>
+Package pdftex.def Info: Mode0_8h__dep__incl.pdf  used on input line 26.
+(pdftex.def)             Requested size: 264.0pt x 156.01117pt.
+ [125]) (./Mode1_8h.tex <./Mode1_8h__incl.pdf>
+<Mode1_8h__incl.pdf, id=3090, 851.18pt x 437.635pt>
+File: Mode1_8h__incl.pdf Graphic file (type pdf)
+<use Mode1_8h__incl.pdf>
+Package pdftex.def Info: Mode1_8h__incl.pdf  used on input line 16.
+(pdftex.def)             Requested size: 350.0pt x 179.95238pt.
+ <./Mode1_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Mode1_8h__dep__incl.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
+>
+<Mode1_8h__dep__incl.pdf, id=3098, 264.99pt x 156.585pt>
+File: Mode1_8h__dep__incl.pdf Graphic file (type pdf)
+<use Mode1_8h__dep__incl.pdf>
+Package pdftex.def Info: Mode1_8h__dep__incl.pdf  used on input line 24.
+(pdftex.def)             Requested size: 264.0pt x 156.01117pt.
+ [126]) (./Mode2_8h.tex <./Mode2_8h__incl.pdf>
+<Mode2_8h__incl.pdf, id=3116, 911.405pt x 437.635pt>
+File: Mode2_8h__incl.pdf Graphic file (type pdf)
+<use Mode2_8h__incl.pdf>
+Package pdftex.def Info: Mode2_8h__incl.pdf  used on input line 16.
+(pdftex.def)             Requested size: 350.0pt x 168.06595pt.
+ <./Mode2_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Mode2_8h__dep__incl.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
+>
+<Mode2_8h__dep__incl.pdf, id=3124, 264.99pt x 156.585pt>
+File: Mode2_8h__dep__incl.pdf Graphic file (type pdf)
+<use Mode2_8h__dep__incl.pdf>
+Package pdftex.def Info: Mode2_8h__dep__incl.pdf  used on input line 24.
+(pdftex.def)             Requested size: 264.0pt x 156.01117pt.
+ [127]) (./ModeSelector_8h.tex <./ModeSelector_8h__incl.pdf>
+<ModeSelector_8h__incl.pdf, id=3142, 610.28pt x 325.215pt>
+File: ModeSelector_8h__incl.pdf Graphic file (type pdf)
+<use ModeSelector_8h__incl.pdf>
+Package pdftex.def Info: ModeSelector_8h__incl.pdf  used on input line 13.
+(pdftex.def)             Requested size: 350.0pt x 186.52078pt.
+ <./ModeSelector_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./ModeSelector_8h__dep__incl.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+>
+<ModeSelector_8h__dep__incl.pdf, id=3150, 574.145pt x 156.585pt>
+File: ModeSelector_8h__dep__incl.pdf Graphic file (type pdf)
+<use ModeSelector_8h__dep__incl.pdf>
+Package pdftex.def Info: ModeSelector_8h__dep__incl.pdf  used on input line 21.
+
+(pdftex.def)             Requested size: 350.0pt x 95.45697pt.
+ [128]) (./Pin_8h.tex <./Pin_8h__dep__incl.pdf>
+<Pin_8h__dep__incl.pdf, id=3169, 1446.40375pt x 493.845pt>
+File: Pin_8h__dep__incl.pdf Graphic file (type pdf)
+<use Pin_8h__dep__incl.pdf>
+Package pdftex.def Info: Pin_8h__dep__incl.pdf  used on input line 8.
+(pdftex.def)             Requested size: 350.0pt x 119.49728pt.
+) (./ResetButton_8h.tex <./ResetButton_8h__incl.pdf
+
+pdfTeX warning: pdflatex (file ./ResetButton_8h__incl.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
+>
+<ResetButton_8h__incl.pdf, id=3182, 329.23pt x 212.795pt>
+File: ResetButton_8h__incl.pdf Graphic file (type pdf)
+<use ResetButton_8h__incl.pdf>
+Package pdftex.def Info: ResetButton_8h__incl.pdf  used on input line 12.
+(pdftex.def)             Requested size: 328.0pt x 212.00543pt.
+ [129] <./ResetButton_8h__dep__incl.pdf>
+<ResetButton_8h__dep__incl.pdf, id=3201, 890.32625pt x 212.795pt>
+File: ResetButton_8h__dep__incl.pdf Graphic file (type pdf)
+<use ResetButton_8h__dep__incl.pdf>
+Package pdftex.def Info: ResetButton_8h__dep__incl.pdf  used on input line 20.
+(pdftex.def)             Requested size: 350.0pt x 83.65208pt.
+) (./SPDTSwitch_8h.tex <./SPDTSwitch_8h__incl.pdf
+
+pdfTeX warning: pdflatex (file ./SPDTSwitch_8h__incl.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
+>
+<SPDTSwitch_8h__incl.pdf, id=3210, 202.7575pt x 156.585pt>
+File: SPDTSwitch_8h__incl.pdf Graphic file (type pdf)
+<use SPDTSwitch_8h__incl.pdf>
+Package pdftex.def Info: SPDTSwitch_8h__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 202.0pt x 156.004pt.
+ <./SPDTSwitch_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./SPDTSwitch_8h__dep__incl.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+>
+<SPDTSwitch_8h__dep__incl.pdf, id=3218, 202.7575pt x 156.585pt>
+File: SPDTSwitch_8h__dep__incl.pdf Graphic file (type pdf)
+<use SPDTSwitch_8h__dep__incl.pdf>
+Package pdftex.def Info: SPDTSwitch_8h__dep__incl.pdf  used on input line 17.
+(pdftex.def)             Requested size: 202.0pt x 156.004pt.
+ [130]
+
+Package longtable Warning: Column widths have changed
+(longtable)                in table 5.1 on input line 55.
+
+) (./Debug_8cpp.tex <./Debug_8cpp__incl.pdf>
+<Debug_8cpp__incl.pdf, id=3242, 180.675pt x 212.795pt>
+File: Debug_8cpp__incl.pdf Graphic file (type pdf)
+<use Debug_8cpp__incl.pdf>
+Package pdftex.def Info: Debug_8cpp__incl.pdf  used on input line 10.
+(pdftex.def)             Requested size: 180.0pt x 212.0022pt.
+) (./Encoder_8cpp.tex [131] <./Encoder_8cpp__incl.pdf>
+<Encoder_8cpp__incl.pdf, id=3266, 251.94125pt x 212.795pt>
+File: Encoder_8cpp__incl.pdf Graphic file (type pdf)
+<use Encoder_8cpp__incl.pdf>
+Package pdftex.def Info: Encoder_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 251.0pt x 212.0022pt.
+) (./EurorackClock_8cpp.tex [132] <./EurorackClock_8cpp__incl.pdf>
+<EurorackClock_8cpp__incl.pdf, id=3288, 776.9025pt x 381.425pt>
+File: EurorackClock_8cpp__incl.pdf Graphic file (type pdf)
+<use EurorackClock_8cpp__incl.pdf>
+Package pdftex.def Info: EurorackClock_8cpp__incl.pdf  used on input line 12.
+(pdftex.def)             Requested size: 350.0pt x 171.83754pt.
+) (./Gate_8cpp.tex <./Gate_8cpp__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Gate_8cpp__incl.pdf): PDF inclusion: multiple 
+pdfs with page group included in a single page
+>
+<Gate_8cpp__incl.pdf, id=3299, 316.18124pt x 269.005pt>
+File: Gate_8cpp__incl.pdf Graphic file (type pdf)
+<use Gate_8cpp__incl.pdf>
+Package pdftex.def Info: Gate_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 315.0pt x 268.0192pt.
+ [133]) (./Gates_8cpp.tex <./Gates_8cpp__incl.pdf>
+<Gates_8cpp__incl.pdf, id=3323, 335.2525pt x 325.215pt>
+File: Gates_8cpp__incl.pdf Graphic file (type pdf)
+<use Gates_8cpp__incl.pdf>
+Package pdftex.def Info: Gates_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 334.0pt x 323.99841pt.
+ [134])
+(./InputHandler_8cpp.tex <./InputHandler_8cpp__incl.pdf>
+<InputHandler_8cpp__incl.pdf, id=3345, 276.03125pt x 212.795pt>
+File: InputHandler_8cpp__incl.pdf Graphic file (type pdf)
+<use InputHandler_8cpp__incl.pdf>
+Package pdftex.def Info: InputHandler_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 275.0pt x 212.02167pt.
+ [135]) (./LED_8cpp.tex <./LED_8cpp__incl.pdf>
+<LED_8cpp__incl.pdf, id=3367, 232.87pt x 212.795pt>
+File: LED_8cpp__incl.pdf Graphic file (type pdf)
+<use LED_8cpp__incl.pdf>
+Package pdftex.def Info: LED_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 232.0pt x 212.00868pt.
+ [136]) (./LEDController_8cpp.tex <./LEDController_8cpp__incl.pdf>
+<LEDController_8cpp__incl.pdf, id=3390, 200.75pt x 325.215pt>
+File: LEDController_8cpp__incl.pdf Graphic file (type pdf)
+<use LEDController_8cpp__incl.pdf>
+Package pdftex.def Info: LEDController_8cpp__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 200.0pt x 324.02322pt.
+) (./LEDs_8cpp.tex [137] <./LEDs_8cpp__incl.pdf>
+<LEDs_8cpp__incl.pdf, id=3410, 300.12125pt x 269.005pt>
+File: LEDs_8cpp__incl.pdf Graphic file (type pdf)
+<use LEDs_8cpp__incl.pdf>
+Package pdftex.def Info: LEDs_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 299.0pt x 268.0233pt.
+ [138])
+(./main_8cpp.tex <./main_8cpp__incl.pdf>
+<main_8cpp__incl.pdf, id=3429, 1391.1975pt x 493.845pt>
+File: main_8cpp__incl.pdf Graphic file (type pdf)
+<use main_8cpp__incl.pdf>
+Package pdftex.def Info: main_8cpp__incl.pdf  used on input line 25.
+(pdftex.def)             Requested size: 350.0pt x 124.23709pt.
+ [139] [140] [141] [142] [143] [144]
+[145]
+Underfull \hbox (badness 10000) in paragraph at lines 360--361
+\T1/pcr/m/n/8 std[]::vector$\OML/cmm/m/it/8 <$\T1/pcr/m/n/8 int$\OML/cmm/m/it/8
+ >$ \T1/pcr/m/n/8 musical[]Intervals = {1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 6
+4, 72, 96, 128,
+ []
+
+[146]) (./MIDIHandler_8cpp.tex <./MIDIHandler_8cpp__incl.pdf
+
+pdfTeX warning: pdflatex (file ./MIDIHandler_8cpp__incl.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+>
+<MIDIHandler_8cpp__incl.pdf, id=3764, 846.16125pt x 437.635pt>
+File: MIDIHandler_8cpp__incl.pdf Graphic file (type pdf)
+<use MIDIHandler_8cpp__incl.pdf>
+Package pdftex.def Info: MIDIHandler_8cpp__incl.pdf  used on input line 12.
+(pdftex.def)             Requested size: 350.0pt x 181.01413pt.
+ [147]) (./Mode_8cpp.tex) (./Mode0_8cpp.tex <./Mode0_8cpp__incl.pdf
+
+pdfTeX warning: pdflatex (file ./Mode0_8cpp__incl.pdf): PDF inclusion: multiple
+ pdfs with page group included in a single page
+>
+<Mode0_8cpp__incl.pdf, id=3788, 851.18pt x 493.845pt>
+File: Mode0_8cpp__incl.pdf Graphic file (type pdf)
+<use Mode0_8cpp__incl.pdf>
+Package pdftex.def Info: Mode0_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 350.0pt x 203.06552pt.
+ [148]) (./Mode1_8cpp.tex <./Mode1_8cpp__incl.pdf>
+<Mode1_8cpp__incl.pdf, id=3814, 889.3225pt x 493.845pt>
+File: Mode1_8cpp__incl.pdf Graphic file (type pdf)
+<use Mode1_8cpp__incl.pdf>
+Package pdftex.def Info: Mode1_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 350.0pt x 194.35452pt.
+ [149]) (./Mode2_8cpp.tex <./Mode2_8cpp__incl.pdf>
+<Mode2_8cpp__incl.pdf, id=3840, 899.36pt x 493.845pt>
+File: Mode2_8cpp__incl.pdf Graphic file (type pdf)
+<use Mode2_8cpp__incl.pdf>
+Package pdftex.def Info: Mode2_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 350.0pt x 192.18431pt.
+ [150]) (./ModeSelector_8cpp.tex <./ModeSelector_8cpp__incl.pdf>
+<ModeSelector_8cpp__incl.pdf, id=3863, 578.16pt x 381.425pt>
+File: ModeSelector_8cpp__incl.pdf Graphic file (type pdf)
+<use ModeSelector_8cpp__incl.pdf>
+Package pdftex.def Info: ModeSelector_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 350.0pt x 230.8996pt.
+ [151]) (./Pin_8cpp.tex <./Pin_8cpp__incl.pdf>
+<Pin_8cpp__incl.pdf, id=3885, 235.88126pt x 212.795pt>
+File: Pin_8cpp__incl.pdf Graphic file (type pdf)
+<use Pin_8cpp__incl.pdf>
+Package pdftex.def Info: Pin_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 235.0pt x 212.0022pt.
+ [152])
+(./ResetButton_8cpp.tex <./ResetButton_8cpp__incl.pdf>
+<ResetButton_8cpp__incl.pdf, id=3907, 329.23pt x 269.005pt>
+File: ResetButton_8cpp__incl.pdf Graphic file (type pdf)
+<use ResetButton_8cpp__incl.pdf>
+Package pdftex.def Info: ResetButton_8cpp__incl.pdf  used on input line 9.
+(pdftex.def)             Requested size: 328.0pt x 268.00688pt.
+) (./SPDTSwitch_8cpp.tex
+[153] <./SPDTSwitch_8cpp__incl.pdf>
+<SPDTSwitch_8cpp__incl.pdf, id=3925, 281.05pt x 212.795pt>
+File: SPDTSwitch_8cpp__incl.pdf Graphic file (type pdf)
+<use SPDTSwitch_8cpp__incl.pdf>
+Package pdftex.def Info: SPDTSwitch_8cpp__incl.pdf  used on input line 11.
+(pdftex.def)             Requested size: 280.0pt x 212.01193pt.
+) [154]
+No file refman.ind.
+
+Package longtable Warning: Table widths have changed. Rerun LaTeX.
+
+(../pdf/refman.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `refman.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `refman.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  4A8554EA6DA051A5AA73F4EB430ACCC9;121249.
+ ) 
+Here is how much of TeX's memory you used:
+ 20194 strings out of 480247
+ 365766 string characters out of 5896152
+ 589090 words of memory out of 5000000
+ 36237 multiletter control sequences out of 15000+600000
+ 519558 words of font info for 94 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 99i,16n,117p,1340b,626s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/cour
+ier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/urw/helvetic/uhvb8ac.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on ../pdf/refman.pdf (156 pages, 1150669 bytes).
+PDF statistics:
+ 4295 PDF objects out of 4296 (max. 8388607)
+ 3762 compressed objects within 38 object streams
+ 1461 named destinations out of 1728 (max. 500000)
+ 441 words of extra memory for PDF output out of 10000 (max. 10000000)
+
