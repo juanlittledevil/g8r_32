@@ -26,10 +26,10 @@ jobs:
           ls -la docs
           ls -la docs/html
           ls -la docs/markdown
-      # - name: Commit Doc Files
-      #   run: |
-      #     git add docs
-      #     git config --global user.name 'juanlittledevil'
-      #     git config --global user.email 'juanlittledevil@users.noreply.github.com'
-      #     git commit -m "Automated documentation"
-      #     git push
+      - name: Commit Doc Files
+        run: |
+          git add docs
+          git config --global user.name 'juanlittledevil'
+          git config --global user.email 'juanlittledevil@users.noreply.github.com'
+          git commit -m "Automated documentation"
+          git push
