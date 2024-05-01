@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classDebug" kind="class" language="C++" prot="public">
+    <compoundname>Debug</compoundname>
+    <includes refid="Debug_8h" local="no">Debug.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classDebug_1ab28cb9370dfa995d86f17034a9f184d6" prot="public" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool Debug::isEnabled</definition>
+        <argsstring></argsstring>
+        <name>isEnabled</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Debug.h" line="9" column="17" bodyfile="include/Debug.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classDebug_1aec89c31d051cd6de448ccf9a8f29a83d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Debug::print</definition>
+        <argsstring>(const char *file, int line, const char *func, const String &amp;message)</argsstring>
+        <name>print</name>
+        <param>
+          <type>const char *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>const String &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Debug.h" line="8" column="17" bodyfile="src/Debug.cpp" bodystart="4" bodyend="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Debug</label>
+        <link refid="classDebug"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/Debug.h" line="6" column="1" bodyfile="include/Debug.h" bodystart="6" bodyend="10"/>
+    <listofallmembers>
+      <member refid="classDebug_1ab28cb9370dfa995d86f17034a9f184d6" prot="public" virt="non-virtual"><scope>Debug</scope><name>isEnabled</name></member>
+      <member refid="classDebug_1aec89c31d051cd6de448ccf9a8f29a83d" prot="public" virt="non-virtual"><scope>Debug</scope><name>print</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

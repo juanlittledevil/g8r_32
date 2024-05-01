@@ -1,0 +1,530 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classMIDIHandler" kind="class" language="C++" prot="public">
+    <compoundname>MIDIHandler</compoundname>
+    <includes refid="MIDIHandler_8h" local="no">MIDIHandler.h</includes>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classMIDIHandler_1a3d8701182deb4d7da29d1c3dd636b09d" prot="private" static="yes" mutable="no">
+        <type><ref refid="classMIDIHandler" kindref="compound">MIDIHandler</ref> *</type>
+        <definition>MIDIHandler * MIDIHandler::instance</definition>
+        <argsstring></argsstring>
+        <name>instance</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="32" column="24" bodyfile="include/MIDIHandler.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMIDIHandler_1a721a9b1ff8c56a43ac4bebc320e510ab" prot="private" static="yes" mutable="no">
+        <type>byte</type>
+        <definition>byte MIDIHandler::confirmedChannel</definition>
+        <argsstring></argsstring>
+        <name>confirmedChannel</name>
+        <initializer>= 9</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="39" column="17" bodyfile="include/MIDIHandler.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMIDIHandler_1aa4b65e5bb6d15ad16f1a81b71ad68032" prot="private" static="no" mutable="no">
+        <type>midi::SerialMIDI&lt; HardwareSerial &gt;</type>
+        <definition>midi::SerialMIDI&lt;HardwareSerial&gt; MIDIHandler::midiSerial</definition>
+        <argsstring></argsstring>
+        <name>midiSerial</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="33" column="22" bodyfile="include/MIDIHandler.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMIDIHandler_1ae40e99be5a079eed6e440731ae1ef93e" prot="private" static="no" mutable="no">
+        <type>midi::MidiInterface&lt; midi::SerialMIDI&lt; HardwareSerial &gt; &gt;</type>
+        <definition>midi::MidiInterface&lt;midi::SerialMIDI&lt;HardwareSerial&gt; &gt; MIDIHandler::midi</definition>
+        <argsstring></argsstring>
+        <name>midi</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="34" column="25" bodyfile="include/MIDIHandler.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMIDIHandler_1a4d9d86bb2edeedb03de885327a14aaf1" prot="private" static="no" mutable="no">
+        <type><ref refid="classEurorackClock" kindref="compound">EurorackClock</ref> &amp;</type>
+        <definition>EurorackClock&amp; MIDIHandler::clock</definition>
+        <argsstring></argsstring>
+        <name>clock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="35" column="19" bodyfile="include/MIDIHandler.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMIDIHandler_1a5d8146fcf03b33ceca39730c382f989c" prot="private" static="no" mutable="no">
+        <type>byte</type>
+        <definition>byte MIDIHandler::channel</definition>
+        <argsstring></argsstring>
+        <name>channel</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="36" column="10" bodyfile="include/MIDIHandler.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMIDIHandler_1a6e7403817e27f065202890151901ab12" prot="private" static="no" mutable="no">
+        <type><ref refid="classGates" kindref="compound">Gates</ref> &amp;</type>
+        <definition>Gates&amp; MIDIHandler::gates</definition>
+        <argsstring></argsstring>
+        <name>gates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="37" column="11" bodyfile="include/MIDIHandler.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMIDIHandler_1af21335eb5ef193127459c58f068ebca7" prot="private" static="no" mutable="no">
+        <type><ref refid="classLEDs" kindref="compound">LEDs</ref> &amp;</type>
+        <definition>LEDs&amp; MIDIHandler::leds</definition>
+        <argsstring></argsstring>
+        <name>leds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="38" column="10" bodyfile="include/MIDIHandler.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMIDIHandler_1a111128982faa1b9ab120c93a952bb0c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MIDIHandler::MIDIHandler</definition>
+        <argsstring>(HardwareSerial &amp;serial, EurorackClock &amp;clock, Gates &amp;gates, LEDs &amp;leds)</argsstring>
+        <name>MIDIHandler</name>
+        <param>
+          <type>HardwareSerial &amp;</type>
+          <declname>serial</declname>
+        </param>
+        <param>
+          <type><ref refid="classEurorackClock" kindref="compound">EurorackClock</ref> &amp;</type>
+          <declname>clock</declname>
+        </param>
+        <param>
+          <type><ref refid="classGates" kindref="compound">Gates</ref> &amp;</type>
+          <declname>gates</declname>
+        </param>
+        <param>
+          <type><ref refid="classLEDs" kindref="compound">LEDs</ref> &amp;</type>
+          <declname>leds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="11" column="5" bodyfile="src/MIDIHandler.cpp" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1aafab0b47b4d8293f93373cba2aa41129" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="12" column="10" bodyfile="src/MIDIHandler.cpp" bodystart="23" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1a45018066c1aaefbbd668db1339fba882" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::handleMidiMessage</definition>
+        <argsstring>()</argsstring>
+        <name>handleMidiMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="13" column="10" bodyfile="src/MIDIHandler.cpp" bodystart="37" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1ab4005150c6d9387f8df78dc1d1b17d45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::setChannel</definition>
+        <argsstring>(byte channel)</argsstring>
+        <name>setChannel</name>
+        <param>
+          <type>byte</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="14" column="10" bodyfile="src/MIDIHandler.cpp" bodystart="134" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1a725f296f31f0c3ae7805cbcfe9f5ee90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::setMode</definition>
+        <argsstring>(int mode)</argsstring>
+        <name>setMode</name>
+        <param>
+          <type>int</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="15" column="10" bodyfile="src/MIDIHandler.cpp" bodystart="110" bodyend="132"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classMIDIHandler_1a55a9edcae2619289d0ac93e3c517cde6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::handleClock</definition>
+        <argsstring>()</argsstring>
+        <name>handleClock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="18" column="17" bodyfile="src/MIDIHandler.cpp" bodystart="45" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1a54da5c6224ba69e13f9abbfa20a106dc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::handleStart</definition>
+        <argsstring>()</argsstring>
+        <name>handleStart</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="19" column="17" bodyfile="src/MIDIHandler.cpp" bodystart="50" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1a1b8c0df6a88955015079015f7d31e5dc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::handleStop</definition>
+        <argsstring>()</argsstring>
+        <name>handleStop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="20" column="17" bodyfile="src/MIDIHandler.cpp" bodystart="55" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1a9a363b48740934d0e9e9ca316c7af8ca" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::handleContinue</definition>
+        <argsstring>()</argsstring>
+        <name>handleContinue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="21" column="17" bodyfile="src/MIDIHandler.cpp" bodystart="60" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1a326ea56e31b41936a1e43c46954bab5b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::handleMode0NoteOn</definition>
+        <argsstring>(byte channel, byte pitch, byte velocity)</argsstring>
+        <name>handleMode0NoteOn</name>
+        <param>
+          <type>byte</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>pitch</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="22" column="17" bodyfile="src/MIDIHandler.cpp" bodystart="65" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1aa80471de6d0b39a55bc221f02a426644" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::handleMode0NoteOff</definition>
+        <argsstring>(byte channel, byte pitch, byte velocity)</argsstring>
+        <name>handleMode0NoteOff</name>
+        <param>
+          <type>byte</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>pitch</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="23" column="17" bodyfile="src/MIDIHandler.cpp" bodystart="70" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1a49bacf4eaf9110d8a342bdc0cc86ca44" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::handleMode1NoteOn</definition>
+        <argsstring>(byte channel, byte pitch, byte velocity)</argsstring>
+        <name>handleMode1NoteOn</name>
+        <param>
+          <type>byte</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>pitch</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="24" column="17" bodyfile="src/MIDIHandler.cpp" bodystart="75" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1a92e2a2a1d49df9778b02a8a9c3792a11" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::handleMode1NoteOff</definition>
+        <argsstring>(byte channel, byte pitch, byte velocity)</argsstring>
+        <name>handleMode1NoteOff</name>
+        <param>
+          <type>byte</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>pitch</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="25" column="17" bodyfile="src/MIDIHandler.cpp" bodystart="89" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1a19cc82f664b2930415be7297d34b7c03" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::handleMode2NoteOn</definition>
+        <argsstring>(byte channel, byte pitch, byte velocity)</argsstring>
+        <name>handleMode2NoteOn</name>
+        <param>
+          <type>byte</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>pitch</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="26" column="17" bodyfile="src/MIDIHandler.cpp" bodystart="94" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classMIDIHandler_1a1e865329487a6882bea7dbad7041133e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MIDIHandler::handleMode2NoteOff</definition>
+        <argsstring>(byte channel, byte pitch, byte velocity)</argsstring>
+        <name>handleMode2NoteOff</name>
+        <param>
+          <type>byte</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>pitch</declname>
+        </param>
+        <param>
+          <type>byte</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/MIDIHandler.h" line="27" column="17" bodyfile="src/MIDIHandler.cpp" bodystart="106" bodyend="108"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>OutputPin</label>
+        <link refid="classOutputPin"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>ClockState</label>
+        <link refid="structClockState"/>
+      </node>
+      <node id="5">
+        <label>Pin</label>
+        <link refid="classPin"/>
+      </node>
+      <node id="6">
+        <label>LEDs</label>
+        <link refid="classLEDs"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>-leds</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>EurorackClock</label>
+        <link refid="classEurorackClock"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>-gates</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>-externalClock</edgelabel>
+          <edgelabel>-resetButton</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>-leds</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>-tempoLed</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>-clockState</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>-instance</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>InputPin</label>
+        <link refid="classInputPin"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>MIDIHandler</label>
+        <link refid="classMIDIHandler"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>-gates</edgelabel>
+        </childnode>
+        <childnode refid="1" relation="usage">
+          <edgelabel>-instance</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>-leds</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>-clock</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>LED</label>
+        <link refid="classLED"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Gates</label>
+        <link refid="classGates"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>-gateArray</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Gate</label>
+        <link refid="classGate"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/MIDIHandler.h" line="9" column="1" bodyfile="include/MIDIHandler.h" bodystart="9" bodyend="41"/>
+    <listofallmembers>
+      <member refid="classMIDIHandler_1aafab0b47b4d8293f93373cba2aa41129" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>begin</name></member>
+      <member refid="classMIDIHandler_1a5d8146fcf03b33ceca39730c382f989c" prot="private" virt="non-virtual"><scope>MIDIHandler</scope><name>channel</name></member>
+      <member refid="classMIDIHandler_1a4d9d86bb2edeedb03de885327a14aaf1" prot="private" virt="non-virtual"><scope>MIDIHandler</scope><name>clock</name></member>
+      <member refid="classMIDIHandler_1a721a9b1ff8c56a43ac4bebc320e510ab" prot="private" virt="non-virtual"><scope>MIDIHandler</scope><name>confirmedChannel</name></member>
+      <member refid="classMIDIHandler_1a6e7403817e27f065202890151901ab12" prot="private" virt="non-virtual"><scope>MIDIHandler</scope><name>gates</name></member>
+      <member refid="classMIDIHandler_1a55a9edcae2619289d0ac93e3c517cde6" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>handleClock</name></member>
+      <member refid="classMIDIHandler_1a9a363b48740934d0e9e9ca316c7af8ca" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>handleContinue</name></member>
+      <member refid="classMIDIHandler_1a45018066c1aaefbbd668db1339fba882" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>handleMidiMessage</name></member>
+      <member refid="classMIDIHandler_1aa80471de6d0b39a55bc221f02a426644" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>handleMode0NoteOff</name></member>
+      <member refid="classMIDIHandler_1a326ea56e31b41936a1e43c46954bab5b" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>handleMode0NoteOn</name></member>
+      <member refid="classMIDIHandler_1a92e2a2a1d49df9778b02a8a9c3792a11" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>handleMode1NoteOff</name></member>
+      <member refid="classMIDIHandler_1a49bacf4eaf9110d8a342bdc0cc86ca44" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>handleMode1NoteOn</name></member>
+      <member refid="classMIDIHandler_1a1e865329487a6882bea7dbad7041133e" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>handleMode2NoteOff</name></member>
+      <member refid="classMIDIHandler_1a19cc82f664b2930415be7297d34b7c03" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>handleMode2NoteOn</name></member>
+      <member refid="classMIDIHandler_1a54da5c6224ba69e13f9abbfa20a106dc" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>handleStart</name></member>
+      <member refid="classMIDIHandler_1a1b8c0df6a88955015079015f7d31e5dc" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>handleStop</name></member>
+      <member refid="classMIDIHandler_1a3d8701182deb4d7da29d1c3dd636b09d" prot="private" virt="non-virtual"><scope>MIDIHandler</scope><name>instance</name></member>
+      <member refid="classMIDIHandler_1af21335eb5ef193127459c58f068ebca7" prot="private" virt="non-virtual"><scope>MIDIHandler</scope><name>leds</name></member>
+      <member refid="classMIDIHandler_1ae40e99be5a079eed6e440731ae1ef93e" prot="private" virt="non-virtual"><scope>MIDIHandler</scope><name>midi</name></member>
+      <member refid="classMIDIHandler_1a111128982faa1b9ab120c93a952bb0c3" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>MIDIHandler</name></member>
+      <member refid="classMIDIHandler_1aa4b65e5bb6d15ad16f1a81b71ad68032" prot="private" virt="non-virtual"><scope>MIDIHandler</scope><name>midiSerial</name></member>
+      <member refid="classMIDIHandler_1ab4005150c6d9387f8df78dc1d1b17d45" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>setChannel</name></member>
+      <member refid="classMIDIHandler_1a725f296f31f0c3ae7805cbcfe9f5ee90" prot="public" virt="non-virtual"><scope>MIDIHandler</scope><name>setMode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

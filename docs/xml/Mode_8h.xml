@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Mode_8h" kind="file" language="C++">
+    <compoundname>Mode.h</compoundname>
+    <includedby refid="Mode0_8h" local="yes">include/Mode0.h</includedby>
+    <includedby refid="Mode1_8h" local="yes">include/Mode1.h</includedby>
+    <includedby refid="Mode2_8h" local="yes">include/Mode2.h</includedby>
+    <includedby refid="ModeSelector_8h" local="yes">include/ModeSelector.h</includedby>
+    <invincdepgraph>
+      <node id="6">
+        <label>src/Mode1.cpp</label>
+        <link refid="Mode1_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/ModeSelector.cpp</label>
+        <link refid="ModeSelector_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/Mode0.cpp</label>
+        <link refid="Mode0_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/Mode0.h</label>
+        <link refid="Mode0_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/ModeSelector.h</label>
+        <link refid="ModeSelector_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/Mode.h</label>
+        <link refid="Mode_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/Mode2.cpp</label>
+        <link refid="Mode2_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/Mode1.h</label>
+        <link refid="Mode1_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>src/MIDIHandler.cpp</label>
+        <link refid="MIDIHandler_8cpp"/>
+      </node>
+      <node id="3">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/Mode2.h</label>
+        <link refid="Mode2_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>src/EurorackClock.cpp</label>
+        <link refid="EurorackClock_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMode" prot="public">Mode</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>MODE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MODE_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="classMode" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMode" kindref="compound">Mode</ref><sp/>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="6" refid="classMode_1a278db06e9d46fe80d61d577f9f636fa2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode_1a278db06e9d46fe80d61d577f9f636fa2" kindref="member">handleSinglePress</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="7" refid="classMode_1a2f81571d058f2b1ed1592d2041799202" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode_1a2f81571d058f2b1ed1592d2041799202" kindref="member">handleDoublePress</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="8" refid="classMode_1a09a52e2df1ef9fa944875cba99fc57fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode_1a09a52e2df1ef9fa944875cba99fc57fd" kindref="member">handleLongPress</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="9" refid="classMode_1ae6c70842a6e744185300d3b44c06bcaf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode_1ae6c70842a6e744185300d3b44c06bcaf" kindref="member">handlePressReleased</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="10" refid="classMode_1ae272309e82f82d2967c16c80712fed28" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode_1ae272309e82f82d2967c16c80712fed28" kindref="member">handleSelectionStates</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="11" refid="classMode_1a81ad1f477340a92ebf3e5a3ed8427ca1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode_1a81ad1f477340a92ebf3e5a3ed8427ca1" kindref="member">handleResetSinglePress</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="12" refid="classMode_1aaa9b6958129f7d8e8bed339e790131e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode_1aaa9b6958129f7d8e8bed339e790131e0" kindref="member">handleResetDoublePress</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="13" refid="classMode_1ac153613d96bea9fba3e9775e2861ef0e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode_1ac153613d96bea9fba3e9775e2861ef0e" kindref="member">handleResetLongPress</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="14" refid="classMode_1a2b12c8d0ae0d884c8168218c4c167d92" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode_1a2b12c8d0ae0d884c8168218c4c167d92" kindref="member">handleResetPressReleased</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="15" refid="classMode_1acded67ff8ef9572e44948971385701ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode_1acded67ff8ef9572e44948971385701ab" kindref="member">setup</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="16" refid="classMode_1a126f69890bd05de9745561a7f592aabd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode_1a126f69890bd05de9745561a7f592aabd" kindref="member">teardown</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="17" refid="classMode_1aa2c21d9299b9df6912689e4ada8d3102" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode_1aa2c21d9299b9df6912689e4ada8d3102" kindref="member">update</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>MODE_H</highlight></codeline>
+    </programlisting>
+    <location file="include/Mode.h"/>
+  </compounddef>
+</doxygen>

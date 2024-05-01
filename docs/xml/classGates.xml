@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classGates" kind="class" language="C++" prot="public">
+    <compoundname>Gates</compoundname>
+    <includes refid="Gates_8h" local="no">Gates.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classGates_1a8aa11d0f9ea6f809549664f8fd4f7cc2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Gates::numGates</definition>
+        <argsstring></argsstring>
+        <name>numGates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="24" column="9" bodyfile="include/Gates.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGates_1a283f2d50700fad8bdca29e6227e65045" prot="public" static="no" mutable="no">
+        <type>int *</type>
+        <definition>int* Gates::gateCounters</definition>
+        <argsstring></argsstring>
+        <name>gateCounters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="25" column="9" bodyfile="include/Gates.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classGates_1a4864124d3f822dbed79aa467f454fd1a" prot="private" static="no" mutable="no">
+        <type><ref refid="classGate" kindref="compound">Gate</ref> *</type>
+        <definition>Gate* Gates::gateArray</definition>
+        <argsstring></argsstring>
+        <name>gateArray</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="31" column="10" bodyfile="include/Gates.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGates_1aac445c16f01968f9c919815f24f3a0a7" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Gates::selectedGate</definition>
+        <argsstring></argsstring>
+        <name>selectedGate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="32" column="9" bodyfile="include/Gates.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classGates_1af53ba952e2d91b90884fb38fe1f0fa0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Gates::Gates</definition>
+        <argsstring>(std::vector&lt; int &gt; pins, int numGates)</argsstring>
+        <name>Gates</name>
+        <param>
+          <type>std::vector&lt; int &gt;</type>
+          <declname>pins</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>numGates</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="12" column="5" bodyfile="src/Gates.cpp" bodystart="9" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1a7bc98979e801ceb6e28472af3eb0a78f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Gates::~Gates</definition>
+        <argsstring>()</argsstring>
+        <name>~Gates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="13" column="5" bodyfile="src/Gates.cpp" bodystart="20" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1a5a46476bf82868dcfcabb8bb93b14e84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gates::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="14" column="10" bodyfile="src/Gates.cpp" bodystart="25" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1ac2c1de1f4bd52fbedb24f9aae00af9d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gates::setState</definition>
+        <argsstring>(int gateIndex, bool state)</argsstring>
+        <name>setState</name>
+        <param>
+          <type>int</type>
+          <declname>gateIndex</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="15" column="10" bodyfile="src/Gates.cpp" bodystart="31" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1a83389338058653f2defddf694a927d56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Gates::getState</definition>
+        <argsstring>(int gateIndex)</argsstring>
+        <name>getState</name>
+        <param>
+          <type>int</type>
+          <declname>gateIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="16" column="10" bodyfile="src/Gates.cpp" bodystart="37" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1a4c955fec75ce64b0eb76b2fcdca2b7ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gates::turnOnGate</definition>
+        <argsstring>(int index)</argsstring>
+        <name>turnOnGate</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="17" column="10" bodyfile="src/Gates.cpp" bodystart="45" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1a7ab4510b88636eb970d61282353c1eb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gates::turnOffGate</definition>
+        <argsstring>(int index)</argsstring>
+        <name>turnOffGate</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="18" column="10" bodyfile="src/Gates.cpp" bodystart="52" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1a02f76825e2dccc537b4e495b88bbedc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gates::setALLGates</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>setALLGates</name>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="19" column="10" bodyfile="src/Gates.cpp" bodystart="59" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1a4397cba12ab477b8759ccf846b5a909d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gates::update</definition>
+        <argsstring>(unsigned long currentTime)</argsstring>
+        <name>update</name>
+        <param>
+          <type>unsigned long</type>
+          <declname>currentTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="20" column="10" bodyfile="src/Gates.cpp" bodystart="88" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1a6ef8dcff0ca40853f6ec07d20afa1b9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gates::trigger</definition>
+        <argsstring>(int index, unsigned long currentTime)</argsstring>
+        <name>trigger</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>unsigned long</type>
+          <declname>currentTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="21" column="10" bodyfile="src/Gates.cpp" bodystart="66" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1ad2bc306e44f4f9dc025c57cd37e7c97f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gates::setDivision</definition>
+        <argsstring>(int index, int division)</argsstring>
+        <name>setDivision</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>division</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="22" column="10" bodyfile="src/Gates.cpp" bodystart="73" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1a06f6153e686887048497f965599e6ba4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Gates::getDivision</definition>
+        <argsstring>(int index)</argsstring>
+        <name>getDivision</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="23" column="9" bodyfile="src/Gates.cpp" bodystart="80" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1a4c5925d6eaea3c640d7e23f2219d6991" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gates::setSelectedGate</definition>
+        <argsstring>(int gate)</argsstring>
+        <name>setSelectedGate</name>
+        <param>
+          <type>int</type>
+          <declname>gate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="26" column="10" bodyfile="src/Gates.cpp" bodystart="94" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1a18d0602275e88db59021394b4a377151" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Gates::getSelectedGate</definition>
+        <argsstring>()</argsstring>
+        <name>getSelectedGate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="27" column="9" bodyfile="src/Gates.cpp" bodystart="98" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classGates_1a2450c2bb48ab40c0c81b6a717d2e30ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Gates::setGateOnDuration</definition>
+        <argsstring>(int index, int duration)</argsstring>
+        <name>setGateOnDuration</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>duration</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Gates.h" line="28" column="10" bodyfile="src/Gates.cpp" bodystart="103" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>OutputPin</label>
+        <link refid="classOutputPin"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Pin</label>
+        <link refid="classPin"/>
+      </node>
+      <node id="1">
+        <label>Gates</label>
+        <link refid="classGates"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>-gateArray</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Gate</label>
+        <link refid="classGate"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/Gates.h" line="10" column="1" bodyfile="include/Gates.h" bodystart="10" bodyend="34"/>
+    <listofallmembers>
+      <member refid="classGates_1a5a46476bf82868dcfcabb8bb93b14e84" prot="public" virt="non-virtual"><scope>Gates</scope><name>begin</name></member>
+      <member refid="classGates_1a4864124d3f822dbed79aa467f454fd1a" prot="private" virt="non-virtual"><scope>Gates</scope><name>gateArray</name></member>
+      <member refid="classGates_1a283f2d50700fad8bdca29e6227e65045" prot="public" virt="non-virtual"><scope>Gates</scope><name>gateCounters</name></member>
+      <member refid="classGates_1af53ba952e2d91b90884fb38fe1f0fa0d" prot="public" virt="non-virtual"><scope>Gates</scope><name>Gates</name></member>
+      <member refid="classGates_1a06f6153e686887048497f965599e6ba4" prot="public" virt="non-virtual"><scope>Gates</scope><name>getDivision</name></member>
+      <member refid="classGates_1a18d0602275e88db59021394b4a377151" prot="public" virt="non-virtual"><scope>Gates</scope><name>getSelectedGate</name></member>
+      <member refid="classGates_1a83389338058653f2defddf694a927d56" prot="public" virt="non-virtual"><scope>Gates</scope><name>getState</name></member>
+      <member refid="classGates_1a8aa11d0f9ea6f809549664f8fd4f7cc2" prot="public" virt="non-virtual"><scope>Gates</scope><name>numGates</name></member>
+      <member refid="classGates_1aac445c16f01968f9c919815f24f3a0a7" prot="private" virt="non-virtual"><scope>Gates</scope><name>selectedGate</name></member>
+      <member refid="classGates_1a02f76825e2dccc537b4e495b88bbedc4" prot="public" virt="non-virtual"><scope>Gates</scope><name>setALLGates</name></member>
+      <member refid="classGates_1ad2bc306e44f4f9dc025c57cd37e7c97f" prot="public" virt="non-virtual"><scope>Gates</scope><name>setDivision</name></member>
+      <member refid="classGates_1a2450c2bb48ab40c0c81b6a717d2e30ca" prot="public" virt="non-virtual"><scope>Gates</scope><name>setGateOnDuration</name></member>
+      <member refid="classGates_1a4c5925d6eaea3c640d7e23f2219d6991" prot="public" virt="non-virtual"><scope>Gates</scope><name>setSelectedGate</name></member>
+      <member refid="classGates_1ac2c1de1f4bd52fbedb24f9aae00af9d9" prot="public" virt="non-virtual"><scope>Gates</scope><name>setState</name></member>
+      <member refid="classGates_1a6ef8dcff0ca40853f6ec07d20afa1b9b" prot="public" virt="non-virtual"><scope>Gates</scope><name>trigger</name></member>
+      <member refid="classGates_1a7ab4510b88636eb970d61282353c1eb9" prot="public" virt="non-virtual"><scope>Gates</scope><name>turnOffGate</name></member>
+      <member refid="classGates_1a4c955fec75ce64b0eb76b2fcdca2b7ce" prot="public" virt="non-virtual"><scope>Gates</scope><name>turnOnGate</name></member>
+      <member refid="classGates_1a4397cba12ab477b8759ccf846b5a909d" prot="public" virt="non-virtual"><scope>Gates</scope><name>update</name></member>
+      <member refid="classGates_1a7bc98979e801ceb6e28472af3eb0a78f" prot="public" virt="non-virtual"><scope>Gates</scope><name>~Gates</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

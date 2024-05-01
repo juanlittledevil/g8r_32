@@ -1,0 +1,7 @@
+<map id="LEDController" name="LEDController">
+<area shape="rect" id="node1" title=" " alt="" coords="28,1199,205,1511"/>
+<area shape="rect" id="node2" href="$classLEDs.html" title=" " alt="" coords="21,809,212,1136"/>
+<area shape="rect" id="node3" href="$classLED.html" title=" " alt="" coords="5,347,228,747"/>
+<area shape="rect" id="node4" href="$classOutputPin.html" title=" " alt="" coords="27,161,207,297"/>
+<area shape="rect" id="node5" href="$classPin.html" title=" " alt="" coords="51,5,183,112"/>
+</map>

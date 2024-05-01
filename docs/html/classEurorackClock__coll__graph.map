@@ -1,0 +1,11 @@
+<map id="EurorackClock" name="EurorackClock">
+<area shape="rect" id="node1" title=" " alt="" coords="345,1524,592,2423"/>
+<area shape="rect" id="node2" href="$classGates.html" title=" " alt="" coords="5,988,225,1461"/>
+<area shape="rect" id="node3" href="$classGate.html" title=" " alt="" coords="55,584,274,837"/>
+<area shape="rect" id="node4" href="$classOutputPin.html" title=" " alt="" coords="349,161,529,297"/>
+<area shape="rect" id="node8" href="$classLED.html" title=" " alt="" coords="328,511,551,911"/>
+<area shape="rect" id="node5" href="$classPin.html" title=" " alt="" coords="443,5,575,112"/>
+<area shape="rect" id="node6" href="$classInputPin.html" title=" " alt="" coords="485,321,679,487"/>
+<area shape="rect" id="node7" href="$classLEDs.html" title=" " alt="" coords="373,1061,564,1388"/>
+<area shape="rect" id="node9" href="$structClockState.html" title=" " alt="" coords="639,1171,855,1278"/>
+</map>
