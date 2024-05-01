@@ -19,10 +19,10 @@ jobs:
       - name: Run Doxygen
         run: |
           doxygen Doxyfile
-      # - name: Convert to Markdown
-      #   run: |
-      #     [[ -d docs/markdown ]] || mkdir -p docs/markdown
-      #     find docs/html -type f -name "*.html" -exec sh -c 'output_file="${1#docs/html/}"; mkdir -p "docs/markdown/$(dirname "$output_file")"; pandoc -f html -t markdown -o "docs/markdown/${output_file%.html}.md" "$1"' _ {} \;
+      - name: Convert to Markdown
+        run: |
+          [[ -d docs/markdown ]] || mkdir -p docs/markdown
+            find docs/latex -type f -name "*.tex" -exec sh -c 'output_file="${1#docs/latex/}"; mkdir -p "docs/markdown/$(dirname "$output_file")"; pandoc -f latex -t markdown -o "docs/markdown/${output_file%.tex}.md" "$1"' _ {} \;
       - name: Copy to svgs
         run: |
           [[ -d docs/svg ]] || mkdir -p docs/svg

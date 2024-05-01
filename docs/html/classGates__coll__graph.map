@@ -1,6 +1,0 @@
-<map id="Gates" name="Gates">
-<area shape="rect" id="node1" title=" " alt="" coords="5,663,225,1136"/>
-<area shape="rect" id="node2" href="$classGate.html" title=" " alt="" coords="6,347,225,600"/>
-<area shape="rect" id="node3" href="$classOutputPin.html" title=" " alt="" coords="25,161,205,297"/>
-<area shape="rect" id="node4" href="$classPin.html" title=" " alt="" coords="49,5,181,112"/>
-</map>
