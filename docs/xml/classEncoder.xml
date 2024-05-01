@@ -1,0 +1,413 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classEncoder" kind="class" language="C++" prot="public">
+    <compoundname>Encoder</compoundname>
+    <includes refid="Encoder_8h" local="no">Encoder.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213" prot="public" static="no" strong="no">
+        <type></type>
+        <name>Direction</name>
+        <enumvalue id="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213afe45340881c234841bd49db487f0da83" prot="public">
+          <name>NONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213a221066b3a00f02b2eb0880d56aeae3c5" prot="public">
+          <name>CW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213a3cb663af1ad33c99b33695e1f9e71dda" prot="public">
+          <name>CCW</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="10" column="5" bodyfile="include/Encoder.h" bodystart="10" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="enum" id="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9" prot="public" static="no" strong="no">
+        <type></type>
+        <name>ButtonState</name>
+        <enumvalue id="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9aa37f6acf1672fff8b7f8784bfa4600d6" prot="public">
+          <name>OPEN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9a87937597a856f96152bfafd977fd736c" prot="public">
+          <name>PRESSED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="11" column="5" bodyfile="include/Encoder.h" bodystart="11" bodyend="11"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classEncoder_1a0f1cb342a57e8ed3b9a951563c184ceb" prot="private" static="no" mutable="no">
+        <type><ref refid="classInputPin" kindref="compound">InputPin</ref></type>
+        <definition>InputPin Encoder::encCLK</definition>
+        <argsstring></argsstring>
+        <name>encCLK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="23" column="14" bodyfile="include/Encoder.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEncoder_1ad3c8d007a93ea4eae5decab4b7221a47" prot="private" static="no" mutable="no">
+        <type><ref refid="classInputPin" kindref="compound">InputPin</ref></type>
+        <definition>InputPin Encoder::encDT</definition>
+        <argsstring></argsstring>
+        <name>encDT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="24" column="14" bodyfile="include/Encoder.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEncoder_1a07ae142110dd9baafcb60dd140d7f700" prot="private" static="no" mutable="no">
+        <type><ref refid="classInputPin" kindref="compound">InputPin</ref></type>
+        <definition>InputPin Encoder::encButton</definition>
+        <argsstring></argsstring>
+        <name>encButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="25" column="14" bodyfile="include/Encoder.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEncoder_1ade282a3469a7eed777d2212367704624" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Encoder::prevStateCLK</definition>
+        <argsstring></argsstring>
+        <name>prevStateCLK</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="26" column="9" bodyfile="include/Encoder.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEncoder_1a43038f2d33e15f334fa70c0dbf740851" prot="private" static="no" mutable="no">
+        <type><ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9" kindref="member">ButtonState</ref></type>
+        <definition>ButtonState Encoder::buttonState</definition>
+        <argsstring></argsstring>
+        <name>buttonState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="27" column="17" bodyfile="include/Encoder.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEncoder_1a8562593d886f1a1ac75e504c5da3a41f" prot="private" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long Encoder::lastButtonPress</definition>
+        <argsstring></argsstring>
+        <name>lastButtonPress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="28" column="19" bodyfile="include/Encoder.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEncoder_1a82d327bad0b2922d2a3d0ddc1e31e815" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Encoder::pressCount</definition>
+        <argsstring></argsstring>
+        <name>pressCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="29" column="9" bodyfile="include/Encoder.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEncoder_1a090819a377bc20c23a6de1bf7f28cfbc" prot="private" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long Encoder::lastTurnTime</definition>
+        <argsstring></argsstring>
+        <name>lastTurnTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="30" column="19" bodyfile="include/Encoder.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEncoder_1a7880595a1f5480757dd7125e4f47cb41" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Encoder::speed</definition>
+        <argsstring></argsstring>
+        <name>speed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="31" column="9" bodyfile="include/Encoder.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classEncoder_1a3997f1d2b3f4fc9eaf3a2ecc334d98c5" prot="private" static="yes" mutable="no">
+        <type>const unsigned long</type>
+        <definition>const unsigned long Encoder::DOUBLE_PRESS_INTERVAL</definition>
+        <argsstring></argsstring>
+        <name>DOUBLE_PRESS_INTERVAL</name>
+        <initializer>= 500</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="33" column="32" bodyfile="include/Encoder.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEncoder_1ac602a14a72602e3fa9ce103dd447aa8d" prot="private" static="yes" mutable="no">
+        <type>const unsigned long</type>
+        <definition>const unsigned long Encoder::LONG_PRESS_INTERVAL</definition>
+        <argsstring></argsstring>
+        <name>LONG_PRESS_INTERVAL</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="34" column="32" bodyfile="include/Encoder.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classEncoder_1a5c9dd4c4121421f3868a6fae683ce201" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Encoder::Encoder</definition>
+        <argsstring>(int encCLK, int encDT, int encButton)</argsstring>
+        <name>Encoder</name>
+        <param>
+          <type>int</type>
+          <declname>encCLK</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>encDT</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>encButton</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="8" column="5" bodyfile="src/Encoder.cpp" bodystart="7" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classEncoder_1a335f77fa68600c9a348f1cb9dba8ff5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Encoder::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="13" column="10" bodyfile="src/Encoder.cpp" bodystart="21" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classEncoder_1aec7e3503764db573a30979e95570f7c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213" kindref="member">Direction</ref></type>
+        <definition>Encoder::Direction Encoder::readEncoder</definition>
+        <argsstring>()</argsstring>
+        <name>readEncoder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="14" column="15" bodyfile="src/Encoder.cpp" bodystart="27" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classEncoder_1ac2feca5ed5040737fbc9d6282e9b48f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9" kindref="member">ButtonState</ref></type>
+        <definition>Encoder::ButtonState Encoder::readButton</definition>
+        <argsstring>()</argsstring>
+        <name>readButton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="15" column="17" bodyfile="src/Encoder.cpp" bodystart="61" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classEncoder_1a9fee5b6e9c060faa745a308793b984ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Encoder::handleEncoderDirection</definition>
+        <argsstring>(int currentValue, int maxValue, Direction direction)</argsstring>
+        <name>handleEncoderDirection</name>
+        <param>
+          <type>int</type>
+          <declname>currentValue</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>maxValue</declname>
+        </param>
+        <param>
+          <type><ref refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213" kindref="member">Direction</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="16" column="9" bodyfile="src/Encoder.cpp" bodystart="114" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classEncoder_1a26b304caeb9cd561f201d101f62a8964" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Encoder::isButtonLongPressed</definition>
+        <argsstring>()</argsstring>
+        <name>isButtonLongPressed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="17" column="10" bodyfile="src/Encoder.cpp" bodystart="98" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classEncoder_1a70380dcc135f2e564607ab3401708b84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Encoder::isButtonDoublePressed</definition>
+        <argsstring>()</argsstring>
+        <name>isButtonDoublePressed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="18" column="10" bodyfile="src/Encoder.cpp" bodystart="102" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classEncoder_1a08ba46bfb2eb288a47015d63d11e8077" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Encoder::isButtonSinglePressed</definition>
+        <argsstring>()</argsstring>
+        <name>isButtonSinglePressed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="19" column="10" bodyfile="src/Encoder.cpp" bodystart="106" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="classEncoder_1a2924112ef1f2a7ea617926e86ab13538" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Encoder::readSpeed</definition>
+        <argsstring>()</argsstring>
+        <name>readSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Encoder.h" line="20" column="9" bodyfile="src/Encoder.cpp" bodystart="94" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>Pin</label>
+        <link refid="classPin"/>
+      </node>
+      <node id="1">
+        <label>Encoder</label>
+        <link refid="classEncoder"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>-encButton</edgelabel>
+          <edgelabel>-encCLK</edgelabel>
+          <edgelabel>-encDT</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>InputPin</label>
+        <link refid="classInputPin"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/Encoder.h" line="6" column="1" bodyfile="include/Encoder.h" bodystart="6" bodyend="35"/>
+    <listofallmembers>
+      <member refid="classEncoder_1a335f77fa68600c9a348f1cb9dba8ff5b" prot="public" virt="non-virtual"><scope>Encoder</scope><name>begin</name></member>
+      <member refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9" prot="public" virt="non-virtual"><scope>Encoder</scope><name>ButtonState</name></member>
+      <member refid="classEncoder_1a43038f2d33e15f334fa70c0dbf740851" prot="private" virt="non-virtual"><scope>Encoder</scope><name>buttonState</name></member>
+      <member refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213a3cb663af1ad33c99b33695e1f9e71dda" prot="public" virt="non-virtual"><scope>Encoder</scope><name>CCW</name></member>
+      <member refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213a221066b3a00f02b2eb0880d56aeae3c5" prot="public" virt="non-virtual"><scope>Encoder</scope><name>CW</name></member>
+      <member refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213" prot="public" virt="non-virtual"><scope>Encoder</scope><name>Direction</name></member>
+      <member refid="classEncoder_1a3997f1d2b3f4fc9eaf3a2ecc334d98c5" prot="private" virt="non-virtual"><scope>Encoder</scope><name>DOUBLE_PRESS_INTERVAL</name></member>
+      <member refid="classEncoder_1a07ae142110dd9baafcb60dd140d7f700" prot="private" virt="non-virtual"><scope>Encoder</scope><name>encButton</name></member>
+      <member refid="classEncoder_1a0f1cb342a57e8ed3b9a951563c184ceb" prot="private" virt="non-virtual"><scope>Encoder</scope><name>encCLK</name></member>
+      <member refid="classEncoder_1ad3c8d007a93ea4eae5decab4b7221a47" prot="private" virt="non-virtual"><scope>Encoder</scope><name>encDT</name></member>
+      <member refid="classEncoder_1a5c9dd4c4121421f3868a6fae683ce201" prot="public" virt="non-virtual"><scope>Encoder</scope><name>Encoder</name></member>
+      <member refid="classEncoder_1a9fee5b6e9c060faa745a308793b984ab" prot="public" virt="non-virtual"><scope>Encoder</scope><name>handleEncoderDirection</name></member>
+      <member refid="classEncoder_1a70380dcc135f2e564607ab3401708b84" prot="public" virt="non-virtual"><scope>Encoder</scope><name>isButtonDoublePressed</name></member>
+      <member refid="classEncoder_1a26b304caeb9cd561f201d101f62a8964" prot="public" virt="non-virtual"><scope>Encoder</scope><name>isButtonLongPressed</name></member>
+      <member refid="classEncoder_1a08ba46bfb2eb288a47015d63d11e8077" prot="public" virt="non-virtual"><scope>Encoder</scope><name>isButtonSinglePressed</name></member>
+      <member refid="classEncoder_1a8562593d886f1a1ac75e504c5da3a41f" prot="private" virt="non-virtual"><scope>Encoder</scope><name>lastButtonPress</name></member>
+      <member refid="classEncoder_1a090819a377bc20c23a6de1bf7f28cfbc" prot="private" virt="non-virtual"><scope>Encoder</scope><name>lastTurnTime</name></member>
+      <member refid="classEncoder_1ac602a14a72602e3fa9ce103dd447aa8d" prot="private" virt="non-virtual"><scope>Encoder</scope><name>LONG_PRESS_INTERVAL</name></member>
+      <member refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213afe45340881c234841bd49db487f0da83" prot="public" virt="non-virtual"><scope>Encoder</scope><name>NONE</name></member>
+      <member refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9aa37f6acf1672fff8b7f8784bfa4600d6" prot="public" virt="non-virtual"><scope>Encoder</scope><name>OPEN</name></member>
+      <member refid="classEncoder_1a82d327bad0b2922d2a3d0ddc1e31e815" prot="private" virt="non-virtual"><scope>Encoder</scope><name>pressCount</name></member>
+      <member refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9a87937597a856f96152bfafd977fd736c" prot="public" virt="non-virtual"><scope>Encoder</scope><name>PRESSED</name></member>
+      <member refid="classEncoder_1ade282a3469a7eed777d2212367704624" prot="private" virt="non-virtual"><scope>Encoder</scope><name>prevStateCLK</name></member>
+      <member refid="classEncoder_1ac2feca5ed5040737fbc9d6282e9b48f7" prot="public" virt="non-virtual"><scope>Encoder</scope><name>readButton</name></member>
+      <member refid="classEncoder_1aec7e3503764db573a30979e95570f7c5" prot="public" virt="non-virtual"><scope>Encoder</scope><name>readEncoder</name></member>
+      <member refid="classEncoder_1a2924112ef1f2a7ea617926e86ab13538" prot="public" virt="non-virtual"><scope>Encoder</scope><name>readSpeed</name></member>
+      <member refid="classEncoder_1a7880595a1f5480757dd7125e4f47cb41" prot="private" virt="non-virtual"><scope>Encoder</scope><name>speed</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

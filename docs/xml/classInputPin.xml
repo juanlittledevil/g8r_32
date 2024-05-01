@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classInputPin" kind="class" language="C++" prot="public">
+    <compoundname>InputPin</compoundname>
+    <basecompoundref refid="classPin" prot="public" virt="non-virtual">Pin</basecompoundref>
+    <includes refid="Pin_8h" local="no">Pin.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classInputPin_1afecd8c36b767a12c1b557089ff42dd40" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool InputPin::useInternalPullup</definition>
+        <argsstring></argsstring>
+        <name>useInternalPullup</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Pin.h" line="28" column="10" bodyfile="include/Pin.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classInputPin_1a0ded483857a69a873d80f0915deb44db" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool InputPin::useInternalPulldown</definition>
+        <argsstring></argsstring>
+        <name>useInternalPulldown</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Pin.h" line="29" column="10" bodyfile="include/Pin.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classInputPin_1acf74eef6677cb410c9f6534f8ec34005" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>InputPin::InputPin</definition>
+        <argsstring>(int pin)</argsstring>
+        <name>InputPin</name>
+        <param>
+          <type>int</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Pin.h" line="22" column="5" bodyfile="src/Pin.cpp" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputPin_1aaf7f95bbe6d9897e3b21dfa23fc932f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>InputPin::InputPin</definition>
+        <argsstring>(int pin, bool internalPullup, bool internalPulldown)</argsstring>
+        <name>InputPin</name>
+        <param>
+          <type>int</type>
+          <declname>pin</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>internalPullup</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>internalPulldown</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Pin.h" line="23" column="5" bodyfile="src/Pin.cpp" bodystart="28" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputPin_1a32cd882e2f65df5d59f832b5e0cf7169" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void InputPin::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Pin.h" line="24" column="18" bodyfile="src/Pin.cpp" bodystart="37" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classInputPin_1abcb57baddc2f83f5c969959bbec21047" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool InputPin::getState</definition>
+        <argsstring>()</argsstring>
+        <name>getState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Pin.h" line="25" column="18" bodyfile="src/Pin.cpp" bodystart="48" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Pin</label>
+        <link refid="classPin"/>
+      </node>
+      <node id="1">
+        <label>InputPin</label>
+        <link refid="classInputPin"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Pin</label>
+        <link refid="classPin"/>
+      </node>
+      <node id="1">
+        <label>InputPin</label>
+        <link refid="classInputPin"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/Pin.h" line="20" column="1" bodyfile="include/Pin.h" bodystart="20" bodyend="30"/>
+    <listofallmembers>
+      <member refid="classInputPin_1a32cd882e2f65df5d59f832b5e0cf7169" prot="public" virt="virtual"><scope>InputPin</scope><name>begin</name></member>
+      <member refid="classInputPin_1abcb57baddc2f83f5c969959bbec21047" prot="public" virt="virtual"><scope>InputPin</scope><name>getState</name></member>
+      <member refid="classInputPin_1acf74eef6677cb410c9f6534f8ec34005" prot="public" virt="non-virtual"><scope>InputPin</scope><name>InputPin</name></member>
+      <member refid="classInputPin_1aaf7f95bbe6d9897e3b21dfa23fc932f3" prot="public" virt="non-virtual"><scope>InputPin</scope><name>InputPin</name></member>
+      <member refid="classPin_1acf35726490e8ccea7fdeeeb57144bf6d" prot="protected" virt="non-virtual"><scope>InputPin</scope><name>pin</name></member>
+      <member refid="classPin_1a6e2beb63097c3debb9b1db1f425beb5f" prot="public" virt="non-virtual"><scope>InputPin</scope><name>Pin</name></member>
+      <member refid="classPin_1af51a2c85baa1c0387bd5691a808ef1cf" prot="protected" virt="non-virtual"><scope>InputPin</scope><name>state</name></member>
+      <member refid="classInputPin_1a0ded483857a69a873d80f0915deb44db" prot="private" virt="non-virtual"><scope>InputPin</scope><name>useInternalPulldown</name></member>
+      <member refid="classInputPin_1afecd8c36b767a12c1b557089ff42dd40" prot="private" virt="non-virtual"><scope>InputPin</scope><name>useInternalPullup</name></member>
+      <member refid="classPin_1a462c14c45d3d653731dde638aa6e7bb7" prot="public" virt="non-virtual"><scope>InputPin</scope><name>~Pin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
