@@ -1,0 +1,184 @@
+\hypertarget{classLEDs}{}\doxysection{LEDs Class Reference}
+\label{classLEDs}\index{LEDs@{LEDs}}
+
+
+{\ttfamily \#include $<$LEDs.\+h$>$}
+
+
+
+Collaboration diagram for LEDs\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classLEDs__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLEDs_a1bd8cd6dfe54db1248b5749d532e705a}{LEDs}} (std\+::vector$<$ int $>$ \mbox{\hyperlink{main_8cpp_a782432745fd904139737a67cfe18cc45}{pins}}, int \mbox{\hyperlink{classLEDs_a279c7fb7628edf2a73c98313607993d4}{num\+Leds}})
+\item 
+\mbox{\hyperlink{classLEDs_a682bab337039995cc4fc2a7e753a38e5}{$\sim$\+LEDs}} ()
+\item 
+void \mbox{\hyperlink{classLEDs_aa964a9b80d6606286a69f5025f5f857a}{begin}} ()
+\item 
+void \mbox{\hyperlink{classLEDs_a763ea6fd51a29a40ddc0c39a70a4167e}{set\+State}} (int index, bool state)
+\item 
+void \mbox{\hyperlink{classLEDs_a3cbae273cb30c1a09c414e2c1c5fd11d}{set\+State}} (int index, bool state, int \mbox{\hyperlink{main_8cpp_a299ec0c42ccc5a2d79d1739428ac3210}{intensity}})
+\item 
+bool \mbox{\hyperlink{classLEDs_a98711a933b0dc69df40c3d9752a61334}{get\+State}} (int index)
+\item 
+void \mbox{\hyperlink{classLEDs_af2bb823ca5af8a88e7f98f5869b4c706}{set\+All\+Leds}} (bool state)
+\item 
+void \mbox{\hyperlink{classLEDs_a5d00178936fca48853813129e26c5dea}{start\+Blinking}} (int index, unsigned long interval)
+\item 
+void \mbox{\hyperlink{classLEDs_a343cdb24ad5b0ceae3fdf3086db765c5}{stop\+Blinking}} (int index)
+\item 
+void \mbox{\hyperlink{classLEDs_a6cfb124344f67e7246c45e88da7bd47e}{stop\+All\+Blinking}} ()
+\item 
+void \mbox{\hyperlink{classLEDs_aee969eddac897718c3f75c3c24e23aa6}{update\+Blinking}} ()
+\item 
+void \mbox{\hyperlink{classLEDs_a6a8449ad97957877f7cfc6ff9776ad21}{set\+Intensity}} (int index, int \mbox{\hyperlink{main_8cpp_a299ec0c42ccc5a2d79d1739428ac3210}{intensity}})
+\item 
+void \mbox{\hyperlink{classLEDs_a8ea9ceb959da8cde5f7c80542a023ac9}{set\+Allintensity}} (int \mbox{\hyperlink{main_8cpp_a299ec0c42ccc5a2d79d1739428ac3210}{intensity}})
+\item 
+void \mbox{\hyperlink{classLEDs_ab689142c4f9a1f6a8d1deb6e5f3e79e6}{update}} (unsigned long current\+Time)
+\item 
+void \mbox{\hyperlink{classLEDs_af9c6980e1497fca93a2945698156fbe6}{trigger}} (int index, unsigned long current\+Time, bool inverted=false)
+\item 
+void \mbox{\hyperlink{classLEDs_adbb31af7efe7478045f4a260db116af2}{reset\+Inverted}} (int index)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classLEDs_a279c7fb7628edf2a73c98313607993d4}{num\+Leds}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLED}{LED}} $\ast$ \mbox{\hyperlink{classLEDs_a1b4516594fe6c345ead0ebe269d15374}{leds}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLEDs_a1bd8cd6dfe54db1248b5749d532e705a}\label{classLEDs_a1bd8cd6dfe54db1248b5749d532e705a}} 
+\index{LEDs@{LEDs}!LEDs@{LEDs}}
+\index{LEDs@{LEDs}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{LEDs()}{LEDs()}}
+{\footnotesize\ttfamily LEDs\+::\+LEDs (\begin{DoxyParamCaption}\item[{std\+::vector$<$ int $>$}]{pins,  }\item[{int}]{num\+Leds }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_a682bab337039995cc4fc2a7e753a38e5}\label{classLEDs_a682bab337039995cc4fc2a7e753a38e5}} 
+\index{LEDs@{LEDs}!````~LEDs@{$\sim$LEDs}}
+\index{````~LEDs@{$\sim$LEDs}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{$\sim$LEDs()}{~LEDs()}}
+{\footnotesize\ttfamily LEDs\+::$\sim$\+LEDs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLEDs_aa964a9b80d6606286a69f5025f5f857a}\label{classLEDs_aa964a9b80d6606286a69f5025f5f857a}} 
+\index{LEDs@{LEDs}!begin@{begin}}
+\index{begin@{begin}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily void LEDs\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_a98711a933b0dc69df40c3d9752a61334}\label{classLEDs_a98711a933b0dc69df40c3d9752a61334}} 
+\index{LEDs@{LEDs}!getState@{getState}}
+\index{getState@{getState}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily bool LEDs\+::get\+State (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_adbb31af7efe7478045f4a260db116af2}\label{classLEDs_adbb31af7efe7478045f4a260db116af2}} 
+\index{LEDs@{LEDs}!resetInverted@{resetInverted}}
+\index{resetInverted@{resetInverted}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{resetInverted()}{resetInverted()}}
+{\footnotesize\ttfamily void LEDs\+::reset\+Inverted (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_a8ea9ceb959da8cde5f7c80542a023ac9}\label{classLEDs_a8ea9ceb959da8cde5f7c80542a023ac9}} 
+\index{LEDs@{LEDs}!setAllintensity@{setAllintensity}}
+\index{setAllintensity@{setAllintensity}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{setAllintensity()}{setAllintensity()}}
+{\footnotesize\ttfamily void LEDs\+::set\+Allintensity (\begin{DoxyParamCaption}\item[{int}]{intensity }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_af2bb823ca5af8a88e7f98f5869b4c706}\label{classLEDs_af2bb823ca5af8a88e7f98f5869b4c706}} 
+\index{LEDs@{LEDs}!setAllLeds@{setAllLeds}}
+\index{setAllLeds@{setAllLeds}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{setAllLeds()}{setAllLeds()}}
+{\footnotesize\ttfamily void LEDs\+::set\+All\+Leds (\begin{DoxyParamCaption}\item[{bool}]{state }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_a6a8449ad97957877f7cfc6ff9776ad21}\label{classLEDs_a6a8449ad97957877f7cfc6ff9776ad21}} 
+\index{LEDs@{LEDs}!setIntensity@{setIntensity}}
+\index{setIntensity@{setIntensity}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{setIntensity()}{setIntensity()}}
+{\footnotesize\ttfamily void LEDs\+::set\+Intensity (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{int}]{intensity }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_a763ea6fd51a29a40ddc0c39a70a4167e}\label{classLEDs_a763ea6fd51a29a40ddc0c39a70a4167e}} 
+\index{LEDs@{LEDs}!setState@{setState}}
+\index{setState@{setState}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void LEDs\+::set\+State (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{bool}]{state }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_a3cbae273cb30c1a09c414e2c1c5fd11d}\label{classLEDs_a3cbae273cb30c1a09c414e2c1c5fd11d}} 
+\index{LEDs@{LEDs}!setState@{setState}}
+\index{setState@{setState}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void LEDs\+::set\+State (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{bool}]{state,  }\item[{int}]{intensity }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_a5d00178936fca48853813129e26c5dea}\label{classLEDs_a5d00178936fca48853813129e26c5dea}} 
+\index{LEDs@{LEDs}!startBlinking@{startBlinking}}
+\index{startBlinking@{startBlinking}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{startBlinking()}{startBlinking()}}
+{\footnotesize\ttfamily void LEDs\+::start\+Blinking (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{unsigned long}]{interval }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_a6cfb124344f67e7246c45e88da7bd47e}\label{classLEDs_a6cfb124344f67e7246c45e88da7bd47e}} 
+\index{LEDs@{LEDs}!stopAllBlinking@{stopAllBlinking}}
+\index{stopAllBlinking@{stopAllBlinking}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{stopAllBlinking()}{stopAllBlinking()}}
+{\footnotesize\ttfamily void LEDs\+::stop\+All\+Blinking (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_a343cdb24ad5b0ceae3fdf3086db765c5}\label{classLEDs_a343cdb24ad5b0ceae3fdf3086db765c5}} 
+\index{LEDs@{LEDs}!stopBlinking@{stopBlinking}}
+\index{stopBlinking@{stopBlinking}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{stopBlinking()}{stopBlinking()}}
+{\footnotesize\ttfamily void LEDs\+::stop\+Blinking (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_af9c6980e1497fca93a2945698156fbe6}\label{classLEDs_af9c6980e1497fca93a2945698156fbe6}} 
+\index{LEDs@{LEDs}!trigger@{trigger}}
+\index{trigger@{trigger}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{trigger()}{trigger()}}
+{\footnotesize\ttfamily void LEDs\+::trigger (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{unsigned long}]{current\+Time,  }\item[{bool}]{inverted = {\ttfamily false} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_ab689142c4f9a1f6a8d1deb6e5f3e79e6}\label{classLEDs_ab689142c4f9a1f6a8d1deb6e5f3e79e6}} 
+\index{LEDs@{LEDs}!update@{update}}
+\index{update@{update}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void LEDs\+::update (\begin{DoxyParamCaption}\item[{unsigned long}]{current\+Time }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLEDs_aee969eddac897718c3f75c3c24e23aa6}\label{classLEDs_aee969eddac897718c3f75c3c24e23aa6}} 
+\index{LEDs@{LEDs}!updateBlinking@{updateBlinking}}
+\index{updateBlinking@{updateBlinking}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{updateBlinking()}{updateBlinking()}}
+{\footnotesize\ttfamily void LEDs\+::update\+Blinking (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLEDs_a1b4516594fe6c345ead0ebe269d15374}\label{classLEDs_a1b4516594fe6c345ead0ebe269d15374}} 
+\index{LEDs@{LEDs}!leds@{leds}}
+\index{leds@{leds}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{leds}{leds}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLED}{LED}}$\ast$ LEDs\+::leds\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classLEDs_a279c7fb7628edf2a73c98313607993d4}\label{classLEDs_a279c7fb7628edf2a73c98313607993d4}} 
+\index{LEDs@{LEDs}!numLeds@{numLeds}}
+\index{numLeds@{numLeds}!LEDs@{LEDs}}
+\doxysubsubsection{\texorpdfstring{numLeds}{numLeds}}
+{\footnotesize\ttfamily int LEDs\+::num\+Leds}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{LEDs_8h}{LEDs.\+h}}\item 
+src/\mbox{\hyperlink{LEDs_8cpp}{LEDs.\+cpp}}\end{DoxyCompactItemize}
