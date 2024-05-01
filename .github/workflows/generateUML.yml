@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install Doxygen
         run: |
           sudo apt-get install doxygen
@@ -17,20 +17,14 @@ jobs:
           pwd
           ls -la
           doxygen -g Doxyfile
-          echo "PROJECT_NAME = 'G8R'" >> Doxyfile
-          echo "INPUT = src" >> Doxyfile
-          echo "OUTPUT_DIRECTORY = docs" >> Doxyfile
-          echo "GENERATE_LATEX = NO" >> Doxyfile
-          echo "GENERATE_HTML = YES" >> Doxyfile
-          echo "GENERATE_UML = YES" >> Doxyfile
-          echo "GENERATE_CALL_GRAPH = YES" >> Doxyfile
-          echo "CALL_GRAPH = YES" >> Doxyfile
-          echo "CALLER_GRAPH = YES" >> Doxyfile
           ls -la
       - name: Doxyfile
         run: |
           cat Doxyfile
-      - name: Generate Documentation
-        run: | 
-          doxygen Doxyfile
-          ls -la
+      - name: Commit DoxigenFile
+        run: |
+          git add Doxyfile
+          git config --global user.name 'juanlittledevil'
+          git config --global user.email 'juanlittledevil@users.noreply.github.com'
+          git commit -am 'Automated Doxygen File'
+          git push
