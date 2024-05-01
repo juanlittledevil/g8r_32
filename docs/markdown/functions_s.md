@@ -1,0 +1,126 @@
+::: {#top}
+::: {#titlearea}
++-----------------------------------------------------------------------+
+| ::: {#projectname}                                                    |
+| G8R                                                                   |
+| :::                                                                   |
+|                                                                       |
+| ::: {#projectbrief}                                                   |
+| Eurorack MIDI Module with 8 Gate Outputs                              |
+| :::                                                                   |
++-----------------------------------------------------------------------+
+:::
+
+::: {#main-nav}
+:::
+:::
+
+::: {#MSearchSelectWindow onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()" onkeydown="return searchBox.OnSearchSelectKey(event)"}
+:::
+
+::: {#MSearchResultsWindow}
+:::
+
+::: {.contents}
+::: {.textblock}
+Here is a list of all class members with links to the classes they
+belong to:
+:::
+
+### []{#index_s}- s -
+
+-   selectedChannel :
+    [Mode1](classMode1.html#a43973ea688753e2695ec9daa54774e46){.el}
+-   selectedGate :
+    [Gates](classGates.html#aac445c16f01968f9c919815f24f3a0a7){.el} ,
+    [Mode0](classMode0.html#ae791813273bde4c769a69ff84a60f82a){.el}
+-   selectingTempo :
+    [Mode0](classMode0.html#a42f5db2d1e74a2cc249ab9af0d303dde){.el}
+-   setALLGates() :
+    [Gates](classGates.html#a02f76825e2dccc537b4e495b88bbedc4){.el}
+-   setAllintensity() :
+    [LEDs](classLEDs.html#a8ea9ceb959da8cde5f7c80542a023ac9){.el}
+-   setAllLeds() :
+    [LEDs](classLEDs.html#af2bb823ca5af8a88e7f98f5869b4c706){.el}
+-   setChannel() :
+    [MIDIHandler](classMIDIHandler.html#ab4005150c6d9387f8df78dc1d1b17d45){.el}
+-   setCurrentMode() :
+    [ModeSelector](classModeSelector.html#a0232058d131a73a98781552b12a3b696){.el}
+-   setDefaultDivisionIndex() :
+    [Mode0](classMode0.html#aba40b7f6eb84a6e8b9052081c9346e48){.el}
+-   setDivision() :
+    [Gate](classGate.html#a49ac696e28beeb2d158778c5588f872e){.el} ,
+    [Gates](classGates.html#ad2bc306e44f4f9dc025c57cd37e7c97f){.el}
+-   setDivisionPPQN() :
+    [Mode0](classMode0.html#a08f962ccd2bb1a958d8b6816af2af223){.el}
+-   setDutyCycle() :
+    [PWMPin](classPWMPin.html#af7ef7aa814d7635cb2a1b5716823e7f9){.el}
+-   setEncoder() :
+    [ModeSelector](classModeSelector.html#a5b291f549e155bc4f47c35746d966221){.el}
+-   setExternalTempo() :
+    [EurorackClock](classEurorackClock.html#aa911fac3efe50a37cf2355046119461b){.el}
+-   setGateOnDuration() :
+    [Gate](classGate.html#a17f0a9f5f2d7e19367c70d6afd965fa1){.el} ,
+    [Gates](classGates.html#a2450c2bb48ab40c0c81b6a717d2e30ca){.el}
+-   setIntensity() :
+    [LED](classLED.html#a5ccc3bc84dd08271c2b92e7dc395b042){.el} ,
+    [LEDs](classLEDs.html#a6a8449ad97957877f7cfc6ff9776ad21){.el}
+-   setLedController() :
+    [ModeSelector](classModeSelector.html#addf7f39b68e55c83b693da4911bd5fa6){.el}
+-   setLedOnDuration() :
+    [LED](classLED.html#a447a6142872354a57402efe1b766526c){.el}
+-   setMode() :
+    [MIDIHandler](classMIDIHandler.html#a725f296f31f0c3ae7805cbcfe9f5ee90){.el}
+    ,
+    [ModeSelector](classModeSelector.html#a3951bcc3ea04b712d94850920b7b6031){.el}
+-   setPPQN() :
+    [EurorackClock](classEurorackClock.html#a6f6b794fde098d908287afb357d30cb6){.el}
+-   setSelectedGate() :
+    [Gates](classGates.html#a4c5925d6eaea3c640d7e23f2219d6991){.el}
+-   setState() :
+    [Gates](classGates.html#ac2c1de1f4bd52fbedb24f9aae00af9d9){.el} ,
+    [LEDController](classLEDController.html#ab23aa7c21c0b0d98871b13b97ab17520){.el}
+    , [LEDs](classLEDs.html#a3cbae273cb30c1a09c414e2c1c5fd11d){.el} ,
+    [OutputPin](classOutputPin.html#aad0ad1b49fdbab03f702c7fe62dc7903){.el}
+-   setTempo() :
+    [EurorackClock](classEurorackClock.html#a3abcd345bde222e68cd86464ae1de2ae){.el}
+-   setup() :
+    [EurorackClock](classEurorackClock.html#af237ef8da045ffc906547346b8e1e20d){.el}
+    , [Mode0](classMode0.html#a3ddf8efd26e32d22530a1c37630bb341){.el} ,
+    [Mode1](classMode1.html#aa3c75dd038802a4e3ab7381a82cfa0bd){.el} ,
+    [Mode2](classMode2.html#a0cf31cb7e85618022b870d485679c2b9){.el} ,
+    [Mode](classMode.html#acded67ff8ef9572e44948971385701ab){.el}
+-   shouldTriggerClockPulse() :
+    [EurorackClock](classEurorackClock.html#a4af4876927901a6cfc1619d2192fbb55){.el}
+-   singlePressHandled :
+    [Mode0](classMode0.html#a4cf5950c179f5ee11cb79b87af84f5d3){.el} ,
+    [Mode1](classMode1.html#aad6bd19e9779c9fa1e134501a3ef03fe){.el} ,
+    [Mode2](classMode2.html#a88ba8e992c81440f88648812f4b93db4){.el} ,
+    [ModeSelector](classModeSelector.html#aa101ddd545060ae8f98e58f986f86637){.el}
+-   singleResetPressHandled :
+    [Mode0](classMode0.html#ae773b1cc8d0a7a3d3db4153827b2f1cc){.el}
+-   SPDTSwitch() :
+    [SPDTSwitch](classSPDTSwitch.html#a90c160683f2376923bda23a9efbdfe9f){.el}
+-   speed :
+    [Encoder](classEncoder.html#a7880595a1f5480757dd7125e4f47cb41){.el}
+-   start() :
+    [EurorackClock](classEurorackClock.html#a85a00dfdd0cd08c0b3a9d90acc5cc66b){.el}
+-   startBlinking() :
+    [LED](classLED.html#ab8b4d4f8a242125e8bb8f333fea3e1b5){.el} ,
+    [LEDs](classLEDs.html#a5d00178936fca48853813129e26c5dea){.el}
+-   state : [Pin](classPin.html#af51a2c85baa1c0387bd5691a808ef1cf){.el}
+-   stop() :
+    [EurorackClock](classEurorackClock.html#ad92731fd0b8203b283be37fd83ab9e7b){.el}
+-   stopAllBlinking() :
+    [LEDController](classLEDController.html#a8e6acb784fdab8b7545d1e602ecc6ea2){.el}
+    , [LEDs](classLEDs.html#a6cfb124344f67e7246c45e88da7bd47e){.el}
+-   stopBlinking() :
+    [LED](classLED.html#ab604feac943fb6f98970f08bc5e2cd98){.el} ,
+    [LEDController](classLEDController.html#a947daa5c9148f080cb7485613ac5cc60){.el}
+    , [LEDs](classLEDs.html#a343cdb24ad5b0ceae3fdf3086db765c5){.el}
+:::
+
+------------------------------------------------------------------------
+
+[Generated by [![doxygen](doxygen.svg){.footer width="104"
+height="31"}](https://www.doxygen.org/index.html) 1.9.1]{.small}
