@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Encoder_8cpp" kind="file" language="C++">
+    <compoundname>Encoder.cpp</compoundname>
+    <includes refid="Encoder_8h" local="yes">Encoder.h</includes>
+    <includes refid="Debug_8h" local="yes">Debug.h</includes>
+    <includes local="no">Arduino.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>Encoder.h</label>
+        <link refid="Encoder_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Debug.h</label>
+        <link refid="Debug_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Pin.h</label>
+        <link refid="Pin_8h"/>
+      </node>
+      <node id="5">
+        <label>Arduino.h</label>
+      </node>
+      <node id="1">
+        <label>src/Encoder.cpp</label>
+        <link refid="Encoder_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="Encoder_8cpp_1a24fac9ff5bcc1384e1f99ec350941c9a" prot="public" static="no">
+        <name>DEBUG_PRINT</name>
+        <param><defname>message</defname></param>
+        <initializer><ref refid="classDebug_1aec89c31d051cd6de448ccf9a8f29a83d" kindref="member">Debug::print</ref>(__FILE__, __LINE__, __func__, String(message))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Encoder.cpp" line="5" column="9" bodyfile="src/Encoder.cpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Encoder_8h" kindref="compound">Encoder.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Debug_8h" kindref="compound">Debug.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEBUG_PRINT(message)<sp/>Debug::print(__FILE__,<sp/>__LINE__,<sp/>__func__,<sp/>String(message))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><ref refid="classEncoder_1a5c9dd4c4121421f3868a6fae683ce201" kindref="member">Encoder::Encoder</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>clkPin,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dtPin,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>buttonPin)<sp/></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>encCLK(clkPin,<sp/>true,<sp/>false),<sp/></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>encDT(dtPin,<sp/>true,<sp/>false),<sp/></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>encButton(buttonPin,<sp/>true,<sp/>false),<sp/></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>prevStateCLK(encCLK.getState()),<sp/></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>buttonState(OPEN),<sp/></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>lastButtonPress(0),<sp/></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pressCount(0),</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>lastTurnTime(0),</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>speed(1)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Nothing<sp/>to<sp/>do<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1a335f77fa68600c9a348f1cb9dba8ff5b" kindref="member">Encoder::begin</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEncoder_1a0f1cb342a57e8ed3b9a951563c184ceb" kindref="member">encCLK</ref>.<ref refid="classInputPin_1a32cd882e2f65df5d59f832b5e0cf7169" kindref="member">begin</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEncoder_1ad3c8d007a93ea4eae5decab4b7221a47" kindref="member">encDT</ref>.<ref refid="classInputPin_1a32cd882e2f65df5d59f832b5e0cf7169" kindref="member">begin</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEncoder_1a07ae142110dd9baafcb60dd140d7f700" kindref="member">encButton</ref>.<ref refid="classInputPin_1a32cd882e2f65df5d59f832b5e0cf7169" kindref="member">begin</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><ref refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213" kindref="member">Encoder::Direction</ref><sp/><ref refid="classEncoder_1aec7e3503764db573a30979e95570f7c5" kindref="member">Encoder::readEncoder</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>counter<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stepsPerDetent<sp/>=<sp/>2;<sp/></highlight><highlight class="comment">//<sp/>Change<sp/>this<sp/>to<sp/>match<sp/>your<sp/>encoder&apos;s<sp/>resolution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>maxInterval<sp/>=<sp/>300;<sp/></highlight><highlight class="comment">//<sp/>ms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>maxIncrement<sp/>=<sp/>25;<sp/></highlight><highlight class="comment">//<sp/>Change<sp/>this<sp/>to<sp/>match<sp/>your<sp/>desired<sp/>increment</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>curStateCLK<sp/>=<sp/><ref refid="classEncoder_1a0f1cb342a57e8ed3b9a951563c184ceb" kindref="member">encCLK</ref>.<ref refid="classInputPin_1abcb57baddc2f83f5c969959bbec21047" kindref="member">getState</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(curStateCLK<sp/>!=<sp/><ref refid="classEncoder_1ade282a3469a7eed777d2212367704624" kindref="member">prevStateCLK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEncoder_1ade282a3469a7eed777d2212367704624" kindref="member">prevStateCLK</ref><sp/>=<sp/>curStateCLK;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEncoder_1ad3c8d007a93ea4eae5decab4b7221a47" kindref="member">encDT</ref>.<ref refid="classInputPin_1abcb57baddc2f83f5c969959bbec21047" kindref="member">getState</ref>()<sp/>!=<sp/>curStateCLK)<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter++;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(counter<sp/>&gt;=<sp/>stepsPerDetent)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>currentTime<sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>timeDifference<sp/>=<sp/>currentTime<sp/>-<sp/><ref refid="classEncoder_1a090819a377bc20c23a6de1bf7f28cfbc" kindref="member">lastTurnTime</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEncoder_1a090819a377bc20c23a6de1bf7f28cfbc" kindref="member">lastTurnTime</ref><sp/>=<sp/>currentTime;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEncoder_1a7880595a1f5480757dd7125e4f47cb41" kindref="member">speed</ref><sp/>=<sp/>(timeDifference<sp/>&lt;<sp/>maxInterval)<sp/>?<sp/>maxIncrement<sp/>:<sp/>1;<sp/></highlight><highlight class="comment">//<sp/>Adjust<sp/>this<sp/>value<sp/>as<sp/>needed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213a3cb663af1ad33c99b33695e1f9e71dda" kindref="member">CCW</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter++;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(counter<sp/>&gt;=<sp/>stepsPerDetent)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>currentTime<sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>timeDifference<sp/>=<sp/>currentTime<sp/>-<sp/><ref refid="classEncoder_1a090819a377bc20c23a6de1bf7f28cfbc" kindref="member">lastTurnTime</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEncoder_1a090819a377bc20c23a6de1bf7f28cfbc" kindref="member">lastTurnTime</ref><sp/>=<sp/>currentTime;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEncoder_1a7880595a1f5480757dd7125e4f47cb41" kindref="member">speed</ref><sp/>=<sp/>(timeDifference<sp/>&lt;<sp/>maxInterval)<sp/>?<sp/>maxIncrement<sp/>:<sp/>1;<sp/></highlight><highlight class="comment">//<sp/>And<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213a221066b3a00f02b2eb0880d56aeae3c5" kindref="member">CW</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213afe45340881c234841bd49db487f0da83" kindref="member">NONE</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9" kindref="member">Encoder::ButtonState</ref><sp/><ref refid="classEncoder_1ac2feca5ed5040737fbc9d6282e9b48f7" kindref="member">Encoder::readButton</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>lastDebounceTime<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>the<sp/>last<sp/>time<sp/>the<sp/>button<sp/>pin<sp/>was<sp/>toggled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9" kindref="member">ButtonState</ref><sp/>lastButtonState<sp/>=<sp/><ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9aa37f6acf1672fff8b7f8784bfa4600d6" kindref="member">OPEN</ref>;<sp/></highlight><highlight class="comment">//<sp/>the<sp/>last<sp/>button<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>debounceDelay<sp/>=<sp/>40;<sp/></highlight><highlight class="comment">//<sp/>debounce<sp/>time<sp/>in<sp/>milliseconds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9" kindref="member">ButtonState</ref><sp/>reading<sp/>=<sp/>(<ref refid="classEncoder_1a07ae142110dd9baafcb60dd140d7f700" kindref="member">encButton</ref>.<ref refid="classInputPin_1abcb57baddc2f83f5c969959bbec21047" kindref="member">getState</ref>()<sp/>==<sp/>LOW)<sp/>?<sp/><ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9a87937597a856f96152bfafd977fd736c" kindref="member">PRESSED</ref><sp/>:<sp/><ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9aa37f6acf1672fff8b7f8784bfa4600d6" kindref="member">OPEN</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>button<sp/>state<sp/>has<sp/>changed,<sp/>reset<sp/>the<sp/>debouncing<sp/>timer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(reading<sp/>!=<sp/>lastButtonState)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lastDebounceTime<sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((millis()<sp/>-<sp/>lastDebounceTime)<sp/>&gt;<sp/>debounceDelay)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>button<sp/>state<sp/>has<sp/>changed<sp/>and<sp/>the<sp/>debounce<sp/>period<sp/>has<sp/>passed,<sp/>update<sp/>the<sp/>button<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(reading<sp/>!=<sp/><ref refid="classEncoder_1a43038f2d33e15f334fa70c0dbf740851" kindref="member">buttonState</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEncoder_1a43038f2d33e15f334fa70c0dbf740851" kindref="member">buttonState</ref><sp/>=<sp/>reading;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEncoder_1a43038f2d33e15f334fa70c0dbf740851" kindref="member">buttonState</ref><sp/>==<sp/><ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9a87937597a856f96152bfafd977fd736c" kindref="member">PRESSED</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>now<sp/>=<sp/>millis();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(now<sp/>-<sp/><ref refid="classEncoder_1a8562593d886f1a1ac75e504c5da3a41f" kindref="member">lastButtonPress</ref><sp/>&lt;<sp/><ref refid="classEncoder_1a3997f1d2b3f4fc9eaf3a2ecc334d98c5" kindref="member">DOUBLE_PRESS_INTERVAL</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEncoder_1a82d327bad0b2922d2a3d0ddc1e31e815" kindref="member">pressCount</ref>++;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEncoder_1a82d327bad0b2922d2a3d0ddc1e31e815" kindref="member">pressCount</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEncoder_1a8562593d886f1a1ac75e504c5da3a41f" kindref="member">lastButtonPress</ref><sp/>=<sp/>now;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>lastButtonState<sp/>=<sp/>reading;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1a43038f2d33e15f334fa70c0dbf740851" kindref="member">buttonState</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1a2924112ef1f2a7ea617926e86ab13538" kindref="member">Encoder::readSpeed</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1a7880595a1f5480757dd7125e4f47cb41" kindref="member">speed</ref>;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1a26b304caeb9cd561f201d101f62a8964" kindref="member">Encoder::isButtonLongPressed</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1a43038f2d33e15f334fa70c0dbf740851" kindref="member">buttonState</ref><sp/>==<sp/><ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9a87937597a856f96152bfafd977fd736c" kindref="member">PRESSED</ref><sp/>&amp;&amp;<sp/>millis()<sp/>-<sp/><ref refid="classEncoder_1a8562593d886f1a1ac75e504c5da3a41f" kindref="member">lastButtonPress</ref><sp/>&gt;<sp/><ref refid="classEncoder_1ac602a14a72602e3fa9ce103dd447aa8d" kindref="member">LONG_PRESS_INTERVAL</ref>;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1a70380dcc135f2e564607ab3401708b84" kindref="member">Encoder::isButtonDoublePressed</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1a82d327bad0b2922d2a3d0ddc1e31e815" kindref="member">pressCount</ref><sp/>&gt;=<sp/>2;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1a08ba46bfb2eb288a47015d63d11e8077" kindref="member">Encoder::isButtonSinglePressed</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEncoder_1a82d327bad0b2922d2a3d0ddc1e31e815" kindref="member">pressCount</ref><sp/>==<sp/>1<sp/>&amp;&amp;<sp/>millis()<sp/>-<sp/><ref refid="classEncoder_1a8562593d886f1a1ac75e504c5da3a41f" kindref="member">lastButtonPress</ref><sp/>&gt;=<sp/><ref refid="classEncoder_1a3997f1d2b3f4fc9eaf3a2ecc334d98c5" kindref="member">DOUBLE_PRESS_INTERVAL</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEncoder_1a82d327bad0b2922d2a3d0ddc1e31e815" kindref="member">pressCount</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classEncoder_1a9fee5b6e9c060faa745a308793b984ab" kindref="member">Encoder::handleEncoderDirection</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>currentValue,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>maxValue,<sp/>Direction<sp/>direction)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(direction<sp/>==<sp/><ref refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213a221066b3a00f02b2eb0880d56aeae3c5" kindref="member">Encoder::CW</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentValue<sp/>&lt;<sp/>maxValue<sp/>-<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>currentValue<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(direction<sp/>==<sp/><ref refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213a3cb663af1ad33c99b33695e1f9e71dda" kindref="member">Encoder::CCW</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentValue<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>currentValue<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>currentValue;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/Encoder.cpp"/>
+  </compounddef>
+</doxygen>

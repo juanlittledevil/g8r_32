@@ -1,0 +1,419 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Mode0_8cpp" kind="file" language="C++">
+    <compoundname>Mode0.cpp</compoundname>
+    <includes refid="Mode0_8h" local="yes">Mode0.h</includes>
+    <includes refid="Debug_8h" local="yes">Debug.h</includes>
+    <includes local="no">Arduino.h</includes>
+    <incdepgraph>
+      <node id="17">
+        <label>MIDI.h</label>
+      </node>
+      <node id="1">
+        <label>src/Mode0.cpp</label>
+        <link refid="Mode0_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mode0.h</label>
+        <link refid="Mode0_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Gates.h</label>
+        <link refid="Gates_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mode.h</label>
+        <link refid="Mode_8h"/>
+      </node>
+      <node id="13">
+        <label>LEDController.h</label>
+        <link refid="LEDController_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>HardwareTimer.h</label>
+      </node>
+      <node id="12">
+        <label>LED.h</label>
+        <link refid="LED_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Encoder.h</label>
+        <link refid="Encoder_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>Debug.h</label>
+        <link refid="Debug_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>InputHandler.h</label>
+        <link refid="InputHandler_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Pin.h</label>
+        <link refid="Pin_8h"/>
+      </node>
+      <node id="10">
+        <label>vector</label>
+      </node>
+      <node id="14">
+        <label>EurorackClock.h</label>
+        <link refid="EurorackClock_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>ResetButton.h</label>
+        <link refid="ResetButton_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>LEDs.h</label>
+        <link refid="LEDs_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Arduino.h</label>
+      </node>
+      <node id="9">
+        <label>Constants.h</label>
+        <link refid="Constants_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Gate.h</label>
+        <link refid="Gate_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>MIDIHandler.h</label>
+        <link refid="MIDIHandler_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="Mode0_8cpp_1a24fac9ff5bcc1384e1f99ec350941c9a" prot="public" static="no">
+        <name>DEBUG_PRINT</name>
+        <param><defname>message</defname></param>
+        <initializer><ref refid="classDebug_1aec89c31d051cd6de448ccf9a8f29a83d" kindref="member">Debug::print</ref>(__FILE__, __LINE__, __func__, String(message))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/Mode0.cpp" line="5" column="9" bodyfile="src/Mode0.cpp" bodystart="5" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Mode0_8h" kindref="compound">Mode0.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Debug_8h" kindref="compound">Debug.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Arduino.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DEBUG_PRINT(message)<sp/>Debug::print(__FILE__,<sp/>__LINE__,<sp/>__func__,<sp/>String(message))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><ref refid="classMode0_1ac6c68a326df4139c0ea7cae89f79e923" kindref="member">Mode0::Mode0</ref>(<ref refid="classEncoder" kindref="compound">Encoder</ref>&amp;<sp/><ref refid="main_8cpp_1a133a3017d675be921d0d7586eec7bb7c" kindref="member">encoder</ref>,</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classInputHandler" kindref="compound">InputHandler</ref>&amp;<sp/><ref refid="main_8cpp_1ae8f5410196ad7877ecf0fea76491fb22" kindref="member">inputHandler</ref>,</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classGates" kindref="compound">Gates</ref>&amp;<sp/><ref refid="main_8cpp_1aafa551f375cee7e3faaf9390080592a7" kindref="member">gates</ref>,</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLEDController" kindref="compound">LEDController</ref>&amp;<sp/><ref refid="main_8cpp_1af8afe1fb511986724cafc628d457ee07" kindref="member">ledController</ref>,</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMIDIHandler" kindref="compound">MIDIHandler</ref>&amp;<sp/><ref refid="main_8cpp_1af1ad199a35c31bace3d533077689e6df" kindref="member">midiHandler</ref>,</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classResetButton" kindref="compound">ResetButton</ref>&amp;<sp/><ref refid="main_8cpp_1a191753692ee909460b91f43cfd141fa7" kindref="member">resetButton</ref>,</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEurorackClock" kindref="compound">EurorackClock</ref>&amp;<sp/><ref refid="main_8cpp_1a3486ebc2916c9a757b036be4e303c573" kindref="member">clock</ref>)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><sp/><sp/><ref refid="main_8cpp_1a133a3017d675be921d0d7586eec7bb7c" kindref="member">encoder</ref>(<ref refid="main_8cpp_1a133a3017d675be921d0d7586eec7bb7c" kindref="member">encoder</ref>),</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1ae8f5410196ad7877ecf0fea76491fb22" kindref="member">inputHandler</ref>(<ref refid="main_8cpp_1ae8f5410196ad7877ecf0fea76491fb22" kindref="member">inputHandler</ref>),</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1aafa551f375cee7e3faaf9390080592a7" kindref="member">gates</ref>(<ref refid="main_8cpp_1aafa551f375cee7e3faaf9390080592a7" kindref="member">gates</ref>),</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1af8afe1fb511986724cafc628d457ee07" kindref="member">ledController</ref>(<ref refid="main_8cpp_1af8afe1fb511986724cafc628d457ee07" kindref="member">ledController</ref>),</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1af1ad199a35c31bace3d533077689e6df" kindref="member">midiHandler</ref>(<ref refid="main_8cpp_1af1ad199a35c31bace3d533077689e6df" kindref="member">midiHandler</ref>),</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a191753692ee909460b91f43cfd141fa7" kindref="member">resetButton</ref>(<ref refid="main_8cpp_1a191753692ee909460b91f43cfd141fa7" kindref="member">resetButton</ref>),</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8cpp_1a3486ebc2916c9a757b036be4e303c573" kindref="member">clock</ref>(<ref refid="main_8cpp_1a3486ebc2916c9a757b036be4e303c573" kindref="member">clock</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>setDefaultDivisionIndex();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Setup<sp/>and<sp/>teardown<sp/>methods<sp/>are<sp/>meant<sp/>to<sp/>be<sp/>called<sp/>when<sp/>Mode<sp/>selector</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>switches<sp/>modes.<sp/>This<sp/>is<sp/>where<sp/>you<sp/>can<sp/>put<sp/>code<sp/>that<sp/>should<sp/>only<sp/>run</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>once<sp/>when<sp/>the<sp/>mode<sp/>is<sp/>switched<sp/>to.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1a3ddf8efd26e32d22530a1c37630bb341" kindref="member">Mode0::setup</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1ac7c269771d185bfd70c9610aa15d4873" kindref="member">clock</ref>.<ref refid="classEurorackClock_1a85a00dfdd0cd08c0b3a9d90acc5cc66b" kindref="member">start</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1a8d06cb8c1a9d88d5806dd2e431d1e98f" kindref="member">midiHandler</ref>.<ref refid="classMIDIHandler_1a725f296f31f0c3ae7805cbcfe9f5ee90" kindref="member">setMode</ref>(0);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1a898c2e53000955e37ef93983de7c7a54" kindref="member">Mode0::teardown</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1ac7c269771d185bfd70c9610aa15d4873" kindref="member">clock</ref>.<ref refid="classEurorackClock_1ad92731fd0b8203b283be37fd83ab9e7b" kindref="member">stop</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1ad1252cf80f5ab5c7ed8832e333001ecf" kindref="member">ledController</ref>.<ref refid="classLEDController_1aca84215ce851c4abdbfbe9340a2b2ffc" kindref="member">clearAndResetLEDs</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1aba40b7f6eb84a6e8b9052081c9346e48" kindref="member">Mode0::setDefaultDivisionIndex</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="main_8cpp_1a4b2982d5837258bd50d39acde6f57b80" kindref="member">musicalIntervalsSize</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="main_8cpp_1a385d88ba7be4d1867aa11aefaba64f1a" kindref="member">musicalIntervals</ref>[i]<sp/>==<sp/><ref refid="main_8cpp_1adf636984b70d690edd0c4a32836392e0" kindref="member">internalPPQN</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1aaf228318b6eb380ab81e0329010d3825" kindref="member">divisionIndex</ref><sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>update<sp/>method<sp/>is<sp/>meant<sp/>to<sp/>be<sp/>called<sp/>every<sp/>loop<sp/>iteration.<sp/>This<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>where<sp/>you<sp/>can<sp/>put<sp/>code<sp/>that<sp/>should<sp/>run<sp/>every<sp/>loop<sp/>iteration.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1a0e20f81420b0dcd427f5cd9789cfdd4a" kindref="member">Mode0::update</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>MIDI<sp/>messages</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1a8d06cb8c1a9d88d5806dd2e431d1e98f" kindref="member">midiHandler</ref>.<ref refid="classMIDIHandler_1a45018066c1aaefbbd668db1339fba882" kindref="member">handleMidiMessage</ref>();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>button<sp/>presses</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1a27a112beb9ebe4648830681deab01ca0" kindref="member">handleButton</ref>(<ref refid="classMode0_1ab92b642845ecfe37182477b6de246e6f" kindref="member">encoder</ref>.<ref refid="classEncoder_1ac2feca5ed5040737fbc9d6282e9b48f7" kindref="member">readButton</ref>());</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1ae55cb650c7a6ace775a3a796097d603a" kindref="member">handleResetButton</ref>(<ref refid="classMode0_1a2e3f6fa1323a1d17620d99e106fd3d2d" kindref="member">resetButton</ref>.<ref refid="classResetButton_1aee7d2cd933ae28ffa43187582c979a43" kindref="member">readButton</ref>());</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1ab7d9744dbbb6b913d5093a20ba3eba36" kindref="member">handleCVInput</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>selection<sp/>states</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1a1d2a907c0057865467210bf45f45e9c4" kindref="member">handleSelectionStates</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>clock<sp/>tick</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1ac7c269771d185bfd70c9610aa15d4873" kindref="member">clock</ref>.<ref refid="classEurorackClock_1ab526a6829f0489eae35811e86e7e80f8" kindref="member">handleExternalClock</ref>();</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1ac7c269771d185bfd70c9610aa15d4873" kindref="member">clock</ref>.<ref refid="classEurorackClock_1a7881b7e717da092e55e7f8b0961b6ae0" kindref="member">tick</ref>();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1ab7d9744dbbb6b913d5093a20ba3eba36" kindref="member">Mode0::handleCVInput</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>CV<sp/>input</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cvA<sp/>=<sp/><ref refid="classMode0_1a8b44b908b0df280399ed62e46d23453b" kindref="member">inputHandler</ref>.<ref refid="classInputHandler_1a23aa86bfae156881f0cafb5f44993969" kindref="member">readCVA</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>cvB<sp/>=<sp/><ref refid="classMode0_1a8b44b908b0df280399ed62e46d23453b" kindref="member">inputHandler</ref>.<ref refid="classInputHandler_1a95a298cf90c6af9974eec9dd3c52d9a2" kindref="member">readCVB</ref>();</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classDebug_1ab28cb9370dfa995d86f17034a9f184d6" kindref="member">Debug::isEnabled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mode0_8cpp_1a24fac9ff5bcc1384e1f99ec350941c9a" kindref="member">DEBUG_PRINT</ref>(</highlight><highlight class="stringliteral">&quot;CV<sp/>A:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>String(cvA)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>CV<sp/>B:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>String(cvB));</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Other<sp/>mode-specific<sp/>methods</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1a794e94163599470716ea944754ddd337" kindref="member">Mode0::handleEncoder</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213" kindref="member">Encoder::Direction</ref><sp/>direction<sp/>=<sp/><ref refid="classMode0_1ab92b642845ecfe37182477b6de246e6f" kindref="member">encoder</ref>.<ref refid="classEncoder_1aec7e3503764db573a30979e95570f7c5" kindref="member">readEncoder</ref>();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1af335be379b0fd0883e5797b0e0f398ff" kindref="member">inDivisionSelection</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>division<sp/>selection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1aaf228318b6eb380ab81e0329010d3825" kindref="member">divisionIndex</ref><sp/>=<sp/><ref refid="classMode0_1ab92b642845ecfe37182477b6de246e6f" kindref="member">encoder</ref>.<ref refid="classEncoder_1a9fee5b6e9c060faa745a308793b984ab" kindref="member">handleEncoderDirection</ref>(<ref refid="classMode0_1aaf228318b6eb380ab81e0329010d3825" kindref="member">divisionIndex</ref>,<sp/><ref refid="main_8cpp_1a4b2982d5837258bd50d39acde6f57b80" kindref="member">musicalIntervalsSize</ref>,<sp/>direction);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>division<sp/>=<sp/><ref refid="main_8cpp_1a385d88ba7be4d1867aa11aefaba64f1a" kindref="member">musicalIntervals</ref>[<ref refid="classMode0_1aaf228318b6eb380ab81e0329010d3825" kindref="member">divisionIndex</ref>];</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1adc42a2183e9c806749f5a4a6de0fa07e" kindref="member">gates</ref>.<ref refid="classGates_1ad2bc306e44f4f9dc025c57cd37e7c97f" kindref="member">setDivision</ref>(<ref refid="classMode0_1ae791813273bde4c769a69ff84a60f82a" kindref="member">selectedGate</ref>,<sp/>division);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>gate<sp/>selection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1ae791813273bde4c769a69ff84a60f82a" kindref="member">selectedGate</ref><sp/>=<sp/><ref refid="classMode0_1ab92b642845ecfe37182477b6de246e6f" kindref="member">encoder</ref>.<ref refid="classEncoder_1a9fee5b6e9c060faa745a308793b984ab" kindref="member">handleEncoderDirection</ref>(<ref refid="classMode0_1ae791813273bde4c769a69ff84a60f82a" kindref="member">selectedGate</ref>,<sp/><ref refid="classMode0_1adc42a2183e9c806749f5a4a6de0fa07e" kindref="member">gates</ref>.<ref refid="classGates_1a8aa11d0f9ea6f809549664f8fd4f7cc2" kindref="member">numGates</ref><sp/>,<sp/>direction);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1adc42a2183e9c806749f5a4a6de0fa07e" kindref="member">gates</ref>.<ref refid="classGates_1a4c5925d6eaea3c640d7e23f2219d6991" kindref="member">setSelectedGate</ref>(<ref refid="classMode0_1ae791813273bde4c769a69ff84a60f82a" kindref="member">selectedGate</ref>);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1a27a112beb9ebe4648830681deab01ca0" kindref="member">Mode0::handleButton</ref>(<ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9" kindref="member">Encoder::ButtonState</ref><sp/>buttonState)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>the<sp/>encoder<sp/>and<sp/>handle<sp/>button<sp/>presses</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1ab92b642845ecfe37182477b6de246e6f" kindref="member">encoder</ref>.<ref refid="classEncoder_1ac2feca5ed5040737fbc9d6282e9b48f7" kindref="member">readButton</ref>();</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1ab92b642845ecfe37182477b6de246e6f" kindref="member">encoder</ref>.<ref refid="classEncoder_1a26b304caeb9cd561f201d101f62a8964" kindref="member">isButtonLongPressed</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classMode0_1aa5837e66a7d361a00f8799766ee8441e" kindref="member">handleLongPress</ref>();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1ab92b642845ecfe37182477b6de246e6f" kindref="member">encoder</ref>.<ref refid="classEncoder_1a70380dcc135f2e564607ab3401708b84" kindref="member">isButtonDoublePressed</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classMode0_1ab2e88db8ebc6a5c3bfe60d63715870da" kindref="member">handleDoublePress</ref>();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1a6687689798d7b32b2b15232c9c29c49d" kindref="member">doublePressHandled</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}<sp/>else<sp/>if<sp/>(encoder.readButton()<sp/>==<sp/>Encoder::PRESSED<sp/>&amp;&amp;<sp/>!singlePressHandled)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1ab92b642845ecfe37182477b6de246e6f" kindref="member">encoder</ref>.<ref refid="classEncoder_1a08ba46bfb2eb288a47015d63d11e8077" kindref="member">isButtonSinglePressed</ref>()<sp/>&amp;&amp;<sp/>!<ref refid="classMode0_1a4cf5950c179f5ee11cb79b87af84f5d3" kindref="member">singlePressHandled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classMode0_1afc4ad8cc4c9c59838c774c3c72a05f33" kindref="member">handleSinglePress</ref>();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1a4cf5950c179f5ee11cb79b87af84f5d3" kindref="member">singlePressHandled</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1ab92b642845ecfe37182477b6de246e6f" kindref="member">encoder</ref>.<ref refid="classEncoder_1ac2feca5ed5040737fbc9d6282e9b48f7" kindref="member">readButton</ref>()<sp/>==<sp/><ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9aa37f6acf1672fff8b7f8784bfa4600d6" kindref="member">Encoder::OPEN</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classMode0_1a843a9f1c23e45dc2e6b3023d578402e6" kindref="member">handlePressReleased</ref>();</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1a4cf5950c179f5ee11cb79b87af84f5d3" kindref="member">singlePressHandled</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1a6687689798d7b32b2b15232c9c29c49d" kindref="member">doublePressHandled</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1ae55cb650c7a6ace775a3a796097d603a" kindref="member">Mode0::handleResetButton</ref>(<ref refid="classResetButton_1a57b758360f53e09cd135b0fbc18edabd" kindref="member">ResetButton::ButtonState</ref><sp/>buttonState)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1a2e3f6fa1323a1d17620d99e106fd3d2d" kindref="member">resetButton</ref>.<ref refid="classResetButton_1aee7d2cd933ae28ffa43187582c979a43" kindref="member">readButton</ref>();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>reset<sp/>button<sp/>presses</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1a2e3f6fa1323a1d17620d99e106fd3d2d" kindref="member">resetButton</ref>.<ref refid="classResetButton_1a9965e4c38cf275972b825808414188eb" kindref="member">isButtonLongPressed</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classMode0_1a3f1e02184589f15ce99156b58de814ce" kindref="member">handleResetLongPress</ref>();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1a2e3f6fa1323a1d17620d99e106fd3d2d" kindref="member">resetButton</ref>.<ref refid="classResetButton_1addc8f5996ea2d13c1c3f2bb858ced414" kindref="member">isButtonDoublePressed</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classMode0_1a5edace264c12da595e48be504f559d97" kindref="member">handleResetDoublePress</ref>();</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1a35a6460b24e5f6f9480b8f73dae1d24a" kindref="member">doubleResetPressHandled</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1a2e3f6fa1323a1d17620d99e106fd3d2d" kindref="member">resetButton</ref>.<ref refid="classResetButton_1aee7d2cd933ae28ffa43187582c979a43" kindref="member">readButton</ref>()<sp/>==<sp/><ref refid="classEncoder_1a8d10c6f5e558cd9235db9375bf980ab9a87937597a856f96152bfafd977fd736c" kindref="member">Encoder::PRESSED</ref><sp/>&amp;&amp;<sp/>!<ref refid="classMode0_1ae773b1cc8d0a7a3d3db4153827b2f1cc" kindref="member">singleResetPressHandled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}<sp/>else<sp/>if<sp/>(resetButton.isButtonSinglePressed()<sp/>&amp;&amp;<sp/>!singleResetPressHandled)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classMode0_1ab49600e807fdc67b715aa5844e0008a7" kindref="member">handleResetSinglePress</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1ae773b1cc8d0a7a3d3db4153827b2f1cc" kindref="member">singleResetPressHandled</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1a2e3f6fa1323a1d17620d99e106fd3d2d" kindref="member">resetButton</ref>.<ref refid="classResetButton_1aee7d2cd933ae28ffa43187582c979a43" kindref="member">readButton</ref>()<sp/>==<sp/><ref refid="classResetButton_1a57b758360f53e09cd135b0fbc18edabdac0ca9e12a1b0bcf75eac9c5f00d286ef" kindref="member">ResetButton::OPEN</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;<ref refid="classMode0_1aa3ef073cd777560821c68b82405c9696" kindref="member">handleResetPressReleased</ref>();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1ae773b1cc8d0a7a3d3db4153827b2f1cc" kindref="member">singleResetPressHandled</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1a35a6460b24e5f6f9480b8f73dae1d24a" kindref="member">doubleResetPressHandled</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1ab49600e807fdc67b715aa5844e0008a7" kindref="member">Mode0::handleResetSinglePress</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classDebug_1ab28cb9370dfa995d86f17034a9f184d6" kindref="member">Debug::isEnabled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mode0_8cpp_1a24fac9ff5bcc1384e1f99ec350941c9a" kindref="member">DEBUG_PRINT</ref>(</highlight><highlight class="stringliteral">&quot;Reset<sp/>single<sp/>press&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1ac7c269771d185bfd70c9610aa15d4873" kindref="member">clock</ref>.<ref refid="classEurorackClock_1acb69cc2c53c500576df9c12c025db2d1" kindref="member">reset</ref>(<ref refid="classMode0_1ae791813273bde4c769a69ff84a60f82a" kindref="member">selectedGate</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1a5edace264c12da595e48be504f559d97" kindref="member">Mode0::handleResetDoublePress</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classMode0_1a35a6460b24e5f6f9480b8f73dae1d24a" kindref="member">doubleResetPressHandled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classDebug_1ab28cb9370dfa995d86f17034a9f184d6" kindref="member">Debug::isEnabled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mode0_8cpp_1a24fac9ff5bcc1384e1f99ec350941c9a" kindref="member">DEBUG_PRINT</ref>(</highlight><highlight class="stringliteral">&quot;Reset<sp/>double<sp/>press&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1ac7c269771d185bfd70c9610aa15d4873" kindref="member">clock</ref>.<ref refid="classEurorackClock_1acb69cc2c53c500576df9c12c025db2d1" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1a3f1e02184589f15ce99156b58de814ce" kindref="member">Mode0::handleResetLongPress</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1aa3ef073cd777560821c68b82405c9696" kindref="member">Mode0::handleResetPressReleased</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1aa5837e66a7d361a00f8799766ee8441e" kindref="member">Mode0::handleLongPress</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Long<sp/>press<sp/>is<sp/>used<sp/>by<sp/>modeSelector,<sp/>so<sp/>don&apos;t<sp/>use<sp/>that<sp/>here.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1ab2e88db8ebc6a5c3bfe60d63715870da" kindref="member">Mode0::handleDoublePress</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enter<sp/>tempo<sp/>selection<sp/>mode<sp/>on<sp/>double<sp/>press</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classMode0_1a6687689798d7b32b2b15232c9c29c49d" kindref="member">doublePressHandled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classDebug_1ab28cb9370dfa995d86f17034a9f184d6" kindref="member">Debug::isEnabled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mode0_8cpp_1a24fac9ff5bcc1384e1f99ec350941c9a" kindref="member">DEBUG_PRINT</ref>(</highlight><highlight class="stringliteral">&quot;Double<sp/>press&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1a42f5db2d1e74a2cc249ab9af0d303dde" kindref="member">selectingTempo</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Exit<sp/>tempo<sp/>selection<sp/>mode<sp/>on<sp/>double<sp/>press</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1a42f5db2d1e74a2cc249ab9af0d303dde" kindref="member">selectingTempo</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enter<sp/>tempo<sp/>selection<sp/>mode<sp/>on<sp/>double<sp/>press</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1a42f5db2d1e74a2cc249ab9af0d303dde" kindref="member">selectingTempo</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1afc4ad8cc4c9c59838c774c3c72a05f33" kindref="member">Mode0::handleSinglePress</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classDebug_1ab28cb9370dfa995d86f17034a9f184d6" kindref="member">Debug::isEnabled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mode0_8cpp_1a24fac9ff5bcc1384e1f99ec350941c9a" kindref="member">DEBUG_PRINT</ref>(</highlight><highlight class="stringliteral">&quot;Single<sp/>press&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1af335be379b0fd0883e5797b0e0f398ff" kindref="member">inDivisionSelection</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>the<sp/>division<sp/>for<sp/>the<sp/>selected<sp/>gate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>division<sp/>=<sp/><ref refid="main_8cpp_1a385d88ba7be4d1867aa11aefaba64f1a" kindref="member">musicalIntervals</ref>[<ref refid="classMode0_1aaf228318b6eb380ab81e0329010d3825" kindref="member">divisionIndex</ref>];</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1adc42a2183e9c806749f5a4a6de0fa07e" kindref="member">gates</ref>.<ref refid="classGates_1ad2bc306e44f4f9dc025c57cd37e7c97f" kindref="member">setDivision</ref>(<ref refid="classMode0_1ae791813273bde4c769a69ff84a60f82a" kindref="member">selectedGate</ref>,<sp/>division);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Toggle<sp/>between<sp/>division<sp/>selection<sp/>and<sp/>gate<sp/>selection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1af335be379b0fd0883e5797b0e0f398ff" kindref="member">inDivisionSelection</ref><sp/>=<sp/>!<ref refid="classMode0_1af335be379b0fd0883e5797b0e0f398ff" kindref="member">inDivisionSelection</ref>;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1a843a9f1c23e45dc2e6b3023d578402e6" kindref="member">Mode0::handlePressReleased</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Mode<sp/>0<sp/>specific<sp/>press<sp/>released<sp/>handling</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1a1d2a907c0057865467210bf45f45e9c4" kindref="member">Mode0::handleSelectionStates</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Mode<sp/>0<sp/>specific<sp/>selection<sp/>state<sp/>handling</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1a42f5db2d1e74a2cc249ab9af0d303dde" kindref="member">selectingTempo</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1a3841d23139d59cdedfe95272724ca71f" kindref="member">handleTempoSelection</ref>();</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1ac7c269771d185bfd70c9610aa15d4873" kindref="member">clock</ref>.<ref refid="classEurorackClock_1a45c55e3e1a02a319cf83c60658bff956" kindref="member">toggleLedOnDuration</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);<sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>selecting<sp/>tempo<sp/>we<sp/>want<sp/>the<sp/>LED<sp/>to<sp/>be<sp/>on<sp/>for<sp/>10ms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1a794e94163599470716ea944754ddd337" kindref="member">handleEncoder</ref>();</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1ac7c269771d185bfd70c9610aa15d4873" kindref="member">clock</ref>.<ref refid="classEurorackClock_1a45c55e3e1a02a319cf83c60658bff956" kindref="member">toggleLedOnDuration</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//<sp/>if<sp/>not<sp/>selecting<sp/>tempo<sp/>we<sp/>want<sp/>the<sp/>LED<sp/>to<sp/>be<sp/>on<sp/>for<sp/>50ms</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMode0_1a3841d23139d59cdedfe95272724ca71f" kindref="member">Mode0::handleTempoSelection</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>tempo<sp/>selection</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213" kindref="member">Encoder::Direction</ref><sp/>direction<sp/>=<sp/><ref refid="classMode0_1ab92b642845ecfe37182477b6de246e6f" kindref="member">encoder</ref>.<ref refid="classEncoder_1aec7e3503764db573a30979e95570f7c5" kindref="member">readEncoder</ref>();</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMode0_1a6f0459d85f755de7775f3de610ee74b3" kindref="member">tempoIncrement</ref><sp/>=<sp/><ref refid="classMode0_1ab92b642845ecfe37182477b6de246e6f" kindref="member">encoder</ref>.<ref refid="classEncoder_1a2924112ef1f2a7ea617926e86ab13538" kindref="member">readSpeed</ref>();</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>currentTempo<sp/>=<sp/><ref refid="classMode0_1ac7c269771d185bfd70c9610aa15d4873" kindref="member">clock</ref>.<ref refid="classEurorackClock_1a3ee132275b852260555b9cd5cf9536c1" kindref="member">getTempo</ref>();</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(direction<sp/>==<sp/><ref refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213a221066b3a00f02b2eb0880d56aeae3c5" kindref="member">Encoder::CW</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMode0_1ae518d870e6feb9faed5463f7e82164a4" kindref="member">externalTempo</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Exit<sp/>external<sp/>tempo<sp/>mode<sp/>and<sp/>increase<sp/>the<sp/>tempo</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1ae518d870e6feb9faed5463f7e82164a4" kindref="member">externalTempo</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classDebug_1ab28cb9370dfa995d86f17034a9f184d6" kindref="member">Debug::isEnabled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mode0_8cpp_1a24fac9ff5bcc1384e1f99ec350941c9a" kindref="member">DEBUG_PRINT</ref>(</highlight><highlight class="stringliteral">&quot;External<sp/>tempo<sp/>mode<sp/>disabled&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentTempo<sp/>+<sp/><ref refid="classMode0_1a6f0459d85f755de7775f3de610ee74b3" kindref="member">tempoIncrement</ref><sp/>&lt;=<sp/><ref refid="classMode0_1a53b9693eeb9e70d2200fa5fa058ff4b9" kindref="member">maxTempo</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1ac7c269771d185bfd70c9610aa15d4873" kindref="member">clock</ref>.<ref refid="classEurorackClock_1a3abcd345bde222e68cd86464ae1de2ae" kindref="member">setTempo</ref>(currentTempo<sp/>+<sp/><ref refid="classMode0_1a6f0459d85f755de7775f3de610ee74b3" kindref="member">tempoIncrement</ref>,<sp/><ref refid="main_8cpp_1adf636984b70d690edd0c4a32836392e0" kindref="member">internalPPQN</ref>);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(direction<sp/>==<sp/><ref refid="classEncoder_1aa7c4648a7ebc9e651c25c2d450a58213a3cb663af1ad33c99b33695e1f9e71dda" kindref="member">Encoder::CCW</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(currentTempo<sp/>-<sp/><ref refid="classMode0_1a6f0459d85f755de7775f3de610ee74b3" kindref="member">tempoIncrement</ref><sp/>&lt;<sp/><ref refid="classMode0_1a931032227e5a4553f7eee3210182dba8" kindref="member">minTempo</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Enter<sp/>external<sp/>tempo<sp/>mode<sp/>when<sp/>the<sp/>tempo<sp/>reaches<sp/>the<sp/>minimum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1ae518d870e6feb9faed5463f7e82164a4" kindref="member">externalTempo</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classDebug_1ab28cb9370dfa995d86f17034a9f184d6" kindref="member">Debug::isEnabled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="Mode0_8cpp_1a24fac9ff5bcc1384e1f99ec350941c9a" kindref="member">DEBUG_PRINT</ref>(</highlight><highlight class="stringliteral">&quot;External<sp/>tempo<sp/>mode<sp/>enabled&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMode0_1ac7c269771d185bfd70c9610aa15d4873" kindref="member">clock</ref>.<ref refid="classEurorackClock_1a3abcd345bde222e68cd86464ae1de2ae" kindref="member">setTempo</ref>(currentTempo<sp/>-<sp/><ref refid="classMode0_1a6f0459d85f755de7775f3de610ee74b3" kindref="member">tempoIncrement</ref>,<sp/><ref refid="main_8cpp_1adf636984b70d690edd0c4a32836392e0" kindref="member">internalPPQN</ref>);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMode0_1ac7c269771d185bfd70c9610aa15d4873" kindref="member">clock</ref>.<ref refid="classEurorackClock_1aa911fac3efe50a37cf2355046119461b" kindref="member">setExternalTempo</ref>(<ref refid="classMode0_1ae518d870e6feb9faed5463f7e82164a4" kindref="member">externalTempo</ref>);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/Mode0.cpp"/>
+  </compounddef>
+</doxygen>

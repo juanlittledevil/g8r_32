@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classOutputPin" kind="class" language="C++" prot="public">
+    <compoundname>OutputPin</compoundname>
+    <basecompoundref refid="classPin" prot="public" virt="non-virtual">Pin</basecompoundref>
+    <derivedcompoundref refid="classGate" prot="public" virt="non-virtual">Gate</derivedcompoundref>
+    <derivedcompoundref refid="classLED" prot="public" virt="non-virtual">LED</derivedcompoundref>
+    <derivedcompoundref refid="classPWMPin" prot="public" virt="non-virtual">PWMPin</derivedcompoundref>
+    <includes refid="Pin_8h" local="no">Pin.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classOutputPin_1a55e1bf208cb8e2f71664a83de0a78c0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>OutputPin::OutputPin</definition>
+        <argsstring>(int pin=-1)</argsstring>
+        <name>OutputPin</name>
+        <param>
+          <type>int</type>
+          <declname>pin</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Pin.h" line="43" column="5" bodyfile="src/Pin.cpp" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classOutputPin_1a26ba6201d8c71d85eec4696558eea0f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void OutputPin::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <reimplementedby refid="classPWMPin_1a5cf9cc1fa8d670f9c594c7d09950f159">begin</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Pin.h" line="44" column="18" bodyfile="src/Pin.cpp" bodystart="77" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classOutputPin_1aad0ad1b49fdbab03f702c7fe62dc7903" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void OutputPin::setState</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>setState</name>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Pin.h" line="45" column="18" bodyfile="src/Pin.cpp" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classOutputPin_1a925d7942850c2a7f17f0152a64db5e34" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool OutputPin::getState</definition>
+        <argsstring>()</argsstring>
+        <name>getState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/Pin.h" line="46" column="18" bodyfile="src/Pin.cpp" bodystart="88" bodyend="90"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>OutputPin</label>
+        <link refid="classOutputPin"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Pin</label>
+        <link refid="classPin"/>
+      </node>
+      <node id="5">
+        <label>PWMPin</label>
+        <link refid="classPWMPin"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>LED</label>
+        <link refid="classLED"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Gate</label>
+        <link refid="classGate"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>OutputPin</label>
+        <link refid="classOutputPin"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Pin</label>
+        <link refid="classPin"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/Pin.h" line="41" column="1" bodyfile="include/Pin.h" bodystart="41" bodyend="47"/>
+    <listofallmembers>
+      <member refid="classOutputPin_1a26ba6201d8c71d85eec4696558eea0f4" prot="public" virt="virtual"><scope>OutputPin</scope><name>begin</name></member>
+      <member refid="classOutputPin_1a925d7942850c2a7f17f0152a64db5e34" prot="public" virt="virtual"><scope>OutputPin</scope><name>getState</name></member>
+      <member refid="classOutputPin_1a55e1bf208cb8e2f71664a83de0a78c0b" prot="public" virt="non-virtual"><scope>OutputPin</scope><name>OutputPin</name></member>
+      <member refid="classPin_1acf35726490e8ccea7fdeeeb57144bf6d" prot="protected" virt="non-virtual"><scope>OutputPin</scope><name>pin</name></member>
+      <member refid="classPin_1a6e2beb63097c3debb9b1db1f425beb5f" prot="public" virt="non-virtual"><scope>OutputPin</scope><name>Pin</name></member>
+      <member refid="classOutputPin_1aad0ad1b49fdbab03f702c7fe62dc7903" prot="public" virt="virtual"><scope>OutputPin</scope><name>setState</name></member>
+      <member refid="classPin_1af51a2c85baa1c0387bd5691a808ef1cf" prot="protected" virt="non-virtual"><scope>OutputPin</scope><name>state</name></member>
+      <member refid="classPin_1a462c14c45d3d653731dde638aa6e7bb7" prot="public" virt="non-virtual"><scope>OutputPin</scope><name>~Pin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
