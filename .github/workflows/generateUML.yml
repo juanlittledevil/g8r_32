@@ -20,6 +20,10 @@ jobs:
       - name: Run Doxygen
         run: |
           doxygen Doxyfile
+      - name: Convert to Markdown
+        run: |
+          pip install doxybook2
+          doxybook2 -i docs/xml -o docs/markdown
       - name: Commit Doc Files
         run: |
           git add docs
