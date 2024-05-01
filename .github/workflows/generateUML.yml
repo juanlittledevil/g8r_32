@@ -21,9 +21,9 @@ jobs:
           pwd
           cd doxybook2
           pwd
-          pip install .
+          # pip install .
           ls -la
-          doxybook2 -i ../docs/xml -o ../docs/markdown
+          # doxybook2 -i ../docs/xml -o ../docs/markdown
       # - name: Commit Doc Files
       #   run: |
       #     git add docs
