@@ -18,16 +18,18 @@ jobs:
           doxygen Doxyfile
       - name: Convert to Markdown
         run: |
+          pwd
           [[ -d docs/markdown ]] || mkdir -p docs/markdown
           find docs/html -type f -name "*.html" -exec sh -c 'pandoc -f html -t markdown -o "docs/markdown/${1%.html}.md" "$1"' _ {} \;
       - name: Verify
         run: |
+          ls -la docs
           ls -la docs/html
           ls -la docs/markdown
-      - name: Commit Doc Files
-        run: |
-          git add docs
-          git config --global user.name 'juanlittledevil'
-          git config --global user.email 'juanlittledevil@users.noreply.github.com'
-          git commit -m "Automated documentation"
-          git push
+      # - name: Commit Doc Files
+      #   run: |
+      #     git add docs
+      #     git config --global user.name 'juanlittledevil'
+      #     git config --global user.email 'juanlittledevil@users.noreply.github.com'
+      #     git commit -m "Automated documentation"
+      #     git push
