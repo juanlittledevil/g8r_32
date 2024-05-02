@@ -2,10 +2,12 @@
 #define MODE_SELECTOR_H
 
 #include <vector>
+#include <EEPROM.h>
 #include "LEDController.h" // Include the LEDController header
 #include "Encoder.h"
 #include "Mode.h"
 #include "ResetButton.h"
+#include "AppState.h"
 
 //Mode Selector Singleton.
 
@@ -21,6 +23,10 @@ public:
     void setLedController(LEDController& ledController);
     void setEncoder(Encoder& encoder);
     void setCurrentMode(Mode*& currentMode);
+    void setAppState(AppState& appState);
+    void saveAppState();
+    void readAppState();
+    void initializeEEPROM();
     bool isInModeSelection();
     Mode* getCurrentMode();
     void addMode(Mode* mode);
@@ -38,6 +44,7 @@ private:
     int inModeSelection = false;
     LEDController* ledController; // Add a pointer to LEDController
     Encoder* encoder; // Add a pointer to Encoder
+    AppState* state;
     ResetButton* resetButton;
     bool isInSelection;
     bool inChannelSelection;

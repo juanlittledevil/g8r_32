@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <MIDI.h>
+#include <vector>
 #include "Gates.h"
 #include "ModeSelector.h"
 #include "LEDs.h"
@@ -14,146 +15,144 @@
 #include "LEDController.h"
 #include "ResetButton.h"
 #include "InputHandler.h"
-#include <vector>
+#include "AppState.h"
 
-#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
+#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message)) ///< Macro for debug print
 
 // Define the RX and TX pins for MIDI communication
-#define RX_PIN PA3
-#define TX_PIN PA2
+#define RX_PIN PA3 ///< RX pin for MIDI communication
+#define TX_PIN PA2 ///< TX pin for MIDI communication
 // Define the pins for the encoder
-#define ENCODER_PINA PB13
-#define ENCODER_PINB PB14
-#define ENCODER_BUTTON PB12
+#define ENCODER_PINA PB13 ///< Encoder pin A
+#define ENCODER_PINB PB14 ///< Encoder pin B
+#define ENCODER_BUTTON PB12 ///< Encoder button pin
 // Define the pins for the clock and reset
-#define CLOCK_PIN PB10
-#define RESET_PIN PB11
-#define RESET_BUTTON PB15
+#define CLOCK_PIN PB10 ///< Clock pin
+#define RESET_PIN PB11 ///< Reset pin
+#define RESET_BUTTON PB15 ///< Reset button pin
 // Define the pin for the tempo LED
-#define TEMPO_LED PA8
+#define TEMPO_LED PA8 ///< Tempo LED pin
 
-#define CV_A_PIN PA4
-#define CV_B_PIN PA5
+#define CV_A_PIN PA4 ///< CV A pin
+#define CV_B_PIN PA5 ///< CV B pin
 
 // Define the pins for the gates
-std::vector<int> pins = {PA15, PB3, PB4, PB5, PB6, PB7, PB8, PB9}; // Example pins
-const int numPins = pins.size();
-Gates gates = Gates(pins, numPins); // Create an instance of Gates
+std::vector<int> pins = {PA15, PB3, PB4, PB5, PB6, PB7, PB8, PB9}; ///< Example pins for gates
+const int numPins = pins.size(); ///< Number of gate pins
+Gates gates = Gates(pins, numPins); ///< Create an instance of Gates
 // Define the pins for the LEDs
-std::vector<int> ledPins = {PA12, PA11, PB1, PB0, PA7, PA6, PA1, PA0}; // Placeholder pin numbers for LEDs
-int numLedPins = ledPins.size();
+std::vector<int> ledPins = {PA12, PA11, PB1, PB0, PA7, PA6, PA1, PA0}; ///< Placeholder pin numbers for LEDs
+int numLedPins = ledPins.size(); ///< Number of LED pins
 
 // Create an instance of LEDs
 // Tempo LED is part of EurorackClock class to make this file cleaner.
-LEDs leds = LEDs(ledPins, numLedPins); // Create an instance of LEDs
+LEDs leds = LEDs(ledPins, numLedPins); ///< Create an instance of LEDs
 
 // Define the pins for the encoder
-int encCLKPin = ENCODER_PINA;
-int encDTPin = ENCODER_PINB;
-int encButtonPin = ENCODER_BUTTON;
+int encCLKPin = ENCODER_PINA; ///< Encoder CLK pin
+int encDTPin = ENCODER_PINB; ///< Encoder DT pin
+int encButtonPin = ENCODER_BUTTON; ///< Encoder button pin
 
-bool inModeSelection = false;
-int intensity = 255; // Default intensity for LEDs
-bool isInSelection = false; // Used to prevent multiple presses from being handled
-unsigned long lastFlashTime = 0;
+bool inModeSelection = false; ///< Flag for mode selection
+int intensity = 255; ///< Default intensity for LEDs
+bool isInSelection = false; ///< Flag to prevent multiple presses from being handled
+unsigned long lastFlashTime = 0; ///< Last flash time
 
-unsigned char internalPPQN = 24; // Pulses per quarter note
+unsigned char internalPPQN = 24; ///< Pulses per quarter note
 // const int musicalIntervals[] = {1, 2, 4, 8, 16, 32, 3, 6, 12, 24, 48};
 std::vector<int> musicalIntervals = {1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 64, 72, 96, 128, 144, 192, 288, 384, 576, 768, 1152, 1536};
-const int musicalIntervalsSize = musicalIntervals.size();
+const int musicalIntervalsSize = musicalIntervals.size(); ///< Size of musical intervals array
 
-int total_pages = 16 / leds.numLeds; // Calculate total pages based on number of LEDs
-int min_intensity = 64; // Set minimum intensity to 25% (64 out of 255)
-int intensity_step = (255 - min_intensity) / (total_pages - 1); // Calculate intensity step
+int total_pages = 16 / leds.numLeds; ///< Calculate total pages based on number of LEDs
+int min_intensity = 64; ///< Set minimum intensity to 25% (64 out of 255)
+int intensity_step = (255 - min_intensity) / (total_pages - 1); ///< Calculate intensity step
 
-// Create an instance of the Encoder class
-Encoder encoder = Encoder(encCLKPin, encDTPin, encButtonPin);
+AppState state; ///< Instance of the AppState struct
 
-// Create an instance of the ResetButton class
-ResetButton resetButton = ResetButton(RESET_BUTTON);
+Encoder encoder = Encoder(encCLKPin, encDTPin, encButtonPin); ///< Instance of the Encoder class
 
-// Create an instance of the LEDController class
-LEDController ledController(leds);
+ResetButton resetButton = ResetButton(RESET_BUTTON); ///< Instance of the ResetButton class
 
-// Create an instance of the EurorackClock class
-EurorackClock clock(CLOCK_PIN, RESET_PIN, TEMPO_LED, gates, leds);
+LEDController ledController(leds); ///< Instance of the LEDController class
 
-// Create an instance of the MIDIHandler class
-MIDIHandler midiHandler(Serial2, clock, gates, leds);
+EurorackClock clock(CLOCK_PIN, RESET_PIN, TEMPO_LED, gates, leds); ///< Instance of the EurorackClock class
 
-// Create an instance of the InputHandler class
-InputHandler inputHandler = InputHandler(CV_A_PIN, CV_B_PIN);
+MIDIHandler midiHandler(Serial2, clock, gates, leds); ///< Instance of the MIDIHandler class
 
-// Mode Classes and ModeSelector
-ModeSelector& modeSelector = ModeSelector::getInstance();
-Mode* currentMode = nullptr;
-Mode0 mode0(encoder, inputHandler, gates, ledController, midiHandler, resetButton, clock);
-Mode1 mode1(encoder, inputHandler, gates, ledController, midiHandler, resetButton);
-Mode2 mode2(encoder, inputHandler, gates, ledController, midiHandler, resetButton);
+InputHandler inputHandler = InputHandler(CV_A_PIN, CV_B_PIN); ///< Instance of the InputHandler class
 
+ModeSelector& modeSelector = ModeSelector::getInstance(); ///< Instance of the ModeSelector class
+Mode* currentMode = nullptr; ///< Pointer to the current mode
+Mode0 mode0(encoder, inputHandler, gates, ledController, midiHandler, resetButton, clock); ///< Instance of Mode0 class
+Mode1 mode1(encoder, inputHandler, gates, ledController, midiHandler, resetButton); ///< Instance of Mode1 class
+Mode2 mode2(encoder, inputHandler, gates, ledController, midiHandler, resetButton); ///< Instance of Mode2 class
+
+/**
+ * \brief Setup function for the Arduino sketch.
+ *
+ * This function is called once when the sketch starts. It is used to initialize variables, input and output pin modes, and start using libraries.
+ */
 void setup() {
     delay(1000);
 
-    // Enable debugging
-    Debug::isEnabled = true;
+    Debug::isEnabled = true; ///< Enable debugging
 
-    // Initialize serial communication
     if (Debug::isEnabled) {
-        Serial.begin(115200);
-        DEBUG_PRINT("Entering setup() function");
+        Serial.begin(115200); ///< Initialize serial communication
+        DEBUG_PRINT("Entering setup() function"); ///< Print debug message
     }
-    // TODO: Unfortunately I'm dealing with a bug that prevents me from initializing the reset button
-    // from within the ResetButton class. I have to do it here instead. Opting this route as it is
-    // the least intrusive. See notes in class method for more details.
-    // resetButton.begin(); //  do not call this function as it will hang the app.
-    pinMode(RESET_BUTTON, INPUT_PULLDOWN); // This is the workaround for the bug
-    
-    // Initialize the MIDIHandler
-    // Serial2.begin(31250);
-    midiHandler.begin();
 
-    // Set the MIDIHandler to listen to all channels
-    midiHandler.setChannel(-1);
+    // Workaround for bug in ResetButton class
+    pinMode(RESET_BUTTON, INPUT_PULLDOWN); ///< Set the RESET_BUTTON pin to INPUT_PULLDOWN mode
 
-    // Start the clock and set the initial tempo
-    clock.setup();
-    clock.setTempo(120.0, internalPPQN); // Set the tempo to 120 BPM with internal 4 PPQN
+    midiHandler.begin(); ///< Initialize the MIDIHandler
 
-    // ------- Set the initial mode -------
-    // IMPORTANT: Add the modes to the ModeSelector in order, so that the indices match with the mode numbers.
-    modeSelector.addMode(&mode0);
-    modeSelector.addMode(&mode1);
-    modeSelector.addMode(&mode2);
-    modeSelector.setLedController(ledController);
-    modeSelector.setEncoder(encoder);
-    modeSelector.setMode(0);
-    currentMode = modeSelector.getCurrentMode();
-    // // Run the setup function for the default mode
-    // // NOTE: ONLY the default mode will execute this. If you have things that need to be set up for other modes,
-    // // you will need to call the setup function for those modes here.
-    currentMode->setup();
+    midiHandler.setChannel(-1); ///< Set the MIDIHandler to listen to all channels
+
+    clock.setup(); ///< Start the clock
+    clock.setTempo(120.0, internalPPQN); ///< Set the tempo to 120 BPM with internal 4 PPQN
+
+    // Add the modes to the ModeSelector in order
+    modeSelector.addMode(&mode0); ///< Add Mode0 to the ModeSelector
+    modeSelector.addMode(&mode1); ///< Add Mode1 to the ModeSelector
+    modeSelector.addMode(&mode2); ///< Add Mode2 to the ModeSelector
+
+    modeSelector.setLedController(ledController); ///< Set the LEDController for the ModeSelector
+    modeSelector.setEncoder(encoder); ///< Set the Encoder for the ModeSelector
+    modeSelector.setAppState(state); ///< Set the AppState for the ModeSelector
+    modeSelector.setMode(state.mode); ///< Set the current mode for the ModeSelector
+
+    currentMode = modeSelector.getCurrentMode(); ///< Get the current mode from the ModeSelector
+
+    currentMode->setup(); ///< Run the setup function for the current mode
 
     delay(1000);
 
-    leds.begin(); // Initialize LED pins
-    gates.begin(); // Initialize gate pins
-    encoder.begin(); // Initialize encoder pins
+    leds.begin(); ///< Initialize LED pins
+    gates.begin(); ///< Initialize gate pins
+    encoder.begin(); ///< Initialize encoder pins
 
-    // gates.setSelectedGate(selectedGate);
-    
     if (Debug::isEnabled) {
-        DEBUG_PRINT("Finished setup() function");
+        DEBUG_PRINT("Finished setup() function"); ///< Print debug message
+        DEBUG_PRINT("Current Mode: " + String(state.mode)); ///< Print the current mode
     }
 }
 
+/**
+ * \brief Main loop function for the Arduino sketch.
+ *
+ * This function is called repeatedly as long as the Arduino is powered on. It contains the main logic of the sketch.
+ */
 void loop() {
-    modeSelector.update();
-    ledController.updateBlinking();
-    if (!modeSelector.isInModeSelection()) {
-        currentMode->update();
-    } else {
-        currentMode->teardown();
-        currentMode = modeSelector.getCurrentMode();
-        currentMode->setup();
+    modeSelector.update(); ///< Update the ModeSelector
+
+    ledController.updateBlinking(); ///< Update the LEDController's blinking status
+
+    if (!modeSelector.isInModeSelection()) { ///< If not in mode selection
+        currentMode->update(); ///< Update the current mode
+    } else { ///< If in mode selection
+        currentMode->teardown(); ///< Teardown the current mode
+        currentMode = modeSelector.getCurrentMode(); ///< Get the new current mode from the ModeSelector
+        currentMode->setup(); ///< Setup the new current mode
     }
 }

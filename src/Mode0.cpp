@@ -67,9 +67,9 @@ void Mode0::handleCVInput() {
     int cvA = inputHandler.readCVA();
     int cvB = inputHandler.readCVB();
 
-    if (Debug::isEnabled) {
-        DEBUG_PRINT("CV A: " + String(cvA) + " CV B: " + String(cvB));
-    }
+    // if (Debug::isEnabled) {
+    //     DEBUG_PRINT("CV A: " + String(cvA) + " CV B: " + String(cvB));
+    // }
 }
 
 // Other mode-specific methods

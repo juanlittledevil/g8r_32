@@ -9,6 +9,10 @@ ModeSelector& ModeSelector::getInstance() {
     return instance;
 }
 
+ModeSelector::ModeSelector()
+    :   mode(0),
+        currentMode(nullMode)   {} // Initializes mode to 0
+
 void ModeSelector::update() {
     handleButtonPress();
     handleEncoderRotation();
@@ -22,7 +26,51 @@ void ModeSelector::setMode(int newMode) {
     if (newMode >= 0 && newMode < modes.size()) {
         mode = newMode;
         currentMode = modes[newMode];
+
+        // Save the current state to EEPROM so it persists.
+        saveAppState();
     }
+}
+
+void ModeSelector::setAppState(AppState& appState) {
+    state = &appState;
+
+    //read from eeprom
+    readAppState();
+
+    // check state->mode is within bounds
+    if (isnan(state->mode)) {
+        initializeEEPROM();
+    }
+}
+
+void ModeSelector::saveAppState() {
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Saving to EEPROM");
+    }
+
+    // Save the current state to EEPROM before changing modes
+    uint8_t* ptr = (uint8_t*)&state;
+    for (size_t i = 0; i < sizeof(AppState); i++) {
+        EEPROM.write(i, ptr[i]);
+    }
+}
+
+void ModeSelector::readAppState() {
+    // Read the current state from EEPROM
+    uint8_t* ptr = (uint8_t*)&state;
+    for (size_t i = 0; i < sizeof(AppState); i++) {
+        ptr[i] = EEPROM.read(i);
+    }
+}
+
+void ModeSelector::initializeEEPROM() {
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Initializing EEPROM");
+    }
+    // Initialize the EEPROM with default values
+    state->mode = state->defaults.mode; // set state mode to default mode
+    saveAppState(); // save the state to EEPROM
 }
 
 void ModeSelector::handleLongPress() {
@@ -37,6 +85,9 @@ void ModeSelector::handleLongPress() {
         singlePressHandled = true;
         ledController->clearAndResetLEDs();
         ledController->setState(getMode(), true);
+
+        // Save the current state to EEPROM
+        saveAppState();
     } else {
         // Exit mode selection state
         // ...
@@ -116,7 +167,3 @@ void ModeSelector::addMode(Mode* mode) {
 Mode* ModeSelector::getCurrentMode() {
     return currentMode;
 }
-
-ModeSelector::ModeSelector()
-    :   mode(0),
-        currentMode(nullMode)   {} // Initializes mode to 0
