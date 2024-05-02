@@ -28,50 +28,42 @@ void ModeSelector::setMode(int newMode) {
         currentMode = modes[newMode];
 
         // Save the current state to EEPROM so it persists.
-        saveAppState();
+        stateManager->saveAppState();
     }
 }
 
-void ModeSelector::setAppState(AppState& appState) {
-    state = &appState;
-
-    //read from eeprom
-    readAppState();
-
-    // check state->mode is within bounds
-    if (isnan(state->mode)) {
-        initializeEEPROM();
-    }
+void ModeSelector::setStateManager(StateManager& stateManager) {
+    this->stateManager = &stateManager;
 }
 
-void ModeSelector::saveAppState() {
-    if (Debug::isEnabled) {
-        DEBUG_PRINT("Saving to EEPROM");
-    }
+// void ModeSelector::saveAppState() {
+//     if (Debug::isEnabled) {
+//         DEBUG_PRINT("Saving to EEPROM");
+//     }
 
-    // Save the current state to EEPROM before changing modes
-    uint8_t* ptr = (uint8_t*)&state;
-    for (size_t i = 0; i < sizeof(AppState); i++) {
-        EEPROM.write(i, ptr[i]);
-    }
-}
+//     // Save the current state to EEPROM before changing modes
+//     uint8_t* ptr = (uint8_t*)&state;
+//     for (size_t i = 0; i < sizeof(AppState); i++) {
+//         EEPROM.write(i, ptr[i]);
+//     }
+// }
 
-void ModeSelector::readAppState() {
-    // Read the current state from EEPROM
-    uint8_t* ptr = (uint8_t*)&state;
-    for (size_t i = 0; i < sizeof(AppState); i++) {
-        ptr[i] = EEPROM.read(i);
-    }
-}
+// void ModeSelector::readAppState() {
+//     // Read the current state from EEPROM
+//     uint8_t* ptr = (uint8_t*)&state;
+//     for (size_t i = 0; i < sizeof(AppState); i++) {
+//         ptr[i] = EEPROM.read(i);
+//     }
+// }
 
-void ModeSelector::initializeEEPROM() {
-    if (Debug::isEnabled) {
-        DEBUG_PRINT("Initializing EEPROM");
-    }
-    // Initialize the EEPROM with default values
-    state->mode = state->defaults.mode; // set state mode to default mode
-    saveAppState(); // save the state to EEPROM
-}
+// void ModeSelector::initializeEEPROM() {
+//     if (Debug::isEnabled) {
+//         DEBUG_PRINT("Initializing EEPROM");
+//     }
+//     // Initialize the EEPROM with default values
+//     state->mode = state->defaults.mode; // set state mode to default mode
+//     saveAppState(); // save the state to EEPROM
+// }
 
 void ModeSelector::handleLongPress() {
     // Toggle mode selection state
@@ -87,7 +79,7 @@ void ModeSelector::handleLongPress() {
         ledController->setState(getMode(), true);
 
         // Save the current state to EEPROM
-        saveAppState();
+        stateManager->saveAppState();
     } else {
         // Exit mode selection state
         // ...

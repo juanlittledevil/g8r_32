@@ -15,7 +15,7 @@
 #include "LEDController.h"
 #include "ResetButton.h"
 #include "InputHandler.h"
-#include "AppState.h"
+#include "StateManager.h"
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message)) ///< Macro for debug print
 
@@ -67,7 +67,7 @@ int total_pages = 16 / leds.numLeds; ///< Calculate total pages based on number 
 int min_intensity = 64; ///< Set minimum intensity to 25% (64 out of 255)
 int intensity_step = (255 - min_intensity) / (total_pages - 1); ///< Calculate intensity step
 
-AppState state; ///< Instance of the AppState struct
+StateManager stateManager = StateManager(); ///< Instance of the StateManager class used to manage state of the device in EEPROM.
 
 Encoder encoder = Encoder(encCLKPin, encDTPin, encButtonPin); ///< Instance of the Encoder class
 
@@ -112,6 +112,9 @@ void setup() {
     clock.setup(); ///< Start the clock
     clock.setTempo(120.0, internalPPQN); ///< Set the tempo to 120 BPM with internal 4 PPQN
 
+    // Initialize the state manager
+    stateManager.initializeEEPROM(); ///< Initialize the EEPROM with default values
+
     // Add the modes to the ModeSelector in order
     modeSelector.addMode(&mode0); ///< Add Mode0 to the ModeSelector
     modeSelector.addMode(&mode1); ///< Add Mode1 to the ModeSelector
@@ -119,8 +122,8 @@ void setup() {
 
     modeSelector.setLedController(ledController); ///< Set the LEDController for the ModeSelector
     modeSelector.setEncoder(encoder); ///< Set the Encoder for the ModeSelector
-    modeSelector.setAppState(state); ///< Set the AppState for the ModeSelector
-    modeSelector.setMode(state.mode); ///< Set the current mode for the ModeSelector
+    modeSelector.setStateManager(stateManager); ///< Set the StateManager for the ModeSelector
+    modeSelector.setMode(0); ///< Set the current mode for the ModeSelector
 
     currentMode = modeSelector.getCurrentMode(); ///< Get the current mode from the ModeSelector
 
@@ -134,7 +137,6 @@ void setup() {
 
     if (Debug::isEnabled) {
         DEBUG_PRINT("Finished setup() function"); ///< Print debug message
-        DEBUG_PRINT("Current Mode: " + String(state.mode)); ///< Print the current mode
     }
 }
 
