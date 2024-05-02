@@ -15,7 +15,7 @@
  * @param state - The AppState object to be saved to the EEPROM
  */
 StateManager::StateManager() {
-    ///< Empty constructor - we will initialize the AppState object in the setup() function this way we can print debug messages.
+    /// Empty constructor - we will initialize the AppState object in the setup() function this way we can print debug messages.
 }
 
 /**
@@ -26,17 +26,17 @@ void StateManager::initializeEEPROM() {
         DEBUG_PRINT("Checking EEPROM");
     }
 
-    readAppState(); ///< Read the current state from the EEPROM
+    readAppState(); /// Read the current state from the EEPROM
 
     if (isnan(state.mode)) {
         if (Debug::isEnabled) {
             DEBUG_PRINT("State is NaN, initializing EEPROM");
         }
         // Initialize the EEPROM with the default state
-        state.mode = state.defaults.mode; ///< Set the mode to the default mode
+        state.mode = state.defaults.mode; /// Set the mode to the default mode
         // Other default values can be set here
 
-        saveAppState(); ///< Save the default state to the EEPROM
+        saveAppState(); /// Save the default state to the EEPROM
 
         if (Debug::isEnabled) {
             DEBUG_PRINT("Finished initializing EEPROM");
@@ -57,7 +57,7 @@ void StateManager::saveAppState() {
     }
 
     // Save the current state to EEPROM
-    EEPROM.put(0, state); ///< By using put we don't have to write each byte individually
+    EEPROM.put(0, state); /// By using put we don't have to write each byte individually
 }
 
 /**
@@ -69,5 +69,5 @@ void StateManager::readAppState() {
     }
 
     // Read the current state from EEPROM
-    EEPROM.get(0, state); ///< By using get we don't have to read each byte individually
+    EEPROM.get(0, state); /// By using get we don't have to read each byte individually
 }
