@@ -9,7 +9,7 @@
 class ResetButton {
 public:
     ResetButton(int pin);
-    bool begin();
+    void begin();
 
     enum ButtonState { OPEN, PRESSED };
 

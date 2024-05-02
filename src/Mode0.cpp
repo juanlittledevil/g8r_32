@@ -117,7 +117,7 @@ void Mode0::handleResetButton(ResetButton::ButtonState buttonState) {
     } else if (resetButton.isButtonDoublePressed()) {
         this->handleResetDoublePress();
         doubleResetPressHandled = true; 
-    } else if (resetButton.readButton() == Encoder::PRESSED && !singleResetPressHandled) {
+    } else if (resetButton.readButton() == ResetButton::PRESSED && !singleResetPressHandled) {
     // } else if (resetButton.isButtonSinglePressed() && !singleResetPressHandled) {
         this->handleResetSinglePress();
         singleResetPressHandled = true;
