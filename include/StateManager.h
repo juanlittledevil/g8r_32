@@ -10,6 +10,8 @@ public:
     void initializeEEPROM();
     void saveAppState();
     void readAppState();
+    int getMode();
+    void setMode(int newMode);
 
 private:
     AppState state;

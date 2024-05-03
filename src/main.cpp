@@ -95,7 +95,7 @@ Mode2 mode2(encoder, inputHandler, gates, ledController, midiHandler, resetButto
 void setup() {
     delay(1000);
 
-    Debug::isEnabled = true; /// Enable debugging
+    Debug::isEnabled = false; /// Enable debugging
 
     if (Debug::isEnabled) {
         Serial.begin(115200); /// Initialize serial communication
@@ -123,7 +123,7 @@ void setup() {
     modeSelector.setLedController(ledController); /// Set the LEDController for the ModeSelector
     modeSelector.setEncoder(encoder); /// Set the Encoder for the ModeSelector
     modeSelector.setStateManager(stateManager); /// Set the StateManager for the ModeSelector
-    modeSelector.setMode(0); /// Set the current mode for the ModeSelector
+    modeSelector.setMode(stateManager.getMode()); /// Set the current mode for the ModeSelector
 
     currentMode = modeSelector.getCurrentMode(); /// Get the current mode from the ModeSelector
 
@@ -136,7 +136,8 @@ void setup() {
     encoder.begin(); /// Initialize encoder pins
 
     if (Debug::isEnabled) {
-        DEBUG_PRINT("Finished setup() function"); /// Print debug message
+        DEBUG_PRINT("Finished setup() function");
+        DEBUG_PRINT("EEPROM MODE is: " + String(stateManager.getMode()));
     }
 }
 

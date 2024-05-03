@@ -71,3 +71,22 @@ void StateManager::readAppState() {
     // Read the current state from EEPROM
     EEPROM.get(0, state); /// By using get we don't have to read each byte individually
 }
+
+/**
+ * @brief Returns the current mode stored in the AppState object 'state'.
+ * 
+ * @return int - The current mode
+ */
+int StateManager::getMode() {
+    return state.mode;
+}
+
+/**
+ * @brief Sets the current mode in the AppState object 'state'.
+ * 
+ * @param newMode - The new mode to set
+ */
+void StateManager::setMode(int newMode) {
+    state.mode = newMode;
+    saveAppState(); /// Save the new mode to the EEPROM
+}

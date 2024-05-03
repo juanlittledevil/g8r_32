@@ -23,12 +23,20 @@ int ModeSelector::getMode() const {
 }
 
 void ModeSelector::setMode(int newMode) {
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Setting mode to " + String(newMode));
+    }
+
     if (newMode >= 0 && newMode < modes.size()) {
         mode = newMode;
         currentMode = modes[newMode];
 
         // Save the current state to EEPROM so it persists.
-        stateManager->saveAppState();
+        stateManager->setMode(newMode);
+    }
+
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Mode set to " + String(mode));
     }
 }
 
