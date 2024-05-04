@@ -44,35 +44,6 @@ void ModeSelector::setStateManager(StateManager& stateManager) {
     this->stateManager = &stateManager;
 }
 
-// void ModeSelector::saveAppState() {
-//     if (Debug::isEnabled) {
-//         DEBUG_PRINT("Saving to EEPROM");
-//     }
-
-//     // Save the current state to EEPROM before changing modes
-//     uint8_t* ptr = (uint8_t*)&state;
-//     for (size_t i = 0; i < sizeof(AppState); i++) {
-//         EEPROM.write(i, ptr[i]);
-//     }
-// }
-
-// void ModeSelector::readAppState() {
-//     // Read the current state from EEPROM
-//     uint8_t* ptr = (uint8_t*)&state;
-//     for (size_t i = 0; i < sizeof(AppState); i++) {
-//         ptr[i] = EEPROM.read(i);
-//     }
-// }
-
-// void ModeSelector::initializeEEPROM() {
-//     if (Debug::isEnabled) {
-//         DEBUG_PRINT("Initializing EEPROM");
-//     }
-//     // Initialize the EEPROM with default values
-//     state->mode = state->defaults.mode; // set state mode to default mode
-//     saveAppState(); // save the state to EEPROM
-// }
-
 void ModeSelector::handleLongPress() {
     // Toggle mode selection state
     inModeSelection = !inModeSelection;

@@ -83,7 +83,8 @@ InputHandler inputHandler = InputHandler(CV_A_PIN, CV_B_PIN); /// Instance of th
 
 ModeSelector& modeSelector = ModeSelector::getInstance(); /// Instance of the ModeSelector class
 Mode* currentMode = nullptr; /// Pointer to the current mode
-Mode0 mode0(encoder, inputHandler, gates, ledController, midiHandler, resetButton, clock); /// Instance of Mode0 class
+Mode* previousMode = nullptr; /// Pointer to the previous mode
+Mode0 mode0(stateManager, encoder, inputHandler, gates, ledController, midiHandler, resetButton, clock); /// Instance of Mode0 class
 Mode1 mode1(encoder, inputHandler, gates, ledController, midiHandler, resetButton); /// Instance of Mode1 class
 Mode2 mode2(encoder, inputHandler, gates, ledController, midiHandler, resetButton); /// Instance of Mode2 class
 
@@ -95,7 +96,9 @@ Mode2 mode2(encoder, inputHandler, gates, ledController, midiHandler, resetButto
 void setup() {
     delay(1000);
 
-    Debug::isEnabled = false; /// Enable debugging
+    /// Initialize the debug settings
+    Debug::isEnabled = true; /// Enable debugging
+    Debug::resetEEPROM = false; /// Enable to clear and reset EEPROM.
 
     if (Debug::isEnabled) {
         Serial.begin(115200); /// Initialize serial communication
@@ -129,8 +132,6 @@ void setup() {
 
     currentMode->setup(); /// Run the setup function for the current mode
 
-    delay(1000);
-
     leds.begin(); /// Initialize LED pins
     gates.begin(); /// Initialize gate pins
     encoder.begin(); /// Initialize encoder pins
@@ -154,8 +155,14 @@ void loop() {
     if (!modeSelector.isInModeSelection()) { /// If not in mode selection
         currentMode->update(); /// Update the current mode
     } else { /// If in mode selection
-        currentMode->teardown(); /// Teardown the current mode
+        previousMode = currentMode; /// Set the previous mode to the current mode
         currentMode = modeSelector.getCurrentMode(); /// Get the new current mode from the ModeSelector
-        currentMode->setup(); /// Setup the new current mode
+
+        /// Only run once when the mode is switched to
+        if (currentMode != previousMode) {
+            previousMode->teardown(); /// Teardown the current mode
+            currentMode->setup(); /// Setup the new current mode
+            previousMode = currentMode; /// Set the previous mode to the current mode
+        }
     }
 }
