@@ -1,3 +1,12 @@
+/**
+ * @file MIDIHandler.h
+ * @brief This file contains the MIDIHandler class, which is used to handle MIDI messages.
+ * This of this as the interface between the app and the MIDI library. It is responsible for handling MIDI messages
+ * and routing them to the appropriate functions.
+ * 
+ * TODO: This class is a bit of a mess and could use some refactoring. I would like to move callback functions to 
+ * the modes so it is easier to understand the flow of the program. But again, it works so it's fine for now.
+ */
 #ifndef MIDIHANDLER_H
 #define MIDIHANDLER_H
 
@@ -6,6 +15,10 @@
 #include "Gates.h"
 #include "LEDs.h"
 
+/**
+ * @brief This class is used as an interface between our app and the MIDI library.
+ * 
+ */
 class MIDIHandler {
 public:
     MIDIHandler(HardwareSerial& serial, EurorackClock& clock, Gates& gates, LEDs& leds);

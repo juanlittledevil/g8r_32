@@ -1,3 +1,7 @@
+/**
+ * @file Pin.h
+ * @brief This file contains the pin base class and its derived classes for input, output, and PWM pins.
+ */
 #ifndef PIN_H
 #define PIN_H
 
@@ -5,7 +9,10 @@
 #include <HardwareTimer.h>
 #endif
 
-// Pin class
+/**
+ * @brief This class represents a pin on the microcontroller.
+ * 
+ */
 class Pin {
 protected:
     int pin; // Pin number
@@ -16,7 +23,10 @@ public:
     ~Pin(); // Destructor
 };
 
-// InputPin class (inherits from Pin)
+/**
+ * @brief This class represents an input pin on the microcontroller.
+ * 
+ */
 class InputPin : public Pin {
 public:
     InputPin(int pin); // Default constructor
@@ -29,7 +39,10 @@ private:
     bool useInternalPulldown;
 };
 
-// AnalogInputPin class (inherits from Pin)
+/**
+ * @brief This class represents an analog input pin on the microcontroller.
+ * 
+ */
 class AnalogInputPin : public Pin {
 public:
     AnalogInputPin(int pin); // Constructor
@@ -37,7 +50,10 @@ public:
     int read(); // Read analog value from the pin
 };
 
-// OutputPin class (inherits from Pin)
+/**
+ * @brief This class represents an output pin on the microcontroller.
+ * 
+ */
 class OutputPin : public Pin {
 public:
     OutputPin(int pin = -1); // Constructor
@@ -46,7 +62,10 @@ public:
     virtual bool getState(); // Get the state of the pin
 };
 
-// PWMPin class (inherits from OutputPin)
+/**
+ * @brief This class represents a PWM output pin on the microcontroller.
+ * 
+ */
 class PWMPin : public OutputPin {
 public:
     PWMPin(int pin = -1); // Constructor

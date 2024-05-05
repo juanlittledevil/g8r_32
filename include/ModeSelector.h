@@ -1,3 +1,6 @@
+/**
+ * @file ModeSelector.h
+ */
 #ifndef MODE_SELECTOR_H
 #define MODE_SELECTOR_H
 

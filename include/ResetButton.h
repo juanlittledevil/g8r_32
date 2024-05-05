@@ -1,3 +1,10 @@
+/**
+ * @file ResetButton.h
+ * @brief This file contains the ResetButton class which manages the physical reset button input.
+ * 
+ * TODO: This class could probably be combined with the Encoder class to create a more generic Button class as
+ * the functionality is very similar. But it works now so it's fine for now.
+ */
 #ifndef RESETBUTTON_H
 #define RESETBUTTON_H
 
@@ -6,6 +13,9 @@
 #include "Debug.h"
 #include "Constants.h"
 
+/**
+ * @brief This class is used to read the reset button input.
+ */
 class ResetButton {
 public:
     ResetButton(int pin);

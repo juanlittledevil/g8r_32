@@ -1,8 +1,15 @@
+/**
+ * @file Encoder.h
+ * @brief This file contains the Encoder class which manages the physical encoder and button inputs.
+ */
 #ifndef ENCODER_H
 #define ENCODER_H
 
 #include "Pin.h"
 
+/**
+ * @brief This class is used to read the encoder and button inputs.
+ */
 class Encoder {
 public:
     Encoder(int encCLK, int encDT, int encButton);
@@ -29,7 +36,6 @@ private:
     int pressCount;
     unsigned long lastTurnTime;
     int speed;
-
     static const unsigned long DOUBLE_PRESS_INTERVAL = 500; // ms
     static const unsigned long LONG_PRESS_INTERVAL = 1000; // ms
 };

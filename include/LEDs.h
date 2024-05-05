@@ -1,9 +1,18 @@
+/**
+ * @file LEDs.h
+ * @brief This is a collection of LEDs whicle you could interact with this class directly,
+ * it is recommended to use the LEDController class to interact with the LEDs.
+ */
 #ifndef LEDS_H
 #define LEDS_H
 
 #include "LED.h"
 #include <vector>
 
+/**
+ * @brief This is a collection of LEDs and mainly used by the LEDController class. Use that if you need to interact with the LEDs.
+ * 
+ */
 class LEDs {
     public:
         LEDs(std::vector<int> pins, int numLeds); // Constructor declaration
@@ -13,9 +22,6 @@ class LEDs {
         void setState(int index, bool state, int intensity);
         bool getState(int index);
         void setAllLeds(bool state);
-        // void blinkFast(int index);
-        // void blinkFast2(int index);
-        // void blinkSlow(int index);
         void startBlinking(int index, unsigned long interval);
         void stopBlinking(int index);
         void stopAllBlinking();

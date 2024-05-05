@@ -1,4 +1,11 @@
-// Gates.h
+/**
+ * @file Gates.h
+ * @brief This file contains the Gates class, which is used to control the gates in the system.
+ * 
+ * This is also an early class, and could use some refactoring love. But again, this works so it's fine for now.
+ * TODO: We could probably move the division logic out of this, but it doesn't interfere with the other modes so
+ * it's fine for now.
+ */
 #ifndef GATES_H
 #define GATES_H
 
@@ -7,6 +14,12 @@
 #include "LEDs.h"
 #include <vector>
 
+/**
+ * @brief This is a collection of gates and thus the main thing we are working with in this project.
+ * Very rarely will you need to interact with the Gate class directly, as most of the functionality
+ * is handled by the Gates class.
+ * 
+ */
 class Gates {
   public:
     Gates(std::vector<int> pins, int numGates);
