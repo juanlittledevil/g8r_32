@@ -1,3 +1,7 @@
+/**
+ * @file Debug.cpp
+ * @brief helper class for debugging
+ */
 #include "Debug.h"
 #include <Arduino.h>
 
