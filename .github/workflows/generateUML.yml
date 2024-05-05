@@ -1,8 +1,5 @@
 name: Generate Documentation
 on:
-  push:
-    branches:
-      - feature/eeprom
   pull_request:
     branches:
       - main
