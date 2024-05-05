@@ -8,13 +8,15 @@
     Serial.flush(); \
 }
 
-Mode2::Mode2(Encoder& encoder,
+Mode2::Mode2(StateManager& stateManager,
+    Encoder& encoder,
     InputHandler& inputHandler,
     Gates& gates,
     LEDController& ledController,
     MIDIHandler& midiHandler,
     ResetButton& resetButton)
-    :   encoder(encoder),
+    :   stateManager(stateManager),
+        encoder(encoder),
         inputHandler(inputHandler),
         gates(gates),
         ledController(ledController),
@@ -26,6 +28,7 @@ void Mode2::setup() {
     // Initialization code here if needed
     midiHandler.setMode(2);
     numLeds = ledController.getNumLeds();
+    /// This is where you'd read the eeprom for the mode2 settings. However, we don't have any settings for mode2 yet.
 }
 
 void Mode2::teardown() {

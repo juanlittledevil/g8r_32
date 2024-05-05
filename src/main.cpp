@@ -85,8 +85,8 @@ ModeSelector& modeSelector = ModeSelector::getInstance(); /// Instance of the Mo
 Mode* currentMode = nullptr; /// Pointer to the current mode
 Mode* previousMode = nullptr; /// Pointer to the previous mode
 Mode0 mode0(stateManager, encoder, inputHandler, gates, ledController, midiHandler, resetButton, clock); /// Instance of Mode0 class
-Mode1 mode1(encoder, inputHandler, gates, ledController, midiHandler, resetButton); /// Instance of Mode1 class
-Mode2 mode2(encoder, inputHandler, gates, ledController, midiHandler, resetButton); /// Instance of Mode2 class
+Mode1 mode1(stateManager, encoder, inputHandler, gates, ledController, midiHandler, resetButton); /// Instance of Mode1 class
+Mode2 mode2(stateManager, encoder, inputHandler, gates, ledController, midiHandler, resetButton); /// Instance of Mode2 class
 
 /**
  * \brief Setup function for the Arduino sketch.

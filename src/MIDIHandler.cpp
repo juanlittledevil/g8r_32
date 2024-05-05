@@ -131,6 +131,29 @@ void MIDIHandler::setMode(int mode) {
     }
 }
 
+/**
+ * @brief sets the MIDI channel for the MIDIHandler
+ * 
+ * @param channel 
+ */
 void MIDIHandler::setChannel(byte channel) {
-    confirmedChannel = channel + 1;
+    if (confirmedChannel != channel + 1) {
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("Setting MIDI channel to " + String(channel + 1));
+        }
+        confirmedChannel = channel + 1;
+    } else {
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("MIDI channel already set to " + String(channel + 1));
+        }
+    }
+}
+
+/**
+ * @brief gets the MIDI channel for the MIDIHandler
+ * 
+ * @return int 
+ */
+int MIDIHandler::getChannel() {
+    return confirmedChannel - 1;
 }

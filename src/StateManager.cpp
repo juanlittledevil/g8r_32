@@ -32,13 +32,14 @@ void StateManager::initializeEEPROM() {
         if (Debug::isEnabled) {
             DEBUG_PRINT("State is NaN, initializing EEPROM");
         }
-        // Initialize the EEPROM with the default state
+        /// Initialize the EEPROM with the default state
         state.mode = 0; /// Set the mode to 0 by default.
-        // Initialize gateDivisions
+        /// Initialize mode0 gate divisions
         for (int i = 0; i < 8; i++) {
             state.mode0.gateDivisions[i] = GateDivision{i, internalPPQN};
         }
-        // Other default values can be set here
+        /// Initialize mode1 MIDI channel
+        state.mode1.MIDIChannel = 9; /// Default MIDI channel is 9
 
         saveAppState(); /// Save the default state to the EEPROM
 
@@ -137,5 +138,41 @@ int StateManager::getGateDivision(int gate) {
     return state.mode0.gateDivisions[gate].division;
     if (Debug::isEnabled) {
         DEBUG_PRINT("Gate division for gate " + String(gate) + " is " + String(state.mode0.gateDivisions[gate].division));
+    }
+}
+
+/**
+ * @brief Sets the MIDI channel for Mode1 in the AppState object 'state'.
+ * 
+ * @param channel - The MIDI channel to set
+ */
+void StateManager::setMode1MIDIChannel(int channel) {
+    if (channel >= 0 && channel < 16) {
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("Setting MIDI channel for Mode1 to " + String(channel));
+        }
+        state.mode1.MIDIChannel = channel;
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("MIDI channel for Mode1 is " + String(state.mode1.MIDIChannel));
+        }
+    } else {
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("MIDI channel out of bounds: " + String(channel));
+        }
+    }
+}
+
+/**
+ * @brief Returns the MIDI channel for Mode1 from the AppState object 'state'.
+ * 
+ * @return int - The MIDI channel for Mode1
+ */
+int StateManager::getMode1MIDIChannel() {
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Getting MIDI channel for Mode1");
+    }
+    return state.mode1.MIDIChannel;
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("MIDI channel for Mode1 is " + String(state.mode1.MIDIChannel));
     }
 }

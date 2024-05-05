@@ -27,9 +27,14 @@ struct Mode0State {
     std::array<GateDivision, 8> gateDivisions;
 };
 
+struct Mode1State {
+    int MIDIChannel;
+};
+
 struct AppState {
     int mode;
     Mode0State mode0;
+    Mode1State mode1;
 };
 
 #endif // APP_STATE_H

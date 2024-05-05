@@ -9,10 +9,12 @@
 #include "Constants.h"
 #include "ResetButton.h"
 #include "InputHandler.h"
+#include "StateManager.h"
 
 class Mode1 : public Mode {
 public:
-    Mode1(Encoder& encoder,
+    Mode1(StateManager& stateManager,
+        Encoder& encoder,
         InputHandler& inputHandler,
         Gates& gates,
         LEDController& ledController,
@@ -36,6 +38,7 @@ private:
     void handleButton(Encoder::ButtonState buttonState);
     void handleChannelSelection();
     void handleChannelSelectionPress();
+    StateManager& stateManager;
     LEDController& ledController;
     InputHandler& inputHandler;
     Encoder& encoder;

@@ -12,6 +12,7 @@ public:
     void begin();
     void handleMidiMessage();
     void setChannel(byte channel);
+    int getChannel();
     void setMode(int mode);
 
     // Declare static functions to handle MIDI messages

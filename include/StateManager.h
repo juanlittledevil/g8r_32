@@ -16,8 +16,9 @@ public:
     int getMode();
     void setMode(int newMode);
     void setGateDivision(int gate, int division);
-    // getGateDivision needs implementing on setup I think. no need to save it to EEPROM.
     int getGateDivision(int gate);
+    void setMode1MIDIChannel(int channel);
+    int getMode1MIDIChannel();
 
 private:
     AppState state;
