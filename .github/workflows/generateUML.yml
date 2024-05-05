@@ -49,9 +49,11 @@ jobs:
           # [[ -d docs/html ]] && rm -rf docs/html
           # [[ -d docs/xml ]] && rm -rf docs/xml
       - name: Commit Doc Files
+        if: github.event_name == 'pull_request' && github.event.action == 'closed'
         run: |
+          git checkout ${{ github.event.pull_request.head.ref }}
           git add docs
           git config --global user.name 'juanlittledevil'
           git config --global user.email 'juanlittledevil@users.noreply.github.com'
           git commit -m "Automated documentation"
-          git push
+          git push origin ${{ github.event.pull_request.head.ref }}
