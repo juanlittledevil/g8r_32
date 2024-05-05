@@ -2,13 +2,17 @@
 #define MODE_SELECTOR_H
 
 #include <vector>
-#include "LEDController.h" // Include the LEDController header
+#include <EEPROM.h>
+#include "LEDController.h"
 #include "Encoder.h"
 #include "Mode.h"
 #include "ResetButton.h"
+#include "StateManager.h"
 
-//Mode Selector Singleton.
-
+/**
+ * @brief Mode Selector Singleton. This class is responsible for managing the different modes of the device. It provides methods to add modes, set the current mode, and handle mode selection.
+ * 
+ */
 class ModeSelector {
 public:
     static ModeSelector& getInstance();
@@ -21,13 +25,14 @@ public:
     void setLedController(LEDController& ledController);
     void setEncoder(Encoder& encoder);
     void setCurrentMode(Mode*& currentMode);
+    void setStateManager(StateManager& stateManager);
     bool isInModeSelection();
     Mode* getCurrentMode();
     void addMode(Mode* mode);
     void update();
 
 private:
-    ModeSelector(); // Constructor is private
+    ModeSelector(); ///< Constructor is private
     ModeSelector(ModeSelector const&); // Don't Implement
     void operator=(ModeSelector const&); // Don't implement
 
@@ -38,6 +43,7 @@ private:
     int inModeSelection = false;
     LEDController* ledController; // Add a pointer to LEDController
     Encoder* encoder; // Add a pointer to Encoder
+    StateManager* stateManager;
     ResetButton* resetButton;
     bool isInSelection;
     bool inChannelSelection;

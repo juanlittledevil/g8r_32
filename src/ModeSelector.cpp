@@ -9,6 +9,10 @@ ModeSelector& ModeSelector::getInstance() {
     return instance;
 }
 
+ModeSelector::ModeSelector()
+    :   mode(0),
+        currentMode(nullMode)   {} // Initializes mode to 0
+
 void ModeSelector::update() {
     handleButtonPress();
     handleEncoderRotation();
@@ -19,10 +23,25 @@ int ModeSelector::getMode() const {
 }
 
 void ModeSelector::setMode(int newMode) {
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Setting mode to " + String(newMode));
+    }
+
     if (newMode >= 0 && newMode < modes.size()) {
         mode = newMode;
         currentMode = modes[newMode];
+
+        // Save the current state to EEPROM so it persists.
+        stateManager->setMode(newMode);
     }
+
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Mode set to " + String(mode));
+    }
+}
+
+void ModeSelector::setStateManager(StateManager& stateManager) {
+    this->stateManager = &stateManager;
 }
 
 void ModeSelector::handleLongPress() {
@@ -37,6 +56,9 @@ void ModeSelector::handleLongPress() {
         singlePressHandled = true;
         ledController->clearAndResetLEDs();
         ledController->setState(getMode(), true);
+
+        // Save the current state to EEPROM
+        stateManager->saveAppState();
     } else {
         // Exit mode selection state
         // ...
@@ -116,7 +138,3 @@ void ModeSelector::addMode(Mode* mode) {
 Mode* ModeSelector::getCurrentMode() {
     return currentMode;
 }
-
-ModeSelector::ModeSelector()
-    :   mode(0),
-        currentMode(nullMode)   {} // Initializes mode to 0
