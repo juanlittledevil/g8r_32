@@ -5,10 +5,6 @@
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
-// const int LED_ON_DURATION = 10; 
-// const int LONG_LED_ON_DURATION = 25;
-// const int MIDI_CLOCK_PULSE_COUNT = 24;
-
 // Static variables initialization
 float EurorackClock::lastFlashTime = 0;
 int EurorackClock::flashPulseCount = 0;
