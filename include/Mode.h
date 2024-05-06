@@ -1,6 +1,14 @@
+/**
+ * @file Mode.h
+ * @brief This is the base class for the various modes that the module can be in. It defines the interface that all modes must implement.
+ */
 #ifndef MODE_H
 #define MODE_H
 
+/**
+ * @brief This class is the base for our application modes.
+ * 
+ */
 class Mode {
 public:
     virtual void handleSinglePress() = 0;

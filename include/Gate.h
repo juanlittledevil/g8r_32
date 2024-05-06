@@ -1,9 +1,18 @@
+/**
+ * @file Gate.h
+ * @brief This file contains the Gate class, which is used to control the gates.
+ */
 #ifndef GATE_H
 #define GATE_H
 
 #include "Pin.h"
 #include "Constants.h"
 
+/**
+ * @brief This class defines what a gate is and how it should behave.
+ * It inherits from the OutputPin class, which provides the basic functionality for a pin
+ * including setting state to HIGH or LOW, getting the current state, etc.
+ */
 class Gate : public OutputPin {
   public:
     Gate(int pin = -1); // Default pin set to -1

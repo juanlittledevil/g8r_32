@@ -1,3 +1,12 @@
+/**
+ * @file Mode1.h
+ * @brief Mode one is a MIDI note to trigger app. It works with MIDI notes and the modulo operator to trigger gates.
+ * I've configured the so c2 (42) triggers gate 1, d2 (44) triggers gate 2, etc. up to g2 (47) which triggers gate 6.
+ * 
+ * TODO: This mode is working well, but I think we coudl combine mode1 and mode2 into one mode. They are very similar
+ * and if instead of using the modulo operator, we implemented a MIDI learn functionality that took into account the
+ * note number as well the MIDI channel, there would be no need for separate apps. This is probably the next thing I will do.
+ */
 #ifndef MODE1_H
 #define MODE1_H
 
@@ -11,6 +20,10 @@
 #include "InputHandler.h"
 #include "StateManager.h"
 
+/**
+ * @brief This is a MIDI to Trigger class for Note On messages. It uses the modulo operator to trigger gates based on the note number.
+ * 
+ */
 class Mode1 : public Mode {
 public:
     Mode1(StateManager& stateManager,

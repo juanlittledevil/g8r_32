@@ -189,14 +189,26 @@ void Mode0::handleResetDoublePress() {
     }
 }
 
+/**
+ * @brief This function is used to handle long press of the reset button. However, it doesn't do anything yet.
+ * 
+ */
 void Mode0::handleResetLongPress() {
     /// Does nothing yet but it could. :)
 }
 
+/**
+ * @brief This function is used to handle reset press released. However, it doesn't do anything yet.
+ * 
+ */
 void Mode0::handleResetPressReleased() {
     /// Does nothing yet but it could. :)
 }
 
+/**
+ * @brief This function is used to handle long press of the button. However, it doesn't do anything yet.
+ * 
+ */
 void Mode0::handleLongPress() {
     /// Long press is used by modeSelector, so don't use that here.
 }
@@ -239,6 +251,10 @@ void Mode0::handleSinglePress() {
     inDivisionSelection = !inDivisionSelection;
 }
 
+/**
+ * @brief Handle press released. Default behavior is to do nothing.
+ * 
+ */
 void Mode0::handlePressReleased() {
     /// Mode 0 specific press released handling
 }

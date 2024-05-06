@@ -1,30 +1,53 @@
-// pin.cpp
+/**
+ * @file Pin.cpp
+ * @brief This file contains the implementation of the Pin class and its derived classes.
+ * 
+ */
 #include "Pin.h"
 #include <Arduino.h>
 #include "Debug.h"
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
-// Pin class
-// Constructor
+/**
+ * @brief Construct a new Pin:: Pin object, which is the base class for all pin.
+ * 
+ * @param pin 
+ */
 Pin::Pin(int pin) {
     this->pin = pin;
     this->state = LOW;
 }
 
-// Destructor
+/**
+ * @brief Destroy the Pin:: Pin object
+ * 
+ */
 Pin::~Pin() {
     // Add any cleanup code here
 }
 
-// InputPin class
-// Default constructor
+/**
+ * @brief Construct a new Input Pin:: Input Pin object
+ * This constructor initializes the pin and sets the internal pullup and pulldown flags to false. Use this constructor
+ * if you do not want to use the internal pullup or pulldown resistors.
+ * 
+ * @param pin 
+ */
 InputPin::InputPin(int pin) : Pin(pin), useInternalPullup(false), useInternalPulldown(false) {
     this->useInternalPullup = false;
     this->useInternalPulldown = false;
 }
 
-// Overloaded constructor
+/**
+ * @brief Construct a new Input Pin:: Input Pin object
+ * This constructor initializes the pin and sets the internal pullup and pulldown flags to the specified values.
+ * Use this constructor if you want to use the internal pullup or pulldown resistors.
+ * 
+ * @param pin 
+ * @param internalPullup 
+ * @param internalPulldown 
+ */
 InputPin::InputPin(int pin, bool internalPullup, bool internalPulldown)
 :   Pin(pin),
     useInternalPullup(internalPullup),
@@ -33,7 +56,11 @@ InputPin::InputPin(int pin, bool internalPullup, bool internalPulldown)
         this->useInternalPulldown = internalPullup;
 }
 
-// Initialize the input pin
+/**
+ * @brief This function is used to initialize the input pin. It is intended to be called in the setup() function of the main sketch.
+ * However, we don't call it directly, instead we use the begin() function of the derived classes.
+ * 
+ */
 void InputPin::begin() {
     if (this->useInternalPullup) {
         pinMode(this->pin, INPUT_PULLUP);
@@ -44,53 +71,85 @@ void InputPin::begin() {
     }
 }
 
-// Get the state of the input pin
+/**
+ * @brief This function is used to read the state of the input pin.
+ * 
+ * @return bool 
+ */
 bool InputPin::getState() {
     this->state = digitalRead(this->pin);
     return this->state;
 }
 
-// AnalogInputPin class
-// Constructor
+/**
+ * @brief Construct a new Analog Input Pin:: Analog Input Pin object
+ * 
+ * @param pin 
+ */
 AnalogInputPin::AnalogInputPin(int pin) : Pin(pin) {
     // Initialization code here if needed
 }
 
-// Initialize the analog input pin
+/**
+ * @brief This function is used to initialize the analog input pin. It is intended to be called in the setup() function of the main sketch.
+ * 
+ */
 void AnalogInputPin::begin() {
     pinMode(this->pin, INPUT);
 }
 
-// Read the analog value from the pin
+/**
+ * @brief This function is used to read the value of the analog input pin.
+ * 
+ * @return int 
+ */
 int AnalogInputPin::read() {
     int value = analogRead(this->pin);
     return value;
 }
 
-// OutputPin class
-// Constructor
+/**
+ * @brief Construct a new Output Pin:: Output Pin object
+ * 
+ * @param pin 
+ */
 OutputPin::OutputPin(int pin) : Pin(pin) {
   // Initialization code here if needed
 }
 
-// Initialize the output pin
+/**
+ * @brief This function is used to initialize the output pin. It is intended to be called in the setup() function of the main sketch.
+ * 
+ */
 void OutputPin::begin() {
   pinMode(this->pin, OUTPUT);
 }
 
-// Set the state of the output pin
+/**
+ * @brief This function is used to set the state of the output pin.
+ * Possible states are HIGH or LOW.
+ * 
+ * @param newState 
+ */
 void OutputPin::setState(bool newState) {
   this->state = newState;
   digitalWrite(this->pin, this->state ? HIGH : LOW);
 }
 
-// Get the state of the output pin
+/**
+ * @brief This function is used to get the state of the output pin.
+ * 
+ * @return bool 
+ */
 bool OutputPin::getState() {
     return this->state;
 }
 
-// PWMPin class
-// Constructor
+/**
+ * @brief Construct a new PWMPin::PWMPin object. We are using the HardwareTimer library for STM32 boards.
+ * 
+ * @param pin 
+ */
 PWMPin::PWMPin(int pin) : OutputPin(pin) {
     // Initialization code here if needed
     #ifdef ARDUINO_ARCH_STM32
@@ -98,7 +157,10 @@ PWMPin::PWMPin(int pin) : OutputPin(pin) {
     #endif
 }
 
-// Initialize the PWM pin
+/**
+ * @brief This function is used to initialize the PWM pin. It is intended to be called in the setup() function of the main sketch.
+ * 
+ */
 void PWMPin::begin() {
     #ifdef ARDUINO_ARCH_STM32
     pinMode(this->pin, OUTPUT);
@@ -113,13 +175,21 @@ void PWMPin::begin() {
     #endif
 }
 
-// Set the duty cycle of the PWM pin
+/**
+ * @brief This function is used to set the duty cycle of the PWM pin.
+ * 
+ * @param dutyCycle 
+ */
 void PWMPin::setDutyCycle(int dutyCycle) {
     this->dutyCycle = dutyCycle;
     analogWrite(this->pin, this->dutyCycle);
 }
 
-// Get the duty cycle of the PWM pin
+/**
+ * @brief This function is used to get the duty cycle of the PWM pin.
+ * 
+ * @return int 
+ */
 int PWMPin::getDutyCycle() {
     return this->dutyCycle;
 }

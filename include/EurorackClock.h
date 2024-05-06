@@ -1,3 +1,9 @@
+/**
+ * @file EurorackClock.h
+ * @brief This file contains the EurorackClock class, which is used to handle the clock and tempo of the device.
+ * This is one of the first classes I wrote for the project, and it has been refactored a few times.
+ * It probably could use with a bit more refactoring love, but it works well enough for now.
+ */
 #ifndef EURORACKCLOCK_H
 #define EURORACKCLOCK_H
 
@@ -8,7 +14,10 @@
 #include "LEDs.h"
 #include "Constants.h"
 
-// Define the state of the clock
+/**
+ * @brief The ClockState struct is used to store the current state of the clock.
+ * 
+ */
 struct ClockState {
     unsigned long lastTickTime; // Time of the last tick
     unsigned long tickInterval; // Interval between ticks
@@ -17,22 +26,18 @@ struct ClockState {
     ClockState() : lastTickTime(0), tickInterval(0), isRunning(false) {}
 };
 
-// Class declaration for EurorackClock
+/**
+ * @brief The EurorackClock class is used to handle the clock and tempo of the device.
+ * It utilizes an interrupt to handle the clock ticks, and can be set to an external tempo.
+ */
 class EurorackClock {
     ClockState clockState; // Current state of the clock
 
 public:
-    // Constructor
     EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates& gates, LEDs& leds);
-
-    // Setup function to initialize the clock
     void setup();
-
-    // Start the clock
-    void start();
-
-    // Stop the clock
-    void stop();
+    void start(); // Start the clock
+    void stop(); // Stop the clock
 
     // Static interrupt handler for the clock
     static void interruptHandler() {
@@ -44,39 +49,19 @@ public:
         instance->reset();
     }
 
-    // Reset the clock
-    void reset();
+    void reset(); // Reset the clock
     void reset(int selectedGate);
-
-    // Main tick function
-    void tick();
-
-    // Set the tempo of the clock
+    void tick(); // Handle a clock tick
     void setTempo(float newTempo, int ppqn);
-
-    // Get the current tempo
     int getTempo() const; 
-
-    // Flash the tempo LED
     void flashTempoLed();
-
-    // Handle the external clock input
     void handleExternalClock();
-
-    // Handle the MIDI clock input
     void handleMidiClock();
-
-    // Set the PPQN (Pulses Per Quarter Note)
     void setPPQN(int ppqn);
-
-    // Set whether the clock is using external tempo
     void setExternalTempo(bool isExternalTempo);
-
-    // Toggle the led on durationfor the tempo selection
     void toggleLedOnDuration(bool selectingTempo);
 
 private:
-    // Helper functions
     void updateTempoLed(unsigned long currentTime);
     void updateFlashPulseCount();
     bool shouldTriggerClockPulse();
@@ -87,7 +72,6 @@ private:
     void triggerGates(unsigned long currentTime);
     void handleTempoLed(unsigned long currentTime);
 
-    // Member variables
     static EurorackClock* instance;
     HardwareTimer* timer;
     LED tempoLed;

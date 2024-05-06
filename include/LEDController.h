@@ -1,8 +1,21 @@
+/**
+ * @file LEDController.h
+ * @brief I originally had the LEDs class handling the LED control, but I ran into issues making coding difficult all the modes
+ * needed to interact with the LEDs and maintain some sort of state. To help facilityate state and management of the leds
+ * I created this class to handle the LED control and to provide a more user-friendly interface.
+ * 
+ * TODO: The tempo LED is still handled by the EurorackClock class, which is a bit of a mess. I should move that to this class
+ * and refactor the EurorackClock class to be more of a clock manager. But again, it works so it's fine for now.
+ */
 #ifndef LED_CONTROLLER_H
 #define LED_CONTROLLER_H
 
 #include "LEDs.h"
 
+/**
+ * @brief This class is used as the main interface for controlling the LEDs.
+ * 
+ */
 class LEDController {
 public:
     LEDController(LEDs& leds);

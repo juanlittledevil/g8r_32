@@ -37,6 +37,10 @@
 #include <Arduino.h>
 #include "StateManager.h"
 
+/**
+ * @brief This class uses the eurorack clock to provide us pullses with selectable division. It can be synced to a clock too, internal and external.
+ * 
+ */
 class Mode0 : public Mode {
 public:
     Mode0(StateManager& stateManager,

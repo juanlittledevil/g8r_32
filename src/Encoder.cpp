@@ -1,3 +1,7 @@
+/**
+ * @file Encoder.cpp
+ * @brief This file contains the implementation of the Encoder class which manages the physical encoder and button inputs.
+ */
 #include "Encoder.h"
 #include "Debug.h"
 #include <Arduino.h>
@@ -18,12 +22,24 @@ Encoder::Encoder(int clkPin, int dtPin, int buttonPin)
     // Nothing to do here
 }
 
+/**
+ * @brief This is intended to be called in the setup() function of the main sketch.
+ * 
+ */
 void Encoder::begin() {
     encCLK.begin();
     encDT.begin();
     encButton.begin();
 }
 
+/**
+ * @brief Read the encoder and return the direction of the turn.
+ * It uses some constants to determine the speed of the turn.
+ * 
+ * TODO: I should probably move the constants to the constructor and make them configurable.
+ * 
+ * @return Encoder::Direction 
+ */
 Encoder::Direction Encoder::readEncoder() {
     static int counter = 0;
     const int stepsPerDetent = 2; // Change this to match your encoder's resolution
@@ -58,6 +74,11 @@ Encoder::Direction Encoder::readEncoder() {
     return NONE;
 }
 
+/**
+ * @brief This is used to read the state of the button. It also handles debouncing and double-click detection.
+ * 
+ * @return Encoder::ButtonState 
+ */
 Encoder::ButtonState Encoder::readButton() {
     static unsigned long lastDebounceTime = 0; // the last time the button pin was toggled
     static ButtonState lastButtonState = OPEN; // the last button state
@@ -91,18 +112,41 @@ Encoder::ButtonState Encoder::readButton() {
     return buttonState;
 }
 
+/**
+ * @brief Read the speed of the encoder turn.
+ * 
+ * @return int 
+ */
 int Encoder::readSpeed() {
     return speed;
 }
 
+/**
+ * @brief Check if the button has been long pressed.
+ * 
+ * @return true 
+ * @return false 
+ */
 bool Encoder::isButtonLongPressed() {
     return buttonState == PRESSED && millis() - lastButtonPress > LONG_PRESS_INTERVAL;
 }
 
+/**
+ * @brief Check if the button has been double pressed.
+ * 
+ * @return true 
+ * @return false 
+ */
 bool Encoder::isButtonDoublePressed() {
     return pressCount >= 2;
 }
 
+/**
+ * @brief Check if the button has been single pressed.
+ * 
+ * @return true 
+ * @return false 
+ */
 bool Encoder::isButtonSinglePressed() {
     if (pressCount == 1 && millis() - lastButtonPress >= DOUBLE_PRESS_INTERVAL) {
         pressCount = 0;
@@ -111,6 +155,14 @@ bool Encoder::isButtonSinglePressed() {
     return false;
 }
 
+/**
+ * @brief This is a helper function to handle the encoder direction.
+ * 
+ * @param currentValue 
+ * @param maxValue 
+ * @param direction 
+ * @return int 
+ */
 int Encoder::handleEncoderDirection(int currentValue, int maxValue, Direction direction) {
     if (direction == Encoder::CW) {
         if (currentValue < maxValue - 1) {
