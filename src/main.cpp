@@ -79,7 +79,7 @@ void setup() {
     delay(1000);
 
     /// Initialize the debug settings
-    Debug::isEnabled = true; // Enable debugging
+    Debug::isEnabled = false; // Enable debugging
     Debug::resetEEPROM = false; // Enable to clear and reset EEPROM.
 
     if (Debug::isEnabled) {
@@ -87,9 +87,7 @@ void setup() {
         DEBUG_PRINT("Entering setup() function");
     }
 
-    // Workaround for bug in ResetButton class
-    pinMode(RESET_BUTTON, INPUT_PULLDOWN);
-
+    resetButton.begin(); // Initialize the reset button
     leds.begin(); // Initialize LED pins
     gates.begin(); // Initialize gate pins
     encoder.begin(); // Initialize encoder pins
@@ -104,7 +102,11 @@ void setup() {
     // Initialize the state manager
     stateManager.initializeEEPROM(); // Initialize the EEPROM with default values
 
-    // Add the modes to the ModeSelector in order
+    /**
+     * @brief Add the modes to the ModeSelector.
+     * IMPORTANT: Make sure to add the modes in order! The MIDIHandler gets past ints representing the index of the mode. If the
+     * order is changed, the MIDIHandler will set the wrong callback functions to the modes.
+     */
     modeSelector.addMode(&mode0); // Add Mode0 to the ModeSelector
     modeSelector.addMode(&mode1); // Add Mode1 to the ModeSelector
     modeSelector.addMode(&mode2); // Add Mode2 to the ModeSelector
