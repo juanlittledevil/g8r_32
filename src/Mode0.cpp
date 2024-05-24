@@ -59,7 +59,7 @@ void Mode0::setup() {
     gates.setALLGates(false);
     ledController.clearAndResetLEDs();
     midi.setHandleClock(Mode0::handleClock); // Set the handleClock function to handle MIDI clock messages using the static function handleClock
-    
+
     for (int i = 0; i < gates.numGates; i++) {
         int division = stateManager.getGateDivision(i);
         gates.setDivision(i, division);
