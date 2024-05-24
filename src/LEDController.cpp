@@ -120,6 +120,15 @@ void LEDController::update() {
 }
 
 /**
+ * @brief This function updates the LEDs. It is meant to be called in every loop iteration.
+ * 
+ * @param currentTime 
+ */
+void LEDController::update(unsigned long currentTime) {
+    leds.update(currentTime);
+}
+
+/**
  * @brief Helper function to clear and reset all LEDs.
  * 
  */
@@ -144,4 +153,15 @@ void LEDController::clearLEDs() {
  */
 void LEDController::updateBlinking() {
     leds.updateBlinking();
+}
+
+/**
+ * @brief This function is used to trigger an LED. The LED will stay on for ledOnDuration milliseconds.
+ * 
+ * @param index 
+ * @param currentTime 
+ * @param inverted 
+ */
+void LEDController::trigger(int index, unsigned long currentTime, bool inverted) {
+    leds.trigger(index, currentTime, inverted);
 }

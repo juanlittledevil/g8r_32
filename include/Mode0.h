@@ -29,7 +29,6 @@
 #include "Gates.h"
 #include "LEDController.h"
 #include "EurorackClock.h"
-#include "MIDIHandler.h"
 #include "Constants.h"
 #include "ResetButton.h"
 #include "InputHandler.h"
@@ -43,12 +42,13 @@
  */
 class Mode0 : public Mode {
 public:
+    static Mode0* instance; 
     Mode0(StateManager& stateManager,
         Encoder& encoder,
         InputHandler& inputHandler,
         Gates& gates,
         LEDController& ledController,
-        MIDIHandler& midiHandler,
+        midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
         ResetButton& resetButton,
         EurorackClock& clock);
     void handleSinglePress() override;
@@ -66,6 +66,10 @@ public:
     void setDivisionPPQN(int ppqn);
     void setDefaultDivisionIndex();
 
+    // For MIDI Messages
+    static void handleClock();
+    void handleMidiMessage();
+
 private:
     void handleEncoder();
     void handleButton(Encoder::ButtonState buttonState);
@@ -78,7 +82,7 @@ private:
     ResetButton& resetButton;
     Gates& gates;
     EurorackClock& clock;
-    MIDIHandler& midiHandler;
+    midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi;
     InputHandler& inputHandler;
     bool inDivisionSelection = false;
     bool externalTempo = false;

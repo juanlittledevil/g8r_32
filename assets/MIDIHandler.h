@@ -21,7 +21,7 @@
  */
 class MIDIHandler {
 public:
-    MIDIHandler(HardwareSerial& serial, EurorackClock& clock, Gates& gates, LEDs& leds);
+    MIDIHandler(midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi, EurorackClock& clock, Gates& gates, LEDs& leds);
     void begin();
     void handleMidiMessage();
     void setChannel(byte channel);
@@ -44,8 +44,9 @@ public:
 private:
     // Declare a static instance of the MIDIHandler class
     static MIDIHandler* instance; 
-    midi::SerialMIDI<HardwareSerial> midiSerial;
-    midi::MidiInterface<midi::SerialMIDI<HardwareSerial>> midi;
+    // midi::SerialMIDI<HardwareSerial> midiSerial;
+    // midi::MidiInterface<midi::SerialMIDI<HardwareSerial>> midi;
+    midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi;
     EurorackClock& clock;
     byte channel = 10; 
     Gates& gates;

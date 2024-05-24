@@ -7,36 +7,30 @@
 #include "Debug.h"
 #include <Arduino.h>
 
-#define DEBUG_PRINT(message) { \
-    Debug::print(__FILE__, __LINE__, __func__, String(message)); \
-    Serial.flush(); \
-}
+#define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 /**
- * @brief Construct a new Mode 2:: Mode 2 object
+ * @brief This is the instance of the Mode2 class. It is used to access the Mode2 class from the static MIDI callback function.
  * 
- * @param stateManager 
- * @param encoder 
- * @param inputHandler 
- * @param gates 
- * @param ledController 
- * @param midiHandler 
- * @param resetButton 
  */
+Mode2* Mode2::instance = nullptr;
+
 Mode2::Mode2(StateManager& stateManager,
     Encoder& encoder,
     InputHandler& inputHandler,
     Gates& gates,
     LEDController& ledController,
-    MIDIHandler& midiHandler,
+    midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
     ResetButton& resetButton)
     :   stateManager(stateManager),
         encoder(encoder),
         inputHandler(inputHandler),
         gates(gates),
         ledController(ledController),
-        midiHandler(midiHandler),
+        midi(midi),
         resetButton(resetButton) {
+    // Set the instance of the Mode2 class
+    instance = this;
 }
 
 /**
@@ -46,7 +40,9 @@ Mode2::Mode2(StateManager& stateManager,
  */
 void Mode2::setup() {
     // Initialization code here if needed
-    midiHandler.setMode(2);
+    gates.setALLGates(false); // Make sure we don't leave an notes on when changing channels.
+    ledController.clearAndResetLEDs();
+    midi.setHandleNoteOn(handleNoteOn);
     numLeds = ledController.getNumLeds();
     /// This is where you'd read the eeprom for the mode2 settings. However, we don't have any settings for mode2 yet.
 }
@@ -58,6 +54,7 @@ void Mode2::setup() {
 void Mode2::teardown() {
     // Cleanup code here if needed
     ledController.clearAndResetLEDs();
+    midi.setHandleNoteOn(nullptr);
 }
 
 /**
@@ -66,7 +63,37 @@ void Mode2::teardown() {
  */
 void Mode2::update() {
     // Update code here
-    midiHandler.handleMidiMessage();
+    handleMidiMessage();
+}
+
+/**
+ * @brief Handle MIDI messages. This function is called by the update method.
+ * 
+ */
+void Mode2::handleMidiMessage() {
+    unsigned long currentTime = millis();
+    midi.read();
+    gates.update(currentTime);
+    ledController.update(currentTime);
+}
+
+/**
+ * @brief Static callback function for handling MIDI Note On messages.
+ * 
+ * @param channel 
+ * @param pitch 
+ * @param velocity 
+ */
+void Mode2::handleNoteOn(byte channel, byte pitch, byte velocity) {
+    if (channel >= 9 && channel <= 16) {
+        unsigned long currentTime = millis();
+        int gate = (channel - 9) % instance->gates.numGates;
+        instance->gates.trigger(gate, currentTime);
+        if (!instance->isInSelection) {
+            // instance->leds.trigger(gate, currentTime);
+            instance->ledController.trigger(gate, currentTime);
+        }
+    }
 }
 
 /**

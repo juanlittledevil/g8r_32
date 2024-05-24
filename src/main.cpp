@@ -5,12 +5,12 @@
  */
 #include <Arduino.h>
 #include <vector>
+#include <MIDI.h>
 #include "Gates.h"
 #include "ModeSelector.h"
 #include "LEDs.h"
 #include "Debug.h"
 #include "Encoder.h"
-#include "MIDIHandler.h"
 #include "EurorackClock.h"
 #include "Constants.h"
 #include "Mode0.h"
@@ -61,14 +61,20 @@ Encoder encoder = Encoder(ENCODER_PINA, ENCODER_PINB, ENCODER_BUTTON); /// Insta
 ResetButton resetButton = ResetButton(RESET_BUTTON); /// Instance of the ResetButton class
 LEDController ledController(leds); /// Instance of the LEDController class
 EurorackClock clock(CLOCK_PIN, RESET_PIN, TEMPO_LED, gates, leds); /// Instance of the EurorackClock class
-MIDIHandler midiHandler(Serial2, clock, gates, leds); /// Instance of the MIDIHandler class
+
+midi::SerialMIDI<HardwareSerial> midiSerial(Serial2);
+midi::MidiInterface<midi::SerialMIDI<HardwareSerial>> midiInterface(midiSerial);
+
 InputHandler inputHandler = InputHandler(CV_A_PIN, CV_B_PIN); /// Instance of the InputHandler class
 ModeSelector& modeSelector = ModeSelector::getInstance(); /// Instance of the ModeSelector class
 Mode* currentMode = nullptr; /// Pointer to the current mode
 Mode* previousMode = nullptr; /// Pointer to the previous mode
-Mode0 mode0(stateManager, encoder, inputHandler, gates, ledController, midiHandler, resetButton, clock); /// Instance of Mode0 class
-Mode1 mode1(stateManager, encoder, inputHandler, gates, ledController, midiHandler, resetButton); /// Instance of Mode1 class
-Mode2 mode2(stateManager, encoder, inputHandler, gates, ledController, midiHandler, resetButton); /// Instance of Mode2 class
+Mode0 mode0(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton, clock); /// Instance of Mode0 class
+Mode1 mode1(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton); /// Instance of Mode1 class
+Mode2 mode2(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton); /// Instance of Mode2 class
+
+// Forward declarations
+void midiSetup();
 
 /**
  * \brief Setup function for the Arduino sketch.
@@ -92,9 +98,8 @@ void setup() {
     gates.begin(); // Initialize gate pins
     encoder.begin(); // Initialize encoder pins
 
-    // Initialize the MIDIHandler stuffs.
-    midiHandler.begin();
-    midiHandler.setChannel(-1); // Set the MIDIHandler to listen to all channels
+    // Initialize the MIDI stuffs.
+    midiSetup();
 
     clock.setup(); // Start the clock
     clock.setTempo(120.0, internalPPQN); // Set the tempo to 120 BPM with internal 4 PPQN
@@ -104,8 +109,7 @@ void setup() {
 
     /**
      * @brief Add the modes to the ModeSelector.
-     * IMPORTANT: Make sure to add the modes in order! The MIDIHandler gets past ints representing the index of the mode. If the
-     * order is changed, the MIDIHandler will set the wrong callback functions to the modes.
+     * IMPORTANT: Add the modes in the order you want them to be selected via the encoder.
      */
     modeSelector.addMode(&mode0); // Add Mode0 to the ModeSelector
     modeSelector.addMode(&mode1); // Add Mode1 to the ModeSelector
@@ -152,4 +156,18 @@ void loop() {
             previousMode = currentMode; // This prevents the setup method from running again.
         }
     }
+}
+
+/**
+ * @brief This function is used to setup the MIDI interface. It is intended to be called in the setup() function of the main sketch.
+ * We'll set the actual callback functions in the mode classes setup() and teardown() methods.
+ */
+void midiSetup() {
+    midiInterface.begin(MIDI_CHANNEL_OMNI);
+    midiInterface.setHandleClock(nullptr);
+    midiInterface.setHandleStart(nullptr);
+    midiInterface.setHandleStop(nullptr);
+    midiInterface.setHandleContinue(nullptr);
+    midiInterface.setHandleNoteOn(nullptr);
+    midiInterface.setHandleNoteOff(nullptr);
 }

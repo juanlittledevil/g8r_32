@@ -10,6 +10,12 @@
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 /**
+ * @brief This is the instance of the Mode1 class. It is used to access the Mode1 class from the static MIDI callback function.
+ * 
+ */
+Mode1* Mode1::instance = nullptr;
+
+/**
  * @brief Construct a new Mode 1:: Mode 1 object
  * 
  * @param stateManager 
@@ -17,7 +23,7 @@
  * @param inputHandler 
  * @param gates 
  * @param ledController 
- * @param midiHandler 
+ * @param midi 
  * @param resetButton 
  */
 Mode1::Mode1(StateManager& stateManager,
@@ -25,15 +31,17 @@ Mode1::Mode1(StateManager& stateManager,
     InputHandler& inputHandler,
     Gates& gates,
     LEDController& ledController,
-    MIDIHandler& midiHandler,
+    midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
     ResetButton& resetButton)
     :   stateManager(stateManager),
         encoder(encoder),
         inputHandler(inputHandler),
         gates(gates),
         ledController(ledController),
-        midiHandler(midiHandler),
+        midi(midi),
         resetButton(resetButton) {
+    // Set the instance of the Mode1 class
+    instance = this;
 }
 
 /**
@@ -44,7 +52,9 @@ Mode1::Mode1(StateManager& stateManager,
  * 
  */
 void Mode1::setup() {
-    midiHandler.setMode(1);
+    gates.setALLGates(false); // Make sure we don't leave an notes on when changing channels.
+    ledController.clearAndResetLEDs();
+    midi.setHandleNoteOn(handleNoteOn); // Remember that this needs to be nulled on teardown()
     numLeds = ledController.getNumLeds();
     confirmedChannel = stateManager.getMode1MIDIChannel();
     selectedChannel = confirmedChannel;
@@ -57,6 +67,26 @@ void Mode1::setup() {
 void Mode1::teardown() {
     // Teardown code goes here...
     ledController.clearAndResetLEDs();
+    midi.setHandleNoteOn(nullptr); // Prevent issues with other modes by nulling it when done.
+}
+
+/**
+ * @brief Static callback function for handling MIDI Note On messages.
+ * 
+ * @param channel 
+ * @param pitch 
+ * @param velocity 
+ */
+void Mode1::handleNoteOn(byte channel, byte pitch, byte velocity) {
+    unsigned long currentTime = millis();
+    int note = pitch;
+    int gate = (note - 3) % instance->gates.numGates;
+    if (channel == instance->confirmedChannel) {
+        instance->gates.trigger(gate, currentTime);
+        if (!instance->isInSelection) {
+            instance->ledController.trigger(gate, currentTime);
+        } 
+    }
 }
 
 /**
@@ -66,7 +96,7 @@ void Mode1::teardown() {
  */
 void Mode1::update() {
     // Handle MIDI messages
-    midiHandler.handleMidiMessage();
+    handleMidiMessage();
 
     // Handle button presses
     handleButton(encoder.readButton());
@@ -76,21 +106,22 @@ void Mode1::update() {
 }
 
 /**
+ * @brief Handle MIDI messages. This function is called by the update method.
+ * 
+ */
+void Mode1::handleMidiMessage() {
+    unsigned long currentTime = millis();
+    midi.read();
+    gates.update(currentTime);
+    ledController.update(currentTime);
+}
+
+/**
  * @brief This function is used to handle the selection states of the mode.
  * 
  */
 void Mode1::handleSelectionStates() {
-    if (inChannelSelection) {
-        handleChannelSelection();
-    } else {
-        if (midiHandler.getChannel() != confirmedChannel) {
-            /// The channel is different so lets change it.
-            midiHandler.setChannel(confirmedChannel);
-
-            /// Also write the new channel to the EEPROM
-            stateManager.setMode1MIDIChannel(confirmedChannel);
-        }
-    }
+    if (inChannelSelection) { handleChannelSelection(); }
 }
 
 /**
@@ -109,6 +140,9 @@ void Mode1::handleChannelSelectionPress() {
 
             inChannelSelection = false;
             isInSelection = false;
+
+            // Also write the new channel to the EEPROM
+            stateManager.setMode1MIDIChannel(confirmedChannel);
 
         // Enter channel selection state on button press
         } else {
