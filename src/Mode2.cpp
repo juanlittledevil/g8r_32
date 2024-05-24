@@ -9,6 +9,10 @@
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
+/**
+ * @brief This is the instance of the Mode2 class. It is used to access the Mode2 class from the static MIDI callback function.
+ * 
+ */
 Mode2* Mode2::instance = nullptr;
 
 Mode2::Mode2(StateManager& stateManager,
@@ -16,7 +20,6 @@ Mode2::Mode2(StateManager& stateManager,
     InputHandler& inputHandler,
     Gates& gates,
     LEDController& ledController,
-    // MIDIHandler& midiHandler,
     midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
     ResetButton& resetButton)
     :   stateManager(stateManager),
@@ -25,8 +28,8 @@ Mode2::Mode2(StateManager& stateManager,
         gates(gates),
         ledController(ledController),
         midi(midi),
-        // midiHandler(midiHandler),
         resetButton(resetButton) {
+    // Set the instance of the Mode2 class
     instance = this;
 }
 
@@ -40,8 +43,6 @@ void Mode2::setup() {
     gates.setALLGates(false); // Make sure we don't leave an notes on when changing channels.
     ledController.clearAndResetLEDs();
     midi.setHandleNoteOn(handleNoteOn);
-    // midiHandler.setMode(2);
-
     numLeds = ledController.getNumLeds();
     /// This is where you'd read the eeprom for the mode2 settings. However, we don't have any settings for mode2 yet.
 }
@@ -65,6 +66,10 @@ void Mode2::update() {
     handleMidiMessage();
 }
 
+/**
+ * @brief Handle MIDI messages. This function is called by the update method.
+ * 
+ */
 void Mode2::handleMidiMessage() {
     unsigned long currentTime = millis();
     midi.read();
@@ -72,6 +77,13 @@ void Mode2::handleMidiMessage() {
     ledController.update(currentTime);
 }
 
+/**
+ * @brief Static callback function for handling MIDI Note On messages.
+ * 
+ * @param channel 
+ * @param pitch 
+ * @param velocity 
+ */
 void Mode2::handleNoteOn(byte channel, byte pitch, byte velocity) {
     if (channel >= 9 && channel <= 16) {
         unsigned long currentTime = millis();

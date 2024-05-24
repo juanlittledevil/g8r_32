@@ -8,14 +8,29 @@
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
+/**
+ * @brief This is the instance of the Mode0 class. We need this in order to work with the MIDI library.
+ * The library requires a static function to be called when a MIDI message is received.
+ */
 Mode0* Mode0::instance = nullptr;
 
+/**
+ * @brief Construct a new Mode 0:: Mode 0 object
+ * 
+ * @param stateManager 
+ * @param encoder 
+ * @param inputHandler 
+ * @param gates 
+ * @param ledController 
+ * @param midi 
+ * @param resetButton 
+ * @param clock 
+ */
 Mode0::Mode0(StateManager& stateManager,
     Encoder& encoder,
     InputHandler& inputHandler,
     Gates& gates,
     LEDController& ledController,
-    // MIDIHandler& midiHandler,
     midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
     ResetButton& resetButton,
     EurorackClock& clock)
@@ -25,10 +40,12 @@ Mode0::Mode0(StateManager& stateManager,
         gates(gates),
         ledController(ledController),
         midi(midi),
-        // midiHandler(midiHandler),
         resetButton(resetButton),
         clock(clock) {
+    // Set the instance to this class
     instance = this;
+
+    // Set the default division index
     setDefaultDivisionIndex();
 }
 
@@ -41,10 +58,8 @@ void Mode0::setup() {
     clock.start();
     gates.setALLGates(false);
     ledController.clearAndResetLEDs();
-    midi.setHandleClock(Mode0::handleClock);
-
-    // midiHandler.setMode(0);
-
+    midi.setHandleClock(Mode0::handleClock); // Set the handleClock function to handle MIDI clock messages using the static function handleClock
+    
     for (int i = 0; i < gates.numGates; i++) {
         int division = stateManager.getGateDivision(i);
         gates.setDivision(i, division);
@@ -87,7 +102,6 @@ void Mode0::setDefaultDivisionIndex() {
  */
 void Mode0::update() {
     // Handle MIDI messages
-    // midiHandler.handleMidiMessage();
     handleMidiMessage();
 
     // Handle button presses
@@ -160,7 +174,6 @@ void Mode0::handleButton(Encoder::ButtonState buttonState) {
     } else if (encoder.isButtonDoublePressed()) {
         this->handleDoublePress();
         doublePressHandled = true; 
-    // } else if (encoder.readButton() == Encoder::PRESSED && !singlePressHandled) {
     } else if (encoder.isButtonSinglePressed() && !singlePressHandled) {
         this->handleSinglePress();
         singlePressHandled = true;
@@ -186,7 +199,6 @@ void Mode0::handleResetButton(ResetButton::ButtonState buttonState) {
         this->handleResetDoublePress();
         doubleResetPressHandled = true; 
     } else if (resetButton.readButton() == ResetButton::PRESSED && !singleResetPressHandled) {
-    // } else if (resetButton.isButtonSinglePressed() && !singleResetPressHandled) {
         this->handleResetSinglePress();
         singleResetPressHandled = true;
     } else if (resetButton.readButton() == ResetButton::OPEN) {

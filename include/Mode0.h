@@ -29,7 +29,6 @@
 #include "Gates.h"
 #include "LEDController.h"
 #include "EurorackClock.h"
-// #include "MIDIHandler.h"
 #include "Constants.h"
 #include "ResetButton.h"
 #include "InputHandler.h"
@@ -49,7 +48,6 @@ public:
         InputHandler& inputHandler,
         Gates& gates,
         LEDController& ledController,
-        // MIDIHandler& midiHandler,
         midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
         ResetButton& resetButton,
         EurorackClock& clock);
@@ -84,7 +82,6 @@ private:
     ResetButton& resetButton;
     Gates& gates;
     EurorackClock& clock;
-    // MIDIHandler& midiHandler;
     midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi;
     InputHandler& inputHandler;
     bool inDivisionSelection = false;

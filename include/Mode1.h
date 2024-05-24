@@ -14,7 +14,6 @@
 #include "Encoder.h"
 #include "Gates.h"
 #include "LEDController.h"
-// #include "MIDIHandler.h"
 #include "Constants.h"
 #include "ResetButton.h"
 #include "InputHandler.h"
@@ -32,7 +31,6 @@ public:
         InputHandler& inputHandler,
         Gates& gates,
         LEDController& ledController,
-        // MIDIHandler& midiHandler,
         midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
         ResetButton& resetButton);
     void handleSinglePress() override;
@@ -63,7 +61,6 @@ private:
     Encoder& encoder;
     ResetButton& resetButton;
     Gates& gates;
-    // MIDIHandler& midiHandler;
     midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi;
     bool doublePressHandled = false;
     bool inChannelSelection = false;
