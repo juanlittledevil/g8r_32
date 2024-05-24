@@ -14,7 +14,7 @@
 #include "LEDController.h"
 #include "Encoder.h"
 #include "Gates.h"
-#include "MIDIHandler.h"
+// #include "MIDIHandler.h"
 #include "Constants.h"
 #include "InputHandler.h"
 #include "ResetButton.h"
@@ -26,12 +26,14 @@
  */
 class Mode2 : public Mode {
 public:
+    static Mode2* instance;
     Mode2(StateManager& stateManager,
         Encoder& encoder,
         InputHandler& inputHandler,
         Gates& gates,
         LEDController& ledController,
-        MIDIHandler& midiHandler,
+        // MIDIHandler& midiHandler,
+        midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
         ResetButton& resetButton);
     void handleSinglePress() override;
     void handleDoublePress() override;
@@ -46,6 +48,10 @@ public:
     void teardown() override;
     void update() override;
 
+    // For MIDI Messages
+    static void handleNoteOn(byte channel, byte pitch, byte velocity);
+    void handleMidiMessage();
+
 private:
     void handleEncoder();
     void handleButton(Encoder::ButtonState buttonState);
@@ -55,7 +61,8 @@ private:
     Encoder& encoder;
     ResetButton& resetButton;
     Gates& gates;
-    MIDIHandler& midiHandler;
+    // MIDIHandler& midiHandler;
+    midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi;
     bool doublePressHandled = false;
     bool isInSelection = false;
     bool singlePressHandled = false;

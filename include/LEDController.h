@@ -30,10 +30,12 @@ public:
     void resetInverted(int ledIndex);
     int getNumLeds();
     void update();
+    void update(unsigned long currentTime);
     void clearAndResetLEDs();
     void clearLEDs();
     void updateBlinking();
     void setState(int ledIndex, bool state);
+    void trigger(int index, unsigned long currentTime, bool inverted=false);
 
 
 private:

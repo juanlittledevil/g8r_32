@@ -8,12 +8,15 @@
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
+Mode0* Mode0::instance = nullptr;
+
 Mode0::Mode0(StateManager& stateManager,
     Encoder& encoder,
     InputHandler& inputHandler,
     Gates& gates,
     LEDController& ledController,
-    MIDIHandler& midiHandler,
+    // MIDIHandler& midiHandler,
+    midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
     ResetButton& resetButton,
     EurorackClock& clock)
     :   stateManager(stateManager),
@@ -21,9 +24,11 @@ Mode0::Mode0(StateManager& stateManager,
         inputHandler(inputHandler),
         gates(gates),
         ledController(ledController),
-        midiHandler(midiHandler),
+        midi(midi),
+        // midiHandler(midiHandler),
         resetButton(resetButton),
         clock(clock) {
+    instance = this;
     setDefaultDivisionIndex();
 }
 
@@ -34,7 +39,12 @@ Mode0::Mode0(StateManager& stateManager,
  */
 void Mode0::setup() {
     clock.start();
-    midiHandler.setMode(0);
+    gates.setALLGates(false);
+    ledController.clearAndResetLEDs();
+    midi.setHandleClock(Mode0::handleClock);
+
+    // midiHandler.setMode(0);
+
     for (int i = 0; i < gates.numGates; i++) {
         int division = stateManager.getGateDivision(i);
         gates.setDivision(i, division);
@@ -48,6 +58,15 @@ void Mode0::setup() {
 void Mode0::teardown() {
     clock.stop();
     ledController.clearAndResetLEDs();
+    midi.setHandleClock(nullptr);
+}
+
+/**
+ * @brief This function is used to handle MIDI clock messages.
+ * 
+ */
+void Mode0::handleClock() {
+    instance->clock.handleMidiClock();
 }
 
 /**
@@ -68,7 +87,8 @@ void Mode0::setDefaultDivisionIndex() {
  */
 void Mode0::update() {
     // Handle MIDI messages
-    midiHandler.handleMidiMessage();
+    // midiHandler.handleMidiMessage();
+    handleMidiMessage();
 
     // Handle button presses
     handleButton(encoder.readButton());
@@ -81,6 +101,17 @@ void Mode0::update() {
     // Handle clock tick
     clock.handleExternalClock();
     clock.tick();
+}
+
+/**
+ * @brief Handle MIDI messages. This function is called by the update method.
+ * 
+ */
+void Mode0::handleMidiMessage() {
+    unsigned long currentTime = millis();
+    midi.read();
+    gates.update(currentTime);
+    ledController.update(currentTime);
 }
 
 /** 

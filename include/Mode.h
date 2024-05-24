@@ -5,6 +5,8 @@
 #ifndef MODE_H
 #define MODE_H
 
+#include <MIDI.h>
+
 /**
  * @brief This class is the base for our application modes.
  * 
