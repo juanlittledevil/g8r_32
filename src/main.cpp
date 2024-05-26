@@ -13,13 +13,13 @@
 #include "Encoder.h"
 #include "EurorackClock.h"
 #include "Constants.h"
-#include "Mode0.h"
-#include "Mode1.h"
-#include "Mode2.h"
 #include "LEDController.h"
 #include "ResetButton.h"
 #include "InputHandler.h"
 #include "StateManager.h"
+// MODES
+#include "ModeDivisions.h"
+#include "ModeMidiLearn.h"
 
 /// Debug print macro, used to make debugging easier.
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
@@ -69,9 +69,8 @@ InputHandler inputHandler = InputHandler(CV_A_PIN, CV_B_PIN); /// Instance of th
 ModeSelector& modeSelector = ModeSelector::getInstance(); /// Instance of the ModeSelector class
 Mode* currentMode = nullptr; /// Pointer to the current mode
 Mode* previousMode = nullptr; /// Pointer to the previous mode
-Mode0 mode0(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton, clock); /// Instance of Mode0 class
-Mode1 mode1(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton); /// Instance of Mode1 class
-Mode2 mode2(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton); /// Instance of Mode2 class
+ModeDivisions modeDivisions(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton, clock); /// Instance of ModeDivisions class
+ModeMidiLearn modeMidiLearn(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton, TEMPO_LED); /// Instance of Mode2 class
 
 // Forward declarations
 void midiSetup();
@@ -111,9 +110,8 @@ void setup() {
      * @brief Add the modes to the ModeSelector.
      * IMPORTANT: Add the modes in the order you want them to be selected via the encoder.
      */
-    modeSelector.addMode(&mode0); // Add Mode0 to the ModeSelector
-    modeSelector.addMode(&mode1); // Add Mode1 to the ModeSelector
-    modeSelector.addMode(&mode2); // Add Mode2 to the ModeSelector
+    modeSelector.addMode(&modeDivisions); // Add ModeDivisions to the ModeSelector
+    modeSelector.addMode(&modeMidiLearn); // Add Mode2 to the ModeSelector
     modeSelector.setLedController(ledController); // Set the LEDController for the ModeSelector
     modeSelector.setEncoder(encoder); // Set the Encoder for the ModeSelector
     modeSelector.setStateManager(stateManager); // Set the StateManager for the ModeSelector

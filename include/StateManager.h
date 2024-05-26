@@ -26,8 +26,8 @@ public:
     void setMode(int newMode);
     void setGateDivision(int gate, int division);
     int getGateDivision(int gate);
-    void setMode1MIDIChannel(int channel);
-    int getMode1MIDIChannel();
+    void setMidiLearnNote(int gate, int channel, int note);
+    std::pair<int, int> getMidiLearnNote(int gate);
 
 private:
     AppState state;

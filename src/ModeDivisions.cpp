@@ -1,18 +1,18 @@
 /**
- * @file Mode0.cpp
- * @brief Implementation file for Mode0, Please see Mode0.h for more information.
+ * @file ModeDivisions.cpp
+ * @brief Implementation file for ModeDivisions, Please see ModeDivisions.h for more information.
  * 
  */
-#include "Mode0.h"
+#include "ModeDivisions.h"
 #include "Debug.h"
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
 /**
- * @brief This is the instance of the Mode0 class. We need this in order to work with the MIDI library.
+ * @brief This is the instance of the ModeDivisions class. We need this in order to work with the MIDI library.
  * The library requires a static function to be called when a MIDI message is received.
  */
-Mode0* Mode0::instance = nullptr;
+ModeDivisions* ModeDivisions::instance = nullptr;
 
 /**
  * @brief Construct a new Mode 0:: Mode 0 object
@@ -26,7 +26,7 @@ Mode0* Mode0::instance = nullptr;
  * @param resetButton 
  * @param clock 
  */
-Mode0::Mode0(StateManager& stateManager,
+ModeDivisions::ModeDivisions(StateManager& stateManager,
     Encoder& encoder,
     InputHandler& inputHandler,
     Gates& gates,
@@ -54,11 +54,11 @@ Mode0::Mode0(StateManager& stateManager,
  * This is where you can put code that should only run once when the mode is switched to.
  * It is configured to run once when the mode is switched to and once when the mode is switched from.
  */
-void Mode0::setup() {
+void ModeDivisions::setup() {
     clock.start();
     gates.setALLGates(false);
     ledController.clearAndResetLEDs();
-    midi.setHandleClock(Mode0::handleClock); // Set the handleClock function to handle MIDI clock messages using the static function handleClock
+    midi.setHandleClock(ModeDivisions::handleClock); // Set the handleClock function to handle MIDI clock messages using the static function handleClock
 
     for (int i = 0; i < gates.numGates; i++) {
         int division = stateManager.getGateDivision(i);
@@ -70,7 +70,7 @@ void Mode0::setup() {
  * @brief This block of code is executed once whenever we switch modes. The code here is intended to be cleanup code.
  * This is where you can put code that should only run once when the mode is switched from.
  */
-void Mode0::teardown() {
+void ModeDivisions::teardown() {
     clock.stop();
     ledController.clearAndResetLEDs();
     midi.setHandleClock(nullptr);
@@ -80,14 +80,14 @@ void Mode0::teardown() {
  * @brief This function is used to handle MIDI clock messages.
  * 
  */
-void Mode0::handleClock() {
+void ModeDivisions::handleClock() {
     instance->clock.handleMidiClock();
 }
 
 /**
  * @brief Set the default division index based on the internal PPQN value, only used by the constructor to avoid compile errors.
  */
-void Mode0::setDefaultDivisionIndex() {
+void ModeDivisions::setDefaultDivisionIndex() {
     for (int i = 0; i < musicalIntervalsSize; i++) {
         if (musicalIntervals[i] == internalPPQN) {
             divisionIndex = i;
@@ -100,7 +100,7 @@ void Mode0::setDefaultDivisionIndex() {
  * @brief The update method is meant to be called every loop iteration. This is where you can put code that should run every loop iteration.
  * 
  */
-void Mode0::update() {
+void ModeDivisions::update() {
     // Handle MIDI messages
     handleMidiMessage();
 
@@ -121,7 +121,7 @@ void Mode0::update() {
  * @brief Handle MIDI messages. This function is called by the update method.
  * 
  */
-void Mode0::handleMidiMessage() {
+void ModeDivisions::handleMidiMessage() {
     unsigned long currentTime = millis();
     midi.read();
     gates.update(currentTime);
@@ -132,7 +132,7 @@ void Mode0::handleMidiMessage() {
  * @brief block of code is here to handle inputs from the CV Input Jacks.
  * It doesn't do anything now but is here for future use.
 */
-void Mode0::handleCVInput() {
+void ModeDivisions::handleCVInput() {
     // Handle CV input
     int cvA = inputHandler.readCVA();
     int cvB = inputHandler.readCVB();
@@ -146,7 +146,7 @@ void Mode0::handleCVInput() {
  * @brief Detects the direction of the encoder and updates the selected gate or division based on the direction.
  * 
  */
-void Mode0::handleEncoder() {
+void ModeDivisions::handleEncoder() {
     Encoder::Direction direction = encoder.readEncoder();
     if (inDivisionSelection) {
         // Handle division selection
@@ -165,7 +165,7 @@ void Mode0::handleEncoder() {
  * 
  * @param buttonState 
  */
-void Mode0::handleButton(Encoder::ButtonState buttonState) {
+void ModeDivisions::handleButton(Encoder::ButtonState buttonState) {
     // Read the encoder and handle button presses
     encoder.readButton();
 
@@ -189,7 +189,7 @@ void Mode0::handleButton(Encoder::ButtonState buttonState) {
  * 
  * @param buttonState 
  */
-void Mode0::handleResetButton(ResetButton::ButtonState buttonState) {
+void ModeDivisions::handleResetButton(ResetButton::ButtonState buttonState) {
     resetButton.readButton();
 
     // Handle reset button presses
@@ -212,7 +212,7 @@ void Mode0::handleResetButton(ResetButton::ButtonState buttonState) {
  * @brief Handle reset single press. Default behavior is to reset the selected gate so it can by synced with the clock.
  * 
  */
-void Mode0::handleResetSinglePress() {
+void ModeDivisions::handleResetSinglePress() {
     if (Debug::isEnabled) {
         DEBUG_PRINT("Reset single press");
     }
@@ -223,7 +223,7 @@ void Mode0::handleResetSinglePress() {
  * @brief Handle reset double press. Default behavior is to reset the clock so it can be synced with an external clock.
  * 
  */
-void Mode0::handleResetDoublePress() {
+void ModeDivisions::handleResetDoublePress() {
     if (!doubleResetPressHandled) {
         if (Debug::isEnabled) {
             DEBUG_PRINT("Reset double press");
@@ -236,7 +236,7 @@ void Mode0::handleResetDoublePress() {
  * @brief This function is used to handle long press of the reset button. However, it doesn't do anything yet.
  * 
  */
-void Mode0::handleResetLongPress() {
+void ModeDivisions::handleResetLongPress() {
     /// Does nothing yet but it could. :)
 }
 
@@ -244,7 +244,7 @@ void Mode0::handleResetLongPress() {
  * @brief This function is used to handle reset press released. However, it doesn't do anything yet.
  * 
  */
-void Mode0::handleResetPressReleased() {
+void ModeDivisions::handleResetPressReleased() {
     /// Does nothing yet but it could. :)
 }
 
@@ -252,7 +252,7 @@ void Mode0::handleResetPressReleased() {
  * @brief This function is used to handle long press of the button. However, it doesn't do anything yet.
  * 
  */
-void Mode0::handleLongPress() {
+void ModeDivisions::handleLongPress() {
     /// Long press is used by modeSelector, so don't use that here.
 }
 
@@ -260,7 +260,7 @@ void Mode0::handleLongPress() {
  * @brief Handle double press. Default behavior is to enter or exit tempo selection mode.
  * 
  */
-void Mode0::handleDoublePress() {
+void ModeDivisions::handleDoublePress() {
     // Enter tempo selection mode on double press
     if (!doublePressHandled) {
         if (Debug::isEnabled) {
@@ -280,7 +280,7 @@ void Mode0::handleDoublePress() {
  * @brief Handle single press. Default behavior is to toggle between division selection and gate selection.
  * 
  */
-void Mode0::handleSinglePress() {
+void ModeDivisions::handleSinglePress() {
     if (Debug::isEnabled) {
         DEBUG_PRINT("Single press");
     }
@@ -298,7 +298,7 @@ void Mode0::handleSinglePress() {
  * @brief Handle press released. Default behavior is to do nothing.
  * 
  */
-void Mode0::handlePressReleased() {
+void ModeDivisions::handlePressReleased() {
     /// Mode 0 specific press released handling
 }
 
@@ -306,7 +306,7 @@ void Mode0::handlePressReleased() {
  * @brief Handle selection states. Default behavior is to handle tempo selection.
  * 
  */
-void Mode0::handleSelectionStates() {
+void ModeDivisions::handleSelectionStates() {
     if (selectingTempo) {
         handleTempoSelection();
         clock.toggleLedOnDuration(true);  // if selecting tempo we want the LED to be on for 10ms
@@ -320,7 +320,7 @@ void Mode0::handleSelectionStates() {
  * @brief Handle tempo selection. Default behavior is to increase or decrease the tempo based on the encoder direction.
  * 
  */
-void Mode0::handleTempoSelection() {
+void ModeDivisions::handleTempoSelection() {
     Encoder::Direction direction = encoder.readEncoder();
     int tempoIncrement = encoder.readSpeed();
     int currentTempo = clock.getTempo();
