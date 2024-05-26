@@ -10,6 +10,7 @@
 #ifndef LED_CONTROLLER_H
 #define LED_CONTROLLER_H
 
+#include "LED.h"
 #include "LEDs.h"
 
 /**
@@ -18,7 +19,8 @@
  */
 class LEDController {
 public:
-    LEDController(LEDs& leds);
+    LEDController(LEDs& leds, int tempoLedPin);
+    void setup();
     void turnAllOn();
     void turnAllOff();
     void blinkSlow(int ledIndex);
@@ -36,6 +38,7 @@ public:
     void updateBlinking();
     void setState(int ledIndex, bool state);
     void trigger(int index, unsigned long currentTime, bool inverted=false);
+    LED tempoLed;
 
 
 private:

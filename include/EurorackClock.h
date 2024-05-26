@@ -12,6 +12,7 @@
 #include "Pin.h"
 #include "Gates.h"
 #include "LEDs.h"
+#include "LEDController.h"
 #include "Constants.h"
 
 /**
@@ -34,7 +35,7 @@ class EurorackClock {
     ClockState clockState; // Current state of the clock
 
 public:
-    EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates& gates, LEDs& leds);
+    EurorackClock(int clockPin, int resetPin, Gates& gates, LEDController& ledController);
     void setup();
     void start(); // Start the clock
     void stop(); // Stop the clock
@@ -74,11 +75,10 @@ private:
 
     static EurorackClock* instance;
     HardwareTimer* timer;
-    LED tempoLed;
     InputPin externalClock;
     InputPin resetButton;
     Gates& gates;
-    LEDs& leds;
+    LEDController& ledController;
     float tempo;
     float lastTickTime;
     float tickInterval;

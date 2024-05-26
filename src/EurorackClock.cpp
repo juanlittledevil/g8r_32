@@ -15,18 +15,17 @@ int EurorackClock::flashPulseCount = 0;
 EurorackClock* EurorackClock::instance = nullptr;
 
 /// Constructor
-EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates& gates, LEDs& leds) 
+EurorackClock::EurorackClock(int clockPin, int resetPin, Gates& gates, LEDController& ledController) 
     : clockPin(clockPin),
       resetPin(resetPin),
       tempo(120),
       lastTickTime(0),
       tickInterval(60000 / tempo),
       isRunning(false),
-      tempoLed(tempoLedPin),
       externalClock(clockPin, false, true),
       resetButton(resetPin, false, true),
       gates(gates),
-      leds(leds) {
+      ledController(ledController) {
         instance = this;
         timer = new HardwareTimer(TIM2); // Use Timer 2
         attachInterrupt(digitalPinToInterrupt(resetPin), EurorackClock::resetInterruptHandler, RISING);
@@ -39,7 +38,6 @@ EurorackClock::EurorackClock(int clockPin, int resetPin, int tempoLedPin, Gates&
  * TODO: Perhaps this should be called begin() instead of setup() to match the naming convention of the other classes.
  */
 void EurorackClock::setup() {
-    tempoLed.begin();
     externalClock.begin();
     resetButton.begin();
 }
@@ -96,13 +94,13 @@ void EurorackClock::updateTempoLed(unsigned long currentTime) {
     // Only update the LED if we're in Mode0 and not in mode selection
     if (ModeSelector::getInstance().getMode() == 0 && !ModeSelector::getInstance().isInModeSelection()) {
         // If the LED is on and it's been on for the duration
-        if (this->tempoLed.getState() == HIGH && currentTime - ledOnTime >= ledOnDuration) {
+        if (this->ledController.tempoLed.getState() == HIGH && currentTime - ledOnTime >= ledOnDuration) {
             // Turn the LED off
-            this->tempoLed.setState(LOW);
+            this->ledController.tempoLed.setState(LOW);
         }
     } else {
         // If we're not in Mode0, turn the LED off
-        this->tempoLed.setState(LOW);
+        this->ledController.tempoLed.setState(LOW);
     }
 }
 
@@ -123,7 +121,7 @@ void EurorackClock::updateFlashPulseCount() {
  */
 void EurorackClock::handleResetTrigger() {
     if (resetTriggered) {
-        tempoLed.setState(LOW);
+        ledController.tempoLed.setState(LOW);
         resetTriggered = false;
         flashPulseCount = 0;
         timeToFlash = true;
@@ -210,7 +208,7 @@ void EurorackClock::setExternalTempo(bool isExternalTempo) {
 void EurorackClock::tick() {
     unsigned long currentTime = millis();
     gates.update(currentTime);
-    leds.update(currentTime);
+    ledController.update(currentTime);
     if (shouldTriggerClockPulse()) {
         triggerClockPulse();
     }
@@ -233,9 +231,9 @@ bool EurorackClock::shouldTriggerClockPulse() {
  */
 void EurorackClock::triggerTempoLed(unsigned long currentTime) {
     // If the LED is off and enough time has passed since the last flash
-    if (this->tempoLed.getState() == LOW) {
+    if (this->ledController.tempoLed.getState() == LOW) {
         // Turn the LED on
-        this->tempoLed.setState(HIGH);
+        this->ledController.tempoLed.setState(HIGH);
         // Update the time the LED was turned on
         ledOnTime = currentTime;
         timeToFlash = false;
@@ -273,10 +271,10 @@ void EurorackClock::triggerGates(unsigned long currentTime) {
             gates.trigger(i, currentTime);
             if (i == gates.getSelectedGate()) {
                 // Trigger the LED inverted.
-                leds.trigger(i, currentTime, true);
+                ledController.trigger(i, currentTime, true);
             } else {
                 // Trigger the LED normally.
-                leds.trigger(i, currentTime);
+                ledController.trigger(i, currentTime);
             }
         }
     }
