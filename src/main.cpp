@@ -69,8 +69,8 @@ InputHandler inputHandler = InputHandler(CV_A_PIN, CV_B_PIN); /// Instance of th
 ModeSelector& modeSelector = ModeSelector::getInstance(); /// Instance of the ModeSelector class
 Mode* currentMode = nullptr; /// Pointer to the current mode
 Mode* previousMode = nullptr; /// Pointer to the previous mode
-ModeDivisions ModeDivisions(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton, clock); /// Instance of ModeDivisions class
-ModeMidiLearn modeMidiLearn(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton); /// Instance of Mode2 class
+ModeDivisions modeDivisions(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton, clock); /// Instance of ModeDivisions class
+ModeMidiLearn modeMidiLearn(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton, TEMPO_LED); /// Instance of Mode2 class
 
 // Forward declarations
 void midiSetup();
@@ -110,7 +110,7 @@ void setup() {
      * @brief Add the modes to the ModeSelector.
      * IMPORTANT: Add the modes in the order you want them to be selected via the encoder.
      */
-    modeSelector.addMode(&ModeDivisions); // Add ModeDivisions to the ModeSelector
+    modeSelector.addMode(&modeDivisions); // Add ModeDivisions to the ModeSelector
     modeSelector.addMode(&modeMidiLearn); // Add Mode2 to the ModeSelector
     modeSelector.setLedController(ledController); // Set the LEDController for the ModeSelector
     modeSelector.setEncoder(encoder); // Set the Encoder for the ModeSelector

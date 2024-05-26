@@ -20,14 +20,16 @@ ModeMidiLearn::ModeMidiLearn(StateManager& stateManager,
     Gates& gates,
     LEDController& ledController,
     midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
-    ResetButton& resetButton)
+    ResetButton& resetButton,
+    int tempoLedPin)
     :   stateManager(stateManager),
         encoder(encoder),
         inputHandler(inputHandler),
         gates(gates),
         ledController(ledController),
         midi(midi),
-        resetButton(resetButton) {
+        resetButton(resetButton),
+        tempoLedPin(tempoLedPin) {
     // Set the instance of the ModeMidiLearn class
     instance = this;
 }
@@ -69,10 +71,15 @@ void ModeMidiLearn::update() {
     handleButton(encoder.readButton());
     handleResetButton(resetButton.readButton());
 
+    digitalWrite(tempoLedPin, LOW);
+
     // Update LEDs based on learning state
     if (isInLearningMode) {
         // Turn off all LEDs
         ledController.clearAndResetLEDs();
+
+        // Turn the tempo LED on
+        digitalWrite(tempoLedPin, HIGH);
 
         // Turn on the LED for the current learning gate
         if (currentLearningGate < numLeds) {
