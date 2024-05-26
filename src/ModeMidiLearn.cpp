@@ -20,16 +20,14 @@ ModeMidiLearn::ModeMidiLearn(StateManager& stateManager,
     Gates& gates,
     LEDController& ledController,
     midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
-    ResetButton& resetButton,
-    int tempoLedPin)
+    ResetButton& resetButton)
     :   stateManager(stateManager),
         encoder(encoder),
         inputHandler(inputHandler),
         gates(gates),
         ledController(ledController),
         midi(midi),
-        resetButton(resetButton),
-        tempoLedPin(tempoLedPin) {
+        resetButton(resetButton) {
     // Set the instance of the ModeMidiLearn class
     instance = this;
 }
@@ -43,6 +41,7 @@ void ModeMidiLearn::setup() {
     // Initialization code here if needed
     gates.setALLGates(false); // Make sure we don't leave an notes on when changing channels.
     ledController.clearAndResetLEDs();
+    ledController.tempoLed.setState(LOW);
     loadMidiLearnNotes(); // Load the MIDI learn notes from the state manager
     midi.setHandleNoteOn(handleNoteOn);
     numLeds = ledController.getNumLeds();
@@ -71,20 +70,20 @@ void ModeMidiLearn::update() {
     handleButton(encoder.readButton());
     handleResetButton(resetButton.readButton());
 
-    digitalWrite(tempoLedPin, LOW);
-
     // Update LEDs based on learning state
     if (isInLearningMode) {
         // Turn off all LEDs
         ledController.clearAndResetLEDs();
 
         // Turn the tempo LED on
-        digitalWrite(tempoLedPin, HIGH);
+        ledController.tempoLed.setState(LOW);
 
         // Turn on the LED for the current learning gate
         if (currentLearningGate < numLeds) {
             ledController.setState(currentLearningGate, true);
         }
+    } else {
+        ledController.tempoLed.setState(HIGH);
     }
 }
 
@@ -166,6 +165,7 @@ void ModeMidiLearn::handleResetButton(ResetButton::ButtonState buttonState) {
     // Handle reset button presses
     if (resetButton.isButtonLongPressed()) {
         this->handleResetLongPress();
+        longResetPressHandled = true;
     } else if (resetButton.isButtonDoublePressed()) {
         this->handleResetDoublePress();
         doubleResetPressHandled = true; 
@@ -176,6 +176,7 @@ void ModeMidiLearn::handleResetButton(ResetButton::ButtonState buttonState) {
         this->handleResetPressReleased();
         singleResetPressHandled = false; 
         doubleResetPressHandled = false;
+        longResetPressHandled = false;
     }
 }
 
@@ -240,12 +241,15 @@ void ModeMidiLearn::handleResetDoublePress() {
  * 
  */
 void ModeMidiLearn::handleResetLongPress() {
-    if (Debug::isEnabled) {
-        DEBUG_PRINT("Reset long press");
+    if (!longResetPressHandled) {
+        // Toggle learning mode
+        isInLearningMode = !isInLearningMode;
+
+        if (isInLearningMode) {
+            // If we just entered learning mode, reset the current learning gate
+            currentLearningGate = 0;
+        }
     }
-    // Handle reset long press
-    isInLearningMode = true;
-    currentLearningGate = 0;
 }
 
 /**

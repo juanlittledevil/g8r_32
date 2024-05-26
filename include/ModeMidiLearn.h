@@ -24,8 +24,7 @@ public:
         Gates& gates,
         LEDController& ledController,
         midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
-        ResetButton& resetButton,
-        int tempoLedPin);
+        ResetButton& resetButton);
     void handleSinglePress() override;
     void handleDoublePress() override;
     void handleLongPress() override;
@@ -60,10 +59,10 @@ private:
     bool singlePressHandled = false;
     bool doubleResetPressHandled = false;
     bool singleResetPressHandled = false;
+    bool longResetPressHandled = false;
     int numLeds = 8;
     bool isInLearningMode = false;
     int currentLearningGate = 0;
-    int tempoLedPin;
     std::vector<std::pair<int, int>> midiLearnNotes;
 };
 
