@@ -59,8 +59,8 @@ LEDs leds = LEDs(ledPins, numLedPins);
 StateManager stateManager = StateManager(); /// Instance of the StateManager class used to manage state of the device in EEPROM.
 Encoder encoder = Encoder(ENCODER_PINA, ENCODER_PINB, ENCODER_BUTTON); /// Instance of the Encoder class
 ResetButton resetButton = ResetButton(RESET_BUTTON); /// Instance of the ResetButton class
-LEDController ledController(leds); /// Instance of the LEDController class
-EurorackClock clock(CLOCK_PIN, RESET_PIN, TEMPO_LED, gates, leds); /// Instance of the EurorackClock class
+LEDController ledController(leds, TEMPO_LED); /// Instance of the LEDController class
+EurorackClock clock(CLOCK_PIN, RESET_PIN, gates, ledController); /// Instance of the EurorackClock class
 
 midi::SerialMIDI<HardwareSerial> midiSerial(Serial2);
 midi::MidiInterface<midi::SerialMIDI<HardwareSerial>> midiInterface(midiSerial);
@@ -96,6 +96,7 @@ void setup() {
     leds.begin(); // Initialize LED pins
     gates.begin(); // Initialize gate pins
     encoder.begin(); // Initialize encoder pins
+    ledController.setup(); // Setup the LEDController
 
     // Initialize the MIDI stuffs.
     midiSetup();
@@ -120,7 +121,7 @@ void setup() {
     /**
      * @brief This gets the current mode from the ModeSelector and sets it as the current mode.
      * It then updates the pointer to the current mode. This way we can switch modes easily at runtime
-     * by changing the the pointer to the current mode.
+     * by changing the the pointer to the current mode. Basically a State Pattern.
      */
     currentMode = modeSelector.getCurrentMode();
     currentMode->setup(); // Setup the current mode, this also gets run when switching modes.

@@ -9,9 +9,20 @@
  * 
  * @param leds 
  */
-LEDController::LEDController(LEDs& leds) : leds(leds) {
+LEDController::LEDController(LEDs& leds, int tempoLedPin )
+    :   leds(leds),
+        tempoLed(tempoLedPin) {
     turnAllOff();
 }
+
+/**
+ * @brief This function is used to setup the LED controller. It is meant to be called in the setup() function of the main sketch.
+ * 
+ */
+void LEDController::setup() {
+    tempoLed.begin();
+}
+
 
 /**
  * @brief This function is used to turn all LEDs on.
