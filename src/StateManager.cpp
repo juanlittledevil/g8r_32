@@ -32,14 +32,18 @@ void StateManager::initializeEEPROM() {
         if (Debug::isEnabled) {
             DEBUG_PRINT("State is NaN, initializing EEPROM");
         }
+
         /// Initialize the EEPROM with the default state
-        state.mode = 0; /// Set the mode to 0 by default.
-        /// Initialize mode0 gate divisions
+        state.mode = 0; /// Set the mode to 0 by default. This is the first item int he vector.
+
+        /// Initialize Mode Divisions
         for (int i = 0; i < 8; i++) {
-            state.mode0.gateDivisions[i] = GateDivision{i, internalPPQN};
+            state.modeDivisions.gateDivisions[i] = GateDivision{i, internalPPQN};
         }
         /// Initialize mode1 MIDI channel
-        state.mode1.MIDIChannel = 9; /// Default MIDI channel is 9
+        for (int i = 0; i < 8; i++) {
+            state.modeMidiLearn.gateChannelNotes[i] = GateChannelNote{i, 0, 0};
+        }
 
         saveAppState(); /// Save the default state to the EEPROM
 
@@ -110,13 +114,13 @@ void StateManager::setMode(int newMode) {
  * @param division - The division to set
  */
 void StateManager::setGateDivision(int gate, int division) {
-    if (gate >= 0 && gate < state.mode0.gateDivisions.size()) {
+    if (gate >= 0 && gate < state.modeDivisions.gateDivisions.size()) {
         if (Debug::isEnabled) {
             DEBUG_PRINT("Setting gate division for gate " + String(gate) + " to " + String(division));
         }
-        state.mode0.gateDivisions[gate].division = division;
+        state.modeDivisions.gateDivisions[gate].division = division;
         if (Debug::isEnabled) {
-            DEBUG_PRINT("Gate division for gate " + String(gate) + " is " + String(state.mode0.gateDivisions[gate].division));
+            DEBUG_PRINT("Gate division for gate " + String(gate) + " is " + String(state.modeDivisions.gateDivisions[gate].division));
         }
     } else {
         if (Debug::isEnabled) {
@@ -135,44 +139,50 @@ int StateManager::getGateDivision(int gate) {
     if (Debug::isEnabled) {
         DEBUG_PRINT("Getting gate division for gate " + String(gate));
     }
-    return state.mode0.gateDivisions[gate].division;
+    return state.modeDivisions.gateDivisions[gate].division;
     if (Debug::isEnabled) {
-        DEBUG_PRINT("Gate division for gate " + String(gate) + " is " + String(state.mode0.gateDivisions[gate].division));
+        DEBUG_PRINT("Gate division for gate " + String(gate) + " is " + String(state.modeDivisions.gateDivisions[gate].division));
     }
 }
 
 /**
- * @brief Sets the MIDI channel for Mode1 in the AppState object 'state'.
+ * @brief Sets the MIDI learn note and channel for a specific gate in the AppState object 'state'.
  * 
- * @param channel - The MIDI channel to set
+ * @param gate - The gate to set the note and channel for
+ * @param note - The note to set
+ * @param channel - The channel to set
  */
-void StateManager::setMode1MIDIChannel(int channel) {
-    if (channel >= 0 && channel < 16) {
+void StateManager::setMidiLearnNote(int gate, int note, int channel) {
+    if (gate >= 0 && gate < state.modeMidiLearn.gateChannelNotes.size()) {
         if (Debug::isEnabled) {
-            DEBUG_PRINT("Setting MIDI channel for Mode1 to " + String(channel));
+            DEBUG_PRINT("Setting MIDI learn note for gate " + String(gate) + " to " + String(note) + " on channel " + String(channel));
         }
-        state.mode1.MIDIChannel = channel;
+        state.modeMidiLearn.gateChannelNotes[gate].note = note;
+        state.modeMidiLearn.gateChannelNotes[gate].channel = channel;
         if (Debug::isEnabled) {
-            DEBUG_PRINT("MIDI channel for Mode1 is " + String(state.mode1.MIDIChannel));
+            DEBUG_PRINT("MIDI learn note for gate " + String(gate) + " is " + String(state.modeMidiLearn.gateChannelNotes[gate].note) + " on channel " + String(state.modeMidiLearn.gateChannelNotes[gate].channel));
         }
     } else {
         if (Debug::isEnabled) {
-            DEBUG_PRINT("MIDI channel out of bounds: " + String(channel));
+            DEBUG_PRINT("Gate index out of bounds: " + String(gate));
         }
     }
 }
 
 /**
- * @brief Returns the MIDI channel for Mode1 from the AppState object 'state'.
+ * @brief Returns the MIDI learn note and channel for a specific gate from the AppState object 'state'.
  * 
- * @return int - The MIDI channel for Mode1
+ * @param gate - The gate to get the note and channel for
+ * @return std::pair<int, int> - The note and channel for the gate
  */
-int StateManager::getMode1MIDIChannel() {
+std::pair<int, int> StateManager::getMidiLearnNote(int gate) {
     if (Debug::isEnabled) {
-        DEBUG_PRINT("Getting MIDI channel for Mode1");
+        DEBUG_PRINT("Getting MIDI learn note for gate " + String(gate));
     }
-    return state.mode1.MIDIChannel;
+    int note = state.modeMidiLearn.gateChannelNotes[gate].note;
+    int channel = state.modeMidiLearn.gateChannelNotes[gate].channel;
     if (Debug::isEnabled) {
-        DEBUG_PRINT("MIDI channel for Mode1 is " + String(state.mode1.MIDIChannel));
+        DEBUG_PRINT("MIDI learn note for gate " + String(gate) + " is " + String(note) + " on channel " + String(channel));
     }
+    return std::make_pair(note, channel);
 }

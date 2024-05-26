@@ -26,18 +26,27 @@ struct GateDivision {
     GateDivision(int gate, int division) : gate(gate), division(division) {}
 };
 
-struct Mode0State {
+struct GateChannelNote {
+    int gate;
+    int channel;
+    int note;
+
+    GateChannelNote() : gate(0), channel(0), note(0) {}
+    GateChannelNote(int gate, int channel, int note) : gate(gate), channel(channel), note(note) {}
+};
+
+struct ModeDivisionsState {
     std::array<GateDivision, 8> gateDivisions;
 };
 
-struct Mode1State {
-    int MIDIChannel;
+struct ModeMidiLearnState {
+    std::array<GateChannelNote, 8> gateChannelNotes;
 };
 
 struct AppState {
     int mode;
-    Mode0State mode0;
-    Mode1State mode1;
+    ModeDivisionsState modeDivisions;
+    ModeMidiLearnState modeMidiLearn;
 };
 
 #endif // APP_STATE_H

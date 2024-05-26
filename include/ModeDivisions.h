@@ -1,5 +1,5 @@
 /**
- * @file Mode0.h
+ * @file ModeDivisions.h
  * @brief This mode is the main mode for the Eurorack Clock module.
  * 
  * In this mode, the user can set the tempo, select the division of the clock signal, and select the gate output.
@@ -21,8 +21,8 @@
  * 
  * TODO: The internal clock works with a PPQN of 24 by default. This can be changed by pressing the reset button and rotating the encoder knob to select the desired PPQN.
  */
-#ifndef MODE0_H
-#define MODE0_H
+#ifndef MODE_DIVISIONS_H
+#define MODE_DIVISIONS_H
 
 #include "Mode.h"
 #include "Encoder.h"
@@ -40,10 +40,10 @@
  * @brief This class uses the eurorack clock to provide us pullses with selectable division. It can be synced to a clock too, internal and external.
  * 
  */
-class Mode0 : public Mode {
+class ModeDivisions : public Mode {
 public:
-    static Mode0* instance; 
-    Mode0(StateManager& stateManager,
+    static ModeDivisions* instance; 
+    ModeDivisions(StateManager& stateManager,
         Encoder& encoder,
         InputHandler& inputHandler,
         Gates& gates,
@@ -98,4 +98,4 @@ private:
     bool doubleResetPressHandled = false;
 };
 
-#endif // MODE0_H
+#endif // MODE_DIVISIONS_H
