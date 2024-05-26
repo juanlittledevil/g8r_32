@@ -58,16 +58,16 @@ jobs:
           git config --global user.email 'juanlittledevil@users.noreply.github.com'
           git commit -m "Automated documentation [Docs Update]"
           git push origin docs-update-${{ github.run_id }}
-      - name: Create PR for the Docs
-        if: github.event.pull_request.merged == true
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: Automated documentation [Docs Update]
-          title: Automated documentation [Docs Update]
-          body: Automated documentation [Docs Update]
-          branch: docs-update-${{ github.run_id }}
-          base: main
-          labels: documentation
-          reviewers: juanlittledevil
-          assignees: juanlittledevil
+      # - name: Create PR for the Docs
+      #   if: github.event.pull_request.merged == true
+      #   uses: peter-evans/create-pull-request@v3
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     commit-message: Automated documentation [Docs Update]
+      #     title: Automated documentation [Docs Update]
+      #     body: Automated documentation [Docs Update]
+      #     branch: docs-update-${{ github.run_id }}
+      #     base: main
+      #     labels: documentation
+      #     reviewers: juanlittledevil
+      #     assignees: juanlittledevil
