@@ -49,16 +49,16 @@ jobs:
           # [[ -d docs/markdown ]] && rm -rf docs/markdown
           # [[ -d docs/html ]] && rm -rf docs/html
           # [[ -d docs/xml ]] && rm -rf docs/xml
-      - name: Commit Doc Files
-        if: github.event.pull_request.merged == true
-        run: |
-          git checkout -b docs-update-${{ github.run_id }}
-          # git add docs/G8R.pdf
-          git config --global user.name 'juanlittledevil'
-          git config --global user.email 'juanlittledevil@users.noreply.github.com'
-          # git commit -m "Automated documentation [Docs Update]"
-          # git push origin docs-update-${{ github.run_id }}
-          git fetch
+      # - name: Commit Doc Files
+      #   if: github.event.pull_request.merged == true
+      #   run: |
+      #     git checkout -b docs-update-${{ github.run_id }}
+      #     # git add docs/G8R.pdf
+      #     git config --global user.name 'juanlittledevil'
+      #     git config --global user.email 'juanlittledevil@users.noreply.github.com'
+      #     # git commit -m "Automated documentation [Docs Update]"
+      #     # git push origin docs-update-${{ github.run_id }}
+      #     git fetch
       # - name: Checkout Source
       #   uses: actions/checkout@v4
       #   with:
