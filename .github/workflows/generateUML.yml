@@ -8,12 +8,12 @@ on:
 jobs:
   create-docs:
     runs-on: ubuntu-latest
-    if: "!contains(github.event.pull_request.title, '[Docs Update]')"
+    if: !contains(github.event.pull_request.title, '[Docs Update]')
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
         with:
-          ref: main
+          # ref: main
           fetch-depth: 0
       - name: Install the tools
         run: |
@@ -50,7 +50,7 @@ jobs:
           # [[ -d docs/html ]] && rm -rf docs/html
           # [[ -d docs/xml ]] && rm -rf docs/xml
       - name: Commit Doc Files
-        if: "github.event.pull_request.merged == true"
+        if: github.event.pull_request.merged == true
         run: |
           git checkout -b docs-update-${{ github.run_id }}
           git add docs
@@ -59,7 +59,7 @@ jobs:
           git commit -m "Automated documentation [Docs Update]"
           git push origin docs-update-${{ github.run_id }}
       - name: Create PR for the Docs
-        if: "github.event.pull_request.merged == true"
+        if: github.event.pull_request.merged == true
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
