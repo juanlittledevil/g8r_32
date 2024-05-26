@@ -8,12 +8,12 @@ on:
 jobs:
   create-docs:
     runs-on: ubuntu-latest
-    if: !contains(github.event.pull_request.title, '[Docs Update]')
+    if: "!contains(github.event.pull_request.title, '[Docs Update]')"
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
         with:
-          # ref: main
+          ref: main
           fetch-depth: 0
       - name: Install the tools
         run: |
