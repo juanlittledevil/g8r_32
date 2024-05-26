@@ -68,7 +68,7 @@ jobs:
         if: github.event.pull_request.merged == true
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.G8R_AUTO_DOC_PAT }}
           add-paths: docs/G8R.pdf
           commit-message: Automated documentation [Docs Update]
           title: Automated documentation [Docs Update]
