@@ -49,11 +49,11 @@ jobs:
           # [[ -d docs/html ]] && rm -rf docs/html
           # [[ -d docs/xml ]] && rm -rf docs/xml
       - name: Commit Doc Files
-        if: github.event.pull_request.merged == true
+        if: github.event.pull_request.merged == true && !contains(github.event.pull_request.title, '[Docs Update]')
         run: |
-          git checkout main
+          git checkout -b docs-update-${{ github.run_id }}
           git add docs
           git config --global user.name 'juanlittledevil'
           git config --global user.email 'juanlittledevil@users.noreply.github.com'
-          git commit -m "Automated documentation"
-          git push origin main
+          git commit -m "Automated documentation [Docs Update]"
+          git push origin docs-update-${{ github.run_id }}
