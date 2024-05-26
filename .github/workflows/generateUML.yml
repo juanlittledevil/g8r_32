@@ -76,5 +76,4 @@ jobs:
           branch: docs-update-${{ github.run_id }}
           base: main
           labels: documentation
-          reviewers: juanlittledevil
           assignees: juanlittledevil
