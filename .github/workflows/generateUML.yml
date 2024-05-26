@@ -15,7 +15,7 @@ jobs:
           ref: main
           fetch-depth: 0
       - name: Install the tools
-        if: !contains(github.event.pull_request.title, '[Docs Update]')
+        if: "!contains(github.event.pull_request.title, '[Docs Update]')"
         run: |
           sudo apt-get update
           sudo apt-get install doxygen
@@ -24,7 +24,7 @@ jobs:
           sudo apt install texlive
           sudo apt install texlive-latex-extra
       - name: Run Doxygen
-        if: !contains(github.event.pull_request.title, '[Docs Update]')
+        if: "!contains(github.event.pull_request.title, '[Docs Update]')"
         run: |
           doxygen Doxyfile
       # - name: Convert to Markdown
@@ -37,7 +37,7 @@ jobs:
       #     [[ -d docs/svg ]] || mkdir -p docs/svg
       #     cp docs/html/*.svg docs/svg
       - name: Convert to pdf
-        if: !contains(github.event.pull_request.title, '[Docs Update]')
+        if: "!contains(github.event.pull_request.title, '[Docs Update]')"
         run: |
           [[ -d docs/pdf ]] || mkdir -p docs/pdf
           cd docs/latex
@@ -46,7 +46,7 @@ jobs:
           pwd
           cp docs/pdf/refman.pdf docs/G8R.pdf
       - name: Cleanup
-        if: !contains(github.event.pull_request.title, '[Docs Update]')
+        if: "!contains(github.event.pull_request.title, '[Docs Update]')"
         run: |
           [[ -d docs/latex ]] && rm -rf docs/latex
           [[ -d docs/pdf ]] && rm -rf docs/pdf
@@ -54,7 +54,7 @@ jobs:
           # [[ -d docs/html ]] && rm -rf docs/html
           # [[ -d docs/xml ]] && rm -rf docs/xml
       - name: Commit Doc Files
-        if: github.event.pull_request.merged == true && !contains(github.event.pull_request.title, '[Docs Update]')
+        if: "github.event.pull_request.merged == true && !contains(github.event.pull_request.title, '[Docs Update]')"
         run: |
           git checkout -b docs-update-${{ github.run_id }}
           git add docs
