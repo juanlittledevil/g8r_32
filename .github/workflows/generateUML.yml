@@ -15,6 +15,7 @@ jobs:
           ref: main
           fetch-depth: 0
       - name: Install the tools
+        if: !contains(github.event.pull_request.title, '[Docs Update]')
         run: |
           sudo apt-get update
           sudo apt-get install doxygen
@@ -23,9 +24,11 @@ jobs:
           sudo apt install texlive
           sudo apt install texlive-latex-extra
       - name: Run Doxygen
+        if: !contains(github.event.pull_request.title, '[Docs Update]')
         run: |
           doxygen Doxyfile
       # - name: Convert to Markdown
+      #   if: !contains(github.event.pull_request.title, '[Docs Update]')
       #   run: |
       #     [[ -d docs/markdown ]] || mkdir -p docs/markdown
       #       find docs/latex -type f -name "*.tex" -exec sh -c 'output_file="${1#docs/latex/}"; mkdir -p "docs/markdown/$(dirname "$output_file")"; pandoc -f latex -t markdown -o "docs/markdown/${output_file%.tex}.md" "$1"' _ {} \;
@@ -34,6 +37,7 @@ jobs:
       #     [[ -d docs/svg ]] || mkdir -p docs/svg
       #     cp docs/html/*.svg docs/svg
       - name: Convert to pdf
+        if: !contains(github.event.pull_request.title, '[Docs Update]')
         run: |
           [[ -d docs/pdf ]] || mkdir -p docs/pdf
           cd docs/latex
@@ -42,6 +46,7 @@ jobs:
           pwd
           cp docs/pdf/refman.pdf docs/G8R.pdf
       - name: Cleanup
+        if: !contains(github.event.pull_request.title, '[Docs Update]')
         run: |
           [[ -d docs/latex ]] && rm -rf docs/latex
           [[ -d docs/pdf ]] && rm -rf docs/pdf
