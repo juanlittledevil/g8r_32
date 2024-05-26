@@ -53,16 +53,17 @@ jobs:
         if: github.event.pull_request.merged == true
         run: |
           git checkout -b docs-update-${{ github.run_id }}
-          git add docs
+          git add docs/G8R.pdf
           git config --global user.name 'juanlittledevil'
           git config --global user.email 'juanlittledevil@users.noreply.github.com'
           git commit -m "Automated documentation [Docs Update]"
           git push origin docs-update-${{ github.run_id }}
-      - name: Checkout Source
-        uses: actions/checkout@v3
-        with:
-          ref: docs-update-${{ github.run_id }}
-          fetch-depth: 0
+          git fetch
+      # - name: Checkout Source
+      #   uses: actions/checkout@v3
+      #   with:
+      #     ref: docs-update-${{ github.run_id }}
+      #     fetch-depth: 0
       - name: Create PR for the Docs
         if: github.event.pull_request.merged == true
         uses: peter-evans/create-pull-request@v3
