@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
+        with:
+          ref: main
+          fetch-depth: 0
       - name: Install the tools
         run: |
           sudo apt-get update
@@ -38,10 +41,6 @@ jobs:
           cd ../..
           pwd
           cp docs/pdf/refman.pdf docs/G8R.pdf
-      # - name: Verify
-      #   run: |
-      #     ls -la docs
-      #     ls -la docs/pdf
       - name: Cleanup
         run: |
           [[ -d docs/latex ]] && rm -rf docs/latex
@@ -52,9 +51,9 @@ jobs:
       - name: Commit Doc Files
         if: github.event.pull_request.merged == true
         run: |
-          git checkout ${{ github.event.pull_request.head.ref }}
+          git checkout main
           git add docs
           git config --global user.name 'juanlittledevil'
           git config --global user.email 'juanlittledevil@users.noreply.github.com'
           git commit -m "Automated documentation"
-          git push origin ${{ github.event.pull_request.head.ref }}
+          git push origin main
