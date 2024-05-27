@@ -12,18 +12,21 @@
 #include "Pin.h"
 
 /**
- * @brief This class is used to read the CV inputs.
+ * @brief This class is used to read the CV inputs. It is a simple class that uses the AnalogInputPin class to read the CV inputs.
+ * Alias the reset and clock inputs to cvC and cvD respectively. cvC is the reset input and cvD is the clock input.
  */
 class InputHandler {
 public:
-    InputHandler(int cvAPin, int cvBPin);
+    InputHandler(unsigned char cvAPin, unsigned char cvBPin, unsigned char resetPin, unsigned char clockPin);
     void begin();
-    int readCVA();
-    int readCVB();
 
-private:
+    // I know this is discouraged, but these are simple classes and doing it this way makes the code much cleaner.
     AnalogInputPin cvA;
     AnalogInputPin cvB;
+    AnalogInputPin cvC;
+    AnalogInputPin cvD;
+    AnalogInputPin& reset = cvC;
+    AnalogInputPin& clock = cvD;
 };
 
 #endif // INPUT_HANDLER_H

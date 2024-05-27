@@ -4,8 +4,6 @@
  */
 #include "EurorackClock.h"
 #include "Debug.h"
-#include <Arduino.h>
-#include "ModeSelector.h"
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
@@ -15,31 +13,17 @@ int EurorackClock::flashPulseCount = 0;
 EurorackClock* EurorackClock::instance = nullptr;
 
 /// Constructor
-EurorackClock::EurorackClock(int clockPin, int resetPin, Gates& gates, LEDController& ledController) 
-    : clockPin(clockPin),
-      resetPin(resetPin),
-      tempo(120),
+EurorackClock::EurorackClock(Gates& gates, LEDController& ledController, InputHandler& inputHandler) 
+    : tempo(120),
       lastTickTime(0),
       tickInterval(60000 / tempo),
       isRunning(false),
-      externalClock(clockPin, false, true),
-      resetButton(resetPin, false, true),
       gates(gates),
-      ledController(ledController) {
+      ledController(ledController),
+      inputHandler(inputHandler) {
         instance = this;
         timer = new HardwareTimer(TIM2); // Use Timer 2
-        attachInterrupt(digitalPinToInterrupt(resetPin), EurorackClock::resetInterruptHandler, RISING);
         this->externalTempo = 0;
-}
-
-/**
- * @brief This function is used to setup the clock and its components. It is intended to be ran in the setup() function of the main sketch.
- * 
- * TODO: Perhaps this should be called begin() instead of setup() to match the naming convention of the other classes.
- */
-void EurorackClock::setup() {
-    externalClock.begin();
-    resetButton.begin();
 }
 
 /**
@@ -59,6 +43,7 @@ void EurorackClock::setTempo(float newTempo, int ppqn) {
  * @brief This function is used to start the clock.
  */
 void EurorackClock::start() {
+    inputHandler.reset.attachInterrupt(EurorackClock::resetInterruptHandler, RISING);
     clockState.isRunning = true;
     timer->attachInterrupt(interruptHandler);
     timer->resume();
@@ -71,6 +56,7 @@ void EurorackClock::stop() {
     clockState.isRunning = false;
     timer->detachInterrupt();
     timer->pause();
+    inputHandler.reset.detachInterrupt();
 }
 
 /**
@@ -146,7 +132,7 @@ void EurorackClock::decideFlash() {
  */
 void EurorackClock::handleExternalClock() {
     if (ModeSelector::getInstance().getMode() == 0) {
-        int clockState = externalClock.getState();
+        int clockState = inputHandler.clock.getState();
         unsigned long currentTime = millis();
 
         if (clockState == HIGH && lastClockState == LOW && this->isExternalTempo && (currentTime - lastMidiClockTime > MIDI_CLOCK_TIMEOUT)) {

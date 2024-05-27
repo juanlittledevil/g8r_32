@@ -7,13 +7,13 @@
 #ifndef EURORACKCLOCK_H
 #define EURORACKCLOCK_H
 
+#include <Arduino.h>
 #include <HardwareTimer.h>
-#include "LED.h"
-#include "Pin.h"
 #include "Gates.h"
-#include "LEDs.h"
 #include "LEDController.h"
 #include "Constants.h"
+#include "InputHandler.h"
+#include "ModeSelector.h"
 
 /**
  * @brief The ClockState struct is used to store the current state of the clock.
@@ -35,8 +35,7 @@ class EurorackClock {
     ClockState clockState; // Current state of the clock
 
 public:
-    EurorackClock(int clockPin, int resetPin, Gates& gates, LEDController& ledController);
-    void setup();
+    EurorackClock(Gates& gates, LEDController& ledController, InputHandler& inputHandler);
     void start(); // Start the clock
     void stop(); // Stop the clock
 
@@ -75,10 +74,9 @@ private:
 
     static EurorackClock* instance;
     HardwareTimer* timer;
-    InputPin externalClock;
-    InputPin resetButton;
     Gates& gates;
     LEDController& ledController;
+    InputHandler& inputHandler;
     float tempo;
     float lastTickTime;
     float tickInterval;
@@ -92,8 +90,6 @@ private:
     static const int MIDI_CLOCK_PULSE_COUNT = 24;
     int ledOnDuration = LONG_LED_ON_DURATION; 
     unsigned long ledOnTime = 0;
-    int clockPin;
-    int resetPin;
     int ppqn;
     bool isRunning;
     bool isExternalTempo;

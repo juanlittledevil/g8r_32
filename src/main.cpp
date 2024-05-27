@@ -60,12 +60,12 @@ StateManager stateManager = StateManager(); /// Instance of the StateManager cla
 Encoder encoder = Encoder(ENCODER_PINA, ENCODER_PINB, ENCODER_BUTTON); /// Instance of the Encoder class
 ResetButton resetButton = ResetButton(RESET_BUTTON); /// Instance of the ResetButton class
 LEDController ledController(leds, TEMPO_LED); /// Instance of the LEDController class
-EurorackClock clock(CLOCK_PIN, RESET_PIN, gates, ledController); /// Instance of the EurorackClock class
+InputHandler inputHandler = InputHandler(CV_A_PIN, CV_B_PIN, RESET_PIN, CLOCK_PIN); /// Instance of the InputHandler class
+EurorackClock clock(gates, ledController, inputHandler); /// Instance of the EurorackClock class
 
 midi::SerialMIDI<HardwareSerial> midiSerial(Serial2);
 midi::MidiInterface<midi::SerialMIDI<HardwareSerial>> midiInterface(midiSerial);
 
-InputHandler inputHandler = InputHandler(CV_A_PIN, CV_B_PIN); /// Instance of the InputHandler class
 ModeSelector& modeSelector = ModeSelector::getInstance(); /// Instance of the ModeSelector class
 Mode* currentMode = nullptr; /// Pointer to the current mode
 Mode* previousMode = nullptr; /// Pointer to the previous mode
@@ -96,12 +96,12 @@ void setup() {
     leds.begin(); // Initialize LED pins
     gates.begin(); // Initialize gate pins
     encoder.begin(); // Initialize encoder pins
+    inputHandler.begin(); // Initialize the input handler
     ledController.setup(); // Setup the LEDController
 
     // Initialize the MIDI stuffs.
     midiSetup();
 
-    clock.setup(); // Start the clock
     clock.setTempo(120.0, internalPPQN); // Set the tempo to 120 BPM with internal 4 PPQN
 
     // Initialize the state manager
