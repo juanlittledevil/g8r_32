@@ -67,7 +67,7 @@ bool LEDController::isBlinking(int ledIndex) {
  */
 void LEDController::blinkSlow(int ledIndex, bool pulse=false) {
     if (pulse) {
-        leds.startPulsing(ledIndex, 500, 50);
+        leds.startPulsing(ledIndex, 500, 25);
     } else {
         leds.startBlinking(ledIndex, 500);
     }
@@ -80,7 +80,7 @@ void LEDController::blinkSlow(int ledIndex, bool pulse=false) {
  */
 void LEDController::blinkFast(int ledIndex, bool pulse=false) {
     if (pulse) {
-        leds.startPulsing(ledIndex, 200, 50);
+        leds.startPulsing(ledIndex, 200, 25);
     } else {
         leds.startBlinking(ledIndex, 200);
     }
@@ -129,7 +129,7 @@ void LEDController::stopAllBlinking(bool pulse=false) {
  */
 void LEDController::blinkFaster(int ledIndex, bool pulse=false) {
     if (pulse) {
-        leds.startPulsing(ledIndex, 100, 50);
+        leds.startPulsing(ledIndex, 100, 25);
     } else {
         leds.startBlinking(ledIndex, 100);
     }
@@ -218,6 +218,16 @@ void LEDController::update() {
  */
 void LEDController::update(unsigned long currentTime) {
     leds.update(currentTime);
+}
+
+/**
+ * @brief This function updates a specific LED. It is meant to be called in every loop iteration.
+ * 
+ * @param ledIndex 
+ * @param currentTime 
+ */
+void LEDController::update(int ledIndex, unsigned long currentTime) {
+    leds.update(ledIndex, currentTime);
 }
 
 /**

@@ -170,6 +170,18 @@ void LEDs::update(unsigned long currentTime) {
 }
 
 /**
+ * @brief This function is used to update the state of a specific LED. It is meant to be called in every loop iteration.
+ * 
+ * @param index 
+ * @param currentTime 
+ */
+void LEDs::update(int index, unsigned long currentTime) {
+  if (index >= 0 && index < numLeds) { // Check if the index is within bounds
+    this->leds[index].update(currentTime); // Update the state of the gate at the specified index
+  }
+}
+
+/**
  * @brief This function is used to reset the inverted state of all LEDs.
  * 
  */

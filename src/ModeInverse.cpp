@@ -128,6 +128,11 @@ void ModeInverse::handleInputs() {
                     gates.trigger(i + 4, millis());
                     ledController.trigger(i + 4, millis());
                 }
+                gates.update(millis());
+                if (!ledController.isBlinking(i)) {
+                    ledController.update(i, millis());
+                }
+                ledController.update(i + 4, millis());
                 break;
         }
         previousState[i] = currentState;
@@ -199,7 +204,11 @@ void ModeInverse::handleResetButton(ResetButton::ButtonState buttonState) {
  * 
  */
 void ModeInverse::handleSinglePress() {
-    // Handle single press
+    if (!singlePressHandled) {
+        // Cycle through the modes
+        pairModes[selectedInput] = static_cast<PairMode>((pairModes[selectedInput] + 1) % 3);
+        singlePressHandled = true;
+    }
 }
 
 /**
@@ -240,7 +249,8 @@ void ModeInverse::handleSelectionStates() {
             if (i == selectedInput) {
                 ledController.blinkSlow(i, true);
             } else {
-               ledController.stopBlinking(i);
+                ledController.setState(i, false);
+                ledController.stopBlinking(i);
             }
         }
         previousInput = selectedInput;

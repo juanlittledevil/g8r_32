@@ -38,6 +38,7 @@ class LEDs {
         void setIntensity(int index, int intensity);
         void setAllintensity(int intensity);
         void update(unsigned long currentTime);
+        void update(int index, unsigned long currentTime);
         void trigger(int index, unsigned long currentTime, bool inverted=false);
         void resetInverted(int index);
         int numLeds; // Number of LEDs

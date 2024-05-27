@@ -39,6 +39,7 @@ public:
     int getNumLeds();
     void update();
     void update(unsigned long currentTime);
+    void update(int ledIndex, unsigned long currentTime);
     void clearAndResetLEDs();
     void clearLEDs();
     void updateBlinking();
