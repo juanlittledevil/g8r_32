@@ -19,11 +19,11 @@ InputHandler::InputHandler(unsigned char cvAPin, unsigned char cvBPin, unsigned 
             cvB(cvBPin, false, true),
             cvC(resetPin, false, true),
             cvD(clockPin, false, true) {
-    this->resetPin = resetPin;
+    // Nothing to do here
 }
 
 /**
- * @brief This is intended to be called in the setup() function of the main sketch.
+ * @brief This is intended to be called in the setup() function of the main sketch. It initializes the CV inputs.
  * 
  */
 void InputHandler::begin() {

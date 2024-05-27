@@ -7,14 +7,13 @@
 #ifndef EURORACKCLOCK_H
 #define EURORACKCLOCK_H
 
+#include <Arduino.h>
 #include <HardwareTimer.h>
-#include "LED.h"
-#include "Pin.h"
 #include "Gates.h"
-#include "LEDs.h"
 #include "LEDController.h"
 #include "Constants.h"
 #include "InputHandler.h"
+#include "ModeSelector.h"
 
 /**
  * @brief The ClockState struct is used to store the current state of the clock.

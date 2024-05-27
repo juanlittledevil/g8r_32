@@ -4,8 +4,6 @@
  */
 #include "EurorackClock.h"
 #include "Debug.h"
-#include <Arduino.h>
-#include "ModeSelector.h"
 
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
 
