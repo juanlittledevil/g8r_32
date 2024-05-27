@@ -134,8 +134,8 @@ void ModeDivisions::handleMidiMessage() {
 */
 void ModeDivisions::handleCVInput() {
     // Handle CV input
-    int cvA = inputHandler.readCVA();
-    int cvB = inputHandler.readCVB();
+    int cvA = inputHandler.cvA.readAnalog();
+    int cvB = inputHandler.cvB.readAnalog();
 
     // if (Debug::isEnabled) {
     //     DEBUG_PRINT("CV A: " + String(cvA) + " CV B: " + String(cvB));

@@ -33,6 +33,8 @@ public:
     InputPin(int pin, bool internalPullup, bool internalPulldown); // Overloaded constructor
     virtual void begin(); // Initialize the pin
     virtual bool getState(); // Get the state of the pin
+    void attachInterrupt(void (*callback)(), int mode); // Attach an interrupt to the pin
+    void detachInterrupt(); // Detach the interrupt from the pin
 
 private:
     bool useInternalPullup; // Flag to indicate whether to use internal pull-up resistor
@@ -43,11 +45,17 @@ private:
  * @brief This class represents an analog input pin on the microcontroller.
  * 
  */
-class AnalogInputPin : public Pin {
+class AnalogInputPin : public InputPin {
 public:
     AnalogInputPin(int pin); // Constructor
+    AnalogInputPin(int pin, bool internalPullup, bool internalPulldown); // Overloaded constructor
     void begin(); // Initialize the pin
-    int read(); // Read analog value from the pin
+    int read(); // Read the digital value from the pin (comes from the parent class)
+    int readAnalog(); // Read the analog value from the pin
+
+private:
+    bool useInternalPullup; // Flag to indicate whether to use internal pull-up resistor
+    bool useInternalPulldown;
 };
 
 /**

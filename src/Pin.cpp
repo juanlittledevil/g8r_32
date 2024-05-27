@@ -34,10 +34,7 @@ Pin::~Pin() {
  * 
  * @param pin 
  */
-InputPin::InputPin(int pin) : Pin(pin), useInternalPullup(false), useInternalPulldown(false) {
-    this->useInternalPullup = false;
-    this->useInternalPulldown = false;
-}
+InputPin::InputPin(int pin) : Pin(pin), useInternalPullup(false), useInternalPulldown(false) {}
 
 /**
  * @brief Construct a new Input Pin:: Input Pin object
@@ -51,10 +48,7 @@ InputPin::InputPin(int pin) : Pin(pin), useInternalPullup(false), useInternalPul
 InputPin::InputPin(int pin, bool internalPullup, bool internalPulldown)
 :   Pin(pin),
     useInternalPullup(internalPullup),
-    useInternalPulldown(internalPulldown) {
-        this->useInternalPullup = internalPullup;
-        this->useInternalPulldown = internalPullup;
-}
+    useInternalPulldown(internalPulldown) {}
 
 /**
  * @brief This function is used to initialize the input pin. It is intended to be called in the setup() function of the main sketch.
@@ -82,20 +76,47 @@ bool InputPin::getState() {
 }
 
 /**
+ * @brief This function is used to attach an interrupt to the input pin.
+ * 
+ * @param callback 
+ * @param mode 
+ */
+void InputPin::attachInterrupt(void (*callback)(), int mode) {
+    ::attachInterrupt(digitalPinToInterrupt(this->pin), callback, mode);
+}
+
+/**
+ * @brief This function is used to detach an interrupt from the input pin.
+ * 
+ */
+void InputPin::detachInterrupt() {
+    ::detachInterrupt(digitalPinToInterrupt(this->pin));
+}
+
+/**
  * @brief Construct a new Analog Input Pin:: Analog Input Pin object
  * 
  * @param pin 
  */
-AnalogInputPin::AnalogInputPin(int pin) : Pin(pin) {
-    // Initialization code here if needed
-}
+AnalogInputPin::AnalogInputPin(int pin) : InputPin(pin), useInternalPullup(false), useInternalPulldown(false)  {}
+
+/**
+ * @brief Construct a new Analog Input Pin:: Analog Input Pin object
+ * This constructor initializes the pin and sets the internal pullup and pulldown flags to the specified values.
+ * Use this constructor if you want to use the internal pullup or pulldown resistors.
+ * 
+ */
+AnalogInputPin::AnalogInputPin(int pin, bool internalPullup, bool internalPulldown) 
+    :   InputPin(pin),
+        useInternalPullup(internalPullup),
+        useInternalPulldown(internalPulldown) {}
 
 /**
  * @brief This function is used to initialize the analog input pin. It is intended to be called in the setup() function of the main sketch.
  * 
  */
 void AnalogInputPin::begin() {
-    pinMode(this->pin, INPUT);
+    InputPin::begin();
 }
 
 /**
@@ -103,7 +124,7 @@ void AnalogInputPin::begin() {
  * 
  * @return int 
  */
-int AnalogInputPin::read() {
+int AnalogInputPin::readAnalog() {
     int value = analogRead(this->pin);
     return value;
 }

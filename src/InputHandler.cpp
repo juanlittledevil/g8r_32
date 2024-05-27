@@ -14,8 +14,13 @@
  * @param cvAPin 
  * @param cvBPin 
  */
-InputHandler::InputHandler(int cvAPin, int cvBPin) 
-        : cvA(cvAPin), cvB(cvBPin) {}
+InputHandler::InputHandler(unsigned char cvAPin, unsigned char cvBPin, unsigned char resetPin, unsigned char clockPin) 
+        :   cvA(cvAPin, false, true),
+            cvB(cvBPin, false, true),
+            cvC(resetPin, false, true),
+            cvD(clockPin, false, true) {
+    this->resetPin = resetPin;
+}
 
 /**
  * @brief This is intended to be called in the setup() function of the main sketch.
@@ -24,22 +29,6 @@ InputHandler::InputHandler(int cvAPin, int cvBPin)
 void InputHandler::begin() {
     cvA.begin();
     cvB.begin();
-}
-
-/**
- * @brief Read the CV input A.
- * 
- * @return int 
- */
-int InputHandler::readCVA() {
-    return cvA.read();
-}
-
-/**
- * @brief Read the CV input B.
- * 
- * @return int 
- */
-int InputHandler::readCVB() {
-    return cvB.read();
+    cvC.begin();
+    cvD.begin();
 }
