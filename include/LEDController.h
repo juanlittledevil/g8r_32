@@ -26,6 +26,7 @@ public:
     void blinkSlow(int ledIndex);
     void blinkFast(int ledIndex);
     void blinkFaster(int ledIndex);
+    bool isBlinking(int ledIndex);
     void stopBlinking(int ledIndex);
     void stopAllBlinking();
     void resetInverted();

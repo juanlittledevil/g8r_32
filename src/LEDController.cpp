@@ -41,6 +41,14 @@ void LEDController::turnAllOff() {
 }
 
 /**
+ * @brief Check if an LED is currently blinking.
+ * 
+ */
+bool LEDController::isBlinking(int ledIndex) {
+    return leds.getIsBlinking(ledIndex);
+}
+
+/**
  * @brief This function is used to start blinking an LED at a slow rate.
  * 
  * @param ledIndex 

@@ -60,6 +60,16 @@ void LED::updateBlinking() {
 }
 
 /**
+ * @brief This function is used to check if the LED is currently blinking.
+ * 
+ * @return true 
+ * @return false 
+ */
+bool LED::getIsBlinking() {
+    return this->isBlinking;
+}
+
+/**
  * @brief This function is used to trigger the LED. The LED will stay on for ledOnDuration milliseconds.
  * 
  * @param currentTime 

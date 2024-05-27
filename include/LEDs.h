@@ -20,6 +20,7 @@ class LEDs {
         void begin();
         void setState(int index, bool state);
         void setState(int index, bool state, int intensity);
+        bool getIsBlinking(int index);
         bool getState(int index);
         void setAllLeds(bool state);
         void startBlinking(int index, unsigned long interval);

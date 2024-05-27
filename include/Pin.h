@@ -50,7 +50,7 @@ public:
     AnalogInputPin(int pin); // Constructor
     AnalogInputPin(int pin, bool internalPullup, bool internalPulldown); // Overloaded constructor
     void begin(); // Initialize the pin
-    int read(); // Read the digital value from the pin (comes from the parent class)
+    bool read(); // Read the digital value from the pin (comes from the parent class)
     int readAnalog(); // Read the analog value from the pin
 
 private:

@@ -95,6 +95,13 @@ bool LEDs::getState(int index) {
     return false;
 }
 
+bool LEDs::getIsBlinking(int index) {
+    if(index >= 0 && index < numLeds) {
+        return this->leds[index].getIsBlinking();
+    }
+    return false;
+}
+
 /**
  * @brief This function is used to start blinking an LED. The LED's blink based on the interval provided.
  * 

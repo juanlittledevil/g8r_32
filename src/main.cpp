@@ -20,6 +20,7 @@
 // MODES
 #include "ModeDivisions.h"
 #include "ModeMidiLearn.h"
+#include "ModeInverse.h"
 
 /// Debug print macro, used to make debugging easier.
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
@@ -71,6 +72,7 @@ Mode* currentMode = nullptr; /// Pointer to the current mode
 Mode* previousMode = nullptr; /// Pointer to the previous mode
 ModeDivisions modeDivisions(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton, clock); /// Instance of ModeDivisions class
 ModeMidiLearn modeMidiLearn(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton); /// Instance of Mode2 class
+ModeInverse modeInverse(stateManager, encoder, inputHandler, gates, ledController, resetButton); /// Instance of Mode2 class
 
 // Forward declarations
 void midiSetup();
@@ -84,7 +86,7 @@ void setup() {
     delay(1000);
 
     /// Initialize the debug settings
-    Debug::isEnabled = false; // Enable debugging
+    Debug::isEnabled = true; // Enable debugging
     Debug::resetEEPROM = false; // Enable to clear and reset EEPROM.
 
     if (Debug::isEnabled) {
@@ -113,6 +115,7 @@ void setup() {
      */
     modeSelector.addMode(&modeDivisions); // Add ModeDivisions to the ModeSelector
     modeSelector.addMode(&modeMidiLearn); // Add Mode2 to the ModeSelector
+    modeSelector.addMode(&modeInverse); // Add Mode2 to the ModeSelector
     modeSelector.setLedController(ledController); // Set the LEDController for the ModeSelector
     modeSelector.setEncoder(encoder); // Set the Encoder for the ModeSelector
     modeSelector.setStateManager(stateManager); // Set the StateManager for the ModeSelector

@@ -27,12 +27,13 @@ class LED : public OutputPin {
         void update(unsigned long currentTime);
         void resetIvernted();
         void setLedOnDuration(int duration);
+        bool getIsBlinking();
 
     private:
         unsigned long blinkStartTime;
         unsigned long blinkInterval;
-        int intensity = 255;
         bool isBlinking;
+        int intensity = 255;
         int ledOnDuration = 25; // Duration in milliseconds that the LED should stay on
         int invertedLedOnDuration = 40; // Duration in milliseconds that the LED should stay on
         unsigned long triggeredTime = 0;
