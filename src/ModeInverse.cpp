@@ -52,7 +52,7 @@ void ModeInverse::setup() {
     numLeds = ledController.getNumLeds();
     /// This is where you'd read the eeprom for the ModeInverse settings. However, we don't have any settings for ModeInverse yet.
 
-
+    ledController.blinkSlow(selectedInput, true); // Blink the selected input
     handleInputs();
 }
 
@@ -63,6 +63,10 @@ void ModeInverse::setup() {
 void ModeInverse::teardown() {
     // Cleanup code here if needed
     ledController.clearAndResetLEDs();
+    ledController.stopAllBlinking(true);
+    ledController.setAllInverted(false);
+    ledController.turnAllOff();
+    gates.setALLGates(false);
 }
 
 /**
@@ -79,8 +83,6 @@ void ModeInverse::update() {
     // Handle button presses
     handleButton(encoder.readButton());
     handleResetButton(resetButton.readButton());
-
-    ledController.update();
 }
 
 /**
@@ -95,14 +97,22 @@ void ModeInverse::handleInputs() {
             case NORMAL:
                 gates.setState(i, currentState);
                 gates.setState(i + 4, !currentState);
+                
+                ledController.setInverted(i, currentState); // Set the LED inverted state
+
                 if (!ledController.isBlinking(i)) {
                     ledController.setState(i, currentState);
                 }
+
                 ledController.setState(i + 4, !currentState);
                 break;
             case INVERT:
                 gates.setState(i, !currentState);
                 gates.setState(i + 4, currentState);
+
+                ledController.setInverted(i, !currentState); // Set the LED inverted state
+                
+                // If the LED is not blinking or pulsing.
                 if (!ledController.isBlinking(i)) {
                     ledController.setState(i, !currentState);
                 }
@@ -228,13 +238,7 @@ void ModeInverse::handleSelectionStates() {
     if (selectedInput != previousInput) {
         for (int i = 0; i < inputHandler.cvInputs.size(); i++) {
             if (i == selectedInput) {
-                if (inputHandler.cvInputs[i]->read()) {
-                    // If the input is high...
-                    ledController.blinkFaster(i);
-                } else {
-                    // If the input is low...
-                    ledController.blinkFast(i);
-                }
+                ledController.blinkSlow(i, true);
             } else {
                ledController.stopBlinking(i);
             }

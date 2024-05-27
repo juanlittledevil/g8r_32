@@ -44,8 +44,20 @@ void LEDController::turnAllOff() {
  * @brief Check if an LED is currently blinking.
  * 
  */
+bool LEDController::isBlinking(int ledIndex, bool pulse=false) {
+    if (pulse) {
+        return leds.getIsPulsing(ledIndex);
+    } else {
+        return leds.getIsBlinking(ledIndex);
+    }
+}
+
 bool LEDController::isBlinking(int ledIndex) {
-    return leds.getIsBlinking(ledIndex);
+    if (leds.getIsBlinking(ledIndex) || leds.getIsPulsing(ledIndex)) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /**
@@ -53,8 +65,12 @@ bool LEDController::isBlinking(int ledIndex) {
  * 
  * @param ledIndex 
  */
-void LEDController::blinkSlow(int ledIndex) {
-    leds.startBlinking(ledIndex, 500);
+void LEDController::blinkSlow(int ledIndex, bool pulse=false) {
+    if (pulse) {
+        leds.startPulsing(ledIndex, 500, 50);
+    } else {
+        leds.startBlinking(ledIndex, 500);
+    }
 }
 
 /**
@@ -62,8 +78,25 @@ void LEDController::blinkSlow(int ledIndex) {
  * 
  * @param ledIndex 
  */
-void LEDController::blinkFast(int ledIndex) {
-    leds.startBlinking(ledIndex, 200);
+void LEDController::blinkFast(int ledIndex, bool pulse=false) {
+    if (pulse) {
+        leds.startPulsing(ledIndex, 200, 50);
+    } else {
+        leds.startBlinking(ledIndex, 200);
+    }
+}
+
+/**
+ * @brief This function is used to stop blinking an LED.
+ * 
+ * @param ledIndex 
+ */
+void LEDController::stopBlinking(int ledIndex, bool pulse=false) {
+    if (pulse) {
+        leds.stopPulsing(ledIndex);
+    } else {
+        leds.stopBlinking(ledIndex);
+    }
 }
 
 /**
@@ -73,14 +106,20 @@ void LEDController::blinkFast(int ledIndex) {
  */
 void LEDController::stopBlinking(int ledIndex) {
     leds.stopBlinking(ledIndex);
+    leds.stopPulsing(ledIndex);
 }
 
 /**
  * @brief This function is used to stop all LEDs from blinking.
  * 
  */
-void LEDController::stopAllBlinking() {
-    leds.stopAllBlinking();
+void LEDController::stopAllBlinking(bool pulse=false) {
+    // Stop all pulsing LEDs
+    if (pulse) {
+        leds.stopAllPulsing();
+    } else {
+        leds.stopAllBlinking(); 
+    }
 }
 
 /**
@@ -88,8 +127,12 @@ void LEDController::stopAllBlinking() {
  * 
  * @param ledIndex 
  */
-void LEDController::blinkFaster(int ledIndex) {
-    leds.startBlinking(ledIndex, 100);
+void LEDController::blinkFaster(int ledIndex, bool pulse=false) {
+    if (pulse) {
+        leds.startPulsing(ledIndex, 100, 50);
+    } else {
+        leds.startBlinking(ledIndex, 100);
+    }
 }
 
 /**
@@ -100,6 +143,35 @@ void LEDController::blinkFaster(int ledIndex) {
  */
 void LEDController::setState(int ledIndex, bool state) {
     leds.setState(ledIndex, state);
+}
+
+/**
+ * @brief This function is used to set the inverted state of an LED.
+ * 
+ * @param ledIndex 
+ * @param inverted 
+ */
+void LEDController::setInverted(int ledIndex, bool inverted) {
+    leds.setInverted(ledIndex, inverted);
+}
+
+/**
+ * @brief This function is used to set the inverted state of all LEDs.
+ * 
+ * @param inverted 
+ */
+void LEDController::setAllInverted(bool inverted) {
+    leds.setAllInverted(inverted);
+}
+
+/**
+ * @brief This function is used to get the inverted state of an LED.
+ * 
+ * @param ledIndex 
+ * @return bool 
+ */
+bool LEDController::getInverted(int ledIndex) {
+    return leds.getInverted(ledIndex);
 }
 
 /**
@@ -136,6 +208,7 @@ int LEDController::getNumLeds() {
  */
 void LEDController::update() {
     leds.updateBlinking();
+    leds.updatePulsing();
 }
 
 /**
@@ -172,6 +245,14 @@ void LEDController::clearLEDs() {
  */
 void LEDController::updateBlinking() {
     leds.updateBlinking();
+}
+
+/**
+ * @brief This function is used to update the pulsing of the LED. It is meant to be called in every loop iteration.
+ * 
+ */
+void LEDController::updatePulsing() {
+    leds.updatePulsing();
 }
 
 /**

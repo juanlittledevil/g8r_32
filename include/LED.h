@@ -20,7 +20,12 @@ class LED : public OutputPin {
         LED(int pin = -1); // Default pin set to -1
         ~LED(); // Destructor declaration
         void startBlinking(unsigned long interval);
+        void startPulsing(unsigned long interval, int pulseDuration, bool inverted=false);
+        void setInverted(bool inverted);
+        bool getInverted();
+        void stopPulsing();
         void stopBlinking();
+        void updatePulsing();
         void updateBlinking();
         void setIntensity(int intensity);
         void trigger(unsigned long currentTime, bool inverted=false);
@@ -28,6 +33,7 @@ class LED : public OutputPin {
         void resetIvernted();
         void setLedOnDuration(int duration);
         bool getIsBlinking();
+        bool getIsPulsing();
 
     private:
         unsigned long blinkStartTime;
@@ -38,6 +44,8 @@ class LED : public OutputPin {
         int invertedLedOnDuration = 40; // Duration in milliseconds that the LED should stay on
         unsigned long triggeredTime = 0;
         bool inverted = false;
+        int pulseDuration = 0;
+        bool isPulsing = false;
 };
 
 #endif

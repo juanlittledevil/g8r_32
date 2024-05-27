@@ -142,7 +142,7 @@ void setup() {
  */
 void loop() {
     modeSelector.update(); // Update the ModeSelector
-    ledController.updateBlinking(); // Update the LEDController's blinking status
+    ledController.update(); // Update the LEDController's blinking status
 
     if (!modeSelector.isInModeSelection()) { // isInModeSelection is updated by the ModeSelector.
         currentMode->update(); // Run the update method of the current mode.
