@@ -24,6 +24,7 @@ public:
     void turnAllOn();
     void turnAllOff();
     void blinkSlow(int ledIndex, bool pulse);
+    void blinkSlower(int ledIndex, bool pulse);
     void blinkFast(int ledIndex, bool pulse);
     void blinkFaster(int ledIndex, bool pulse);
     bool isBlinking(int ledIndex, bool pulse);

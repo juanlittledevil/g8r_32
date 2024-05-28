@@ -74,6 +74,19 @@ void LEDController::blinkSlow(int ledIndex, bool pulse=false) {
 }
 
 /**
+ * @brief This function is used to start blinking an LED at a slower rate.
+ * 
+ * @param ledIndex 
+ */
+void LEDController::blinkSlower(int ledIndex, bool pulse=false) {
+    if (pulse) {
+        leds.startPulsing(ledIndex, 800, 25);
+    } else {
+        leds.startBlinking(ledIndex, 800);
+    }
+}
+
+/**
  * @brief This function is used to start blinking an LED at a fast rate.
  * 
  * @param ledIndex 
