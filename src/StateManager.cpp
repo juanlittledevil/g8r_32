@@ -49,6 +49,12 @@ void StateManager::initializeEEPROM() {
         for (int i = 0; i < 4; i++) {
             state.modeInverse.pairModes[i] = NORMAL;
         }
+
+        /// Initialize Mode Logic
+        for (int i = 0; i < numLogicModes; i++) {
+            state.modeLogic.inputGroup = GROUP_ALL;
+            state.modeLogic.logicModes[i] = AND;
+        }
         
 
         saveAppState(); /// Save the default state to the EEPROM
@@ -230,4 +236,74 @@ PairMode StateManager::getPairMode(int input) {
         DEBUG_PRINT("Pair mode for input " + String(input) + " is " + String(mode));
     }
     return mode;
+}
+
+/**
+ * @brief Sets the logic mode for a specific index in the AppState object 'state'.
+ * 
+ * @param index - The index to set the logic mode for
+ * @param mode - The mode to set
+ */
+void StateManager::setLogicMode(int index, LogicMode mode) {
+    if (index >= 0 && index < state.modeLogic.logicModes.size()) {
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("Setting logic mode for index " + String(index) + " to " + String(mode));
+        }
+        state.modeLogic.logicModes[index] = mode;
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("Logic mode for index " + String(index) + " is " + String(state.modeLogic.logicModes[index]));
+        }
+    } else {
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("Index out of bounds: " + String(index));
+        }
+    }
+}
+
+/**
+ * @brief Returns the logic mode for a specific index from the AppState object 'state'.
+ * 
+ * @param index - The index to get the logic mode for
+ * @return LogicMode - The logic mode for the index
+ */
+LogicMode StateManager::getLogicMode(int index) {
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Getting logic mode for index " + String(index));
+    }
+    LogicMode mode = state.modeLogic.logicModes[index];
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Logic mode for index " + String(index) + " is " + String(mode));
+    }
+    return mode;
+}
+
+/**
+ * @brief Sets the input group in the AppState object 'state'.
+ * 
+ * @param group - The group to set
+ */
+void StateManager::setInputGroup(InputGroup group) {
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Setting input group to " + String(group));
+    }
+    state.modeLogic.inputGroup = group;
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Input group is " + String(state.modeLogic.inputGroup));
+    }
+}
+
+/**
+ * @brief Returns the input group from the AppState object 'state'.
+ * 
+ * @return InputGroup - The input group
+ */
+InputGroup StateManager::getInputGroup() {
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Getting input group");
+    }
+    InputGroup group = state.modeLogic.inputGroup;
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Input group is " + String(group));
+    }
+    return group;
 }

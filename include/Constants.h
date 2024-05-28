@@ -22,4 +22,20 @@ enum PairMode {
     RISE_FALL
 };
 
+enum InputGroup {
+    GROUP_TWO,
+    GROUP_ALL
+};
+
+// Other Logic mode could be IMPLY and NIMPLY (however we probably won't use those here.)
+const unsigned char numLogicModes = 6;
+enum LogicMode {
+    AND,
+    OR,
+    XOR,
+    NAND,
+    NOR,
+    XNOR
+};
+
 #endif // CONSTANTS_H

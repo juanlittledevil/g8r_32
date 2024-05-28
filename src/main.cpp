@@ -21,6 +21,7 @@
 #include "ModeDivisions.h"
 #include "ModeMidiLearn.h"
 #include "ModeInverse.h"
+#include "ModeLogic.h"
 
 /// Debug print macro, used to make debugging easier.
 #define DEBUG_PRINT(message) Debug::print(__FILE__, __LINE__, __func__, String(message))
@@ -71,8 +72,9 @@ ModeSelector& modeSelector = ModeSelector::getInstance(); /// Instance of the Mo
 Mode* currentMode = nullptr; /// Pointer to the current mode
 Mode* previousMode = nullptr; /// Pointer to the previous mode
 ModeDivisions modeDivisions(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton, clock); /// Instance of ModeDivisions class
-ModeMidiLearn modeMidiLearn(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton); /// Instance of Mode2 class
-ModeInverse modeInverse(stateManager, encoder, inputHandler, gates, ledController, resetButton); /// Instance of Mode2 class
+ModeMidiLearn modeMidiLearn(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton); /// Instance of ModeMidiLearn class
+ModeInverse modeInverse(stateManager, encoder, inputHandler, gates, ledController, resetButton); /// Instance of ModeInverse class
+ModeLogic modeLogic(stateManager, encoder, inputHandler, gates, ledController, resetButton); /// Instance of ModeLogic class
 
 // Forward declarations
 void midiSetup();
@@ -114,8 +116,9 @@ void setup() {
      * IMPORTANT: Add the modes in the order you want them to be selected via the encoder.
      */
     modeSelector.addMode(&modeDivisions); // Add ModeDivisions to the ModeSelector
-    modeSelector.addMode(&modeMidiLearn); // Add Mode2 to the ModeSelector
-    modeSelector.addMode(&modeInverse); // Add Mode2 to the ModeSelector
+    modeSelector.addMode(&modeMidiLearn); // Add ModeMidiLearn to the ModeSelector
+    modeSelector.addMode(&modeInverse); // Add ModeInverse to the ModeSelector
+    modeSelector.addMode(&modeLogic); // Add ModeLogic to the ModeSelector
     modeSelector.setLedController(ledController); // Set the LEDController for the ModeSelector
     modeSelector.setEncoder(encoder); // Set the Encoder for the ModeSelector
     modeSelector.setStateManager(stateManager); // Set the StateManager for the ModeSelector
