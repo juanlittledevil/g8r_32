@@ -40,10 +40,16 @@ void StateManager::initializeEEPROM() {
         for (int i = 0; i < 8; i++) {
             state.modeDivisions.gateDivisions[i] = GateDivision{i, internalPPQN};
         }
-        /// Initialize mode1 MIDI channel
+        /// Initialize Mode MIDI Learn
         for (int i = 0; i < 8; i++) {
             state.modeMidiLearn.gateChannelNotes[i] = GateChannelNote{i, 0, 0};
         }
+
+        /// Initialize Mode Inverse
+        for (int i = 0; i < 4; i++) {
+            state.modeInverse.pairModes[i] = NORMAL;
+        }
+        
 
         saveAppState(); /// Save the default state to the EEPROM
 
@@ -185,4 +191,43 @@ std::pair<int, int> StateManager::getMidiLearnNote(int gate) {
         DEBUG_PRINT("MIDI learn note for gate " + String(gate) + " is " + String(note) + " on channel " + String(channel));
     }
     return std::make_pair(note, channel);
+}
+
+/**
+ * @brief Sets the pair mode for a specific input in the AppState object 'state'.
+ * 
+ * @param input - The input to set the pair mode for
+ * @param mode - The mode to set
+ */
+void StateManager::setPairMode(int input, PairMode mode) {
+    if (input >= 0 && input < state.modeInverse.pairModes.size()) {
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("Setting pair mode for input " + String(input) + " to " + String(mode));
+        }
+        state.modeInverse.pairModes[input] = mode;
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("Pair mode for input " + String(input) + " is " + String(state.modeInverse.pairModes[input]));
+        }
+    } else {
+        if (Debug::isEnabled) {
+            DEBUG_PRINT("Input index out of bounds: " + String(input));
+        }
+    }
+}
+
+/**
+ * @brief Returns the pair mode for a specific input from the AppState object 'state'.
+ * 
+ * @param input - The input to get the pair mode for
+ * @return PairMode - The pair mode for the input
+ */
+PairMode StateManager::getPairMode(int input) {
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Getting pair mode for input " + String(input));
+    }
+    PairMode mode = state.modeInverse.pairModes[input];
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Pair mode for input " + String(input) + " is " + String(mode));
+    }
+    return mode;
 }

@@ -16,4 +16,10 @@ extern std::vector<int> musicalIntervals;
 extern const int musicalIntervalsSize;
 extern unsigned char internalPPQN;
 
+enum PairMode {
+    NORMAL,
+    INVERT,
+    RISE_FALL
+};
+
 #endif // CONSTANTS_H

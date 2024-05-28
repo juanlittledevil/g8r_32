@@ -43,10 +43,15 @@ struct ModeMidiLearnState {
     std::array<GateChannelNote, 8> gateChannelNotes;
 };
 
+struct ModeInverseState {
+    std::array<PairMode, 4> pairModes;
+};
+
 struct AppState {
     int mode;
     ModeDivisionsState modeDivisions;
     ModeMidiLearnState modeMidiLearn;
+    ModeInverseState modeInverse;
 };
 
 #endif // APP_STATE_H

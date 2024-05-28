@@ -11,12 +11,6 @@
 #include "ResetButton.h"
 #include "StateManager.h"
 
-enum PairMode {
-    NORMAL,
-    INVERT,
-    RISE_FALL
-};
-
 /**
  * @brief This mode is for inverting the gates. If the gate is high, it will be low and vice versa.
  * The user can select the gate pairs and change the behaviour of the gates. So instead of
@@ -50,6 +44,7 @@ private:
     void loadMidiLearnNotes();
     void handleInputs();
     void handleTempoLed();
+    void loadState();
     void setPairMode(int input, PairMode mode);
     StateManager& stateManager;
     LEDController& ledController;

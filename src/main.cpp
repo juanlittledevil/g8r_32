@@ -86,7 +86,7 @@ void setup() {
     delay(1000);
 
     /// Initialize the debug settings
-    Debug::isEnabled = true; // Enable debugging
+    Debug::isEnabled = false; // Enable debugging
     Debug::resetEEPROM = false; // Enable to clear and reset EEPROM.
 
     if (Debug::isEnabled) {
