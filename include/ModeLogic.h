@@ -55,6 +55,8 @@ private:
     unsigned char numLeds = 8;
     unsigned char selectedGate = 0;
     unsigned char previousGate = 0;
+    InputGroup inputGroup = GROUP_ALL;
+    LogicMode logicMode[8] = {AND, AND, AND, AND, AND, AND, AND, AND};
 };
 
 #endif // MODE_LOGIC_H

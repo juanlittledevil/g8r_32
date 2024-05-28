@@ -87,7 +87,114 @@ void ModeLogic::update() {
  * 
  */
 void ModeLogic::handleInputs() {
-   // Logic for what happens with the inputs goes here. 
+    // Logic for what happens with the inputs goes here. 
+    bool cvA = inputHandler.cvInputs[0]->read();
+    bool cvB = inputHandler.cvInputs[1]->read();
+    bool cvC = inputHandler.cvInputs[2]->read();
+    bool cvD = inputHandler.cvInputs[3]->read();
+
+    for (unsigned char i = 0; i < inputHandler.cvInputs.size(); i++) {
+        switch (logicMode[i]) {
+            case AND:
+                // Do AND logic
+                if (inputGroup == GROUP_TWO) {
+                    // Do AND logic for two inputs
+                    gates.setState(i, cvA && cvB);
+                    gates.setState(i + 4, cvC && cvD);
+                    ledController.setState(i, gates.getState(i));
+                    ledController.setState(i + 4, gates.getState(i + 4));
+                } else {
+                    // Do AND logic for all inputs
+                    gates.setState(i, cvA && cvB && cvC && cvD);
+                    ledController.setState(i, gates.getState(i));
+                }
+                break;
+            case OR:
+                // Do OR logic
+                if (inputGroup == GROUP_TWO) {
+                    // Do AND logic for two inputs
+                    gates.setState(i, cvA || cvB);
+                    gates.setState(i + 4, cvC || cvD);
+                    ledController.setState(i, gates.getState(i));
+                    ledController.setState(i + 4, gates.getState(i + 4));
+                } else {
+                    // Do AND logic for all inputs
+                    gates.setState(i, cvA || cvB || cvC || cvD);
+                    ledController.setState(i, gates.getState(i));
+                }
+                break;
+            case XOR:
+                // Do XOR logic
+                if (inputGroup == GROUP_TWO) {
+                    // Do AND logic for two inputs
+                    gates.setState(i, cvA ^ cvB);
+                    gates.setState(i + 4, cvC ^ cvD);
+                    ledController.setState(i, gates.getState(i));
+                    ledController.setState(i + 4, gates.getState(i + 4));
+                } else {
+                    // Do AND logic for all inputs
+                    gates.setState(i, cvA ^ cvB ^ cvC ^ cvD);
+                    ledController.setState(i, gates.getState(i));
+                }
+                break;
+            case NAND:
+                // Do NAND logic
+                if (inputGroup == GROUP_TWO) {
+                    // Do AND logic for two inputs
+                    gates.setState(i, !(cvA && cvB));
+                    gates.setState(i + 4, !(cvC && cvD));
+                    ledController.setState(i, gates.getState(i));
+                    ledController.setState(i + 4, gates.getState(i + 4));
+                } else {
+                    // Do AND logic for all inputs
+                    gates.setState(i, !(cvA && cvB && cvC && cvD));
+                    ledController.setState(i, gates.getState(i));
+                }
+                break;
+            case NOR:
+                // Do NOR logic
+                if (inputGroup == GROUP_TWO) {
+                    // Do AND logic for two inputs
+                    gates.setState(i, !(cvA || cvB));
+                    gates.setState(i + 4, !(cvC || cvD));
+                    ledController.setState(i, gates.getState(i));
+                    ledController.setState(i + 4, gates.getState(i + 4));
+                } else {
+                    // Do AND logic for all inputs
+                    gates.setState(i, !(cvA || cvB || cvC || cvD));
+                    ledController.setState(i, gates.getState(i));
+                }
+                break;
+            case XNOR:
+                // Do XNOR logic
+                if (inputGroup == GROUP_TWO) {
+                    // Do AND logic for two inputs
+                    gates.setState(i, !(cvA ^ cvB));
+                    gates.setState(i + 4, !(cvC ^ cvD));
+                    ledController.setState(i, gates.getState(i));
+                    ledController.setState(i + 4, gates.getState(i + 4));
+                } else {
+                    // Do AND logic for all inputs
+                    gates.setState(i, !(cvA ^ cvB ^ cvC ^ cvD));
+                    ledController.setState(i, gates.getState(i));
+                }
+                break;
+            default:
+                // Do AND logic
+                if (inputGroup == GROUP_TWO) {
+                    // Do AND logic for two inputs
+                    gates.setState(i, cvA && cvB);
+                    gates.setState(i + 4, cvC && cvD);
+                    ledController.setState(i, gates.getState(i));
+                    ledController.setState(i + 4, gates.getState(i + 4));
+                } else {
+                    // Do AND logic for all inputs
+                    gates.setState(i, cvA && cvB && cvC && cvD);
+                    ledController.setState(i, gates.getState(i));
+                }
+                break;
+       }
+   }
 }
 
 /**
@@ -96,6 +203,11 @@ void ModeLogic::handleInputs() {
  */
 void ModeLogic::handleTempoLed() {
     // Handle the tempo LED
+    if (inputGroup == GROUP_TWO) {
+        ledController.tempoLed.setState(false);
+    } else {
+        ledController.tempoLed.setState(true);
+    }
 }
 
 /**
@@ -204,6 +316,11 @@ void ModeLogic::handleSelectionStates() {
 void ModeLogic::handleResetSinglePress() {
     if (!singleResetPressHandled) {
         // Toggle input group.
+        if (inputGroup == GROUP_TWO) {
+            inputGroup = GROUP_ALL;
+        } else {
+            inputGroup = GROUP_TWO;
+        }
     }
 }
 
