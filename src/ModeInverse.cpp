@@ -64,7 +64,6 @@ void ModeInverse::setup() {
  */
 void ModeInverse::teardown() {
     // Cleanup code here if needed
-    // setPairMode(selectedInput, static_cast<PairMode>((pairModes[selectedInput] - 1) % 3));
     int previousIndex = (pairModes[selectedInput] - 1 + 3) % 3;
     stateManager.setPairMode(selectedInput, static_cast<PairMode>(previousIndex));
     ledController.clearAndResetLEDs();
