@@ -40,8 +40,8 @@
 // Define the pin for the tempo LED
 #define TEMPO_LED PA8
 // Define the pins for the CV inputs
-#define CV_A_PIN PA4
-#define CV_B_PIN PA5
+#define CV_B_PIN PA4
+#define CV_A_PIN PA5
 
 // Define the pins for the gates, we have 8 in total
 std::vector<int> pins = {PA15, PB3, PB4, PB5, PB6, PB7, PB8, PB9};
