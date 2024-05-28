@@ -80,6 +80,9 @@ void ModeInverse::update() {
     // Handle the pair selection
     handleSelectionStates();
 
+    // Handle the tempo LED
+    handleTempoLed();
+
     // Handle button presses
     handleButton(encoder.readButton());
     handleResetButton(resetButton.readButton());
@@ -97,45 +100,61 @@ void ModeInverse::handleInputs() {
             case NORMAL:
                 gates.setState(i, currentState);
                 gates.setState(i + 4, !currentState);
-                
-                ledController.setInverted(i, currentState); // Set the LED inverted state
+
+                if (!gates.isMuted(i)) ledController.setInverted(i, currentState); // Set the LED inverted state
+
+                ledController.setState(i + 4, gates.getState(i + 4));
 
                 if (!ledController.isBlinking(i)) {
-                    ledController.setState(i, currentState);
+                    ledController.setState(i, gates.getState(i));
                 }
 
-                ledController.setState(i + 4, !currentState);
                 break;
             case INVERT:
                 gates.setState(i, !currentState);
                 gates.setState(i + 4, currentState);
 
-                ledController.setInverted(i, !currentState); // Set the LED inverted state
+                if (!gates.isMuted(i)) ledController.setInverted(i, !currentState); // Set the LED inverted state
+
+                ledController.setState(i + 4, gates.getState(i + 4));
                 
                 // If the LED is not blinking or pulsing.
                 if (!ledController.isBlinking(i)) {
-                    ledController.setState(i, !currentState);
+                    ledController.setState(i, gates.getState(i));
                 }
-                ledController.setState(i + 4, currentState);
                 break;
             case RISE_FALL:
                 if (currentState && !previousState[i]) {
                     // Rising edge
                     gates.trigger(i, millis());
-                    ledController.trigger(i, millis());
+                    if (!gates.isMuted(i)) ledController.trigger(i, millis());
                 } else if (!currentState && previousState[i]) {
                     // Falling edge
                     gates.trigger(i + 4, millis());
-                    ledController.trigger(i + 4, millis());
+                    if (!gates.isMuted(i + 4)) ledController.trigger(i + 4, millis());
                 }
+
                 gates.update(millis());
+                ledController.update(i + 4, millis());
+
                 if (!ledController.isBlinking(i)) {
                     ledController.update(i, millis());
                 }
-                ledController.update(i + 4, millis());
                 break;
         }
         previousState[i] = currentState;
+    }
+}
+
+/**
+ * @brief This function is used to handle the tempo LED. This is where the tempo LED is updated.
+ * 
+ */
+void ModeInverse::handleTempoLed() {
+    if (gates.isMuted(selectedInput) || gates.isMuted(selectedInput + 4)) {
+        ledController.tempoLed.setState(LOW);
+    } else {
+        ledController.tempoLed.setState(HIGH);
     }
 }
 
@@ -258,11 +277,25 @@ void ModeInverse::handleSelectionStates() {
 }
 
 /**
- * @brief This function is used to handle the reset single press event. How in this mode we don't use it.
+ * @brief This function is used to handle the reset single press event. In this mode, we use it to mute/unmute the selected input pairs.
  * 
  */
 void ModeInverse::handleResetSinglePress() {
-    // Handle reset single press
+    if (!singleResetPressHandled) {
+        if (Debug::isEnabled) DEBUG_PRINT("Reset single press");
+        if (gates.isMuted(selectedInput) || gates.isMuted(selectedInput + 4)) {
+            gates.unmute(selectedInput);
+            gates.unmute(selectedInput + 4);
+        } else {
+            ledController.setInverted(selectedInput, false);
+            gates.mute(selectedInput);
+            gates.mute(selectedInput + 4);
+            gates.setState(selectedInput, false);
+            gates.setState(selectedInput + 4, false);
+        }
+        if (Debug::isEnabled) DEBUG_PRINT("Selected input: " + String(selectedInput));
+        if (Debug::isEnabled) DEBUG_PRINT("Gate muted: " + String(gates.isMuted(selectedInput)) + " " + String(gates.isMuted(selectedInput + 4)));
+    }
 }
 
 /**
@@ -270,7 +303,13 @@ void ModeInverse::handleResetSinglePress() {
  * 
  */
 void ModeInverse::handleResetDoublePress() {
-    // Handle reset double press
+    if (!doubleResetPressHandled) {
+        if (Debug::isEnabled) DEBUG_PRINT("Reset double press");
+        // Unmute all the gates
+        gates.unMuteAll();
+        if (Debug::isEnabled) DEBUG_PRINT("Selected input: " + String(selectedInput));
+        if (Debug::isEnabled) DEBUG_PRINT("Gate muted: " + String(gates.isMuted(selectedInput)) + " " + String(gates.isMuted(selectedInput + 4)));
+    }
 }
 
 /**

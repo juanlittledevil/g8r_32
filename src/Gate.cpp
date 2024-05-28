@@ -30,14 +30,32 @@ void Gate::setDivision(int newDivision) {
 }
 
 /**
+ * @brief This function is used to set the state of the output pin.
+ * Possible states are HIGH or LOW.
+ * 
+ * @param newState 
+ */
+void Gate::setState(bool state) {
+    if (!isMuted) {
+        OutputPin::setState(state ? HIGH : LOW);
+    } else {
+        OutputPin::setState(LOW);
+    }
+}
+
+/**
  * @brief This function is used to execute a trigger signal. It sets the state of the gate to HIGH and records the time of the trigger.
  * Then, the gate will automatically turn off after the gateOnDuration has passed.
  * 
  * @param currentTime 
  */
 void Gate::trigger(unsigned long currentTime) {
-    setState(HIGH);
-    triggeredTime = currentTime;
+    if (!isMuted) {
+        setState(HIGH);
+        triggeredTime = currentTime;
+    } else {
+        setState(LOW);
+    }
 }
 
 /**
@@ -69,4 +87,31 @@ int Gate::getDivision() {
  */
 void Gate::setGateOnDuration(int duration) {
     gateOnDuration = duration;
+}
+
+/**
+ * @brief This function is used to mute the gate.
+ * 
+ */
+void Gate::mute() {
+    setState(LOW);
+    isMuted = true;
+}
+
+/**
+ * @brief This function is used to unmute the gate.
+ * 
+ */
+void Gate::unmute() {
+    isMuted = false;
+}
+
+/**
+ * @brief This function is used to check if the gate is currently muted.
+ * 
+ * @return true 
+ * @return false 
+ */
+bool Gate::getIsMuted() {
+    return isMuted;
 }

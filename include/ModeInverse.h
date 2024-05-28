@@ -49,6 +49,7 @@ private:
     void handleResetButton(ResetButton::ButtonState buttonState);
     void loadMidiLearnNotes();
     void handleInputs();
+    void handleTempoLed();
     void setPairMode(int input, PairMode mode);
     StateManager& stateManager;
     LEDController& ledController;
