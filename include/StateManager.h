@@ -27,6 +27,8 @@ public:
     void setGateDivision(int gate, int division);
     int getGateDivision(int gate);
     void setMidiLearnNote(int gate, int channel, int note);
+    void setPairMode(int input, PairMode mode);
+    PairMode getPairMode(int input);
     std::pair<int, int> getMidiLearnNote(int gate);
 
 private:

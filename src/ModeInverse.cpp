@@ -51,7 +51,7 @@ void ModeInverse::setup() {
     ledController.tempoLed.setState(LOW);
     numLeds = ledController.getNumLeds();
     /// This is where you'd read the eeprom for the ModeInverse settings. However, we don't have any settings for ModeInverse yet.
-
+    loadState();
     ledController.blinkSlow(selectedInput, true); // Blink the selected input
     handleInputs();
 }
@@ -165,6 +165,7 @@ void ModeInverse::handleTempoLed() {
  */
 void ModeInverse::setPairMode(int input, PairMode mode) {
     pairModes[input] = mode;
+    stateManager.setPairMode(input, mode);
 }
 
 
@@ -225,7 +226,7 @@ void ModeInverse::handleResetButton(ResetButton::ButtonState buttonState) {
 void ModeInverse::handleSinglePress() {
     if (!singlePressHandled) {
         // Cycle through the modes
-        pairModes[selectedInput] = static_cast<PairMode>((pairModes[selectedInput] + 1) % 3);
+        setPairMode(selectedInput, static_cast<PairMode>((pairModes[selectedInput] + 1) % 3));
         singlePressHandled = true;
     }
 }
@@ -328,4 +329,19 @@ void ModeInverse::handleResetLongPress() {
  */
 void ModeInverse::handleResetPressReleased() {
     // Handle reset press released
+}
+
+/**
+ * @brief This function is used to load the state of the ModeInverse object.
+ * 
+ */
+void ModeInverse::loadState() {
+    // Load the state from the EEPROM
+    // This is where you'd read the eeprom for the ModeInverse settings. However, we don't have any settings for ModeInverse yet.
+    for (int i = 0; i < inputHandler.cvInputs.size(); i++) {
+        pairModes[i] = stateManager.getPairMode(i);
+    }
+    if (Debug::isEnabled) {
+        DEBUG_PRINT("Loaded state from EEPROM");
+    }
 }
