@@ -28,6 +28,7 @@ enum InputGroup {
 };
 
 // Other Logic mode could be IMPLY and NIMPLY (however we probably won't use those here.)
+const unsigned char numLogicModes = 6;
 enum LogicMode {
     AND,
     OR,

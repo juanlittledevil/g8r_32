@@ -30,6 +30,10 @@ public:
     void setPairMode(int input, PairMode mode);
     PairMode getPairMode(int input);
     std::pair<int, int> getMidiLearnNote(int gate);
+    void setLogicMode(int index, LogicMode mode);
+    LogicMode getLogicMode(int index);
+    void setInputGroup(InputGroup group);
+    InputGroup getInputGroup();
 
 private:
     AppState state;

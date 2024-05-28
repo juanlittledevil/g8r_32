@@ -38,6 +38,7 @@ private:
     void handleButton(Encoder::ButtonState buttonState);
     void handleResetButton(ResetButton::ButtonState buttonState);
     void loadState();
+    void updateSelectionDisplay();
     StateManager& stateManager;
     Encoder& encoder;
     InputHandler& inputHandler;
@@ -55,6 +56,8 @@ private:
     unsigned char numLeds = 8;
     unsigned char selectedGate = 0;
     unsigned char previousGate = 0;
+    LogicMode selectedLogicMode = AND;
+    LogicMode previousLogicMode = AND;
     InputGroup inputGroup = GROUP_ALL;
     LogicMode logicMode[8] = {AND, AND, AND, AND, AND, AND, AND, AND};
 };

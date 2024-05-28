@@ -47,6 +47,7 @@ void ModeLogic::setup() {
     numLeds = ledController.getNumLeds();
     /// This is where you'd read the eeprom for the ModeLogic settings. However, we don't have any settings for ModeLogic yet.
     loadState();
+    ledController.blinkSlow(selectedGate, true); // Blink the selected input
     handleInputs();
 }
 
@@ -93,104 +94,188 @@ void ModeLogic::handleInputs() {
     bool cvC = inputHandler.cvInputs[2]->read();
     bool cvD = inputHandler.cvInputs[3]->read();
 
-    for (unsigned char i = 0; i < inputHandler.cvInputs.size(); i++) {
+    for (unsigned char i = 0; i < gates.numGates; i++) {
         switch (logicMode[i]) {
             case AND:
                 // Do AND logic
                 if (inputGroup == GROUP_TWO) {
                     // Do AND logic for two inputs
-                    gates.setState(i, cvA && cvB);
-                    gates.setState(i + 4, cvC && cvD);
-                    ledController.setState(i, gates.getState(i));
-                    ledController.setState(i + 4, gates.getState(i + 4));
+                    if (i < 4) {
+                        gates.setState(i, cvA && cvB);
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    } else {
+                        gates.setState(i, cvC && cvD);
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    }
                 } else {
                     // Do AND logic for all inputs
                     gates.setState(i, cvA && cvB && cvC && cvD);
-                    ledController.setState(i, gates.getState(i));
+                    if (!isInSelection) {
+                        // If we are not in selection mode, update the LEDs
+                        if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                    }
                 }
                 break;
             case OR:
                 // Do OR logic
                 if (inputGroup == GROUP_TWO) {
                     // Do AND logic for two inputs
-                    gates.setState(i, cvA || cvB);
-                    gates.setState(i + 4, cvC || cvD);
-                    ledController.setState(i, gates.getState(i));
-                    ledController.setState(i + 4, gates.getState(i + 4));
+                    if (i < 4) {
+                        gates.setState(i, cvA || cvB);
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    } else {
+                        gates.setState(i, cvC || cvD);
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    }
                 } else {
                     // Do AND logic for all inputs
                     gates.setState(i, cvA || cvB || cvC || cvD);
-                    ledController.setState(i, gates.getState(i));
+                    if (!isInSelection) {
+                        // If we are not in selection mode, update the LEDs
+                        if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                    }
                 }
                 break;
             case XOR:
                 // Do XOR logic
                 if (inputGroup == GROUP_TWO) {
                     // Do AND logic for two inputs
-                    gates.setState(i, cvA ^ cvB);
-                    gates.setState(i + 4, cvC ^ cvD);
-                    ledController.setState(i, gates.getState(i));
-                    ledController.setState(i + 4, gates.getState(i + 4));
+                    if (i < 4) {
+                        gates.setState(i, cvA ^ cvB);
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    } else {
+                        gates.setState(i, cvC ^ cvD);
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    }
                 } else {
                     // Do AND logic for all inputs
                     gates.setState(i, cvA ^ cvB ^ cvC ^ cvD);
-                    ledController.setState(i, gates.getState(i));
+                    if (!isInSelection) {
+                        // If we are not in selection mode, update the LEDs
+                        if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                    }
                 }
                 break;
             case NAND:
                 // Do NAND logic
                 if (inputGroup == GROUP_TWO) {
                     // Do AND logic for two inputs
-                    gates.setState(i, !(cvA && cvB));
-                    gates.setState(i + 4, !(cvC && cvD));
-                    ledController.setState(i, gates.getState(i));
-                    ledController.setState(i + 4, gates.getState(i + 4));
+                    if (i < 4) {
+                        gates.setState(i, !(cvA && cvB));
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    } else {
+                        gates.setState(i, !(cvC && cvD));
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    }
                 } else {
                     // Do AND logic for all inputs
                     gates.setState(i, !(cvA && cvB && cvC && cvD));
-                    ledController.setState(i, gates.getState(i));
+                    if (!isInSelection) {
+                        // If we are not in selection mode, update the LEDs
+                        if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                    }
                 }
                 break;
             case NOR:
                 // Do NOR logic
                 if (inputGroup == GROUP_TWO) {
                     // Do AND logic for two inputs
-                    gates.setState(i, !(cvA || cvB));
-                    gates.setState(i + 4, !(cvC || cvD));
-                    ledController.setState(i, gates.getState(i));
-                    ledController.setState(i + 4, gates.getState(i + 4));
+                    if (i < 4) {
+                        gates.setState(i, !(cvA || cvB));
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    } else {
+                        gates.setState(i, !(cvC || cvD));
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    }
                 } else {
                     // Do AND logic for all inputs
                     gates.setState(i, !(cvA || cvB || cvC || cvD));
-                    ledController.setState(i, gates.getState(i));
+                    if (!isInSelection) {
+                        // If we are not in selection mode, update the LEDs
+                        if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                    }
                 }
                 break;
             case XNOR:
                 // Do XNOR logic
                 if (inputGroup == GROUP_TWO) {
                     // Do AND logic for two inputs
-                    gates.setState(i, !(cvA ^ cvB));
-                    gates.setState(i + 4, !(cvC ^ cvD));
-                    ledController.setState(i, gates.getState(i));
-                    ledController.setState(i + 4, gates.getState(i + 4));
+                    if (i < 4) {
+                        gates.setState(i, !(cvA ^ cvB));
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    } else {
+                        gates.setState(i, !(cvC ^ cvD));
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    }
                 } else {
                     // Do AND logic for all inputs
                     gates.setState(i, !(cvA ^ cvB ^ cvC ^ cvD));
-                    ledController.setState(i, gates.getState(i));
+                    if (!isInSelection) {
+                        // If we are not in selection mode, update the LEDs
+                        if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                    }
                 }
                 break;
             default:
                 // Do AND logic
                 if (inputGroup == GROUP_TWO) {
                     // Do AND logic for two inputs
-                    gates.setState(i, cvA && cvB);
-                    gates.setState(i + 4, cvC && cvD);
-                    ledController.setState(i, gates.getState(i));
-                    ledController.setState(i + 4, gates.getState(i + 4));
+                    if (i < 4) {
+                        gates.setState(i, cvA && cvB);
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    } else {
+                        gates.setState(i, cvC && cvD);
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    }
                 } else {
                     // Do AND logic for all inputs
                     gates.setState(i, cvA && cvB && cvC && cvD);
-                    ledController.setState(i, gates.getState(i));
+                    if (!isInSelection) {
+                        // If we are not in selection mode, update the LEDs
+                        if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                    }
                 }
                 break;
        }
@@ -267,6 +352,24 @@ void ModeLogic::handleResetButton(ResetButton::ButtonState buttonState) {
 void ModeLogic::handleSinglePress() {
     if (!singlePressHandled) {
         // Cycle through the modes
+        if (isInSelection) {
+            // Exit selection state
+            ledController.clearAndResetLEDs();
+            ledController.stopAllBlinking(true);
+            ledController.blinkSlow(selectedGate, true);
+
+            logicMode[selectedGate] = selectedLogicMode; 
+            stateManager.setLogicMode(selectedGate, selectedLogicMode);
+
+            isInSelection = false;
+            if (Debug::isEnabled) DEBUG_PRINT("Selected Logic Mode: " + String(selectedLogicMode));
+        } else {
+            // Enter selection state
+            selectedLogicMode = logicMode[selectedGate];
+            isInSelection = true;
+            updateSelectionDisplay();
+            if (Debug::isEnabled) DEBUG_PRINT("Selected Gate: " + String(selectedGate));
+        }
     }
 }
 
@@ -301,11 +404,48 @@ void ModeLogic::handlePressReleased() {
 void ModeLogic::handleSelectionStates() {
     // Handle selection states
     Encoder::Direction direction = encoder.readEncoder();
-    selectedGate = encoder.handleEncoderDirection(selectedGate, gates.numGates, direction); // 4 possible inputs
+    if (!isInSelection) {
+        selectedGate = encoder.handleEncoderDirection(selectedGate, gates.numGates, direction); // 4 possible inputs
+        // if (Debug::isEnabled) DEBUG_PRINT("Selected Gate: " + String(selectedGate));
+    } else {
+        // selectedLogicMode = encoder.handleEncoderDirection(selectedLogicMode, numLogicModes, direction); // NUM_LOGIC_MODES is the number of logic modes
+        selectedLogicMode = static_cast<LogicMode>(encoder.handleEncoderDirection(static_cast<int>(selectedLogicMode), numLogicModes, direction));
+    }
 
-    if (selectedGate != previousGate) {
- 
+    if (selectedGate != previousGate || selectedLogicMode != previousLogicMode) {
+        if (isInSelection) {
+            updateSelectionDisplay();
+        } else {
+            for (unsigned char i = 0; i < gates.numGates; i++) {
+                if (i == selectedGate) {
+                    ledController.blinkSlow(i, true);
+                } else {
+                    ledController.setState(i, false);
+                    ledController.stopBlinking(i);
+                }
+            }
+        }
         previousGate = selectedGate;
+        previousLogicMode = selectedLogicMode;
+    }
+}
+
+/**
+ * @brief Update the selection display.
+ * 
+ */
+void ModeLogic::updateSelectionDisplay() {
+    // Update the selection display
+    ledController.clearAndResetLEDs();
+    for (unsigned char i = 0; i < numLogicModes; i++) {
+        if (i == selectedLogicMode) {
+            ledController.blinkFast(i, true);
+            ledController.setInverted(i, true);
+        } else {
+            ledController.stopBlinking(i);
+            ledController.setInverted(i, false);
+            ledController.setState(i, true);
+        }
     }
 }
 
@@ -317,10 +457,13 @@ void ModeLogic::handleResetSinglePress() {
     if (!singleResetPressHandled) {
         // Toggle input group.
         if (inputGroup == GROUP_TWO) {
+            if (Debug::isEnabled) DEBUG_PRINT("Input Group: ALL");
             inputGroup = GROUP_ALL;
         } else {
+            if (Debug::isEnabled) DEBUG_PRINT("Input Group: TWO");
             inputGroup = GROUP_TWO;
         }
+        stateManager.setInputGroup(inputGroup);
     }
 }
 
@@ -358,4 +501,10 @@ void ModeLogic::handleResetPressReleased() {
  */
 void ModeLogic::loadState() {
     // Load the state from the EEPROM
+    if (Debug::isEnabled) DEBUG_PRINT("Loading state from EEPROM");
+    for (unsigned char i = 0; i < gates.numGates; i++) {
+        logicMode[i] = stateManager.getLogicMode(i);
+    }
+    inputGroup = stateManager.getInputGroup();
+    if (Debug::isEnabled) DEBUG_PRINT("Loaded state from EEPROM");
 }

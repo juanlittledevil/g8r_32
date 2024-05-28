@@ -47,11 +47,17 @@ struct ModeInverseState {
     std::array<PairMode, 4> pairModes;
 };
 
+struct ModeLogicState {
+    std::array<LogicMode, numLogicModes> logicModes;
+    InputGroup inputGroup;
+};
+
 struct AppState {
     int mode;
     ModeDivisionsState modeDivisions;
     ModeMidiLearnState modeMidiLearn;
     ModeInverseState modeInverse;
+    ModeLogicState modeLogic;
 };
 
 #endif // APP_STATE_H
