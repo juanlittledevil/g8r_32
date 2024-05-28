@@ -24,12 +24,14 @@ ModeLogic::ModeLogic(StateManager& stateManager,
     InputHandler& inputHandler,
     Gates& gates,
     LEDController& ledController,
+    midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
     ResetButton& resetButton)
     :   stateManager(stateManager),
         encoder(encoder),
         inputHandler(inputHandler),
         gates(gates),
         ledController(ledController),
+        midi(midi),
         resetButton(resetButton) {
     // Initialization code here if needed
 }
@@ -70,6 +72,7 @@ void ModeLogic::teardown() {
  */
 void ModeLogic::update() {
     // Update code here
+    handleMidiMessage();
     handleInputs();
 
     // Handle the pair selection
@@ -81,6 +84,21 @@ void ModeLogic::update() {
     // Handle button presses
     handleButton(encoder.readButton());
     handleResetButton(resetButton.readButton());
+}
+
+/**
+ * @brief This function is used to handle the MIDI messages. This is where the MIDI messages are handled.
+ * In this mode we only use it to forward messages to the MIDI output. Basically, a soft MIDI thru.
+ * 
+ * NOTE: If you need more functionality, you will need to implement callback functions. However,
+ * those will need to be static functions. This is because the MIDI library requires static functions.
+ * Just like the handleNoteOn and handleNoteOff functions in the ModeMidiLearn class. Remember that
+ * you'll need to create an instance of this class if you do that. You can use ModeMidiLearn as a reference.
+ * 
+ */
+void ModeLogic::handleMidiMessage() {
+    // Handle MIDI messages
+    midi.read();  
 }
 
 /**

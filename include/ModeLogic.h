@@ -18,6 +18,7 @@ public:
         InputHandler& inputHandler,
         Gates& gates,
         LEDController& ledController,
+        midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
         ResetButton& resetButton);
     void handleSinglePress() override;
     void handleDoublePress() override;
@@ -32,6 +33,9 @@ public:
     void teardown();
     void update();
 
+    // For MIDI Messages
+    void handleMidiMessage();
+
 private:
     void handleInputs();
     void handleTempoLed();
@@ -45,6 +49,7 @@ private:
     LEDController& ledController;
     ResetButton& resetButton;
     Gates& gates;
+    midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi;
 
     // Add your data members here
     bool doublePressHandled = false;
