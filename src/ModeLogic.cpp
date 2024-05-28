@@ -49,7 +49,7 @@ void ModeLogic::setup() {
     numLeds = ledController.getNumLeds();
     /// This is where you'd read the eeprom for the ModeLogic settings. However, we don't have any settings for ModeLogic yet.
     loadState();
-    ledController.blinkSlow(selectedGate, true); // Blink the selected input
+    ledController.blinkSlower(selectedGate, true); // Blink the selected input
     handleInputs();
 }
 
@@ -374,7 +374,7 @@ void ModeLogic::handleSinglePress() {
             // Exit selection state
             ledController.clearAndResetLEDs();
             ledController.stopAllBlinking(true);
-            ledController.blinkSlow(selectedGate, true);
+            ledController.blinkSlower(selectedGate, true);
 
             logicMode[selectedGate] = selectedLogicMode; 
             stateManager.setLogicMode(selectedGate, selectedLogicMode);
@@ -436,7 +436,7 @@ void ModeLogic::handleSelectionStates() {
         } else {
             for (unsigned char i = 0; i < gates.numGates; i++) {
                 if (i == selectedGate) {
-                    ledController.blinkSlow(i, true);
+                    ledController.blinkSlower(i, true);
                 } else {
                     ledController.setState(i, false);
                     ledController.stopBlinking(i);

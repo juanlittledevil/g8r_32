@@ -54,7 +54,7 @@ void ModeInverse::setup() {
     numLeds = ledController.getNumLeds();
     /// This is where you'd read the eeprom for the ModeInverse settings. However, we don't have any settings for ModeInverse yet.
     loadState();
-    ledController.blinkSlow(selectedInput, true); // Blink the selected input
+    ledController.blinkSlower(selectedInput, true); // Blink the selected input
     handleInputs();
 }
 
@@ -286,7 +286,7 @@ void ModeInverse::handleSelectionStates() {
     if (selectedInput != previousInput) {
         for (int i = 0; i < inputHandler.cvInputs.size(); i++) {
             if (i == selectedInput) {
-                ledController.blinkSlow(i, true);
+                ledController.blinkSlower(i, true);
             } else {
                 ledController.setState(i, false);
                 ledController.stopBlinking(i);
