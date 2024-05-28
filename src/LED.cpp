@@ -60,6 +60,73 @@ void LED::updateBlinking() {
 }
 
 /**
+ * @brief This function is used to check if the LED is currently blinking.
+ * 
+ * @return true 
+ * @return false 
+ */
+bool LED::getIsBlinking() {
+    return this->isBlinking;
+}
+
+/**
+ * @brief This function is used to start pulsing the LED. The LED's pulse based on the interval and pulse duration provided.
+ * 
+ */
+void LED::startPulsing(unsigned long interval, int pulseDuration, bool inverted) {
+    this->blinkStartTime = millis();
+    this->blinkInterval = interval;
+    this->pulseDuration = pulseDuration;
+    this->isPulsing = true;
+    this->inverted = inverted;
+}
+
+/**
+ * @brief This function is used to stop the LED from pulsing.
+ * 
+ */
+void LED::stopPulsing() {
+    this->isPulsing = false;
+    this->intensity = 255;
+}
+
+/**
+ * @brief This function is used to update the pulsing of the LED. It is meant to be called in every loop iteration.
+ * 
+ */
+void LED::updatePulsing() {
+    if (this->isPulsing) {
+        unsigned long currentTime = millis();
+        if (currentTime - this->blinkStartTime >= this->blinkInterval) {
+            // Start a new pulse
+            this->blinkStartTime = currentTime;
+            if (inverted) {
+                this->setState(false); // Turn off the LED
+            } else {
+                this->setState(true); // Turn on the LED
+            }
+        } else if (currentTime - this->blinkStartTime >= this->pulseDuration) {
+            // End the pulse
+            if (inverted) {
+                this->setState(true); // Turn on the LED
+            } else {
+                this->setState(false); // Turn off the LED
+            }
+        }
+    }
+}
+
+/**
+ * @brief This function is used to check if the LED is currently pulsing.
+ * 
+ * @return true 
+ * @return false 
+ */
+bool LED::getIsPulsing() {
+    return this->isPulsing;
+}
+
+/**
  * @brief This function is used to trigger the LED. The LED will stay on for ledOnDuration milliseconds.
  * 
  * @param currentTime 
@@ -110,4 +177,20 @@ void LED::resetIvernted() {
  */
 void LED::setLedOnDuration(int duration) {
     this->ledOnDuration = duration;
+}
+
+/**
+ * @brief Get Inverted state of the LED.
+ * 
+ */
+bool LED::getInverted() {
+    return this->inverted;
+}
+
+/**
+ * @brief 
+ * 
+ */
+void LED::setInverted(bool inverted) {
+    this->inverted = inverted;
 }

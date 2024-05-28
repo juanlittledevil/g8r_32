@@ -120,6 +120,16 @@ void AnalogInputPin::begin() {
 }
 
 /**
+ * @brief This function is used to read the digital value of the analog input pin.
+ * 
+ * @return bool 
+ */
+bool AnalogInputPin::read() {
+    bool value = InputPin::getState();
+    return value;
+}
+
+/**
  * @brief This function is used to read the value of the analog input pin.
  * 
  * @return int 

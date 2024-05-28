@@ -19,7 +19,10 @@ InputHandler::InputHandler(unsigned char cvAPin, unsigned char cvBPin, unsigned 
             cvB(cvBPin, false, true),
             cvC(resetPin, false, true),
             cvD(clockPin, false, true) {
-    // Nothing to do here
+    cvInputs.push_back(&cvB);
+    cvInputs.push_back(&cvA);
+    cvInputs.push_back(&cvC);
+    cvInputs.push_back(&cvD);
 }
 
 /**

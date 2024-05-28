@@ -39,6 +39,10 @@ class Gates {
     void setSelectedGate(int gate);
     int getSelectedGate(); 
     void setGateOnDuration(int index, int duration);
+    void mute(int index);
+    void unmute(int index);
+    bool isMuted(int index);
+    void unMuteAll();
 
   private:
     Gate *gateArray;

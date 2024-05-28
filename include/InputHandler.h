@@ -10,6 +10,8 @@
 #define INPUT_HANDLER_H
 
 #include "Pin.h"
+#include <vector>
+#include <Arduino.h>
 
 /**
  * @brief This class is used to read the CV inputs. It is a simple class that uses the AnalogInputPin class to read the CV inputs.
@@ -27,6 +29,7 @@ public:
     AnalogInputPin cvD;
     AnalogInputPin& reset = cvC;
     AnalogInputPin& clock = cvD;
+    std::vector<AnalogInputPin*> cvInputs;
 };
 
 #endif // INPUT_HANDLER_H

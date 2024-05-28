@@ -95,6 +95,13 @@ bool LEDs::getState(int index) {
     return false;
 }
 
+bool LEDs::getIsBlinking(int index) {
+    if(index >= 0 && index < numLeds) {
+        return this->leds[index].getIsBlinking();
+    }
+    return false;
+}
+
 /**
  * @brief This function is used to start blinking an LED. The LED's blink based on the interval provided.
  * 
@@ -163,6 +170,18 @@ void LEDs::update(unsigned long currentTime) {
 }
 
 /**
+ * @brief This function is used to update the state of a specific LED. It is meant to be called in every loop iteration.
+ * 
+ * @param index 
+ * @param currentTime 
+ */
+void LEDs::update(int index, unsigned long currentTime) {
+  if (index >= 0 && index < numLeds) { // Check if the index is within bounds
+    this->leds[index].update(currentTime); // Update the state of the gate at the specified index
+  }
+}
+
+/**
  * @brief This function is used to reset the inverted state of all LEDs.
  * 
  */
@@ -170,4 +189,97 @@ void LEDs::resetInverted(int index) {
   if (index >= 0 && index < numLeds) { // Check if the index is within bounds
     this->leds[index].resetIvernted(); // Reset the inverted state of the gate at the specified index
   }
+}
+
+/**
+ * @brief This function is used to set the inverted state of a specific LED.
+ * 
+ * @param index 
+ * @param inverted 
+ */
+void LEDs::setInverted(int index, bool inverted) {
+  if (index >= 0 && index < numLeds) { // Check if the index is within bounds
+    this->leds[index].setInverted(inverted); // Set the inverted state of the gate at the specified index
+  }
+}
+
+/**
+ * @brief This function is used to set the inverted state of all LEDs.
+ * 
+ * @param inverted 
+ */
+void LEDs::setAllInverted(bool inverted) {
+  for (int i = 0; i < numLeds; i++) {
+    this->leds[i].setInverted(inverted); // Set the inverted state of all gates
+  }
+}
+
+/**
+ * @brief This function is used to start pulsing an LED. The LED will pulse based on the interval and pulse duration provided.
+ * 
+ * @param index 
+ * @param interval 
+ * @param pulseDuration 
+ * @param inverted 
+ */
+void LEDs::startPulsing(int index, unsigned long interval, int pulseDuration, bool inverted) {
+  if (index >= 0 && index < numLeds) { // Check if the index is within bounds
+    this->leds[index].startPulsing(interval, pulseDuration, inverted); // Start pulsing the gate at the specified index
+  }
+}
+
+/**
+ * @brief This function is used to stop the LED from pulsing.
+ * 
+ * @param index 
+ */ 
+void LEDs::stopPulsing(int index) {
+  if (index >= 0 && index < numLeds) { // Check if the index is within bounds
+    this->leds[index].stopPulsing(); // Stop pulsing the gate at the specified index
+  }
+}
+
+/**
+ * @brief This function is used to stop all LEDs from pulsing.
+ * 
+ */
+void LEDs::stopAllPulsing() {
+  for (int i = 0; i < numLeds; i++) {
+    this->leds[i].stopPulsing(); // Stop pulsing all gates
+  }
+}
+
+/**
+ * @brief This function is used to update the pulsing of the LEDs. It is meant to be called in every loop iteration.
+ * 
+ */
+void LEDs::updatePulsing() {
+  for (int i = 0; i < numLeds; i++) {
+    this->leds[i].updatePulsing(); // Update the pulsing of the gate
+  }
+}
+
+/**
+ * @brief THis function is used to get the pulse state of a specific LED.
+ * 
+ * @return bool 
+ */
+bool LEDs::getIsPulsing(int index) {
+  if (index >= 0 && index < numLeds) { // Check if the index is within bounds
+    return this->leds[index].getIsPulsing(); // Return the pulsing state of the gate at the specified index
+  }
+  return false;
+}
+
+/**
+ * @brief This function is used to get the inverted state of a specific LED.
+ * 
+ * @param index 
+ * @return bool 
+ */
+bool LEDs::getInverted(int index) {
+  if (index >= 0 && index < numLeds) { // Check if the index is within bounds
+    return this->leds[index].getInverted(); // Return the inverted state of the gate at the specified index
+  }
+  return false;
 }

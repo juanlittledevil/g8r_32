@@ -20,15 +20,25 @@ class LEDs {
         void begin();
         void setState(int index, bool state);
         void setState(int index, bool state, int intensity);
+        bool getIsBlinking(int index);
+        bool getIsPulsing(int index);
         bool getState(int index);
         void setAllLeds(bool state);
         void startBlinking(int index, unsigned long interval);
         void stopBlinking(int index);
         void stopAllBlinking();
         void updateBlinking();
+        void startPulsing(int index, unsigned long interval, int pulseDuration, bool inverted=false);
+        void stopPulsing(int index);
+        void stopAllPulsing();
+        void updatePulsing();
+        void setInverted(int index, bool inverted);
+        void setAllInverted(bool inverted);
+        bool getInverted(int index);
         void setIntensity(int index, int intensity);
         void setAllintensity(int intensity);
         void update(unsigned long currentTime);
+        void update(int index, unsigned long currentTime);
         void trigger(int index, unsigned long currentTime, bool inverted=false);
         void resetInverted(int index);
         int numLeds; // Number of LEDs

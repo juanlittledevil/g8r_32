@@ -181,3 +181,49 @@ void Gates::setGateOnDuration(int index, int duration) {
         gateArray[index].setGateOnDuration(duration); // Set the gate on duration
     }
 }
+
+/**
+ * @brief This function is used to mute a specific gate.
+ * 
+ * @param index 
+ */
+void Gates::mute(int index) {
+    if (index >= 0 && index < numGates) { // Check if the index is within bounds
+        gateArray[index].mute(); // Mute the gate
+    }
+}
+
+/**
+ * @brief This function is used to unmute a specific gate.
+ * 
+ * @param index 
+ */
+void Gates::unmute(int index) {
+    if (index >= 0 && index < numGates) { // Check if the index is within bounds
+        gateArray[index].unmute(); // Unmute the gate
+    }
+}
+
+/**
+ * @brief This function is used to check if a specific gate is muted.
+ * 
+ * @param index 
+ * @return true 
+ */
+bool Gates::isMuted(int index) {
+    if (index >= 0 && index < numGates) { // Check if the index is within bounds
+        return gateArray[index].getIsMuted(); // Get the muted state of the gate
+    }
+    return false; // Return false if the index is out of bounds
+}
+
+/**
+ * @brief This function is used to unmute all gates.
+ * 
+ * @return true 
+ */
+void Gates::unMuteAll() {
+    for (int i = 0; i < numGates; i++) {
+        gateArray[i].unmute(); // Unmute all gates
+    }
+}
