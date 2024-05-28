@@ -24,6 +24,7 @@ public:
         InputHandler& inputHandler,
         Gates& gates,
         LEDController& ledController,
+        midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
         ResetButton& resetButton);
     void handleSinglePress() override;
     void handleDoublePress() override;
@@ -37,6 +38,9 @@ public:
     void setup() override;
     void teardown() override;
     void update() override;
+
+    // For MIDI Messages
+    void handleMidiMessage();
 
 private:
     void handleButton(Encoder::ButtonState buttonState);
@@ -52,6 +56,7 @@ private:
     Encoder& encoder;
     ResetButton& resetButton;
     Gates& gates;
+    midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi;
     bool doublePressHandled = false;
     bool isInSelection = false;
     bool singlePressHandled = false;

@@ -73,8 +73,8 @@ Mode* currentMode = nullptr; /// Pointer to the current mode
 Mode* previousMode = nullptr; /// Pointer to the previous mode
 ModeDivisions modeDivisions(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton, clock); /// Instance of ModeDivisions class
 ModeMidiLearn modeMidiLearn(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton); /// Instance of ModeMidiLearn class
-ModeInverse modeInverse(stateManager, encoder, inputHandler, gates, ledController, resetButton); /// Instance of ModeInverse class
-ModeLogic modeLogic(stateManager, encoder, inputHandler, gates, ledController, resetButton); /// Instance of ModeLogic class
+ModeInverse modeInverse(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton); /// Instance of ModeInverse class
+ModeLogic modeLogic(stateManager, encoder, inputHandler, gates, ledController, midiInterface, resetButton); /// Instance of ModeLogic class
 
 // Forward declarations
 void midiSetup();
@@ -169,6 +169,8 @@ void loop() {
  */
 void midiSetup() {
     midiInterface.begin(MIDI_CHANNEL_OMNI);
+    midiInterface.turnThruOn();
+    midiInterface.setThruFilterMode(midi::Thru::Full);
     midiInterface.setHandleClock(nullptr);
     midiInterface.setHandleStart(nullptr);
     midiInterface.setHandleStop(nullptr);

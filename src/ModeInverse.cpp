@@ -24,12 +24,14 @@ ModeInverse::ModeInverse(StateManager& stateManager,
     InputHandler& inputHandler,
     Gates& gates,
     LEDController& ledController,
+    midi::MidiInterface<midi::SerialMIDI<HardwareSerial>>& midi,
     ResetButton& resetButton)
     :   stateManager(stateManager),
         encoder(encoder),
         inputHandler(inputHandler),
         gates(gates),
         ledController(ledController),
+        midi(midi),
         resetButton(resetButton) {
     // Set the default mode for the input+pairs.
     // Note we only have 4 inputs, so we only need 4 pair modes.
@@ -75,6 +77,7 @@ void ModeInverse::teardown() {
  */
 void ModeInverse::update() {
     // Update code here
+    handleMidiMessage();
     handleInputs();
 
     // Handle the pair selection
@@ -87,6 +90,22 @@ void ModeInverse::update() {
     handleButton(encoder.readButton());
     handleResetButton(resetButton.readButton());
 }
+
+/**
+ * @brief This function is used to handle the MIDI messages. This is where the MIDI messages are handled.
+ * In this mode we only use it to forward messages to the MIDI output. Basically, a soft MIDI thru.
+ * 
+ * NOTE: If you need more functionality, you will need to implement callback functions. However,
+ * those will need to be static functions. This is because the MIDI library requires static functions.
+ * Just like the handleNoteOn and handleNoteOff functions in the ModeMidiLearn class. Remember that
+ * you'll need to create an instance of this class if you do that. You can use ModeMidiLearn as a reference.
+ * 
+ */
+void ModeInverse::handleMidiMessage() {
+    // Handle MIDI messages
+    midi.read();  
+}
+
 
 /**
  * @brief This function is used to handle the inputs. This is where the magic happens.
