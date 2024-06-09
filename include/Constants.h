@@ -28,14 +28,16 @@ enum InputGroup {
 };
 
 // Other Logic mode could be IMPLY and NIMPLY (however we probably won't use those here.)
-const unsigned char numLogicModes = 6;
+const unsigned char numLogicModes = 8; // The nubmer of modes in the enum.
 enum LogicMode {
     AND,
     OR,
     XOR,
     NAND,
     NOR,
-    XNOR
+    XNOR,
+    IMPLY,
+    NIMPLY
 };
 
 #endif // CONSTANTS_H
