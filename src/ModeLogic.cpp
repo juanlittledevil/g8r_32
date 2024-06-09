@@ -270,6 +270,58 @@ void ModeLogic::handleInputs() {
                     }
                 }
                 break;
+            case IMPLY:
+                // Do IMPLY logic
+                if (inputGroup == GROUP_TWO) {
+                    // Do IMPLY logic for two inputs
+                    if (i < 4) {
+                        gates.setState(i, !cvA || cvB);
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    } else {
+                        gates.setState(i, !cvC || cvD);
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    }
+                } else {
+                    // Do IMPLY logic for all inputs
+                    gates.setState(i, !cvA || cvB || cvC || cvD);
+                    if (!isInSelection) {
+                        // If we are not in selection mode, update the LEDs
+                        if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                    }
+                }
+                break;
+            case NIMPLY:
+                // Do NIMPLY logic
+                if (inputGroup == GROUP_TWO) {
+                    // Do NIMPLY logic for two inputs
+                    if (i < 4) {
+                        gates.setState(i, cvA && !cvB);
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    } else {
+                        gates.setState(i, cvC && !cvD);
+                        if (!isInSelection) {
+                            // If we are not in selection mode, update the LEDs
+                            if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                        }
+                    }
+                } else {
+                    // Do NIMPLY logic for all inputs
+                    gates.setState(i, cvA && !cvB && !cvC && !cvD);
+                    if (!isInSelection) {
+                        // If we are not in selection mode, update the LEDs
+                        if (!ledController.isBlinking(i)) ledController.setState(i, gates.getState(i));
+                    }
+                }
+                break;
             default:
                 // Do AND logic
                 if (inputGroup == GROUP_TWO) {
