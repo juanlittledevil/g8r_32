@@ -29,23 +29,16 @@ git submodule update --init --recursive
 
 This command will initialize any submodules defined in the .gitmodules file and update them to their latest commits.
 
-If you want to make sure that your git pull fetches all submodules just run this command too, but be aware that if there are breaking changes to UMIDI later it may affect your code.
+If you want to make sure that your git pull fetches all submodules just run this command too, but be aware that if there are breaking changes to MIDI later it may affect your code.
 
 ```bash
 git config submodule.recurse true
 ```
 
-Alternatively, You can choose not to checkout any of the submodules and instead download UMIDI directly from the repo and unpack it's content directly into the lib folder as such:
+Alternatively, You can choose not to checkout any of the submodules and instead download MIDI directly from the repo and unpack it's content directly into the lib folder as such:
 
 ```bash
-lib/UMIDI/
-```
-
-So you end up with:
-
-```bash
-lib/UMIDI/src/UMIDI.h
-lib/UMIDI/src/UMIDI.cpp
+lib/MIDI/
 ```
 
 ## License
