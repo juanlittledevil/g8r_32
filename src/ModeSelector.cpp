@@ -91,7 +91,6 @@ void ModeSelector::handleLongPress() {
     if (inModeSelection) {
         // Enter mode selection state
         // ...
-        ledController->clearAndResetLEDs();
         inModeSelection = true;
         isInSelection = true;
         singlePressHandled = true;
