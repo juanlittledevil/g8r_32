@@ -7,7 +7,7 @@ With this build I wanted to accoumplish two things. The first is I wanted to use
 
 ## Checking out the repo
 
-I'm making use of git submodules here for the UMIDI library.  If you want to use this repo you have two choices. You can recursively checkout the repos as shown below:
+I'm making use of git submodules here for the FourtySevenEffects MIDI library.  If you want to use this repo you have two choices. You can recursively checkout the repos as shown below:
 
 1. Clone the repository:
 
@@ -28,6 +28,13 @@ git submodule update --init --recursive
 ```
 
 This command will initialize any submodules defined in the .gitmodules file and update them to their latest commits.
+
+```
+# Contents of .gitmodules
+[submodule "lib/MIDI"]
+	path = lib/MIDI
+	url = git@github.com:FortySevenEffects/arduino_midi_library.git
+```
 
 If you want to make sure that your git pull fetches all submodules just run this command too, but be aware that if there are breaking changes to MIDI later it may affect your code.
 
